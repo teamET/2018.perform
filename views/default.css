@@ -1,0 +1,36 @@
+
+.header-logo {
+    background-color: #FFFFFF;
+    font-size: 40px;
+    height: 100px;
+    padding: 0px 10px;
+    text-align: center;
+}
+.header-index {
+    background-color: #F7D358;
+    height: 30px;
+    text-align: right;
+}
+
+main {
+    height: 200px;
+    padding: 100px 80px;
+}
+footer 
+{
+    background-color: #2f5167;
+    color: #fff;
+    height: 120px;
+    padding: 20px;
+}
+.footer-logo {
+    float: left;
+    font-size: 32px;
+}
+
+.footer-list {
+    float: right;
+    
+}
+.footer-list a:link { color: #FFFFFF; }
+.footer-list a:visited { color: #E6E6E6; }
