@@ -1,0 +1,13 @@
+{
+  "name": "saga",
+  "version": "1.2.5",
+  "description": "Tell your story! A Ghost theme designed for photoblogging",
+  "author": {
+    "name": "Gustav Lindqvist",
+    "email": "gustav@lindqvist.io",
+    "url": "https://saga.gustavlindqvist.se"
+  },
+  "config": {
+    "posts_per_page": 10
+  }
+}
