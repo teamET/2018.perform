@@ -1,13 +1,7 @@
 # 2018.perform
 
 
-## run keystone  
+```
+docker-compose up
+```
 
-```  
-bash ./setup.sh  
-yo keystone
-node keystone  
-
-```  
-
-then access ``` http://localhost:3000  ```
