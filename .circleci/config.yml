@@ -53,19 +53,8 @@ jobs:
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
             docker-compose --version
-  pass:
-      steps:
-          - run:
-              echo pass
-
 workflows:
     version: 2
     build_and_test:
         jobs:
             - build
-              #- test
-
-    testGhost:
-        jobs:
-            - pass
-            #- ghost
