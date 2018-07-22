@@ -6,7 +6,8 @@ version: 2
 jobs:
   build:
       #    working_directory: ~/repo
-    working_directory: ~/api-server
+      #    working_directory: ~/api-server
+    working_directory: ~/2018.perform/api-server
     docker:
       - image: circleci/node:7.10
     steps:
@@ -26,7 +27,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
   test:
-    working_directory: ~/api-server
+    working_directory: ~/2018.perform/api-server
+        #    working_directory: ~/api-server
     docker:
       - image: circleci/node:7.10
     steps:
