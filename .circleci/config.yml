@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: test for api-server
+          name: build for api-server
           command: echo hello world
       - restore_cache:
           keys:
@@ -26,7 +26,14 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
   test:
-      - run: yarn test
+    working_directory: ~/api-server
+    docker:
+      - image: circleci/node:7.10
+    steps:
+      - checkout
+      - run: 
+        name: test express server
+        command: yarn test
 
 workflows:
     version: 2
