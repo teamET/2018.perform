@@ -15,8 +15,9 @@ services:
       database__connection__user: root
       database__connection__password: example
       database__connection__database: ghost
+
   express:
-    build: ./express
+    build: ./api-server
     restart: always
     ports:
      - 8080:3000
