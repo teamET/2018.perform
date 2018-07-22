@@ -12,15 +12,15 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - run:
-          name: build for api-server
-          command: echo hello world
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
-      - run: cd api-server && yarn install && ls
+      - run: 
+        name: install packages
+        working_directory: ~/2018.perform/api-server
+        command: yarn && yarn install && ls
       - save_cache:
           paths:
             - node_modules
@@ -39,7 +39,8 @@ jobs:
           - v1-dependencies-
       - run: 
           name: test express server
-          command: cd api-server && yarn test
+          working_directory: ~/2018.perform/api-server
+          command: yarn test
 
 workflows:
     version: 2
