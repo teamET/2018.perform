@@ -19,8 +19,8 @@ jobs:
           - v1-dependencies-
       - run: 
         name: install packages
-        working_directory: ~/2018.perform/api-server
-        command: yarn && yarn install && ls
+        #working_directory: ~/2018.perform/api-server
+        command: cd api-server && yarn && yarn install && ls
       - save_cache:
           paths:
             - node_modules
@@ -35,7 +35,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "api-server/package.json" }}
           - v1-dependencies-
       - run: 
           name: test express server
