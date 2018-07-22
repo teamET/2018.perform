@@ -20,7 +20,7 @@ jobs:
       - run: 
           name: install packages
           #working_directory: ~/2018.perform/api-server
-          command: cd api-server && yarn && yarn install && ls
+          command: cd api-server && yarn && yarn install && yarn test
       - save_cache:
           paths:
             - node_modules
@@ -41,10 +41,25 @@ jobs:
           name: test express server
           working_directory: ~/2018.perform/api-server
           command: yarn test
+  ghost:
+    working_directory: ~/.2018.perfrom
+    docker:
+        - image: circleci/node:7.10
+    steps:
+      - run :
+          name: Install Docker Compose
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+            echo build finish
 
 workflows:
     version: 2
     build_and_test:
         jobs:
             - build
-            - test
+              #- test
+    testGhost:
+        jobs:
+            - ghost
