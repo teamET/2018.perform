@@ -18,9 +18,9 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
       - run: 
-        name: install packages
-        #working_directory: ~/2018.perform/api-server
-        command: cd api-server && yarn && yarn install && ls
+          name: install packages
+          #working_directory: ~/2018.perform/api-server
+          command: cd api-server && yarn && yarn install && ls
       - save_cache:
           paths:
             - node_modules
