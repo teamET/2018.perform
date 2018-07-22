@@ -52,7 +52,11 @@ jobs:
             curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
-            echo build finish
+            docker-compose --version
+  pass:
+      steps:
+          - run:
+              echo pass
 
 workflows:
     version: 2
@@ -60,6 +64,8 @@ workflows:
         jobs:
             - build
               #- test
+
     testGhost:
         jobs:
-            - ghost
+            - pass
+            #- ghost
