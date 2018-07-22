@@ -13,6 +13,11 @@ services:
       database__connection__user: root
       database__connection__password: example
       database__connection__database: ghost
+  express:
+    build: ./express
+    restart: always
+    ports:
+      - 8080:3000
 
   db:
     image: mysql:5.7
