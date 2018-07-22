@@ -17,6 +17,11 @@ jobs:
     working_directory: ~/repo
 
     steps:
+      - run:
+          name: test for api-server
+          command: yarn test
+          sheel: /bin/bash
+          working_directory: ~/api-server
       - checkout
 
       # Download and cache dependencies
