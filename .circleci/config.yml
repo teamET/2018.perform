@@ -36,8 +36,8 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
       - run: 
-        name: test express server
-        command: yarn test
+          name: test express server
+          command: yarn test
 
 workflows:
     version: 2
