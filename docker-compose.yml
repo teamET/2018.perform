@@ -7,9 +7,8 @@ services:
     restart: always
     ports:
       - 80:2368
-    env_file:
-        .env
     environment:
+      url : http://ip172-18-0-10-xxxxxxxxxxx.direct.labs.play-with-docker.com/
       database__client: mysql
       database__connection__host: db
       database__connection__user: root
