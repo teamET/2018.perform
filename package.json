@@ -1,0 +1,26 @@
+{
+  "name": "2018.perform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "handlebars": "^4.0.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teamET/2018.perform.git"
+  },
+  "keywords": [
+    "ghost"
+  ],
+  "author": "kperform",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/teamET/2018.perform/issues"
+  },
+  "homepage": "https://github.com/teamET/2018.perform#readme"
+}
