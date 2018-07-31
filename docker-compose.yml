@@ -32,7 +32,7 @@ services:
     ports:
      - 80:80
     volumes:
-     - ./nginx/public:/root/public
+     - ./proxy/public:/root/public
 
 
 
