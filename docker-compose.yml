@@ -14,22 +14,25 @@ services:
       database__connection__user: root
       database__connection__password: example
       database__connection__database: ghost
-  express:
-    build: ./express
+  db:
+    image: mysql:5.7
     restart: always
-    ports:
-      - 8080:3000
+    environment:
+      MYSQL_ROOT_PASSWORD: example
 
   express:
     build: ./api-server
     restart: always
     ports:
      - 8080:3000
-
-
-  db:
-    image: mysql:5.7
+     
+  proxy:
+    build: ./nginx
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: example
+    ports:
+     - 80:80
+    volumes:
+     - ./nginx/public:/root/public
+
+
 
