@@ -1,14 +1,15 @@
 version: '3.1'
 
 services:
-
   ghost:
-    image: ghost:1-alpine
+    image: ghost:1
     restart: always
     ports:
-      - 80:2368
+      - 2368:2368
+    env_file:
+        - ./.env
     environment:
-      url : http://ip172-18-0-10-xxxxxxxxxxx.direct.labs.play-with-docker.com/
+#      url : http://ip172-18-0-10-xxxxxxxxxxx.direct.labs.play-with-docker.com/
       database__client: mysql
       database__connection__host: db
       database__connection__user: root
@@ -33,6 +34,10 @@ services:
      - 80:80
     volumes:
      - ./proxy/public:/root/public
+     - ./proxy/site-avaliable:/etx/nginx/sites-available/
+    command: >
+        ln -s /etc/nginx/sites-available /etc/nginx/sites-enabled
+        usr/sbin/nginx -g daemon off;
 
 
 
