@@ -40,7 +40,8 @@ services:
      - 80:80
     volumes:
      - ./proxy/public:/root/public
-     - ./proxy/sites-available:/etc/nginx/sites-available/
+     - ./proxy/docker/sites-available:/etc/nginx/sites-available/
+       #     - ./proxy/sites-available:/etc/nginx/sites-available/
     command: /bin/bash -c '[[ ! -e /etc/nginx/sites-enables ]] && ln -s /etc/nginx/sites-available /etc/nginx/sites-enabled ; usr/sbin/nginx -g "daemon off;"'
 
 
