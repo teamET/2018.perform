@@ -21,6 +21,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.get('/api',(req,res)=>{res.send('hello api');});
+app.get('/api/enquete',(req,res)=>{res.send('hello api');});
+app.post('/api/enquete',(req,res)=>{res.send('hello api');});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
