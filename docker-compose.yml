@@ -8,6 +8,8 @@ services:
       - 2368:2368
     env_file:
         - ./.env
+    links:
+        - db
     environment:
 #      url : http://ip172-18-0-10-xxxxxxxxxxx.direct.labs.play-with-docker.com/
       database__client: mysql
@@ -20,6 +22,10 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
+    ports:
+        - 3306:3306
+#    volumes:
+        #        - ./ghostdata/:/var/lib/mysql
 
   express:
     build: ./api-server
@@ -34,10 +40,8 @@ services:
      - 80:80
     volumes:
      - ./proxy/public:/root/public
-     - ./proxy/site-avaliable:/etx/nginx/sites-available/
-    command: >
-        ln -s /etc/nginx/sites-available /etc/nginx/sites-enabled
-        usr/sbin/nginx -g daemon off;
+     - ./proxy/sites-available:/etc/nginx/sites-available/
+    command: /bin/bash -c '[[ ! -e /etc/nginx/sites-enables ]] && ln -s /etc/nginx/sites-available /etc/nginx/sites-enabled ; usr/sbin/nginx -g "daemon off;"'
 
 
 
