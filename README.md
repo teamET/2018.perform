@@ -1,4 +1,13 @@
 # 2018.perform
+
+```
+docker-compose build
+docker-compose up
+```
+## then you can view at localhost
+##  just do it
+
+
 1. first youy should copy .envsample to .env then rewrite localhost to address  
 ` cp .envsample .env `  
 
