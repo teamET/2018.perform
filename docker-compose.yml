@@ -2,13 +2,23 @@ version: '3.1'
 
 services:
   express:
-    build: ./express
-    restart: always
-    ports:
-      - 8080:3000
-  db:
-    image: mysql:5.7
+    build: ./api-server
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
+    ports:
+      - 8080:3000
+
+  proxy:
+    build: ./proxy
+    restart: always
+    ports:
+     - 80:80
+    volumes:
+     - ./static/public:/root/public
+     - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+     - ./proxy/sites-available/sites-available.conf:/etc/nginx/sites-available/
+     - ./proxy/sites-available/sites-available.conf:/etc/nginx/sites-enabled/sites-enabled.conf
+#    command: /bin/bash -c '[[ ! -e /etc/nginx/sites-enables ]] && ln -s /etc/nginx/sites-available /etc/nginx/sites-enabled ; /usr/sbin/nginx -g "daemon off;"'
+    command: /bin/bash -c '/usr/sbin/nginx -g "daemon off;"'
 
