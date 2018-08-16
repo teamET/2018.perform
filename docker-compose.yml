@@ -1,32 +1,11 @@
 version: '3.1'
 
 services:
-
-  ghost:
-    image: ghost:1-alpine
-    restart: always
-    ports:
-      - 80:2368
-    environment:
-      url : http://ip172-18-0-10-xxxxxxxxxxx.direct.labs.play-with-docker.com/
-      database__client: mysql
-      database__connection__host: db
-      database__connection__user: root
-      database__connection__password: example
-      database__connection__database: ghost
   express:
     build: ./express
     restart: always
     ports:
       - 8080:3000
-
-  express:
-    build: ./api-server
-    restart: always
-    ports:
-     - 8080:3000
-
-
   db:
     image: mysql:5.7
     restart: always
