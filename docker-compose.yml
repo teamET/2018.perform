@@ -1,48 +1,24 @@
 version: '3.1'
 
 services:
-  ghost:
-    image: ghost:1
-    restart: always
-    ports:
-      - 2368:2368
-    env_file:
-        - ./.env
-    links:
-        - db
-    environment:
-#      url : http://ip172-18-0-10-xxxxxxxxxxx.direct.labs.play-with-docker.com/
-      database__client: mysql
-      database__connection__host: db
-      database__connection__user: root
-      database__connection__password: example
-      database__connection__database: ghost
-  db:
-    image: mysql:5.7
+  express:
+    build: ./api-server
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
     ports:
-        - 3306:3306
-#    volumes:
-        #        - ./ghostdata/:/var/lib/mysql
+      - 8080:3000
 
-  express:
-    build: ./api-server
-    restart: always
-    ports:
-     - 8080:3000
-     
   proxy:
     build: ./proxy
     restart: always
     ports:
      - 80:80
     volumes:
-     - ./proxy/public:/root/public
-     - ./proxy/docker/sites-available:/etc/nginx/sites-available/
-       #     - ./proxy/sites-available:/etc/nginx/sites-available/
-    command: /bin/bash -c '[[ ! -e /etc/nginx/sites-enables ]] && ln -s /etc/nginx/sites-available /etc/nginx/sites-enabled ; usr/sbin/nginx -g "daemon off;"'
-
-
+     - ./static/public:/root/public
+     - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+     - ./proxy/sites-available/sites-available.conf:/etc/nginx/sites-available/
+     - ./proxy/sites-available/sites-available.conf:/etc/nginx/sites-enabled/sites-enabled.conf
+#    command: /bin/bash -c '[[ ! -e /etc/nginx/sites-enables ]] && ln -s /etc/nginx/sites-available /etc/nginx/sites-enabled ; /usr/sbin/nginx -g "daemon off;"'
+    command: /bin/bash -c '/usr/sbin/nginx -g "daemon off;"'
 
