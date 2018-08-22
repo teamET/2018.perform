@@ -1,4 +1,5 @@
 ```
+curl -O makenew.sh https://raw.githubusercontent.com/teamET/2018.perform/develop/makenew/makenew.sh
 ./makenew.sh {username}
 passwd {usernam}
 su - {username}
