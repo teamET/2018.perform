@@ -8,7 +8,7 @@ esac
 
 useradd $1 
 mkdir /home/$1
-sudo usermod $1 -d /home/$1 -g $1 -G $1,root
+sudo usermod $1 -d /home/$1 -g $1 -G $1,root,sudo
 chown $1 /home/$1
 chsh $1 -s /bin/bash
 
