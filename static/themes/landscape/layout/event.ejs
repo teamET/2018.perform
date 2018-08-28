@@ -1,0 +1,46 @@
+<section id="event">
+    <header>
+       
+    </header>
+    <div class="slide-show w3-content w3-display-container">
+        <p>体育館前</p>
+        <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301309-a8878e00-a34f-11e8-971c-fde728bb12ba.jpg">
+        <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301310-a8878e00-a34f-11e8-8ee0-ba6ba791c3bd.jpg">
+        <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301311-a8878e00-a34f-11e8-8ce6-7328bdde6fce.jpg">
+        
+        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+    </div>
+
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+        showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = x.length}
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+        }
+        x[slideIndex-1].style.display = "block";  
+        }
+    </script>
+    <div>
+   </div>
+   <div class="w3-card">
+       <h1>第一体育館前</h1>
+       <div style="height: 400px;"> 
+           タイムテーブル
+       </div>
+       <h1>第二体育館前</h1>
+       <div style="height: 400px;"> 
+            タイムテーブル
+        </div>
+   </div>
+</section>
