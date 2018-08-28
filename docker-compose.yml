@@ -15,7 +15,7 @@ services:
     ports:
      - 80:80
     volumes:
-     - ./static/public:/root/public
+     - ./static/public:/var/www/public
      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
     command: /bin/bash -c '/usr/sbin/nginx -g "daemon off;"'
 
