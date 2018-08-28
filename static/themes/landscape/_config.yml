@@ -1,7 +1,11 @@
 # Header
 menu:
   Home: /
-  Archives: /archives
+  About: /about
+  模擬店一覧: /mogi-shop
+  EVENT: /event
+  MAP: /map
+#  Archives: /archives
 rss: /atom.xml
 
 # Content
@@ -9,13 +13,13 @@ excerpt_link: Read More
 fancybox: true
 
 # Sidebar
-sidebar: right
-widgets:
-- category
-- tag
-- tagcloud
-- archive
-- recent_posts
+# sidebar: right
+# widgets:
+# - category
+# - tag
+# - tagcloud
+# - archive
+# - recent_posts
 
 # display widgets at the bottom of index pages (pagination == 2)
 index_widgets:
