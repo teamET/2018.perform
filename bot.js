@@ -113,6 +113,7 @@ rtm.on('hello',(event)=>{
 
 rtm.on('message',(event)=>{
 	slack_id = event.user;
+	console.log("event",event);
 	if(event.text.split(' ')[0]==='.h'){
 		slack('hello');
 	}else if(event.text.split(' ')[0]==='.x'){
@@ -144,9 +145,10 @@ rtm.on('message',(event)=>{
 			slack("Please register your store.");
 		}
 	}
-	if(event.subtype && event.subtype==='file_share'){
-		console.log(event.file);
-		file=download(event.file.title,event.file.url_private);
+	slack(event);
+	if(event.files !== undefined){
+		console.log(event.files);
+		file=download(event.files.title,event.files.url_private);
 		try{
 			shop_name = account[slack_id]["ShopName"];
 			if(account[slack_id] !== undefined){
@@ -154,6 +156,7 @@ rtm.on('message',(event)=>{
 			}else{
 				slack("Please register your store."); 
 			}
+			console.log("ok");
 		}catch(e){
 			slack("Please register your account."); 
 		}
@@ -163,6 +166,8 @@ rtm.on('message',(event)=>{
 function download(name,url){
 	let headers={Authorization: ' Bearer '+process.env.SLACK_TOKEN};
 	let fname='./files/'+name;
+	console.log("headers",headers);
+	console.log("ok");
 	request({
 		url:url,//file.url_private,
 		headers:{'Authorization': 'Bearer '+process.env.SLACK_TOKEN}})
