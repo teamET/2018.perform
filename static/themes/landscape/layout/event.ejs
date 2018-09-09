@@ -10,6 +10,7 @@
         
         <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
         <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+    
     </div>
 
     <script>
@@ -19,6 +20,7 @@
         function plusDivs(n) {
         showDivs(slideIndex += n);
         }
+        
 
         function showDivs(n) {
         var i;
@@ -33,14 +35,49 @@
     </script>
     <div>
    </div>
-   <div class="w3-card">
-       <h1>第一体育館前</h1>
-       <div style="height: 400px;"> 
-           タイムテーブル
-       </div>
-       <h1>第二体育館前</h1>
-       <div style="height: 400px;"> 
-            タイムテーブル
-        </div>
-   </div>
+
+
+
+    
+    <% var gym1 =[
+    {
+        "Start_Time": "17:30",
+        "End_Time":  "18:30",
+        "name":"sakakendo",
+        "from":"けいおん部"
+    },
+    {
+        "Start_Time": "19:30",
+        "End_Time":  "20:30",
+        "name":"HIROHIRO",
+        "from":"漁師部"
+    }
+]%>
+
+     <div class="w3-card">
+     <div style="height: 400px;"> 
+           <div style="height: 400px;">     
+                <font size="5"><h1>第一体育館前</h1></font>
+                <table  style=" margin-left:auto; margin-right:auto;">
+                        <tr>
+                                <th>開始時間</th>
+                                <th>終了時間</th>  
+                                <th>名前</th>
+                                <th>所属</th>
+                        </tr>
+                    <% for (var i = 0; i < 2; i++) { %>
+                        <font size="4">
+                            <tr align="center">
+                                <td><%- gym1[i].Start_Time%></td>
+                                <td><%- gym1[i].End_Time%></td>
+                                <td><%- gym1[i].name %></td>
+                                <td><%- gym1[i].from %></td>
+                             </tr>
+                        </font>
+                    <% } %>
+                </table>
+            </div>
+    </div>
+    </div>
+
 </section>
