@@ -4,7 +4,8 @@ const fs = require("fs");
 const jsdom=require('jsdom');
 const {RTMClient}=require('@slack/client');
 const rtm=new RTMClient(process.env.SLACK_TOKEN);
-
+const mkdirp = require("mkdirp");
+const getDirName = require("path").dirname
 rtm.start();
 
 var slack_id;
@@ -36,6 +37,13 @@ try {
 	fs.writeFileSync('shop.json',JSON.stringify(shop));	
 }
 
+function writeFile (path, contents, cb) {
+	mkdirp(getDirName(path), function (err) {
+		if (err) return cb(err)
+		fs.writeFile(path, contents, cb)
+	})
+}
+
 function slack(data){
 	if(process.env.SLACK_TOKEN === undefined){
 		console.log('slack token is not defined');
@@ -44,7 +52,7 @@ function slack(data){
     request.post('https://slack.com/api/chat.postMessage',{
         form: {
             token: process.env.SLACK_TOKEN,
-            channel: 'bot-test',
+            channel: 'develop',
             username: 'mogi-bot',
             text: data
 		}
@@ -53,58 +61,13 @@ function slack(data){
     })
 };
 
-const submit=(async(file)=>{
-	var text=''
-	var username = account[slack_id]["id"];
-	var password = account[slack_id]["pass"];
-	console.log('submit started',account,username,password);
-	if (username===undefined ||password===undefined){
-		console.log('username or password is not defined');
-		slack('username or password is not defined');
-		return ;
-	}
-	try{
-		const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
-		const page = await browser.newPage();
-		await page.goto('http://yamashita002.je.tokyo-ct.ac.jp/reports2018_yama/4Jucom.php?',{waitUntil: "domcontentloaded"});
-		await page.type('input[name="userID"]',username);
-		await page.type('input[name="userPASS"]',password);
-		await page.click('input[type=button]');
-		await page.waitForNavigation({timeout: 60000, waitUntil: "domcontentloaded"});
-		process.on('unhandledRejection', console.dir);
-		const fileInput = await page.$('input[type=file]');
-		await fileInput.uploadFile(file);
-		await page.click('input[id="sendfiles"]');
-		await page.click('input[name="reload"]');
-		await page.waitForNavigation({timeout: 60000, waitUntil: "domcontentloaded"});
-		const submittion = await page.evaluate(() => {
-			const node = document.querySelectorAll("tr");
-			const data = [];
-			for (item of node){
-				data.push(item.innerText);
-			}
-			return data.slice(0,data.length-3).join('\n');
-		});
-		console.log(submittion);
-/*		const systemMessage = await page.evaluate(() => {
-			const node = doument.querySelectorAll('div[style="overflow-y:auto; height:90px; resize: vertical; background-color:#f0f0f0;"]');
-			const data = [];
-			for (item of node) {
-				data.push(item.innerText);
-			}
-			return data.join('\n');
-		});
-		console.log(systemMessage);
-*/		console.log('submittion',submittion,typeof(submission));
-		slack(submittion);
-		browser.close();
-	}catch(err){
-		console.log(err);
-		slack(submittion);
-		slack(err.name+':'+err.message);
-		return;
-	}
-	return text;
+const screen = (async(file)=>{
+	const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+	const page = await browser.newPage();
+	await page.goto('http://178.128.102.100/',{waitUntil: "domcontentloaded"});
+	await page.screenshot({path: file+'.png', fullPage: true});
+	browser.close();
+	return;
 });
 
 rtm.on('hello',(event)=>{
@@ -147,12 +110,13 @@ rtm.on('message',(event)=>{
 	}
 	slack(event);
 	if(event.files !== undefined){
-		console.log(event.files);
-		file=download(event.files.title,event.files.url_private);
+//		console.log(event.files[0].url_private_download);
 		try{
 			shop_name = account[slack_id]["ShopName"];
+			file=download(shop_name,event.files[0].title,event.files[0].url_private_download);
 			if(account[slack_id] !== undefined){
 				shop[shop_name]["image"] = file;
+				screen(file);
 			}else{
 				slack("Please register your store."); 
 			}
@@ -163,16 +127,18 @@ rtm.on('message',(event)=>{
 	}
 });
 
-function download(name,url){
+function download(name,Name,url){
 	let headers={Authorization: ' Bearer '+process.env.SLACK_TOKEN};
 	let fname='./files/'+name;
 	console.log("headers",headers);
 	console.log("ok");
+	mkdirp(fname, function (err) {
+	});
 	request({
 		url:url,//file.url_private,
 		headers:{'Authorization': 'Bearer '+process.env.SLACK_TOKEN}})
-			.pipe(fs.createWriteStream(fname));
-	console.log(fname)
-	return fname;
+			.pipe(fs.createWriteStream(fname+'/'+Name));
+	let Fname = fname+'/'+Name;
+	return Fname;
 }
 
