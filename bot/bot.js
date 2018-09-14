@@ -59,6 +59,7 @@ function slack_file(data,Data){
 		console.log('slack token is not defined');
 		return;
 	}
+	console.log("file send");
 	request.post('https://slack.com/api/files.upload',{
 		form: {
 			token: process.env.SLACK_TOKEN,
@@ -71,13 +72,14 @@ function slack_file(data,Data){
 	})
 };
 
-const screen = (async(file)=>{
+const screen = (async(file,shop_name)=>{
 	const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 	const page = await browser.newPage();
 	await page.goto('http://178.128.102.100/',{waitUntil: "domcontentloaded"});
 	await page.screenshot({path: file+'.png', fullPage: true});
 	browser.close();
 	console.log("screenshot");
+	slack_file(file,shop_name);
 	return;
 });
 
@@ -129,9 +131,8 @@ rtm.on('message',(event)=>{
 			if(account[slack_id] !== undefined){
 				shop[shop_name]["image"] = file;
 				console.log("screenshot will");
-				screen(file);
+				screen(file,shop_name);
 				console.log("screenshot was");
-				slack_file(file,shop_name);
 			}else{
 				slack("Please register your store.");
 				console.log("try else");
