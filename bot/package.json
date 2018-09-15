@@ -19,6 +19,7 @@
   "dependencies": {
     "@slack/client": "^4.2.2",
     "ejs": "^2.6.1",
+    "ejs-lint": "^0.3.0",
     "fs": "0.0.1-security",
     "jsdom": "^11.11.0",
     "pino": "^5.5.0",
