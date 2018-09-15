@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"shopname":{"goods":{"name":"price"},"image":["image"],"text":"text"},"4J":{"goods":{"name":"price","milk":"400"},"image":["image","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg"],"text":"text"}}
+=======
+{"shopname":{"goods":{"name":"name","price":"price"},"image":"image","text":"text"},"4J":{"goods":{"name":"sake","price":"400"},"image":"image","text":"text"},"4x":{"goods":{"name":"aaa","price":"100"},"image":"image","text":"text","aaa":{"price":"100"}},"saka":{"goods":{"name":"h","price":"10"},"image":"image","text":"text","h":{"price":"10"}}}
+>>>>>>> 0bd0abc53443a94fcb43a466967a5dd5b00e450a

@@ -1,0 +1,17 @@
+<script>
+window.onload = function() {
+  var stage = new createjs.Stage("myCanvas");
+  var circle = new createjs.Shape();
+  circle.graphics.beginFill("red").drawCircle(0, 0, 20);
+  circle.y = 140;
+  stage.addChild(circle);
+  createjs.Ticker.addEventListener("tick", function(){
+    circle.x += 5;
+    if(300 < circle.x){
+      circle.x = 0;
+    }
+    stage.update();
+  });
+};
+</script>
+<canvas id="myCanvas" width="640" height="320"></canvas>

@@ -1,11 +1,14 @@
+const fs = require("fs");
 const puppeteer = require("puppeteer");
 const request = require("request");
-const fs = require("fs");
 const jsdom=require('jsdom');
+const logger=require('pino')();
 const {RTMClient}=require('@slack/client');
 const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const mkdirp = require("mkdirp");
+const utils= require("./utils.js");
 
+logger.info('start');
 rtm.start();
 
 var slack_id;
@@ -44,8 +47,13 @@ function slack(data,channel){
 	request.post('https://slack.com/api/chat.postMessage',{
 		form: {
 			token: process.env.SLACK_TOKEN,
+<<<<<<< HEAD
 			channel: channel,
 			username: 'mogi-bot',
+=======
+			channel: 'develop',
+			username: 'saka-bot',
+>>>>>>> 0bd0abc53443a94fcb43a466967a5dd5b00e450a
 			text: data
 		}
 	},(error, response, body) => {
@@ -53,7 +61,12 @@ function slack(data,channel){
 	})
 };
 
+<<<<<<< HEAD
 function slack_file(data,Data,channel){
+=======
+function slack_file(data,Data){
+	console.log("##### slack_file","data",data,"Data",Data);
+>>>>>>> 0bd0abc53443a94fcb43a466967a5dd5b00e450a
 	if(process.env.SLACK_TOKEN === undefined){
 		console.log('slack token is not defined');
 		return;
@@ -74,6 +87,7 @@ function slack_file(data,Data,channel){
 };
 
 const screen = (async(file,shop_name)=>{
+	console.log("##### screen","file",file,"shop_name",shop_name);
 	const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 	const page = await browser.newPage();
 	await page.goto('http://178.128.102.100/',{waitUntil: "domcontentloaded"});
@@ -121,9 +135,14 @@ rtm.on('message',(event)=>{
 			shop_name = account[slack_id]["ShopName"];
 			shop[shop_name] = {goods: {name:"price"},image:["image"],text:"text"};
 			fs.writeFileSync('shop.json',JSON.stringify(shop));
+<<<<<<< HEAD
 			console.log(shop[shop_name].goods);
 			shop[shop_name].goods[Name] = Price;
 			console.log(shop[shop_name].goods.name);
+=======
+			shop[shop_name][Name] = {"price":Price};
+			utils.make_template(shop[shop_name]);
+>>>>>>> 0bd0abc53443a94fcb43a466967a5dd5b00e450a
 			fs.writeFileSync('shop.json',JSON.stringify(shop));
 			slack("This goods is registered.",channel);
 		}catch(e){
@@ -134,7 +153,12 @@ rtm.on('message',(event)=>{
 			shop_name = account[slack_id]["ShopName"];
 			screen('./files/'+shop_name+shop_name,shop_name);
 		}catch(e){
+<<<<<<< HEAD
 			slack("Please register your account",channel);
+=======
+			logger.info(e.message);
+			slack("Please register your store.");
+>>>>>>> 0bd0abc53443a94fcb43a466967a5dd5b00e450a
 		}
 	}
 	slack(event);
