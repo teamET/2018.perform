@@ -1,1 +1,1 @@
-{"shopname":{"goods":{"name":"name","price":"price"},"image":"image","text":"text"},"4J":{"goods":{"name":"チョコバナナ","price":"400円"},"image":"image","text":"text","チョコバナナ":{"price":"400円"}}}
+{"shopname":{"goods":{"name":"price"},"image":["image"],"text":"text"},"4J":{"goods":{"name":"price","milk":"400"},"image":["image","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg","dispImage_cache.jpg"],"text":"text"}}
