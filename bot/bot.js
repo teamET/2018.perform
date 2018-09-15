@@ -1,0 +1,169 @@
+const fs = require("fs");
+const puppeteer = require("puppeteer");
+const request = require("request");
+const jsdom=require('jsdom');
+const logger=require('pino')();
+const {RTMClient}=require('@slack/client');
+const rtm=new RTMClient(process.env.SLACK_TOKEN);
+const mkdirp = require("mkdirp");
+const utils= require("./utils.js");
+
+logger.info('start');
+rtm.start();
+
+var slack_id;
+var account_data;
+var account;
+var shop_data;
+var shop;
+var shop_name;
+try {
+	account_data = fs.readFileSync('./account.json');	
+	shop_data = fs.readFileSync('./shop.json');
+	account = JSON.parse(account_data);
+	shop = JSON.parse(shop_data);
+}catch(e){
+	account = {
+		user :{ShopName:"shopname",Class:"class"}
+	};
+	shop = {
+		shopname : {
+			goods: [{
+				name:"name",
+				price:"price"}],
+			image:["image"],
+			text:"text"
+		}
+	};
+
+	fs.writeFileSync('account.json',JSON.stringify(account));	
+	fs.writeFileSync('shop.json',JSON.stringify(shop));	
+}
+
+function slack(data){
+	if(process.env.SLACK_TOKEN === undefined){
+		console.log('slack token is not defined');
+		return;
+	}
+	request.post('https://slack.com/api/chat.postMessage',{
+		form: {
+			token: process.env.SLACK_TOKEN,
+			channel: 'develop',
+			username: 'saka-bot',
+			text: data
+		}
+	},(error, response, body) => {
+		if (error) console.log(error);
+	})
+};
+
+function slack_file(data,Data){
+	console.log("##### slack_file","data",data,"Data",Data);
+	if(process.env.SLACK_TOKEN === undefined){
+		console.log('slack token is not defined');
+		return;
+	}
+	console.log("file send");
+	request.post('https://slack.com/api/files.upload',{
+		form: {
+			token: process.env.SLACK_TOKEN,
+			channel: 'develop',
+			filename: Data+'.png',
+			file: fs.createReadStream(data+'.png')  
+		}
+	},(error, response, body) => {
+		if (error) console.log(error);
+	})
+};
+
+const screen = (async(file,shop_name)=>{
+	console.log("##### screen","file",file,"shop_name",shop_name);
+	const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+	const page = await browser.newPage();
+	await page.goto('http://178.128.102.100/',{waitUntil: "domcontentloaded"});
+	await page.screenshot({path: file+'.png', fullPage: true});
+	browser.close();
+	console.log("screenshot");
+	slack_file(file,shop_name);
+	return;
+});
+
+rtm.on('hello',(event)=>{
+	console.log('start slack process');
+});
+
+rtm.on('message',(event)=>{
+	slack_id = event.user;
+	console.log("event",event);
+	if(event.text.split(' ')[0]==='.h'){
+		slack('hello');
+	}else if(event.text.split(' ')[0]==='.x'){
+		slack('x was sent',event.text.split(' ')[1]);
+	}else if(event.text.split(' ')[0]==='.entry'){
+		if(event.text.split(' ').length != 2){
+			slack('Store name is invalid context.\ne.g.\n.entry <store name>');
+			return ;
+		}
+		var name = event.text.split(' ')[1];
+		account[slack_id] = {"ShopName":name};
+		fs.writeFileSync('account.json',JSON.stringify(account));
+		slack("Your store is registered.");
+	}else if(event.text.split(' ')[0]==='.goods'){
+		try{
+			if(event.text.split(' ').length != 3){
+				slack('goods name or price is invalid context.\ne.g.\n.goods <goods name> <price>');
+				return ;
+			}
+			var Name = event.text.split(' ')[1];
+			var Price = event.text.split(' ')[2];
+			shop_name = account[slack_id]["ShopName"];
+			shop[shop_name] = {"goods":{"name":Name,"price":Price},"image":"image","text":"text"};
+			fs.writeFileSync('shop.json',JSON.stringify(shop));
+			shop[shop_name][Name] = {"price":Price};
+			utils.make_template(shop[shop_name]);
+			fs.writeFileSync('shop.json',JSON.stringify(shop));
+			slack("This goods is registered.");
+		}catch(e){
+			logger.info(e.message);
+			slack("Please register your store.");
+		}
+	}
+	slack(event);
+	if(event.files !== undefined){
+		console.log(event.files[0].url_private_download);
+		try{
+			shop_name = account[slack_id]["ShopName"];
+//			slack(shop_name);
+			file=download(shop_name,event.files[0].title,event.files[0].url_private_download);
+			if(account[slack_id] !== undefined){
+				shop[shop_name]["image"] = file;
+				console.log("screenshot will");
+				screen(file,shop_name);
+				console.log("screenshot was");
+			}else{
+				slack("Please register your store.");
+				console.log("try else");
+			}
+			console.log("ok");
+		}catch(e){
+			slack("Please register your account.");
+			console.log("try error"); 
+		}
+	}
+});
+
+function download(name,Name,url){
+	let headers={Authorization: ' Bearer '+process.env.SLACK_TOKEN};
+	let fname='./files/'+name;
+	console.log("headers",headers);
+	console.log("ok");
+	mkdirp(fname, function (err) {
+	});
+	request({
+		url:url,//file.url_private,
+		headers:{'Authorization': 'Bearer '+process.env.SLACK_TOKEN}})
+			.pipe(fs.createWriteStream(fname+'/'+Name));
+	let Fname = fname+'/'+name;
+	return Fname;
+}
+
