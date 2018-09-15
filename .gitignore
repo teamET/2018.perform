@@ -83,3 +83,5 @@ node_modules
 package-lock.json
 workspace/
 bootstrap
+account.json
+shop.json
