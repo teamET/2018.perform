@@ -21,14 +21,14 @@ try {
 	shop = JSON.parse(shop_data);
 }catch(e){
 	account = {
-		user :{ShopName:"shopname"}
+		user :{ShopName:"shopname",Class:"class"}
 	};
 	shop = {
 		shopname : {
-			goods: {
+			goods: [{
 				name:"name",
-				price:"price"},
-			image:"image",
+				price:"price"}],
+			image:["image"],
 			text:"text"
 		}
 	};
