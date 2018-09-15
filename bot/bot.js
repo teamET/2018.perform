@@ -1,11 +1,14 @@
+const fs = require("fs");
 const puppeteer = require("puppeteer");
 const request = require("request");
-const fs = require("fs");
 const jsdom=require('jsdom');
+const logger=require('pino')();
 const {RTMClient}=require('@slack/client');
 const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const mkdirp = require("mkdirp");
+const utils= require("./utils.js");
 
+logger.info('start');
 rtm.start();
 
 var slack_id;
@@ -46,7 +49,7 @@ function slack(data){
 		form: {
 			token: process.env.SLACK_TOKEN,
 			channel: 'develop',
-			username: 'mogi-bot',
+			username: 'saka-bot',
 			text: data
 		}
 	},(error, response, body) => {
@@ -55,6 +58,7 @@ function slack(data){
 };
 
 function slack_file(data,Data){
+	console.log("##### slack_file","data",data,"Data",Data);
 	if(process.env.SLACK_TOKEN === undefined){
 		console.log('slack token is not defined');
 		return;
@@ -73,6 +77,7 @@ function slack_file(data,Data){
 };
 
 const screen = (async(file,shop_name)=>{
+	console.log("##### screen","file",file,"shop_name",shop_name);
 	const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 	const page = await browser.newPage();
 	await page.goto('http://178.128.102.100/',{waitUntil: "domcontentloaded"});
@@ -115,9 +120,11 @@ rtm.on('message',(event)=>{
 			shop[shop_name] = {"goods":{"name":Name,"price":Price},"image":"image","text":"text"};
 			fs.writeFileSync('shop.json',JSON.stringify(shop));
 			shop[shop_name][Name] = {"price":Price};
+			utils.make_template(shop[shop_name]);
 			fs.writeFileSync('shop.json',JSON.stringify(shop));
 			slack("This goods is registered.");
 		}catch(e){
+			logger.info(e.message);
 			slack("Please register your store.");
 		}
 	}
