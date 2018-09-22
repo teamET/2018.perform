@@ -3,12 +3,12 @@ const fs = require("fs");
 const puppeteer = require("puppeteer");
 const request = require("request");
 const jsdom=require('jsdom');
-const logger=require('pino')();
 const {RTMClient}=require('@slack/client');
 const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const utils= require("./utils.js");
 SLACK_TOKEN=process.env.SLACK_TOKEN;
 DEV_SERVER=process.env.DEV_SERVER;
+const mkdirp = require("mkdirp");
 
 var slack_id;
 var account_data;
@@ -55,8 +55,8 @@ function slack(data,channel){
 	})
 };
 
+
 const screen = (async(file,shop_name)=>{
-	console.log("##### screen","file",file,"shop_name",shop_name);
 	const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 	const page = await browser.newPage();
 	await page.goto(DEV_SERVER,{waitUntil: "domcontentloaded"});
@@ -76,9 +76,13 @@ rtm.on('message',(event)=>{
 	slack_id = event.user;
 	console.log("event",event);
 	if(event.text.split(' ')[0]==='.help'){
-		slack('.help\n.entry <shop name> <class>\n.goods <goods name> <price>\n .text <text>\n.review',channel);
+		slack('.help\n.entry <shop name> <class>\n.goods <goods name> <price>\n .text <text>\n.review\n.show',channel);
 	}else if(event.text.split(' ')[0]==='.text'){
 		try{
+			shop[shop_name].text = event.text.slice(6);
+			fs.writeFileSync('shop.json',JSON.stringify(shop));
+			slack("this text is registered",channel);
+
 		}catch(e){
 			slack("Please your register",channel);
 		}
@@ -104,9 +108,9 @@ rtm.on('message',(event)=>{
 			shop_name = account[slack_id]["ShopName"];
 			shop[shop_name] = {goods: {name:"price"},image:["image"],text:"text"};
 			fs.writeFileSync('shop.json',JSON.stringify(shop));
-
-			shop[shop_name][Name] = {"price":Price};
-			utils.make_template(shop[shop_name]);
+			console.log(shop[shop_name].goods);
+			shop[shop_name].goods[Name] = Price;
+			console.log(shop[shop_name].goods.name);
 			fs.writeFileSync('shop.json',JSON.stringify(shop));
 			slack("This goods is registered.",channel);
 		}catch(e){
@@ -118,10 +122,19 @@ rtm.on('message',(event)=>{
 			screen('./files/'+shop_name+shop_name,shop_name);
 		}catch(e){
 			slack("Please register your account",channel);
-			logger.info(e.message);
-			slack("Please register your store.");
+		}
+	}else if(event.text.split(' ')[0]==='.show'){
+		try{
+			shop_name = account[slack_id]["ShopName"];
+			var shop_data =JSON.stringify(shop[shop_name]);			
+			slack(shop_data,channel);			
+		}catch(e){
+			slack("Please register your account",channel);
 		}
 	}
+	
+
+	
 	slack(event);
 	if(event.files !== undefined){
 		console.log(event.files[0].url_private_download);
