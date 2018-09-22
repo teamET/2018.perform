@@ -1,32 +1,71 @@
 const ejs=require('ejs');
+const dotenv=require('dotenv').config();
 const fs=require('fs');
+const mkdirp = require("mkdirp");
 const path=require('path');
+const request = require("request");
 const logger=require('pino')();
+const SLACK_TOKEN=process.env.SLACK_TOKEN;
 
-function slack_file(data,Data){
-	console.log("##### slack_file","data",data,"Data",Data);
-	if(process.env.SLACK_TOKEN === undefined){
-		console.log('slack token is not defined');
-		return;
-	}
-	console.log("file send");
-	request.post('https://slack.com/api/files.upload',{
+
+function slack_postMessage(channel,message){
+	request.post('https://slack.com/api/chat.postMessage',{
 		form: {
-			token: process.env.SLACK_TOKEN,
-			channel: 'develop',
-			filename: Data+'.png',
-			file: fs.createReadStream(data+'.png')  
+			token: SLACK_TOKEN,
+			channel: channel,
+			username: 'mogi-bot',
+			text:message 
 		}
 	},(error, response, body) => {
 		if (error) console.log(error);
 	})
 };
 
-function download(url){
-	var filename="";
-	logger.info("donwload");
+function slack_log(message){
+	slack_postMessage("logging",message);
+}
 
-	return filename;
+function slack_err(message){
+	slack_postMessage("errors",message);
+}
+
+function slack_react(message){
+
+}
+
+function slack_upload(channel,image){
+	console.log(channel,image,SLACK_TOKEN)
+	var arg={
+		url:'https://slack.com/api/files.upload',
+		headers:{
+			"Content-Type":"multipart/form-data;"
+		},
+		formData:{
+			token: SLACK_TOKEN,
+			channels:channel,
+			username:'mogi-bot',
+			title:"Image",
+			filename:image,
+			file:fs.createReadStream(image),
+		}
+	};
+	console.log(arg)
+	request.post(arg,(error, response, body) => {
+		console.log(body);
+	});
+};
+
+//file=utils.download(shop_name,event.files[0].title,event.files[0].url_private_download);
+function download(dir,title,url){
+	var dir='./files/'+dir;
+	var fname=dir+'/'+title;
+	mkdirp(dir,(err)=>{console.log(err);});
+	request({
+		url:url,
+		headers:{'Authorization': 'Bearer '+SLACK_TOKEN}
+	}).pipe(fs.createWriteStream(fname));
+	console.log("download file successed",dir,fname,url);
+	return fname;
 }
 
 function load_template(){
@@ -66,10 +105,11 @@ function make_template(data){
 	return html
 }
 
-
-
 module.exports={
-	sendFile:slack_file,
+	sendFile:slack_upload,
+	postMessage:slack_postMessage,
+	log:slack_log,
+	err:slack_err,
 	download:download,
 	make_template:make_template
 }
@@ -83,10 +123,7 @@ module.exports={
 */
 /* make_template tests */
 if(require.main ===module){
-	logger.info("start test");
-	var data={"name":"4J","goods":{"banana":"100"},"image":["image"],"text":"text"};
-	logger.info(data);;
-	html=make_template(data);
-	logger.info(html);;
+	slack_postMessage("develop","files/4J/4J.png")
+	slack_upload("develop","files/4J/4J.png")
 }
 
