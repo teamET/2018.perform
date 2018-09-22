@@ -56,14 +56,13 @@ function slack(data,channel){
 };
 
 
-const screen = (async(file,shop_name)=>{
+const screen = (async(channel,file,shop_name)=>{
 	const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 	const page = await browser.newPage();
 	await page.goto(DEV_SERVER,{waitUntil: "domcontentloaded"});
 	await page.screenshot({path: file+'.png', fullPage: true});
 	browser.close();
-	console.log("screenshot");
-	utils.sendFile(file,shop_name);
+	utils.sendFile(channel,file+'.png');
 	return;
 });
 
@@ -106,11 +105,13 @@ rtm.on('message',(event)=>{
 			var Name = event.text.split(' ')[1];
 			var Price = event.text.split(' ')[2];
 			shop_name = account[slack_id]["ShopName"];
-			shop[shop_name] = {goods: {name:"price"},image:["image"],text:"text"};
-			fs.writeFileSync('shop.json',JSON.stringify(shop));
-			console.log(shop[shop_name].goods);
-			shop[shop_name].goods[Name] = Price;
-			console.log(shop[shop_name].goods.name);
+			if(shop[shop_name] == undefined){
+				shop[shop_name] = {goods: {name:"price"},image:["image"],text:"text"};
+				fs.writeFileSync('shop.json',JSON.stringify(shop));
+				shop[shop_name].goods[Name] = Price;
+			}else{
+				shop[shop_name].goods[Name] = Price;	
+			}
 			fs.writeFileSync('shop.json',JSON.stringify(shop));
 			slack("This goods is registered.",channel);
 		}catch(e){
@@ -141,15 +142,14 @@ rtm.on('message',(event)=>{
 		try{
 			var count = 0;
 			shop_name = account[slack_id]["ShopName"];
-			console.log("shop_name",shop_name);
 			file=utils.download(shop_name,event.files[0].title,event.files[0].url_private_download);
 			if(account[slack_id] !== undefined){
-				for(var key in shop[shop_name].image) count++;
+				for(var key in shop[shop_name].image){
+					if(shop[shop_name].image[count] !== event.files[0].title) count++;
+				}
 				shop[shop_name].image[count] = event.files[0].title;
 				fs.writeFileSync('shop.json',JSON.stringify(shop));
-				console.log("screenshot will");
-				screen(file,shop_name);
-				console.log("screenshot was");
+				screen(channel,file,shop_name);
 			}else{
 				slack("Please register your store.",channel);
 				console.log("try else");
@@ -157,7 +157,7 @@ rtm.on('message',(event)=>{
 			console.log("ok");
 		}catch(e){
 			slack("Please register your account.",channel);
-			console.log(e); 
+			console.log("error",e); 
 		}
 	}
 });
@@ -167,7 +167,7 @@ if(require.main ===module){
 		console.log('slack token is not defined');
 		return;
 	}
-	logger.info('start');
+//	logger.info('start');
 	create_json();
 	rtm.start();
 }
