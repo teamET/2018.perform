@@ -85,3 +85,4 @@ workspace/
 bootstrap
 account.json
 shop.json
+*.env

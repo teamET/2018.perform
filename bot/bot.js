@@ -1,3 +1,4 @@
+const dotenv=require('dotenv').config();
 const fs = require("fs");
 const puppeteer = require("puppeteer");
 const request = require("request");
@@ -7,6 +8,8 @@ const {RTMClient}=require('@slack/client');
 const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const mkdirp = require("mkdirp");
 const utils= require("./utils.js");
+SLACK_TOKEN=process.env.SLACK_TOKEN;
+DEV_SERVER=process.env.DEV_SERVER;
 
 logger.info('start');
 rtm.start();
@@ -56,36 +59,15 @@ function slack(data,channel){
 	})
 };
 
-function slack_file(data,Data,channel){
-//function slack_file(data,Data){
-	if(process.env.SLACK_TOKEN === undefined){
-		console.log('slack token is not defined');
-		return;
-	}
-	console.log("Data",Data);
-	console.log("data",data);
-	my_file = {
-		'file' : (data+'.png', fs.createReadStream(data+'.png'), 'png')
-	}
-
-	payload={
-		"filename":Data+'.png', 
-		"token":process.env.SLACK_TOKEN, 
-		"channels":channel, 
-	}
-
-	requests.post("https://slack.com/api/files.upload", params=payload, files=my_file)
-};
-
 const screen = (async(file,shop_name)=>{
 	console.log("##### screen","file",file,"shop_name",shop_name);
 	const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 	const page = await browser.newPage();
-	await page.goto('http://178.128.102.100/',{waitUntil: "domcontentloaded"});
+	await page.goto(DEV_SERVER,{waitUntil: "domcontentloaded"});
 	await page.screenshot({path: file+'.png', fullPage: true});
 	browser.close();
 	console.log("screenshot");
-	slack_file(file,shop_name);
+	utils.slack_files(file,shop_name);
 	return;
 });
 
@@ -171,9 +153,9 @@ rtm.on('message',(event)=>{
 	}
 });
 
-function download(name,Name,url){
+function download(booth,image,url){
 	let headers={Authorization: ' Bearer '+process.env.SLACK_TOKEN};
-	let fname='./files/'+name;
+	let fname='./files/'+booth;
 	console.log("headers",headers);
 	console.log("ok");
 	mkdirp(fname, function (err) {
@@ -181,8 +163,8 @@ function download(name,Name,url){
 	request({
 		url:url,//file.url_private,
 		headers:{'Authorization': 'Bearer '+process.env.SLACK_TOKEN}})
-			.pipe(fs.createWriteStream(fname+'/'+Name));
-	let Fname = fname+'/'+name;
+			.pipe(fs.createWriteStream(fname+'/'+image));
+	let Fname = fname+'/'+image;
 	return Fname;
 }
 
