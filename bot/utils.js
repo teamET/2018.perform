@@ -1,6 +1,7 @@
 const ejs=require('ejs');
 const dotenv=require('dotenv').config();
 const fs=require('fs');
+const mkdirp = require("mkdirp");
 const path=require('path');
 const request = require("request");
 const logger=require('pino')();
@@ -20,6 +21,18 @@ function slack_postMessage(channel,message){
 	})
 };
 
+function slack_log(message){
+	slack_postMessage("logging",message);
+}
+
+function slack_err(message){
+	slack_postMessage("errors",message);
+}
+
+function slack_react(message){
+
+}
+
 function slack_upload(channel,image){
 	console.log(channel,image,SLACK_TOKEN)
 	var arg={
@@ -30,6 +43,7 @@ function slack_upload(channel,image){
 		formData:{
 			token: SLACK_TOKEN,
 			channels:channel,
+			username:'mogi-bot',
 			title:"Image",
 			filename:image,
 			file:fs.createReadStream(image),
@@ -41,11 +55,17 @@ function slack_upload(channel,image){
 	});
 };
 
-function download(url){
-	var filename="";
-	logger.info("donwload");
-
-	return filename;
+//file=utils.download(shop_name,event.files[0].title,event.files[0].url_private_download);
+function download(dir,title,url){
+	var dir='./files/'+dir;
+	var fname=dir+'/'+title;
+	mkdirp(dir,(err)=>{console.log(err);});
+	request({
+		url:url,
+		headers:{'Authorization': 'Bearer '+SLACK_TOKEN}
+	}).pipe(fs.createWriteStream(fname));
+	console.log("download file successed",dir,fname,url);
+	return fname;
 }
 
 function load_template(){
@@ -87,6 +107,9 @@ function make_template(data){
 
 module.exports={
 	sendFile:slack_upload,
+	postMessage:slack_postMessage,
+	log:slack_log,
+	err:slack_err,
 	download:download,
 	make_template:make_template
 }

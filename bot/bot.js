@@ -6,13 +6,9 @@ const jsdom=require('jsdom');
 const logger=require('pino')();
 const {RTMClient}=require('@slack/client');
 const rtm=new RTMClient(process.env.SLACK_TOKEN);
-const mkdirp = require("mkdirp");
 const utils= require("./utils.js");
 SLACK_TOKEN=process.env.SLACK_TOKEN;
 DEV_SERVER=process.env.DEV_SERVER;
-
-logger.info('start');
-rtm.start();
 
 var slack_id;
 var account_data;
@@ -20,33 +16,33 @@ var account;
 var shop_data;
 var shop;
 var shop_name;
-try {
-	account_data = fs.readFileSync('./account.json');	
-	shop_data = fs.readFileSync('./shop.json');
-	account = JSON.parse(account_data);
-	shop = JSON.parse(shop_data);
-}catch(e){
-	account = {
-		user :{ShopName:"shopname",Class:"class"}
-	};
-	shop = {
-		shopname : {
-			goods: {
-				name:"price"},
-			image:["image"],
-			text:"text"
-		}
-	};
 
-	fs.writeFileSync('account.json',JSON.stringify(account));	
-	fs.writeFileSync('shop.json',JSON.stringify(shop));	
+function create_json(){
+	try {
+		account_data = fs.readFileSync('./account.json');	
+		shop_data = fs.readFileSync('./shop.json');
+		account = JSON.parse(account_data);
+		shop = JSON.parse(shop_data);
+	}catch(e){
+		account = {
+			user :{ShopName:"shopname",Class:"class"}
+		};
+		shop = {
+			shopname : {
+				goods: {
+					name:"price"},
+				image:["image"],
+				text:"text"
+			}
+		};
+
+		fs.writeFileSync('account.json',JSON.stringify(account));	
+		fs.writeFileSync('shop.json',JSON.stringify(shop));	
+	}
 }
 
 function slack(data,channel){
-	if(process.env.SLACK_TOKEN === undefined){
-		console.log('slack token is not defined');
-		return;
-	}
+
 	request.post('https://slack.com/api/chat.postMessage',{
 		form: {
 			token: process.env.SLACK_TOKEN,
@@ -67,7 +63,7 @@ const screen = (async(file,shop_name)=>{
 	await page.screenshot({path: file+'.png', fullPage: true});
 	browser.close();
 	console.log("screenshot");
-	utils.slack_files(file,shop_name);
+	utils.sendFile(file,shop_name);
 	return;
 });
 
@@ -133,7 +129,7 @@ rtm.on('message',(event)=>{
 			var count = 0;
 			shop_name = account[slack_id]["ShopName"];
 			console.log("shop_name",shop_name);
-			file=download(shop_name,event.files[0].title,event.files[0].url_private_download);
+			file=utils.download(shop_name,event.files[0].title,event.files[0].url_private_download);
 			if(account[slack_id] !== undefined){
 				for(var key in shop[shop_name].image) count++;
 				shop[shop_name].image[count] = event.files[0].title;
@@ -153,18 +149,12 @@ rtm.on('message',(event)=>{
 	}
 });
 
-function download(booth,image,url){
-	let headers={Authorization: ' Bearer '+process.env.SLACK_TOKEN};
-	let fname='./files/'+booth;
-	console.log("headers",headers);
-	console.log("ok");
-	mkdirp(fname, function (err) {
-	});
-	request({
-		url:url,//file.url_private,
-		headers:{'Authorization': 'Bearer '+process.env.SLACK_TOKEN}})
-			.pipe(fs.createWriteStream(fname+'/'+image));
-	let Fname = fname+'/'+image;
-	return Fname;
+if(require.main ===module){
+	if(SLACK_TOKEN === undefined){
+		console.log('slack token is not defined');
+		return;
+	}
+	logger.info('start');
+	create_json();
+	rtm.start();
 }
-
