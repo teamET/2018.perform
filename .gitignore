@@ -85,3 +85,5 @@ workspace/
 bootstrap
 account.json
 shop.json
+public
+db.json
