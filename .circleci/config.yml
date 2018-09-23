@@ -5,8 +5,6 @@
 version: 2
 jobs:
   build:
-      #    working_directory: ~/repo
-      #    working_directory: ~/api-server
     working_directory: ~/2018.perform/
     docker:
       - image: circleci/node:7.10
@@ -18,6 +16,7 @@ jobs:
       - run: 
           name: install packages
           command: |
+              apt install -y ssh rsync
               ssh-keyscan ${HOSTNAME} >> ~/.ssh/known_hosts
               cd api-server && yarn && yarn install && yarn test
       - deploy:
