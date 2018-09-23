@@ -23,8 +23,8 @@ jobs:
       - deploy:
           name: deploy develop branch
           command: |
-              echo ${CIRCLE_BRANCH},${USER_NAME},${HOSTNAME}
-              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo ${CIRCLE_BRANCH},${USER_NAME},${DEPLOY_SERVER}
+              if [ "${CIRCLE_BRANCH}" != "master" ]; then
                 rsync -av --delete ./${USER_NAME}@${HOSTNAME}:/home/kfes/2018.perform
               fi
   test:
