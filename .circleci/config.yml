@@ -25,6 +25,7 @@ jobs:
               echo ${CIRCLE_BRANCH},${USER_NAME},${DEPLOY_SERVER}
               if [ "${CIRCLE_BRANCH}" != "master" ]; then
                 rsync -av --delete ./ ${USER_NAME}@${DEPLOY_SERVER}:/home/kfes/2018.perform
+                ssh ${USER_NAME}@${DEPLOY_SERVER} bash 2018.perform/setup.sh
               fi
   test:
     working_directory: ~/2018.perform/
