@@ -17,7 +17,7 @@ jobs:
           name: install packages
           command: |
               sudo apt-get update;sudo apt-get install -y --fix-missing ssh rsync
-              ssh-keyscan ${HOSTNAME} >> ~/.ssh/known_hosts
+              ssh-keyscan ${DEPLOY_SERVER} >> ~/.ssh/known_hosts
               cd api-server && yarn && yarn install && yarn test
       - deploy:
           name: deploy develop branch
