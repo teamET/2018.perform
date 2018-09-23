@@ -16,7 +16,7 @@ jobs:
       - run: 
           name: install packages
           command: |
-              apt install -y ssh rsync
+              sudo apt install -y ssh rsync
               ssh-keyscan ${HOSTNAME} >> ~/.ssh/known_hosts
               cd api-server && yarn && yarn install && yarn test
       - deploy:
