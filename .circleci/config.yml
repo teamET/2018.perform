@@ -12,11 +12,6 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
       - add_ssh_keys:
           fingerprints:
               - "ea:e4:cb:f7:2c:99:67:fe:0a:e6:5f:f6:65:0e:24:69"
@@ -28,13 +23,10 @@ jobs:
       - deploy:
           name: deploy develop branch
           command: |
+              echo ${CIRCLE_BRANCH},${USER_NAME},${HOSTNAME}
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
                 rsync -av --delete ./${USER_NAME}@${HOSTNAME}:/home/kfes/2018.perform
               fi
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
   test:
     working_directory: ~/2018.perform/
         #    working_directory: ~/api-server
