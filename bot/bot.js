@@ -25,14 +25,14 @@ function create_json(){
 		shop = JSON.parse(shop_data);
 	}catch(e){
 		account = {
-			user :{ShopName:"shopname",Class:"class"}
+			"user" :{"ShopName":"shopname","Class":"class"}
 		};
 		shop = {
-			shopname : {
-				goods: {
-					name:"price"},
-				image:["image"],
-				text:"text"
+			"shopname" : {
+				"goods": {
+					"name":"price"},
+				"image":["image"],
+				"text":"text"
 			}
 		};
 
