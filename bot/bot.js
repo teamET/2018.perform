@@ -133,6 +133,8 @@ rtm.on('message',(event)=>{
 			slack("Please register your account",channel);
 		}
 	}
+	//make_template("_booth.ejs",shop_data)
+	//make_template("_timetable.ejs",timetable_data)
 	
 
 	

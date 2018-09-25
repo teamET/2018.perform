@@ -68,8 +68,8 @@ function download(dir,title,url){
 	return fname;
 }
 
-function load_template(){
-	var file=path.join(__dirname,"./views/_booth.ejs");
+function load_template(filename){
+	var file=path.join(__dirname,filename);
 	var data="";
 	try{
 		data=fs.readFileSync(file,'utf-8');
@@ -91,9 +91,9 @@ function save_html(name,html){
 	});
 }
 
-function make_template(data){
+function make_template(filename,data){
 	logger.info('make_tempalte',data);
-	var template=load_template();
+	var template=load_template(`./views/${filename}`);
 	logger.info('make_tempalte',template);
 	var html=ejs.render(template,data,(err,str)=>{
 		if(err){
@@ -123,7 +123,28 @@ module.exports={
 */
 /* make_template tests */
 if(require.main ===module){
-	slack_postMessage("develop","files/4J/4J.png")
-	slack_upload("develop","files/4J/4J.png")
+	make_template('_timetable.ejs',[
+		{
+			"timestamp": "12:30",
+			"date" : 21,
+			"start_time": "10:00",
+			"end_time": "11:00",
+			"place": "place",
+			"name" : "name",
+			"from": "brassband",
+			"content": "discription"
+		},{
+			"timestamp": "13:30",
+			"date" : 21,
+			"start_time": "11:00",
+			"end_time": "12:00",
+			"place": "place2",
+			"name" : "name2",
+			"from": "けいおん",
+			"content": "discription"
+		}
+	])
+//	slack_postMessage("develop","files/4J/4J.png")
+//	slack_upload("develop","files/4J/4J.png")
 }
 
