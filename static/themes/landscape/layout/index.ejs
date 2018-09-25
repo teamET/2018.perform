@@ -32,16 +32,22 @@
 <% var news =[
         {
             "timestamp": "12:30",
-            "schedule": "10:00",
-            "place": "一体",
-            "title": "brassband",
-            "content": "世界一周旅行！"
+            "date" : 21,
+            "start_time": "10:00",
+            "end_time": "11:00",
+            "place": "place",
+            "name" : "name",
+            "from": "brassband",
+            "content": "discription"
         },{
-            "timestamp": "12:30",
-            "schedule": "10:00",
-            "place": "一体",
-            "title": "brassband",
-            "content": "世界一周旅行！"
+            "timestamp": "13:30",
+            "date" : 21,
+            "start_time": "11:00",
+            "end_time": "12:00",
+            "place": "place2",
+            "name" : "name2",
+            "from": "けいおん",
+            "content": "discription"
         }
 ]%>
 <div class="w3-card">
@@ -50,17 +56,21 @@
         
             <table class="w3-table w3-white" style="display: block">
                 <tr>
+                    <th>日付</th>
                     <th>時間</th>
                     <th>場所</th>
                     <th>タイトル</th>
-                    <th>内容</th>
+                    <th>from</th>
+                    <th>説明</th>
                 </tr>
                 <% for(var i=0 ; i < 2  ; i += 1 ) {%>
                     <tr>
-                        <td><%= news[0].schedule %></td>
-                        <td><%= news[0].place %></td>
-                        <td><%= news[0].title %></td>
-                        <td><%= news[0].content %></td>
+                        <td><%= news[i].date %></td>
+                        <td><%= news[i].start_time %> ~ <%= news[i].end_time %></td>
+                        <td><%= news[i].place %></td>
+                        <td><%= news[i].name %></td>
+                        <td><%= news[i].from %></td>
+                        <td><%= news[i].content %></td>
                     </tr>
                 <% } %>
             </table>
