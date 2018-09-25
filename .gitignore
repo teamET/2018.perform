@@ -1,7 +1,7 @@
 # Created by https://www.gitignore.io/api/node
 
 static/db.json
-
+public*
 ### Node ###
 # Logs
 logs
