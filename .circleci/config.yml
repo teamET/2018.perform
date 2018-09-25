@@ -48,10 +48,13 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "1a:a6:fc:8f:09:ba:34:32:a0:ca:d8:97:de:ea:b0:35"
-      - start_ssh_scan:
+      - run:
+          name: start ssh-keyscan
 		  command: |
             ssh-keyscan ${HOST_NAME} >> ~/.ssh/known_hosts
-      - start_ssh:
+
+      - deploy:
+          name: deploy over ssh
           commnad: |
             ssh ${USER_NAME}@${HOST_NAME} "touch test.txt && echo 'from ci' >> ./test.txt"
 
@@ -61,3 +64,5 @@ workflows:
         jobs:
             - build
             - deploy
+                requires:
+                  - build
