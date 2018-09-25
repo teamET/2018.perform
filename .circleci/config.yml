@@ -50,7 +50,7 @@ jobs:
             - "1a:a6:fc:8f:09:ba:34:32:a0:ca:d8:97:de:ea:b0:35"
       - run:
           name: start ssh-keyscan
-		  command: |
+          command: |
             ssh-keyscan ${HOST_NAME} >> ~/.ssh/known_hosts
 
       - deploy:
