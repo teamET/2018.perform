@@ -5,8 +5,16 @@ const mkdirp = require("mkdirp");
 const path=require('path');
 const request = require("request");
 const logger=require('pino')();
+const winston=require('winston');
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
 
+const winstonlogger=winston.createLogger({
+	tranports:[
+		new winston.transports.Console(),
+		new winston.transports.File({filename:'logs/combined.log'})
+	]
+});
+winstonlogger.info('hello');
 
 function slack_postMessage(channel,message){
 	request.post('https://slack.com/api/chat.postMessage',{
@@ -22,6 +30,7 @@ function slack_postMessage(channel,message){
 };
 
 function slack_log(message){
+	winstonlogger.info(message);
 	slack_postMessage("logging",message);
 }
 
@@ -123,6 +132,7 @@ module.exports={
 */
 /* make_template tests */
 if(require.main ===module){
+	slack_log("hello world");
 	slack_postMessage("develop","files/4J/4J.png")
 	slack_upload("develop","files/4J/4J.png")
 }
