@@ -33,11 +33,7 @@ archive_type: 'monthly'
 show_count: false
 
 # Miscellaneous
-<<<<<<< HEAD
 google_analytics: 'UA-121910998-5'
-=======
-google_analytics:
->>>>>>> 4d7e268d31b72ea571fbad098ccf856d46a80d0a
 gauges_analytics:
 favicon: /favicon.png
 twitter:
