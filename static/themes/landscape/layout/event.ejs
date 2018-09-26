@@ -41,16 +41,23 @@
     
     <% var gym1 =[
     {
-        "Start_Time": "17:30",
-        "End_Time":  "18:30",
-        "name":"sakakendo",
-        "from":"けいおん部"
-    },
-    {
-        "Start_Time": "19:30",
-        "End_Time":  "20:30",
-        "name":"HIROHIRO",
-        "from":"漁師部"
+        "timestamp": "12:30",
+        "date" : 21,
+        "start_time": "10:00",
+        "end_time": "11:00",
+        "place": "place",
+        "name" : "name",
+        "from": "brassband",
+        "content": "discription"
+    },{
+        "timestamp": "13:30",
+        "date" : 21,
+        "start_time": "11:00",
+        "end_time": "12:00",
+        "place": "place2",
+        "name" : "name2",
+        "from": "けいおん",
+        "content": "discription"
     }
 ]%>
 
@@ -68,8 +75,8 @@
                     <% for (var i = 0; i < 2; i++) { %>
                         <font size="4">
                             <tr align="center">
-                                <td><%- gym1[i].Start_Time%></td>
-                                <td><%- gym1[i].End_Time%></td>
+                                <td><%- gym1[i].start_time%></td>
+                                <td><%- gym1[i].end_time%></td>
                                 <td><%- gym1[i].name %></td>
                                 <td><%- gym1[i].from %></td>
                              </tr>
