@@ -7,6 +7,30 @@ const request = require("request");
 const logger=require('pino')();
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
 
+function read_list(){
+	try{
+		arr = fs.readFileSync('./list.txt').toString().split('\r\n');
+	}catch(e){
+		console.log("can not read list.txt");
+	}
+	return arr;
+}
+
+function id_exist(shopid){
+	var shop_list=read_list();
+	console.log(shop_list);
+
+}
+
+function json_sort(arr){
+	arr.sort(function(a,b) {
+ 		return (a.time > b.time ? 1 : 1);
+	});
+	for(i = 0 ; i < arr.length ; i++ ){
+　  	arr[i].id = i;
+	}
+	return arr;
+}
 
 function slack_postMessage(channel,message){
 	request.post('https://slack.com/api/chat.postMessage',{
@@ -111,7 +135,9 @@ module.exports={
 	log:slack_log,
 	err:slack_err,
 	download:download,
-	make_template:make_template
+	make_template:make_template,
+	read_list:read_list,
+	json_sort:json_sort
 }
 
 /*
@@ -123,7 +149,8 @@ module.exports={
 */
 /* make_template tests */
 if(require.main ===module){
-	slack_postMessage("develop","files/4J/4J.png")
-	slack_upload("develop","files/4J/4J.png")
+	read_list();
+//	slack_postMessage("develop","files/4J/4J.png")
+//	slack_upload("develop","files/4J/4J.png")
 }
 
