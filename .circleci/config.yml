@@ -5,27 +5,28 @@
 version: 2
 jobs:
   build:
-      #    working_directory: ~/repo
-      #    working_directory: ~/api-server
     working_directory: ~/2018.perform/
     docker:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+      - add_ssh_keys:
+          fingerprints:
+              - "ea:e4:cb:f7:2c:99:67:fe:0a:e6:5f:f6:65:0e:24:69"
       - run: 
           name: install packages
-          #working_directory: ~/2018.perform/api-server
-          command: cd api-server && yarn && yarn install && yarn test
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
+          command: |
+              sudo apt-get update;sudo apt-get install -y --fix-missing ssh rsync
+              ssh-keyscan ${DEPLOY_SERVER} >> ~/.ssh/known_hosts
+              cd api-server && yarn && yarn install && yarn test
+      - deploy:
+          name: deploy develop branch
+          command: |
+              echo ${CIRCLE_BRANCH},${USER_NAME},${DEPLOY_SERVER}
+              if [ "${CIRCLE_BRANCH}" != "master" ]; then
+                rsync -av --delete ./ ${USER_NAME}@${DEPLOY_SERVER}:/home/kfes/2018.perform
+                ssh ${USER_NAME}@${DEPLOY_SERVER} bash 2018.perform/setup.sh
+              fi
   test:
     working_directory: ~/2018.perform/
         #    working_directory: ~/api-server
@@ -41,18 +42,6 @@ jobs:
           name: test express server
           working_directory: ~/2018.perform/api-server
           command: yarn test
-  ghost:
-    working_directory: ~/.2018.perfrom
-    docker:
-        - image: circleci/node:7.10
-    steps:
-      - run :
-          name: Install Docker Compose
-          command: |
-            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-            chmod +x ~/docker-compose
-            sudo mv ~/docker-compose /usr/local/bin/docker-compose
-            docker-compose --version
 workflows:
     version: 2
     build_and_test:
