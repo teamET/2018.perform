@@ -23,10 +23,11 @@ jobs:
           name: deploy develop branch
           command: |
               echo ${CIRCLE_BRANCH},${SSH_USER},${SSH_HOST}
-              if [ "${SSH_HOST}" != "master" ]; then
-                rsync -av --delete ./ ${USER_NAME}@${SSH_HOST}:/home/kfes/2018.perform
-                ssh ${SSH_USER}@${SSH_HOST} bash 2018.perform/setup.sh
-              fi
+              ssh ${SSH_USER}@${SSH_HOST} "ls -a"
+#              if [ "${SSH_HOST}" != "master" ]; then
+#                rsync -av --delete ./ ${USER_NAME}@${SSH_HOST}:/home/kfes/2018.perform
+#                ssh ${SSH_USER}@${SSH_HOST} bash 2018.perform/setup.sh
+#              fi
 
   test:
     working_directory: ~/2018.perform/
