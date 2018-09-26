@@ -212,8 +212,8 @@ rtm.on('message',(event)=>{
 				for(let j in tag){
 					if(tags[i]==tag[j].id){
 						console.log("tag",tag[j].tag);
-						shop[shop_name].list[0] = tag[j].tag;
-						console.log("list",shop[shop_name].list[0]);
+						shop[shop_name].list[cnt] = tag[j].tag;
+						console.log("list",shop[shop_name].list[cnt]);
 						fs.writeFileSync('shop.json',JSON.stringify(shop));
 						cnt++;
 					}
