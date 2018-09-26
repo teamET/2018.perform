@@ -204,16 +204,16 @@ rtm.on('message',(event)=>{
 			console.log("tags",tags);
 			var cnt=0;
 			console.log(shop);
-			for(var key in shop[shop_name].list) cnt++;
+			for(var key in shop[shop_name].label) cnt++;
 			console.log("cnt",cnt);
 			console.log("tag",tag);
 			
 			for(let i in tags){
 				for(let j in tag){
-					if(tags[i]==tag[j].id){
+					if((tags[i]==tag[j].id)&&((shop[shop_name].label.indexOf(tag[j].tag)==-1)){
 						console.log("tag",tag[j].tag);
-						shop[shop_name].list[cnt] = tag[j].tag;
-						console.log("list",shop[shop_name].list[cnt]);
+						shop[shop_name].label[cnt] = tag[j].tag;
+						console.log("list",shop[shop_name].label[cnt]);
 						fs.writeFileSync('shop.json',JSON.stringify(shop));
 						cnt++;
 					}
