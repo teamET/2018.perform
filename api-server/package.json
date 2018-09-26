@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "forever": "forever ./bin/www",
     "test": "node ./test/test.js"
   },
   "dependencies": {
@@ -14,6 +13,7 @@
     "hbs": "~4.0.1",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
-    "supertest": "^3.1.0"
+    "supertest": "^3.1.0",
+    "fluent-logger": "latest"
   }
 }
