@@ -12,20 +12,20 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-              - "ea:e4:cb:f7:2c:99:67:fe:0a:e6:5f:f6:65:0e:24:69"
+              - "1a:a6:fc:8f:09:ba:34:32:a0:ca:d8:97:de:ea:b0:35"
       - run: 
           name: install packages
           command: |
-              sudo apt-get update;sudo apt-get install -y --fix-missing ssh rsync
-              ssh-keyscan ${DEPLOY_SERVER} >> ~/.ssh/known_hosts
+              sudo apt-get update -y && sudo apt-get install -y --fix-missing ssh rsync
+              ssh-keyscan ${SSH_HOST} >> ~/.ssh/known_hosts
               cd api-server && yarn && yarn install && yarn test
       - deploy:
           name: deploy develop branch
           command: |
-              echo ${CIRCLE_BRANCH},${USER_NAME},${DEPLOY_SERVER}
-              if [ "${CIRCLE_BRANCH}" != "master" ]; then
-                rsync -av --delete ./ ${USER_NAME}@${DEPLOY_SERVER}:/home/kfes/2018.perform
-                ssh ${USER_NAME}@${DEPLOY_SERVER} bash 2018.perform/setup.sh
+              echo ${CIRCLE_BRANCH},${SSH_USER},${SSH_HOST}
+              if [ "${SSH_HOST}" != "master" ]; then
+                rsync -av --delete ./ ${USER_NAME}@${SSH_HOST}:/home/kfes/2018.perform
+                ssh ${SSH_USER}@${SSH_HOST} bash 2018.perform/setup.sh
               fi
 
   test:
