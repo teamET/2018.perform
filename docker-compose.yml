@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  proxy:
+    image: nginx:1.15.2-alpine
+    restart: always
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ./proxy/config/nginx.conf:/etc/nginx/nginx.conf
+      - ./proxy/config/kfes.conf:/etc/nginx/sites-enabled/kfes.conf
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /etc/ssl:/etc/ssl
+      - ./logs/proxy:/var/log/nginx/
+      # ./static/public:/var/www/public
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - hexo
+      - express
+#      - fluentd
+#    logging:
+#      driver: fluentd
+#      options:
+#        tag: "docker.{{.FullID}}"
+
+  hexo:
+    image: nginx:1.15.2-alpine
+    restart: always
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ./hexo/config/nginx.conf:/etc/nginx/nginx.conf
+      - ./hexo/config/hexo.conf:/etc/nginx/sites-enabled/hexo.conf
+      - ./logs/hexo:/var/log/nginx/
+      - ./static/public:/var/www/public
+    ports:
+      - 8080:8080
+#    links:
+#      - fluentd
+#    logging:
+#      driver: fluentd
+#      options:
+#        tag: "docker.{{.FullID}}"
+ 
+  express:
+    build: ./api-server
+    restart: always
+    ports:
+      - 3000:3000
+#    links:
+#      - fluentd
+
+#  fluentd:
+#    build: ./fluentd
+#    restart: always
+#    volumes:
+#      - ./fluentd:/fluentd/etc
+#    ports:
+#      - 24224:24224
