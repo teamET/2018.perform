@@ -92,3 +92,4 @@ shop.json
 *.env
 public
 db.json
+.*.sw*
