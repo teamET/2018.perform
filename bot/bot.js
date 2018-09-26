@@ -210,7 +210,7 @@ rtm.on('message',(event)=>{
 			
 			for(let i in tags){
 				for(let j in tag){
-					if((tags[i]==tag[j].id)&&((shop[shop_name].label.indexOf(tag[j].tag)==-1)){
+					if((tags[i]==tag[j].id)&&(shop[shop_name].label.indexOf(tag[j].tag)==-1)){
 						console.log("tag",tag[j].tag);
 						shop[shop_name].label[cnt] = tag[j].tag;
 						console.log("list",shop[shop_name].label[cnt]);
