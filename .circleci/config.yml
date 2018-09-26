@@ -27,6 +27,7 @@ jobs:
                 rsync -av --delete ./ ${USER_NAME}@${DEPLOY_SERVER}:/home/kfes/2018.perform
                 ssh ${USER_NAME}@${DEPLOY_SERVER} bash 2018.perform/setup.sh
               fi
+
   test:
     working_directory: ~/2018.perform/
         #    working_directory: ~/api-server
@@ -42,32 +43,9 @@ jobs:
           name: test express server
           working_directory: ~/2018.perform/api-server
           command: yarn test
-<<<<<<< HEAD
 
-  deploy:
-    machine: true
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "1a:a6:fc:8f:09:ba:34:32:a0:ca:d8:97:de:ea:b0:35"
-      - run:
-          name: start ssh-keyscan
-          command: |
-            ssh-keyscan ${HOST_NAME} >> ~/.ssh/known_hosts
-
-      - deploy:
-          name: deploy over ssh
-          commnad: |
-            ssh ${USER_NAME}@${HOST_NAME} "touch test.txt && echo 'from ci' >> ./test.txt"
-
-=======
->>>>>>> develop
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
-      - deploy
-          requires:
-            - build
