@@ -6,6 +6,14 @@ const path=require('path');
 const request = require("request");
 const logger=require('pino')();
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
+const logger=winston.createLogger({
+	level:'info',
+	format:winston.format.json(),
+	transports:[
+
+	]
+	
+})
 
 
 function slack_postMessage(channel,message){
