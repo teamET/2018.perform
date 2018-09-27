@@ -1,4 +1,3 @@
-
 const ejs=require('ejs');
 const dotenv=require('dotenv').config();
 const fs=require('fs');
@@ -90,7 +89,8 @@ function download(dir,title,url){
 	return fname;
 }
 
-function slack_postmessage(channel,message){
+
+function slack_postmessage(channel,message){
 	request.post('https://slack.com/api/chat.postmessage',{
 		form: {
 			token: SLACK_TOKEN,
@@ -103,9 +103,8 @@ function download(dir,title,url){
 	})
 };
 
-
-function load_template(){
-	var file=path.join(__dirname,"./views/_booth.ejs");
+function load_template(filename){
+	var file=path.join(__dirname,filename);
 	var data="";
 	try{
 		data=fs.readFileSync(file,'utf-8');
@@ -127,18 +126,17 @@ function save_html(name,html){
 	});
 }
 
-
-function make_template(data){
+function make_template(filename,data){
 	logger.info('make_tempalte',data);
-	var template=load_template();
+	var template=load_template(`./views/${filename}.ejs`);
 	logger.info('make_tempalte',template);
-	var html=ejs.render(template,data,(err,str)=>{
+	var html=ejs.render(template,{data: data},(err,str)=>{
 		if(err){
 			logger.error('ejs error',err);
 		}
 		logger.info('ejs results',str);
 	});
-	save_html(data.name,html);
+	save_html(filename,html);
 	return html
 }
 
@@ -162,8 +160,20 @@ module.exports={
 	}  
 */
 /* make_template tests */
+
+
 if(require.main ===module){
+
+	var EVENT_DATA = JSON.parse(fs.readFileSync('./event.json', 'utf8'));
+	var SHOP_DATA = JSON.parse(fs.readFileSync('./shop.json', 'utf8'));
+	make_template('_timetable',EVENT_DATA);
+	make_template('_news',EVENT_DATA);
+	make_template('_shoptable',SHOP_DATA);
+//	slack_postMessage("develop","files/4J/4J.png")
+//	slack_upload("develop","files/4J/4J.png")
+
 	slack_log("hello world");
-	slack_postmessage("develop","files/4j/4j.png")
-	slack_upload("develop","files/4j/4j.png")
+	slack_postMessage("develop","files/4J/4J.png")
+	slack_upload("develop","files/4J/4J.png")
+
 }

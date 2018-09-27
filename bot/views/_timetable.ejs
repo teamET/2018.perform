@@ -1,0 +1,18 @@
+<table  style=" margin-left:auto; margin-right:auto;">
+        <tr>
+            <th>開始時間</th>
+            <th>終了時間</th>  
+            <th>名前</th>
+            <th>所属</th>
+        </tr>
+    <% for (var i = 0; i < 2; i++) { %>
+        <font size="4">
+            <tr align="center">
+                <td><%- data[i].start_time %></td>
+                <td><%- data[i].end_time %></td>
+                <td><%- data[i].name %></td>
+                <td><%- data[i].from %></td>
+             </tr>
+        </font>
+    <% } %>
+</table>

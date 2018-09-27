@@ -27,8 +27,10 @@
         }
     ]%>
     <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="search_shop_input" onkeyup="search_shop()">
-    <% for(var i=0 ; i < 2 ; i += 1 ) {%>
+    <iframe src=""></iframe>
+    <!-- <% for(var i=0 ; i < 2 ; i += 1 ) {%>
         <div class="w3-half" style="display: block;">
+
             <img class="w3-margin w3-circle" src="https://avatars0.githubusercontent.com/u/28134110?s=200&v=4">
             <table class="w3-table w3-white" style="width: 250px; display: block" id="search_shop_table">
                 <p><%= shops[i].class %>&nbsp;<%= shops[i].title %></p>
@@ -44,7 +46,7 @@
                 <% }); %>
             </table>
         </div>
-    <% } %>
+    <% } %> -->
     
     <script>
         function search_shop() {

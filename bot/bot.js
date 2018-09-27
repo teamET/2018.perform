@@ -228,6 +228,8 @@ rtm.on('message',(event)=>{
 			
 		}
 	}
+	//make_template("_booth.ejs",shop_data)
+	//make_template("_timetable.ejs",timetable_data)
 	slack(event);
 	if(event.files !== undefined){
 		console.log(event.files[0].url_private_download);
@@ -263,4 +265,3 @@ if(require.main ===module){
 	list = utils.read_list();
 	rtm.start();
 }
-
