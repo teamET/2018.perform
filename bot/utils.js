@@ -5,8 +5,16 @@ const mkdirp = require("mkdirp");
 const path=require('path');
 const request = require("request");
 const logger=require('pino')();
+const winston=require('winston');
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
 
+const winstonlogger=winston.createLogger({
+	tranports:[
+		new winston.transports.Console(),
+		new winston.transports.File({filename:'logs/combined.log'})
+	]
+});
+winstonlogger.info('hello');
 
 function slack_postMessage(channel,message){
 	request.post('https://slack.com/api/chat.postMessage',{
@@ -22,6 +30,7 @@ function slack_postMessage(channel,message){
 };
 
 function slack_log(message){
+	winstonlogger.info(message);
 	slack_postMessage("logging",message);
 }
 
@@ -125,6 +134,7 @@ module.exports={
 
 
 if(require.main ===module){
+
 	var EVENT_DATA = JSON.parse(fs.readFileSync('./event.json', 'utf8'));
 	var SHOP_DATA = JSON.parse(fs.readFileSync('./shop.json', 'utf8'));
 	make_template('_timetable',EVENT_DATA);
@@ -132,5 +142,10 @@ if(require.main ===module){
 	make_template('_shoptable',SHOP_DATA);
 //	slack_postMessage("develop","files/4J/4J.png")
 //	slack_upload("develop","files/4J/4J.png")
+
+	slack_log("hello world");
+	slack_postMessage("develop","files/4J/4J.png")
+	slack_upload("develop","files/4J/4J.png")
+
 }
 

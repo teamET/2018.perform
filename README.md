@@ -1,12 +1,11 @@
-# 2018.perform
+# WebService
 
 ```
-docker-compose build
-docker-compose up
+docker-compose up -d
 ```
-## then you can view at localhost
-##  just do it
 
-you can edit files  
-top page -> ` ./static/ `  
-api server -> ` ./api-server/app.js `
+then you can view at localhost
+
+if you want to see logs on slack, add webhook_url to fluentd/fluent.conf
+
+https://slack.com/services/new/incoming-webhook
