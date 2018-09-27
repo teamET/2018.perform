@@ -6,7 +6,8 @@ node --version
 # hexo
 cd /root/2018.perform/static
 hexo --version
-hexo generate
+npm i -g hexo-cli
+hexo g
 
 # bot
 cd /root/2018.perform/bot
