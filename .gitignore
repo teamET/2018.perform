@@ -6,6 +6,7 @@
 
 static/db.json
 public*
+.*
 ### Node ###
 # Logs
 logs
