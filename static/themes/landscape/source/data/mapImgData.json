@@ -1,6 +1,7 @@
 {
-    "toCampusArrow":"map-arrow.svg",
-    "generalview": "map.png",
+    "ToCampusArrow":"goGeneral.png",
+    "ToOutsideArrow":"goGeneral.png",
+    "Generalview": "map.png",
     "AreaRects":[
         {"x":1050,"y":300,"width":500,"height":250,"color":"DarkRed"},
         {"x":1750,"y":270,"width":450,"height":250,"color":"DarkRed"},
@@ -9,64 +10,99 @@
         {"x":2450,"y":1150,"width":350,"height":230,"color":"Green"},
         {"x":2250,"y":850,"width":230,"height":200,"color":"Blue"}
     ],
-    "pinImg":"pin.svg",
+    "PinImg_1":"pin_1.png",
+    "GotoGeneralImg":"GoGeneral.png",
     "OutsideAreas":[
         {
             "area":"A",
-            "img":"map-mogi-A.svg",
+            "img":"map-mogi-A.png",
             "pins":[
-                {"x":100,"y":100},
-                {"x":100,"y":100}
-            ]
+                {"x":766,"y":400},
+                {"x":1070,"y":400},
+                {"x":1900,"y":400},
+                {"x":2200,"y":400},
+                {"x":3130,"y":750}
+            ],
+            "goGeneral":{"x":3000,"y":210}
         },
         {
             "area":"B",
-            "img":"map-mogi-B.svg",
+            "img":"map-mogi-B.png",
             "pins":[
-                {"x":100,"y":100},
-                {"x":100,"y":100}
-            ]
+                {"x":1020,"y":80},
+                {"x":1420,"y":80},
+                {"x":1820,"y":80},
+                {"x":2220,"y":80}
+            ],
+            "goGeneral":{"x":3000,"y":1450}
         },
         {
             "area":"C",
-            "img":"map-mogi-C.svg",
+            "img":"map-mogi-C.png",
             "pins":[
-                {"x":100,"y":100},
-                {"x":100,"y":100}
-            ]
+                {"x":2100,"y":1300},
+                {"x":2100,"y":1600}
+            ],
+            "goGeneral":{"x":3000,"y":1450}
         },
         {
             "area":"D",
-            "img":"map-mogi-D.svg",
+            "img":"map-mogi-D.png",
             "pins":[
-                {"x":100,"y":100},
-                {"x":100,"y":100}
-            ]
+                {"x":2100,"y":350},
+                {"x":2100,"y":630},
+                {"x":2100,"y":1150},
+                {"x":2100,"y":1450},
+                {"x":2985,"y":400},
+                {"x":2985,"y":680},
+                {"x":2985,"y":950},
+                {"x":2985,"y":1250}
+            ],
+            "goGeneral":{"x":900,"y":1380}
         },
         {
             "area":"E",
-            "img":"map-mogi-E.svg",
+            "img":"map-mogi-E.png",
             "pins":[
-                {"x":100,"y":100},
-                {"x":100,"y":100}
-            ]
+                {"x":1120,"y":450},
+                {"x":1450,"y":450},
+                {"x":2120,"y":450},
+                {"x":2450,"y":450},
+                {"x":2780,"y":450},
+                {"x":3110,"y":450}
+            ],
+            "goGeneral":{"x":2800,"y":1450}
         },
         {
             "area":"F",
-            "img":"map-mogi-F.svg",
+            "img":"map-mogi-F.png",
             "pins":[
-                {"x":100,"y":100},
-                {"x":100,"y":100}
-            ]
+                {"x":1160,"y":1100},
+                {"x":2080,"y":1100},
+                {"x":1640,"y":1100}  
+            ],
+            "goGeneral":{"x":2800,"y":1450}
         }
     ],
     "Campus":{
-        "generalview":"",
+        "top":"map-inside.png",
+        "buildingRects":[
+            {"x":1200,"y":1100,"width":1440,"height":280,"color":"DarkRed"},
+            {"x":1200,"y":560,"width":1440,"height":280,"color":"DarkRed"},
+            {"x":2220,"y":30,"width":420,"height":280,"color":"DarkRed"},
+            {"x":700,"y":1640,"width":510,"height":280,"color":"DarkRed"}
+        ],
+        "balloons":[
+            {"img":"map-inside-balloon2.png","x":2500,"y":500},
+            {"img":"map-inside-balloon3.png","x":2500,"y":160},
+            {"img":"map-inside-balloon8.png","x":1100,"y":1350}
+        ],
         "Building":{
             "1":{
                 "Floor":{
                     "F1":"",
-                    "F2":""
+                    "F2":"",
+                    "F3":""
                 }
             }
         }
