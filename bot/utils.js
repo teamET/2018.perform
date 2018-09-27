@@ -16,32 +16,43 @@ const winstonlogger=winston.createLogger({
 });
 winstonlogger.info('hello');
 
-function slack_postMessage(channel,message){
-	request.post('https://slack.com/api/chat.postMessage',{
-		form: {
-			token: SLACK_TOKEN,
-			channel: channel,
-			username: 'mogi-bot',
-			text:message 
-		}
-	},(error, response, body) => {
-		if (error) console.log(error);
-	})
-};
+function read_list(){
+	try{
+		arr = fs.readFileSync('./list.txt').toString().split('\r\n');
+	}catch(e){
+		console.log("can not read list.txt");
+	}
+	return arr;
+}
+
+function id_exist(shopid){
+	var shop_list=read_list();
+	console.log(shop_list);
+
+}
+
+function json_sort(arr){
+	arr.sort(function(a,b) {
+ 		return (a.time > b.time ? 1 : 1);
+	});
+	for(i = 0 ; i < arr.length ; i++ ){
+　  	arr[i].id = i;
+	}
+	return arr;
+}
 
 function slack_log(message){
 	winstonlogger.info(message);
-	slack_postMessage("logging",message);
+	slack_postmessage("logging",message);
 }
 
 function slack_err(message){
-	slack_postMessage("errors",message);
+	slack_postmessage("errors",message);
 }
 
 function slack_react(message){
 
 }
-
 function slack_upload(channel,image){
 	console.log(channel,image,SLACK_TOKEN)
 	var arg={
@@ -72,10 +83,25 @@ function download(dir,title,url){
 	request({
 		url:url,
 		headers:{'Authorization': 'Bearer '+SLACK_TOKEN}
+//		headers:{'authorization': 'bearer '+slack_token}
 	}).pipe(fs.createWriteStream(fname));
 	console.log("download file successed",dir,fname,url);
 	return fname;
 }
+
+
+function slack_postmessage(channel,message){
+	request.post('https://slack.com/api/chat.postmessage',{
+		form: {
+			token: SLACK_TOKEN,
+			channel: channel,
+			username: 'mogi-bot',
+			text:message 
+		}
+	},(error, response, body) => {
+		if (error) console.log(error);
+	})
+};
 
 function load_template(filename){
 	var file=path.join(__dirname,filename);
@@ -114,20 +140,23 @@ function make_template(filename,data){
 	return html
 }
 
+
 module.exports={
-	sendFile:slack_upload,
-	postMessage:slack_postMessage,
+	sendfile:slack_upload,
+	postmessage:slack_postmessage,
 	log:slack_log,
 	err:slack_err,
 	download:download,
-	make_template:make_template
+	make_template:make_template,
+	read_list:read_list,
+	json_sort:json_sort
 }
 
 /*
  * sample json data 
 	{
 		"shopname":{"goods":{"name":"price"},"image":["image"],"text":"text"},
-		"4J":{"goods":{"name":"price"},"image":["image"],"text":"text"}
+		"4j":{"goods":{"name":"price"},"image":["image"],"text":"text"}
 	}  
 */
 /* make_template tests */
@@ -148,4 +177,3 @@ if(require.main ===module){
 	slack_upload("develop","files/4J/4J.png")
 
 }
-
