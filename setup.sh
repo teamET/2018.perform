@@ -1,5 +1,5 @@
-cat /root/.bashrc
-source /root/.bashrc
+#cat /root/.bashrc
+#source /root/.bashrc
 printenv
 nvm use --lts
 node --version
