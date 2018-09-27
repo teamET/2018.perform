@@ -11,9 +11,9 @@ const DEV_SERVER=process.env.DEV_SERVER;
 //const mkdirp = require("mkdirp");
 
 var slack_id;
-var account_data;
+//var account_data;
 var account;
-var shop_data;
+//var shop_data;
 var shop;
 var shop_name;
 
@@ -22,8 +22,9 @@ utils.log("start process",SLACK_TOKEN);
 utils.log("`hello winston`\n> test test",SLACK_TOKEN);
 
 function create_json(){
+    var account_data,shop_data;
 	try {
-		account_data = fs.readFileSync("./data/account.json");	
+		account_data = fs.readFileSync("./data/account.json");
 		shop_data = fs.readFileSync("./data/shop.json");
 		account = JSON.parse(account_data);
 		shop = JSON.parse(shop_data);
@@ -39,10 +40,50 @@ function create_json(){
 				"text":"text"
 			}
 		};
-
 		fs.writeFileSync("./data/account.json",JSON.stringify(account));	
 		fs.writeFileSync("./data/shop.json",JSON.stringify(shop));	
 	}
+}
+
+function update_shop(shop){
+    utils.log(shop);
+    fs.writeFileSync("./data/shop.json",JSON.stringify(shop));
+}
+
+function update_account(shop){
+    utils.log(account);
+    fs.writeFileSync("./data/account.json",JSON.stringify(account));
+}
+
+function save_json(account,shop){
+    utils.log(account);
+    utils.log(shop);
+    fs.writeFileSync("./data/account.json",JSON.stringify(account));
+    fs.writeFileSync("./data/shop.json",JSON.stringify(shop));
+}
+
+function save_shop_image(event){
+    utils.log(event.files[0].url_private_download);
+    try{
+        var count = 0;
+        shop_name = account[slack_id]["ShopName"];
+        file=utils.download(shop_name,event.files[0].title,event.files[0].url_private_download);
+        if(account[slack_id] !== undefined){
+            for(var key in shop[shop_name].image){
+                if(shop[shop_name].image[count] !== event.files[0].title) count++;
+            }
+            shop[shop_name].image[count] = event.files[0].title;
+            fs.writeFileSync("shop.json",JSON.stringify(shop));
+            screen(channel,file,shop_name);
+        }else{
+            slack("Please register your store.",channel);
+            console.log("try else");
+        }
+        console.log("ok");
+    }catch(e){
+        slack("Please register your account.",channel);
+        console.log("error",e); 
+    }
 }
 
 function slack(data,channel){
@@ -69,24 +110,18 @@ const screen = (async(channel,file,shop_name)=>{
 	return;
 });
 
-function help(event){
-	var mes=" \
-		```\
-			.help\n.\
-			entry <shop name> <class>\n.\
-			goods <goods name> <price>\n \
-			.text <text>\n.review\n\
-			.show\
-		```";
-	res(mes,event);
-}
-
 function not_registered(event){
 	var mes="Please register your account.";
 	res(mes,event.channel);
 }
 
+function no_goods(event){
+	var mes="Please register your account.";
+	res(mes,event.channel);
+}
+
 rtm.on("hello",(event)=>{
+    utils.log("hello slack");
 	console.log("start slack process");
 });
 
@@ -94,9 +129,9 @@ rtm.on("hello",(event)=>{
 rtm.on("message",(event)=>{
 	var channel = event.channel;
 	slack_id = event.user;
-	console.log("event",event);
+	utils.log(event);
 	if(event.text.split(" ")[0]===".help"){
-		help(event);
+		utils.help(event);
 	}else if(event.text.split(" ")[0]===".text"){
 		try{
 			shop[shop_name].text = event.text.slice(6);
@@ -130,7 +165,7 @@ rtm.on("message",(event)=>{
 				fs.writeFileSync("shop.json",JSON.stringify(shop));
 				shop[shop_name].goods[Name] = Price;
 			}else{
-				shop[shop_name].goods[Name] = Price;	
+				shop[shop_name].goods[Name] = Price;
 			}
 			fs.writeFileSync("shop.json",JSON.stringify(shop));
 			slack("This goods is registered.",channel);
@@ -152,31 +187,11 @@ rtm.on("message",(event)=>{
 		}catch(e){
 			slack("Please register your account",channel);
 		}
-	}
-	utils.log(event);
-	//	slack(event);
+    }else{
+//        utils.help(event);
+    }
 	if(event.files !== undefined){
-		console.log(event.files[0].url_private_download);
-		try{
-			var count = 0;
-			shop_name = account[slack_id]["ShopName"];
-			file=utils.download(shop_name,event.files[0].title,event.files[0].url_private_download);
-			if(account[slack_id] !== undefined){
-				for(var key in shop[shop_name].image){
-					if(shop[shop_name].image[count] !== event.files[0].title) count++;
-				}
-				shop[shop_name].image[count] = event.files[0].title;
-				fs.writeFileSync("shop.json",JSON.stringify(shop));
-				screen(channel,file,shop_name);
-			}else{
-				slack("Please register your store.",channel);
-				console.log("try else");
-			}
-			console.log("ok");
-		}catch(e){
-			slack("Please register your account.",channel);
-			console.log("error",e); 
-		}
+        save_shop_image(event);
 	}
 });
 
@@ -185,7 +200,6 @@ if(require.main ===module){
 		console.log("slack token is not defined");
 	}
 	utils.log("start process");
-	//	logger.info('start');
 	create_json();
 	rtm.start();
 }

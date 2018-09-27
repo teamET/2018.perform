@@ -7,6 +7,7 @@ const request = require("request");
 const logger=require('pino')();
 const winston=require('winston');
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
+const BOT_USERNAME='mogi-shop';
 
 const winstonlogger=winston.createLogger({
 	transports:[
@@ -40,12 +41,16 @@ function slack_err(message){
 }
 
 function slack_responce(message,event){
+    if(event.username === BOT_USERNAME){
+        return;
+    }
+    console.log(message);
 	request.post('https://slack.com/api/chat.postMessage',{
 		form: {
 			token: SLACK_TOKEN,
-			channel: channel,
+			channel: event.channel,
 			username: 'mogi-bot',
-			text: event.channel
+			text: message
 		}
 	},(error, response, body) => {
 		if (error) slack_err(error);
@@ -85,6 +90,19 @@ function download(dir,title,url){
 	}).pipe(fs.createWriteStream(fname));
 	console.log("download file successed",dir,fname,url);
 	return fname;
+}
+
+// default responces
+const HELP_MESSAGE="```\
+.help\n\
+.entry <shop name> <class>\n\
+.goods <goods name> <price>\n \
+.text <text>\n.review\n\
+.show\
+```";
+
+function help(event){
+	slack_responce(HELP_MESSAGE,event);
 }
 
 function load_template(){
@@ -131,7 +149,8 @@ module.exports={
 	log:slack_log,
 	err:slack_err,
 	download:download,
-	make_template:make_template
+	make_template:make_template,
+    help:help
 }
 
 /*
