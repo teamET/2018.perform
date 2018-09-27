@@ -25,13 +25,15 @@ jobs:
           command: |
               echo ${CIRCLE_BRANCH},${USER_NAME},${PRODUCTION_SERVER},${DEVELOPMENT_SERVER}
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                export SERVER=${USER_NAME}@${PRODUCTION_SERVER}
+                export SERVER=sudo@${PRODUCTION_SERVER}
               else
-                export SERVER=${USER_NAME}@${DEVELOPMENT_SERVER}
+                export SERVER=sudo@${DEVELOPMENT_SERVER}
               fi
               echo ${SERVER}
-              rsync -av --delete .  ${SERVER}:/home/${USER_NAME}/2018.perform/ 2>&1 >/dev/null
-              ssh ${SERVER} bash /home/${USER_NAME}/2018.perform/setup.sh
+              rsync -av --delete ./setup.sh ${SERVER}:/root//2018.perform/setup.sh 2>&1 >/dev/null
+              rsync -av --delete ./static  ${SERVER}:/root//2018.perform/static 2>&1 >/dev/null
+              rsync -av --delete ./bot  ${SERVER}:/root//2018.perform/bot 2>&1 >/dev/null
+              ssh ${SERVER} bash /root/2018.perform/setup.sh
 
 
   test:
