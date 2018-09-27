@@ -1,9 +1,10 @@
 source /root/.bash_profile
-
-cd 2018.perform
+hexo --version
+npm --version
+node --version
 
 # hexo
-cd static
+cd /root/2018.perform/static
 hexo --version
 hexo generate
 
