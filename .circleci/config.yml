@@ -30,10 +30,10 @@ jobs:
                 export SERVER=root@${DEVELOPMENT_SERVER}
               fi
               echo ${SERVER}
-              rsync -av --delete ./setup.sh ${SERVER}:/root//2018.perform/setup.sh 2>&1 >/dev/null
-              rsync -av --delete ./static  ${SERVER}:/root//2018.perform/static 2>&1 >/dev/null
+              rsync -av --delete ./setup.sh ${SERVER}:/root/2018.perform/setup.sh 2>&1 >/dev/null
+              rsync -av --delete ./static  ${SERVER}:/root/2018.perform/static 2>&1 >/dev/null
               rsync -av --delete ./bot  ${SERVER}:/root//2018.perform/bot 2>&1 >/dev/null
-              ssh ${SERVER} bash /root/2018.perform/setup.sh
+              ssh ${SERVER} source /root/2018.perform/setup.sh
 
 
   test:
