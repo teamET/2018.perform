@@ -14,7 +14,7 @@ const winstonlogger=winston.createLogger({
 		new winston.transports.File({filename:'logs/combined.log'})
 	]
 });
-winstonlogger.info('hello');
+//winstonlogger.info('hello');
 
 function slack_postMessage(channel,message){
 	request.post('https://slack.com/api/chat.postMessage',{
@@ -35,11 +35,21 @@ function slack_log(message){
 }
 
 function slack_err(message){
+	winstonlogger.error(message);
 	slack_postMessage("errors",message);
 }
 
-function slack_react(message){
-
+function slack_responce(message,event){
+	request.post('https://slack.com/api/chat.postMessage',{
+		form: {
+			token: SLACK_TOKEN,
+			channel: channel,
+			username: 'mogi-bot',
+			text: event.channel
+		}
+	},(error, response, body) => {
+		if (error) slack_err(error);
+	});
 }
 
 function slack_upload(channel,image){
@@ -117,6 +127,7 @@ function make_template(data){
 module.exports={
 	sendFile:slack_upload,
 	postMessage:slack_postMessage,
+	res:slack_responce,
 	log:slack_log,
 	err:slack_err,
 	download:download,
