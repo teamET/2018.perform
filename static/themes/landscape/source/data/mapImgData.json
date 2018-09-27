@@ -11,7 +11,7 @@
         {"x":2250,"y":850,"width":230,"height":200,"color":"Blue"}
     ],
     "PinImg_1":"pin_1.png",
-    "GotoGeneralImg":"GoGeneral.png",
+    "GotoGeneralImg":"goGeneral.png",
     "OutsideAreas":[
         {
             "area":"A",

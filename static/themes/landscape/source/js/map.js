@@ -39,6 +39,7 @@ function init(event){
   // - canvasの定義
   var canvasContainer = document.getElementById("wrap");
   var canvasElement = document.getElementById("myCanvas");
+  canvasContainer.style.boxSizing="inherit";
   var h_shopname  = document.getElementById("shopname");
   // CanvasSizeの大きさ画面サイズに設定する（初期化）
   var Sizing = function(){
