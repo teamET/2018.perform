@@ -29,9 +29,52 @@
 </script>
 <div>
 </div>
+<% var news =[
+        {
+            "timestamp": "12:30",
+            "date" : 21,
+            "start_time": "10:00",
+            "end_time": "11:00",
+            "place": "place",
+            "name" : "name",
+            "from": "brassband",
+            "content": "discription"
+        },{
+            "timestamp": "13:30",
+            "date" : 21,
+            "start_time": "11:00",
+            "end_time": "12:00",
+            "place": "place2",
+            "name" : "name2",
+            "from": "けいおん",
+            "content": "discription"
+        }
+]%>
 <div class="w3-card">
     <h1>TOP NEWS</h1>
     <div style="height: 200px;"> 
+        
+            <table class="w3-table w3-white" style="display: block">
+                <tr>
+                    <th>日付</th>
+                    <th>時間</th>
+                    <th>場所</th>
+                    <th>タイトル</th>
+                    <th>from</th>
+                    <th>説明</th>
+                </tr>
+                <% for(var i=0 ; i < 2  ; i += 1 ) {%>
+                    <tr>
+                        <td><%= news[i].date %></td>
+                        <td><%= news[i].start_time %> ~ <%= news[i].end_time %></td>
+                        <td><%= news[i].place %></td>
+                        <td><%= news[i].name %></td>
+                        <td><%= news[i].from %></td>
+                        <td><%= news[i].content %></td>
+                    </tr>
+                <% } %>
+            </table>
+                    
         <!--<%- partial('_partial/archive', {pagination: 2, index: true}) %>-->
     </div>
 </div>

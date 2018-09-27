@@ -1,7 +1,11 @@
+# 
+/logs
+*.swp
+
 # Created by https://www.gitignore.io/api/node
 
 static/db.json
-
+public*
 ### Node ###
 # Logs
 logs
@@ -9,7 +13,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+public*
 # Runtime data
 pids
 *.pid
@@ -88,3 +92,4 @@ shop.json
 *.env
 public
 db.json
+.*.sw*
