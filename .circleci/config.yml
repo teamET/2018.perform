@@ -32,7 +32,7 @@ jobs:
               fi
               echo ${SERVER}
               rsync -av --delete ./setup.sh ${SERVER}:/root/2018.perform/setup.sh 2>&1 >/dev/null
-              rsync -av --delete ./public ${SERVER}:/var/www/public 2>&1 >/dev/null
+              rsync -av --delete ./static ${SERVER}:/var/www/static 2>&1 >/dev/null
               rsync -av --delete ./bot  ${SERVER}:/root//2018.perform/bot 2>&1 >/dev/null
               ssh ${SERVER} 'source /root/.bashrc && bash /root/2018.perform/setup.sh'
 
