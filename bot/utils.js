@@ -9,12 +9,12 @@ const winston=require('winston');
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
 
 const winstonlogger=winston.createLogger({
-	tranports:[
+	transports:[
 		new winston.transports.Console(),
+		new winston.transports.File({filename:'logs/info.log',level:'error'}),
 		new winston.transports.File({filename:'logs/combined.log'})
 	]
 });
-//winstonlogger.info('hello');
 
 function slack_postMessage(channel,message){
 	request.post('https://slack.com/api/chat.postMessage',{

@@ -19,7 +19,7 @@ var shop_name;
 
 console.log('start process');
 utils.log("start process",SLACK_TOKEN);
-utils.log("hello winston",SLACK_TOKEN);
+utils.log("`hello winston`\n> test test",SLACK_TOKEN);
 
 function create_json(){
 	try {
