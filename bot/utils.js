@@ -17,22 +17,34 @@ const winstonlogger=winston.createLogger({
 	]
 });
 
-function slack_postMessage(channel,message){
-	request.post('https://slack.com/api/chat.postMessage',{
-		form: {
-			token: SLACK_TOKEN,
-			channel: channel,
-			username: 'mogi-bot',
-			text:message 
-		}
-	},(error, response, body) => {
-		if (error) console.log(error);
-	})
-};
+function read_list(){
+	try{
+		arr = fs.readFileSync('./list.txt').toString().split('\r\n');
+	}catch(e){
+		console.log("can not read list.txt");
+	}
+	return arr;
+}
+
+function id_exist(shopid){
+	var shop_list=read_list();
+	console.log(shop_list);
+
+}
+
+function json_sort(arr){
+	arr.sort(function(a,b) {
+ 		return (a.time > b.time ? 1 : 1);
+	});
+	for(i = 0 ; i < arr.length ; i++ ){
+　  	arr[i].id = i;
+	}
+	return arr;
+}
 
 function slack_log(message){
 	winstonlogger.info(message);
-	slack_postMessage("logging",message);
+	slack_postmessage("logging",message);
 }
 
 function slack_err(message){
@@ -56,7 +68,6 @@ function slack_responce(message,event){
 		if (error) slack_err(error);
 	});
 }
-
 function slack_upload(channel,image){
 	console.log(channel,image,SLACK_TOKEN)
 	var arg={
@@ -87,6 +98,7 @@ function download(dir,title,url){
 	request({
 		url:url,
 		headers:{'Authorization': 'Bearer '+SLACK_TOKEN}
+//		headers:{'authorization': 'bearer '+slack_token}
 	}).pipe(fs.createWriteStream(fname));
 	console.log("download file successed",dir,fname,url);
 	return fname;
@@ -104,6 +116,19 @@ const HELP_MESSAGE="```\
 function help(event){
 	slack_responce(HELP_MESSAGE,event);
 }
+
+function slack_postmessage(channel,message){
+	request.post('https://slack.com/api/chat.postmessage',{
+		form: {
+			token: SLACK_TOKEN,
+			channel: channel,
+			username: 'mogi-bot',
+			text:message 
+		}
+	},(error, response, body) => {
+		if (error) console.log(error);
+	})
+};
 
 function load_template(){
 	var file=path.join(__dirname,"./views/_booth.ejs");
@@ -128,19 +153,20 @@ function save_html(name,html){
 	});
 }
 
-function make_template(data){
+function make_template(filename,data){
 	logger.info('make_tempalte',data);
-	var template=load_template();
+	var template=load_template(`./views/${filename}.ejs`);
 	logger.info('make_tempalte',template);
-	var html=ejs.render(template,data,(err,str)=>{
+	var html=ejs.render(template,{data: data},(err,str)=>{
 		if(err){
 			logger.error('ejs error',err);
 		}
 		logger.info('ejs results',str);
 	});
-	save_html(data.name,html);
+	save_html(filename,html);
 	return html
 }
+
 
 module.exports={
 	sendFile:slack_upload,
@@ -150,20 +176,33 @@ module.exports={
 	err:slack_err,
 	download:download,
 	make_template:make_template,
-    help:help
+  help:help
+	read_list:read_list,
+	json_sort:json_sort
 }
 
 /*
  * sample json data 
 	{
 		"shopname":{"goods":{"name":"price"},"image":["image"],"text":"text"},
-		"4J":{"goods":{"name":"price"},"image":["image"],"text":"text"}
+		"4j":{"goods":{"name":"price"},"image":["image"],"text":"text"}
 	}  
 */
 /* make_template tests */
+
+
 if(require.main ===module){
+
+	var EVENT_DATA = JSON.parse(fs.readFileSync('./event.json', 'utf8'));
+	var SHOP_DATA = JSON.parse(fs.readFileSync('./shop.json', 'utf8'));
+	make_template('_timetable',EVENT_DATA);
+	make_template('_news',EVENT_DATA);
+	make_template('_shoptable',SHOP_DATA);
+//	slack_postMessage("develop","files/4J/4J.png")
+//	slack_upload("develop","files/4J/4J.png")
+
 	slack_log("hello world");
 	slack_postMessage("develop","files/4J/4J.png")
 	slack_upload("develop","files/4J/4J.png")
-}
 
+}
