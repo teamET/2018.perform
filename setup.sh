@@ -7,9 +7,9 @@ curl -X POST --data-urlencode "payload={\"channel\": \"#bot\", \"username\": \"w
 # hexo
 cd static
 hexo generate
-ln -s public /var/www/public
+#ln -s public /var/www/public
 
 # bot
 cd /root/2018.perform/bot
 npm install
-ln -s data /var/www/public/data 
+#ln -s data /var/www/public/data 
