@@ -31,7 +31,7 @@ jobs:
               fi
               echo ${SERVER}
               rsync -av --delete .  ${SERVER}:/home/${USER_NAME}/2018.perform/
-              nohup ssh ${SERVER} bash /home/${USER_NAME}/2018.perform/setup.sh
+              ssh ${SERVER} bash /home/${USER_NAME}/2018.perform/setup.sh
 
 
   test:
