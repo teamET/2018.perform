@@ -25,9 +25,9 @@ jobs:
           command: |
               echo ${CIRCLE_BRANCH},${USER_NAME},${PRODUCTION_SERVER},${DEVELOPMENT_SERVER}
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                export SERVER=sudo@${PRODUCTION_SERVER}
+                export SERVER=root@${PRODUCTION_SERVER}
               else
-                export SERVER=sudo@${DEVELOPMENT_SERVER}
+                export SERVER=root@${DEVELOPMENT_SERVER}
               fi
               echo ${SERVER}
               rsync -av --delete ./setup.sh ${SERVER}:/root//2018.perform/setup.sh 2>&1 >/dev/null
