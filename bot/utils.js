@@ -93,15 +93,15 @@ function save_html(name,html){
 
 function make_template(filename,data){
 	logger.info('make_tempalte',data);
-	var template=load_template(`./views/${filename}`);
+	var template=load_template(`./views/${filename}.ejs`);
 	logger.info('make_tempalte',template);
-	var html=ejs.render(template,data,(err,str)=>{
+	var html=ejs.render(template,{data: data},(err,str)=>{
 		if(err){
 			logger.error('ejs error',err);
 		}
 		logger.info('ejs results',str);
 	});
-	save_html(data.name,html);
+	save_html(filename,html);
 	return html
 }
 
@@ -122,28 +122,14 @@ module.exports={
 	}  
 */
 /* make_template tests */
+
+
 if(require.main ===module){
-	make_template('_timetable.ejs',[
-		{
-			"timestamp": "12:30",
-			"date" : 21,
-			"start_time": "10:00",
-			"end_time": "11:00",
-			"place": "place",
-			"name" : "name",
-			"from": "brassband",
-			"content": "discription"
-		},{
-			"timestamp": "13:30",
-			"date" : 21,
-			"start_time": "11:00",
-			"end_time": "12:00",
-			"place": "place2",
-			"name" : "name2",
-			"from": "けいおん",
-			"content": "discription"
-		}
-	])
+	var EVENT_DATA = JSON.parse(fs.readFileSync('./event.json', 'utf8'));
+	var SHOP_DATA = JSON.parse(fs.readFileSync('./shop.json', 'utf8'));
+	make_template('_timetable',EVENT_DATA);
+	make_template('_news',EVENT_DATA);
+	make_template('_shoptable',SHOP_DATA);
 //	slack_postMessage("develop","files/4J/4J.png")
 //	slack_upload("develop","files/4J/4J.png")
 }
