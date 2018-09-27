@@ -8,7 +8,7 @@ cd /root/2018.perform/static
 hexo --version
 npm install --save hexo-cli
 hexo generate
-cp -rf ./public /var/www/public
+cp -rf ./public/* /var/www/public
 
 # bot
 cd /root/2018.perform/bot
