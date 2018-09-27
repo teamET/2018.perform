@@ -136,7 +136,7 @@ function init(event){
     // :: 小エリアの配置 -------------------------------------------------------------------
     // 各エリアの拡大画像の大きさの取得
     for(i=0;i<j_mapImgsData.OutsideAreas.length;i++){
-      var am_img = new createjs.Bitmap("./imgs/" + j_mapImgsData.OutsideAreas[i].img);
+      var am_img = new createjs.Bitmap("./../img/" + j_mapImgsData.OutsideAreas[i].img);
       am_sizes_tmp[i] = getImageSize(am_img);
     }
     for(i=0;i<j_mapImgsData.OutsideAreas.length;i++)am_sizes[i] = await am_sizes_tmp[i];
@@ -162,10 +162,10 @@ function init(event){
       }
       a_PageContainer.addChild(am_img);
       var a_pins =[]; // AreaPins
-      var a_pin1Tmp = new createjs.Bitmap("./imgs/"+j_mapImgsData.PinImg_1);
+      var a_pin1Tmp = new createjs.Bitmap("./../img/"+j_mapImgsData.PinImg_1);
       var pin1Size = await getImageSize(a_pin1Tmp); // pinの画像サイズを取得
       for(j=0;j<j_mapImgsData.OutsideAreas[i].pins.length;j++){
-        var a_pin = new createjs.Bitmap("./imgs/"+j_mapImgsData.PinImg_1);
+        var a_pin = new createjs.Bitmap("./../img/"+j_mapImgsData.PinImg_1);
         a_pin.scaleX = gm_general.scaleX;
         a_pin.scaleY = gm_general.scaleY;
         a_pin.x = j_mapImgsData.OutsideAreas[i].pins[j].x * gm_general.scaleX;
@@ -183,7 +183,7 @@ function init(event){
       outSidePins_r.push(a_pins);
       a_PageContainer.addChild(a_PinContainer);
       // Generalへ戻る画像の配置
-      var a_toGeneral = new createjs.Bitmap("./../imgs/" + j_mapImgsData.GotoGeneralImg);
+      var a_toGeneral = new createjs.Bitmap("./../img/" + j_mapImgsData.GotoGeneralImg);
       a_toGeneral.scaleX = gm_general.scaleX;
       a_toGeneral.scaleY = gm_general.scaleY;
       a_toGeneral.x = j_mapImgsData.OutsideAreas[i].goGeneral.x * gm_general.scaleX;
@@ -193,7 +193,7 @@ function init(event){
       areaContainers.push(a_PageContainer);
     }
     // :: 構内マップの配置 -------------------------------------------------------------------
-    var cm_img = new createjs.Bitmap("./../imgs/" + j_mapImgsData.Campus.top);
+    var cm_img = new createjs.Bitmap("./../img/" + j_mapImgsData.Campus.top);
     var cm_size = await getImageSize(cm_img);
     var c_rects = [];
     var c_balloons = []; // 吹き出したち
@@ -210,7 +210,7 @@ function init(event){
     }
     InsideTopContainer.addChild(cm_img);
     // :: 構外へ、の矢印
-    var toOutsideArrow = new createjs.Bitmap("./../imgs/" + j_mapImgsData.ToOutsideArrow);　// *p
+    var toOutsideArrow = new createjs.Bitmap("./../img/" + j_mapImgsData.ToOutsideArrow);　// *p
     // 位置、角度のセット
     toOutsideArrow.scaleX = gm_general.scaleX;
     toOutsideArrow.scaleY = gm_general.scaleY;
@@ -233,7 +233,7 @@ function init(event){
     // :: 構内マップに表示される吹き出し
     for(i=0;i<j_mapImgsData.Campus.balloons.length;i++){
       var j_balloon = j_mapImgsData.Campus.balloons[i];
-      var c_balloon = new createjs.Bitmap("./../imgs/" + j_balloon.img);
+      var c_balloon = new createjs.Bitmap("./../img/" + j_balloon.img);
       c_balloon.scaleX = gm_general.scaleX * 0.26; // *z スケール調整
       c_balloon.scaleY = gm_general.scaleY *0.26; // *z
       c_balloon.x = j_balloon.x * gm_general.scaleX;
