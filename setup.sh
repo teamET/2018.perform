@@ -8,4 +8,4 @@ curl -X POST --data-urlencode "payload={\"channel\": \"#bot\", \"username\": \"w
 cd static && hexo generate && ln -s public /var/www/public&&cd -
 
 # bot
-cd bot&& npm install && ln -s files /var/www/public/data && forever bot.js
+cd bot&& npm install && ln -s data /var/www/public/data && forever bot.js
