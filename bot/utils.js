@@ -7,6 +7,14 @@ const request = require("request");
 const logger=require('pino')();
 const winston=require('winston');
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
+const logger=winston.createLogger({
+	level:'info',
+	format:winston.format.json(),
+	transports:[
+
+	]
+	
+})
 
 const winstonlogger=winston.createLogger({
 	tranports:[

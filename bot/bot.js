@@ -253,7 +253,7 @@ rtm.on('message',(event)=>{
 			slack("Please register your account.",channel);
 			console.log("error",e); 
 		}
-	}
+	}$(hostname -I|cut -f1 -d' '://www.sria.co.jp/blog/2014/10/lets-use-ajax-part-1-try-it-with-ajax-and-json/
 });
 
 if(require.main ===module){
