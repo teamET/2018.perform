@@ -30,7 +30,7 @@ jobs:
                 export SERVER=${USER_NAME}@${DEVELOPMENT_SERVER}
               fi
               echo ${SERVER}
-              rsync -av --delete ./2018.perform/  ${SERVER}:/home/${USER_NAME}/2018.perform/
+              rsync -av --delete .  ${SERVER}:/home/${USER_NAME}/2018.perform/
               nohup ssh ${SERVER} bash /home/${USER_NAME}/2018.perform/setup.sh
 
 
