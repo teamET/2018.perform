@@ -14,6 +14,7 @@ cp -rf ./public /var/www/public
 cd /root/2018.perform/bot
 npm install
 
-curl -X POST --data-urlencode "payload={\"channel\": \"#bot\", \"username\": \"webhookbot\", \"text\": \"This is posted to #bot and comes from a bot named webhookbot.\n http://$(hostname -I|cut -f1 -d' ')\n \`$(whoami)@$(hostname -I|cut -f1 -d' ')\`\n\`$(pwd)\`\n\`\`\`$(find /var/www/public)\`\`\`\", \"icon_emoji\": \":sunglasses:\"}" $WEBHOOK_URL
+curl -X POST --data-urlencode "payload={\"channel\": \"#bot\", \"username\": \"webhookbot\", \"text\": \"This is posted to #bot and comes from a bot named webhookbot.\n http://$(hostname -I|cut -f1 -d' ')\n \`$(whoami)@$(hostname -I|cut -f1 -d' ')\`\n\`$(pwd)\`\n\", \"icon_emoji\": \":sunglasses:\"}" $WEBHOOK_URL
 
+curl -X POST --data-urlencode "payload={\"channel\": \"#bot\", \"username\": \"webhookbot\", \"text\": \"\`\`\`$(cd /var/www/public ;find .)\`\`\`\", \"icon_emoji\": \":sunglasses:\"}" $WEBHOOK_URL
 
