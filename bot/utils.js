@@ -7,14 +7,15 @@ const request = require("request");
 const logger=require('pino')();
 const winston=require('winston');
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
+const BOT_USERNAME='mogi-shop';
 
 const winstonlogger=winston.createLogger({
-	tranports:[
+	transports:[
 		new winston.transports.Console(),
+		new winston.transports.File({filename:'logs/info.log',level:'error'}),
 		new winston.transports.File({filename:'logs/combined.log'})
 	]
 });
-winstonlogger.info('hello');
 
 function read_list(){
 	try{
@@ -47,11 +48,25 @@ function slack_log(message){
 }
 
 function slack_err(message){
-	slack_postmessage("errors",message);
+	winstonlogger.error(message);
+	slack_postMessage("errors",message);
 }
 
-function slack_react(message){
-
+function slack_responce(message,event){
+    if(event.username === BOT_USERNAME){
+        return;
+    }
+    console.log(message);
+	request.post('https://slack.com/api/chat.postMessage',{
+		form: {
+			token: SLACK_TOKEN,
+			channel: event.channel,
+			username: 'mogi-bot',
+			text: message
+		}
+	},(error, response, body) => {
+		if (error) slack_err(error);
+	});
 }
 function slack_upload(channel,image){
 	console.log(channel,image,SLACK_TOKEN)
@@ -89,6 +104,18 @@ function download(dir,title,url){
 	return fname;
 }
 
+// default responces
+const HELP_MESSAGE="```\
+.help\n\
+.entry <shop name> <class>\n\
+.goods <goods name> <price>\n \
+.text <text>\n.review\n\
+.show\
+```";
+
+function help(event){
+	slack_responce(HELP_MESSAGE,event);
+}
 
 function slack_postmessage(channel,message){
 	request.post('https://slack.com/api/chat.postmessage',{
@@ -103,8 +130,8 @@ function slack_postmessage(channel,message){
 	})
 };
 
-function load_template(filename){
-	var file=path.join(__dirname,filename);
+function load_template(){
+	var file=path.join(__dirname,"./views/_booth.ejs");
 	var data="";
 	try{
 		data=fs.readFileSync(file,'utf-8');
@@ -142,12 +169,14 @@ function make_template(filename,data){
 
 
 module.exports={
-	sendfile:slack_upload,
-	postmessage:slack_postmessage,
+	sendFile:slack_upload,
+	postMessage:slack_postMessage,
+	res:slack_responce,
 	log:slack_log,
 	err:slack_err,
 	download:download,
 	make_template:make_template,
+  help:help
 	read_list:read_list,
 	json_sort:json_sort
 }
