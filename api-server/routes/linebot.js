@@ -47,7 +47,7 @@ router.post('/', function(req, res, next) {
                     ]
                 }
             }, function (error, response, body){
-                context.log(body);
+                console.log(body);
             });
         }
     } else {
