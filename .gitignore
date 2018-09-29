@@ -1,3 +1,7 @@
+# 
+/logs
+*.swp
+
 # Created by https://www.gitignore.io/api/node
 
 static/db.json
@@ -88,3 +92,4 @@ shop.json
 *.env
 public
 db.json
+.*.sw*
