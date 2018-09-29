@@ -10,7 +10,7 @@ npm install --save hexo-cli
 hexo generate
 cp -rf ./public/* /var/www/public
 mkdir /var/www/public/data
-echo "{'test':'test'}" >> /var/www/public/data/test.json
+echo "{'test':'test'}" > /var/www/public/data/test.json
 
 # bot
 cd /root/2018.perform/bot
