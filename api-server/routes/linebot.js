@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const crypto = require('crypto');
 var request = require('request');
-
+var connection = require('./mysqlConnection');
 
 /* 環境変数 */
 const channelSecret = "cf2ce152898f4d3465d1e5f2d3dd46e8";
@@ -17,7 +17,89 @@ const urlg_download_message = "https://api.line.me/v2/bot/message/{messageId}/co
 //LINE URL DELETE
 const urld_rich_delete = "https://api.line.me/v2/bot/user/{userId}/richmenu";
 
-/* GET home page. */
+/* responceの作成.全てこれを介す. */
+function Build_responce(url, res_body) {
+    return new Promise(function(resolve, reject) {
+        var tmp = {
+            url: url,
+            headers: {
+                "Authorization": "Bearer " + accessToken
+            }
+        };
+        if (res_body) {
+            tmp.json = res_body;
+        }
+        resolve(tmp);
+    });
+}
+
+/* メッセージの作成 */
+function Build_msg_text(Token, message) {
+    return new Promise(function(resolve, reject) {
+        var tmp = {
+            "replyToken": Token,
+            "messages": [{
+                "type": "text",
+                "text": message
+            }]
+        };
+        resolve(tmp);
+    });
+}
+
+/* Type - message */
+async function type_message(event) {
+    var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+        event.replyToken, event.message.text
+    ));
+    request.post(tmp, function(error, responce, body) {
+        console.log(body);
+    });
+}
+
+/* Type - follow */
+async function type_follow(event) {
+    var rich_url = urlp_rich_set.replace('{userId}', event.source.userId).replace('{richMenuId}', 'richmenu-b29e60fb9ff07712e58f5c4e9203b477');
+    request.post(await Build_responce(rich_url), function(error, responce, body) {
+        console.log(body);
+    });
+    var message = "東京高専文化祭BOTを友達登録してくれてありがとう！"；
+    var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+        event.replyToken, message
+    ));
+    request.post(tmp, function(error, responce, body) {
+        console.log(body);
+    });
+}
+
+async function addUser(event, usertype) {
+    var rich_url = url_rich_delete.replace('{userId}', event.source.userId);
+    request.delete(await Build_responce(rich_url), function(error, responce, body) {
+        console.log(body);
+    });
+    var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+        event.replyToken, usertype + "と認証しました"
+    ));
+    request.post(tmp, function(error, responce, body) {
+        console.log(body);
+    });
+    //DBへユーザの追加
+}
+
+/* Type - Beacon */
+async function type_beacon(event) {
+    var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+        event.replyToken, "ビーコン範囲に入りました"
+    ));
+    request.post(tmp, function(error, responce, body) {
+        console.log(body);
+    });
+    //DB処理が入る
+}
+
+
+
+/* MAIN */
 router.post('/', function(req, res, next) {
     var responce = "";
     /* LINE認証 */
@@ -28,28 +110,24 @@ router.post('/', function(req, res, next) {
     if (req.header("x-line-signature") == signature) {
         //認証成功
         res.status(200);
-        //以下デバッグ用
         console.log("line_OK");
-        const event = body.events[0];
-        if (event.type == "message"){
-            request.post({
-                url: urlp_reply,
-                headers: {
-                    "Authorization": "Bearer " + accessToken
-                },
-                json: {
-                    "replyToken": event.replyToken,
-                    "messages": [
-                        {
-                            "type": "text",
-                            "text": event.message.text
-                        }
-                    ]
+        events.foreach(function(value) {
+            if (value.type == "message"){
+                type_message(value);
+            } else if (value.type == "follow") {
+                type_follow(value);
+            } else if (value.type == "postback") {
+                if (value.postback.data == "Student") {
+                    addUser(value, "学生");
+                }else if(value.postback.data == "Other") {
+                    addUser(value, "来場者");
                 }
-            }, function (error, response, body){
-                console.log(body);
-            });
-        }
+            } else if (value.type == "beacon") {
+                if (value.beacon.type == "enter") {
+                    type_beacon(value);
+                }
+            }
+        });
     } else {
         //認証失敗
         console.log("line_NG");
