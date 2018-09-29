@@ -8,6 +8,15 @@ var request = require('request');
 const channelSecret = "cf2ce152898f4d3465d1e5f2d3dd46e8";
 const accessToken = "0dsdbxxcI/wkh1vXXjh+GxNqS1bFbVRYH4v0zWiKURT9qfK/Gn9huqMLB2/LyLzCf8q56GSJ809ankSwwf+35nE0hXZCizbw5+TLTZ2oH2l/4oHhhuHkEM8tK6SCDPcQREcaofZqeRMW5jbTbo8WigdB04t89/1O/w1cDnyilFU=";
 
+/* LINE MessagingAPI URL */
+//URL POST
+const urlp_reply = "https://api.line.me/v2/bot/message/reply";
+const urlp_rich_set = "https://api.line.me/v2/bot/user/{userId}/richmenu/{richMenuId}";
+//LINE URL GET
+const urlg_download_message = "https://api.line.me/v2/bot/message/{messageId}/content";
+//LINE URL DELETE
+const urld_rich_delete = "https://api.line.me/v2/bot/user/{userId}/richmenu";
+
 /* GET home page. */
 router.post('/', function(req, res, next) {
     var responce = "";
@@ -24,7 +33,7 @@ router.post('/', function(req, res, next) {
         const event = body.events[0];
         if (event.type == "message"){
             request.post({
-                url: url_reply,
+                url: urlp_reply,
                 headers: {
                     "Authorization": "Bearer " + accessToken
                 },
