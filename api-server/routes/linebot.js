@@ -63,7 +63,7 @@ async function type_follow(event) {
     request.post(await Build_responce(rich_url), function(error, responce, body) {
         console.log(body);
     });
-    var message = "東京高専文化祭BOTを友達登録してくれてありがとう！"；
+    var message = "東京高専文化祭BOTを友達登録してくれてありがとう！";
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
         event.replyToken, message
     ));
