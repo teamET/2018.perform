@@ -23,7 +23,7 @@ input, button
        url(font-icon-path + ".svg#fontawesomeregular?v=#" + font-icon-version) format("svg")
 
 html, body, #container
-  height: 100%
+  height: 500px;
 
 body
   max-width: (column-width + gutter-width) * columns + gutter-width
@@ -107,3 +107,24 @@ if sidebar
 .slide-show img {
   width: 100%;
   }
+
+html,
+body {
+    margin: 0;
+    overflow: scroll;
+    width: 100%;
+    height:100%;
+}
+
+#myCanvas {
+    
+    width: 100%;
+    /* height : 100%; */
+}
+
+#canvas{
+    display : block;
+    justify-content: center;
+    align-items: center;
+}
+
