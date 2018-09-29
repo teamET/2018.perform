@@ -73,7 +73,7 @@ async function type_follow(event) {
 }
 
 async function addUser(event, usertype) {
-    var rich_url = url_rich_delete.replace('{userId}', event.source.userId);
+    var rich_url = urld_rich_delete.replace('{userId}', event.source.userId);
     request.delete(await Build_responce(rich_url), function(error, responce, body) {
         console.log(body);
     });
@@ -111,23 +111,27 @@ router.post('/', function(req, res, next) {
         //認証成功
         res.status(200);
         console.log("line_OK");
-        events.foreach(function(value) {
-            if (value.type == "message"){
-                type_message(value);
-            } else if (value.type == "follow") {
-                type_follow(value);
-            } else if (value.type == "postback") {
-                if (value.postback.data == "Student") {
-                    addUser(value, "学生");
-                }else if(value.postback.data == "Other") {
-                    addUser(value, "来場者");
-                }
-            } else if (value.type == "beacon") {
-                if (value.beacon.type == "enter") {
-                    type_beacon(value);
-                }
+        var value = body.events[0];
+        if (value.type == "message"){
+            console.log("message");
+            type_message(value);
+        } else if (value.type == "follow") {
+            console.log("follow");
+            type_follow(value);
+        } else if (value.type == "postback") {
+            console.log("postback");
+            if (value.postback.data == "Student") {
+                addUser(value, "学生");
+            }else if(value.postback.data == "Other") {
+                addUser(value, "来場者");
             }
-        });
+        } else if (value.type == "beacon") {
+            if (value.beacon.type == "enter") {
+                type_beacon(value);
+            }
+        } else {
+            console.log(value);
+        }
     } else {
         //認証失敗
         console.log("line_NG");
