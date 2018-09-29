@@ -9,7 +9,7 @@ const channelSecret = "cf2ce152898f4d3465d1e5f2d3dd46e8";
 const accessToken = "0dsdbxxcI/wkh1vXXjh+GxNqS1bFbVRYH4v0zWiKURT9qfK/Gn9huqMLB2/LyLzCf8q56GSJ809ankSwwf+35nE0hXZCizbw5+TLTZ2oH2l/4oHhhuHkEM8tK6SCDPcQREcaofZqeRMW5jbTbo8WigdB04t89/1O/w1cDnyilFU=";
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
     var responce = "";
     /* LINE認証 */
     const body = req.body; // Request body string
