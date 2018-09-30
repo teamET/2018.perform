@@ -34,18 +34,14 @@ function Build_responce(url, res_body) {
 }
 
 /* メッセージの作成 */
-function Build_msg_text(Token, messages) {
+function Build_msg_text(Token, message) {
     return new Promise(function(resolve, reject) {
-        var tmp_m = [];
-        for(var i=0; i<message.length; i++) {
-            tmp_m[i] = {
-                "type": "text",
-                "text": messages[i]
-            };
-        }
         var tmp = {
             "replyToken": Token,
-            "messages": tmp_m
+            "messages": [{
+                "type": "text",
+                "text": message
+            }]
         };
         resolve(tmp);
     });
@@ -54,7 +50,7 @@ function Build_msg_text(Token, messages) {
 /* Type - message */
 async function type_message(event) {
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, [event.message.text]
+        event.replyToken, event.message.text
     ));
     request.post(tmp, function(error, responce, body) {
         console.log(body);
@@ -69,7 +65,7 @@ async function type_follow(event) {
     });
     var message = "東京高専文化祭BOTを友達登録してくれてありがとう！";
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, [message]
+        event.replyToken, message
     ));
     request.post(tmp, function(error, responce, body) {
         console.log(body);
@@ -82,7 +78,7 @@ async function addUser(event, usertype) {
         console.log(body);
     });
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, [usertype + "と認証しました"]
+        event.replyToken, usertype + "と認証しました"
     ));
     request.post(tmp, function(error, responce, body) {
         console.log(body);
@@ -109,7 +105,7 @@ function removeUser(event) {
 /* Type - Beacon */
 async function type_beacon(event) {
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, ["ビーコン範囲に入りました"]
+        event.replyToken, "ビーコン範囲に入りました"
     ));
     request.post(tmp, function(error, responce, body) {
         console.log(body);
