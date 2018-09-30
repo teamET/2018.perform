@@ -125,7 +125,7 @@ function help(event){
 	slack_responce(HELP_MESSAGE,event);
 }
 
-function slack_postmessage(channel,message){
+function slack_postMessage(channel,message){
 	request.post('https://slack.com/api/chat.postmessage',{
 		form: {
 			token: SLACK_TOKEN,
@@ -184,7 +184,7 @@ module.exports={
 	err:slack_err,
 	download:download,
 	make_template:make_template,
-	help:help,
+  help:help,
 	read_list:read_list,
 	json_sort:json_sort
 }
@@ -200,13 +200,14 @@ module.exports={
 
 
 if(require.main ===module){
-
+/*
 	var EVENT_DATA = JSON.parse(fs.readFileSync('./event.json', 'utf8'));
 	var SHOP_DATA = JSON.parse(fs.readFileSync('./shop.json', 'utf8'));
 	make_template('_timetable',EVENT_DATA);
 	make_template('_news',EVENT_DATA);
-	make_template('_shoptable',SHOP_DATA);
-//	slack_postMessage("develop","files/4J/4J.png")
+    */
+	make_template('_shoptable','{"shopname":"4J","goods":{"goods":{"name":"price"},"image":["image"],"text":"text"}}');
+//	slack_postMessage("develop","files/4J/4J.png");
 //	slack_upload("develop","files/4J/4J.png")
 
 	slack_log("hello world");
