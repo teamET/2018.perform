@@ -95,7 +95,8 @@ async function addUser(event, usertype) {
 }
 
 function removeUser(event) {
-    var query = 'DELETE FROM UserData WHERE USERID = {id}'
+    console.log("remove");
+    var query = 'DELETE FROM UserData WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId);
     connection.query(query, function(err, rows) {
         console.log(rows);
