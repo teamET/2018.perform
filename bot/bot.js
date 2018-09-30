@@ -289,6 +289,7 @@ rtm.on("message",(event)=>{
 	}
 	//make_template("_booth.ejs",shop_data)
 	//make_template("_timetable.ejs",timetable_data)
+    utils.save_templates();
 	if(event.files !== undefined){
         	save_shop_image(event);
 	}
