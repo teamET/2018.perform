@@ -10,8 +10,8 @@
         {"x":2450,"y":1150,"width":350,"height":230,"color":"Green"},
         {"x":2250,"y":850,"width":230,"height":200,"color":"Blue"}
     ],
-    "ToDisplayPinImg":"samplebutton.png",
-    "ToHidePinImg":"neko.jpg",
+    "ToDisplayPinImg":"map-tool-pin-on.png",
+    "ToHidePinImg":"map-tool-pin-off.png",
     "PinImg_1":"map-pin_1.png",
     "GotoGeneralImg":"map-tool-goGeneral.png",
     "OutsideAreas":[
@@ -26,8 +26,8 @@
                 {"x":3130,"y":750}
             ],
             "goGeneral":{"x":3000,"y":210},
-            "toDisplayPins":{"x":3000,"y":1450},
-            "toHidePins":{"x":3000,"y":1450}
+            "toDisplayPins":{"x":450,"y":1350},
+            "toHidePins":{"x":450,"y":1350}
         },
         {
             "area":"B",
@@ -39,8 +39,8 @@
                 {"x":2220,"y":80}
             ],
             "goGeneral":{"x":3000,"y":1450},
-            "toDisplayPins":{"x":3000,"y":1450},
-            "toHidePins":{"x":3000,"y":1450}
+            "toDisplayPins":{"x":3320,"y":900},
+            "toHidePins":{"x":3320,"y":900}
         },
         {
             "area":"C",
@@ -50,8 +50,8 @@
                 {"x":2100,"y":1600}
             ],
             "goGeneral":{"x":3000,"y":1450},
-            "toDisplayPins":{"x":3000,"y":1450},
-            "toHidePins":{"x":3000,"y":1450}
+            "toDisplayPins":{"x":3100,"y":230},
+            "toHidePins":{"x":3100,"y":230}
         },
         {
             "area":"D",
@@ -67,8 +67,8 @@
                 {"x":2985,"y":1250}
             ],
             "goGeneral":{"x":900,"y":1380},
-            "toDisplayPins":{"x":3000,"y":1450},
-            "toHidePins":{"x":3000,"y":1450}
+            "toDisplayPins":{"x":3470,"y":1450},
+            "toHidePins":{"x":3470,"y":1450}
         },
         {
             "area":"E",
@@ -82,8 +82,8 @@
                 {"x":3110,"y":450}
             ],
             "goGeneral":{"x":2800,"y":1450},
-            "toDisplayPins":{"x":3000,"y":1450},
-            "toHidePins":{"x":3000,"y":1450}
+            "toDisplayPins":{"x":2750,"y":70},
+            "toHidePins":{"x":2750,"y":70}
         },
         {
             "area":"F",
@@ -94,8 +94,8 @@
                 {"x":1640,"y":1100}  
             ],
             "goGeneral":{"x":2800,"y":1450},
-            "toDisplayPins":{"x":3000,"y":1450},
-            "toHidePins":{"x":3000,"y":1450}
+            "toDisplayPins":{"x":2750,"y":100},
+            "toHidePins":{"x":2750,"y":100}
         }
     ],
     "Campus":{
@@ -108,7 +108,7 @@
         "buildingRects":[
             {"x":1200,"y":1100,"width":1440,"height":280,"color":"DarkRed"},
             {"x":1200,"y":560,"width":1440,"height":280,"color":"DarkRed"},
-            {"x":2220,"y":30,"width":420,"height":280,"color":"DarkRed"},
+            {"x":1200,"y":30,"width":1440,"height":280,"color":"DarkRed"},
             {"x":700,"y":1640,"width":510,"height":280,"color":"DarkRed"}
         ],
         "balloons":[
@@ -189,25 +189,25 @@
                     {"x":-10,"y":-30}
                 ],
                 "toDisplayPins":[
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30}
+                    {"x":3200,"y":1400},
+                    {"x":3200,"y":1400},
+                    {"x":3200,"y":1400},
+                    {"x":3200,"y":1400}
                 ],
                 "toHidePins":[
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30}
+                    {"x":3200,"y":1400},
+                    {"x":3200,"y":1400},
+                    {"x":3200,"y":1400},
+                    {"x":3200,"y":1400}
                 ]
             },
             {
                 "buildNum":3,
                 "floorImg":[
-                    "neko.jpg",
-                    "neko.jpg",
-                    "neko.jpg",
-                    "neko.jpg"
+                    "map-inside-3-1.png",
+                    "map-inside-3-2.png",
+                    "map-inside-3-3.png",
+                    "map-inside-3-4.png"
                 ],
                 "goUpper":[
                     {"floor":0,"x":2300,"y":-10},
@@ -244,29 +244,29 @@
                     {"x":-10,"y":-30}
                 ],
                 "toDisplayPins":[
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30}
+                    {"x":1000,"y":50},
+                    {"x":1000,"y":50},
+                    {"x":1000,"y":50},
+                    {"x":1000,"y":50}
                 ],
                 "toHidePins":[
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30}
+                    {"x":1000,"y":50},
+                    {"x":1000,"y":50},
+                    {"x":1000,"y":50},
+                    {"x":1000,"y":50}
                 ]
             },
             {
                 "buildNum":5,
                 "floorImg":[
-                    "neko.jpg",
-                    "neko.jpg"
+                    "map-inside-5-1.png",
+                    "map-inside-5-2.png"
                 ],
                 "goUpper":[
                     {"floor":0,"x":2300,"y":-10}
                 ],
                 "goLower":[
-                    {"floor":1,"x":2300,"y":1250}
+                    {"floor":1,"x":900,"y":1250}
                 ],
                 "pins":[
                     [
@@ -283,19 +283,19 @@
                     {"x":-10,"y":-30}
                 ],
                 "toDisplayPins":[
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30}
+                    {"x":500,"y":1160},
+                    {"x":300,"y":400}
                 ],
                 "toHidePins":[
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30}
+                    {"x":500,"y":1160},
+                    {"x":300,"y":400}
                 ]
             },
             {
                 "buildNum":8,
                 "floorImg":[
-                    "neko.jpg",
-                    "neko.jpg"
+                    "map-inside-8-1.png",
+                    "map-inside-8-3.png"
                 ],
                 "goUpper":[
                     {"floor":0,"x":2300,"y":-10}
@@ -318,12 +318,12 @@
                     {"x":-10,"y":-30}
                 ],
                 "toDisplayPins":[
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30}
+                    {"x":100,"y":800},
+                    {"x":100,"y":800}
                 ],
                 "toHidePins":[
-                    {"x":-10,"y":-30},
-                    {"x":-10,"y":-30}
+                    {"x":100,"y":800},
+                    {"x":100,"y":800}
                 ]
             }
         ]

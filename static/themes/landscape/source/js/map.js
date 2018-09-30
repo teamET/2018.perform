@@ -22,7 +22,7 @@ function Load(){
   // load JSON // *p
   var queue = new createjs.LoadQueue(true);
   var manifest = [
-    {"src":"./../data/mapImgData.json","id":"mapImgs"}
+    {"src":"./data/mapImgData.json","id":"mapImgs"}
   ]
   /*
   // ** 後で足せ
@@ -55,7 +55,7 @@ function init(event){
   stage.addChild(DisplayContainer);
   DisplayContainer.cache(0,0,canvasElement.width,canvasElement.height);
   stage.setClearColor('#FFFFFF');
-  var gm_general      = new createjs.Bitmap("./../img/" + j_mapImgsData.Generalview); // 構外MAP全体画像　すべての基準はこの画像になる。// *p
+  var gm_general      = new createjs.Bitmap("./img/" + j_mapImgsData.Generalview); // 構外MAP全体画像　すべての基準はこの画像になる。// *p
   main();
 
   // -- 画像の読み込み >> 画像のサイズを返す------------------------
@@ -126,7 +126,7 @@ function init(event){
       OutsideContainer.addChild(g_text);
     }
     // --- 1.2 構外MAP全体画像の配置 --------------------------------------------------------------
-    var toCampusArrow = new createjs.Bitmap("./../img/" + j_mapImgsData.ToCampusArrow); // *p
+    var toCampusArrow = new createjs.Bitmap("./img/" + j_mapImgsData.ToCampusArrow); // *p
     // 位置、角度のセット
     toCampusArrow.scaleX   = gm_general.scaleX * 0.9;
     toCampusArrow.scaleY   = gm_general.scaleY * 0.9;
@@ -145,7 +145,7 @@ function init(event){
     var a_toHidePins         = [];
     // --- 2.1 各エリアの拡大画像の大きさの取得---------------------------------------------------
     for(var i=0;i<j_mapImgsData.OutsideAreas.length;i++){
-      var am_img      = new createjs.Bitmap("./../img/" + j_mapImgsData.OutsideAreas[i].img); // *p
+      var am_img      = new createjs.Bitmap("./img/" + j_mapImgsData.OutsideAreas[i].img); // *p
       am_sizes_tmp[i] = getImageSize(am_img);
     }
     // await時間短縮
@@ -155,7 +155,7 @@ function init(event){
       var a_PageContainer = new createjs.Container(); // i番目のエリアのデータが全部入る
       var a_PinContainer  = new createjs.Container(); // ピンがいっぱい入る
       // ---- 2.2.1 各エリアの拡大画像の配置 ------------------------------------------------------
-      var am_img          = new createjs.Bitmap("./../img/" + j_mapImgsData.OutsideAreas[i].img);// *p
+      var am_img          = new createjs.Bitmap("./img/" + j_mapImgsData.OutsideAreas[i].img);// *p
       var am_size         = am_sizes[i];
       am_imgs.push(am_img);
       // ---- canvasのサイズに画像を合わせる。----------------------------------------------------
@@ -174,11 +174,11 @@ function init(event){
       a_PageContainer.addChild(am_img);
       // ---- 2.2.2 各エリアに配置されるピンの設置 ------------------------------------------------
       var a_pins         = []; //　エリアにおけるピンの画像が入る [エリア]
-      var a_pin1Tmp      = new createjs.Bitmap("./../img/"+j_mapImgsData.PinImg_1); // *p
+      var a_pin1Tmp      = new createjs.Bitmap("./img/"+j_mapImgsData.PinImg_1); // *p
       var pin1Size       = await getImageSize(a_pin1Tmp); // pinの画像サイズを取得
       for(var j=0;j<j_mapImgsData.OutsideAreas[i].pins.length;j++){
         // ----- 2.2.2.1 エリアにおけるピンの画像の設置 -------------------------------------------
-        var a_pin        = new createjs.Bitmap("./../img/"+j_mapImgsData.PinImg_1); // *p
+        var a_pin        = new createjs.Bitmap("./img/"+j_mapImgsData.PinImg_1); // *p
         a_pin.scaleX     = gm_general.scaleX;
         a_pin.scaleY     = gm_general.scaleY;
         a_pin.x          = j_mapImgsData.OutsideAreas[i].pins[j].x * gm_general.scaleX;
@@ -198,7 +198,7 @@ function init(event){
       a_PageContainer.addChild(a_PinContainer);
       a_pinContainers.push(a_PinContainer);
       // ---- 2.2.3 各エリアに配置される「Generalへ戻る画像」の設置 -------------------------------
-      var a_toGeneral = new createjs.Bitmap("./../img/" + j_mapImgsData.GotoGeneralImg); // *p
+      var a_toGeneral = new createjs.Bitmap("./img/" + j_mapImgsData.GotoGeneralImg); // *p
       a_toGeneral.scaleX = gm_general.scaleX;
       a_toGeneral.scaleY = gm_general.scaleY;
       a_toGeneral.x      = j_mapImgsData.OutsideAreas[i].goGeneral.x * gm_general.scaleX;
@@ -206,18 +206,18 @@ function init(event){
       a_PageContainer.addChild(a_toGeneral);
       a_toGenerals.push(a_toGeneral);
       // ---- 2.2.4 各エリアに配置される「ピンを表示する画像」の設置 ------------------------------
-      var a_toDisplayPin = new createjs.Bitmap("./../img/" + j_mapImgsData.ToDisplayPinImg); // *p
-      a_toDisplayPin.scaleX = gm_general.scaleX;
-      a_toDisplayPin.scaleY = gm_general.scaleY;
+      var a_toDisplayPin = new createjs.Bitmap("./img/" + j_mapImgsData.ToDisplayPinImg); // *p
+      a_toDisplayPin.scaleX = gm_general.scaleX * 0.9;
+      a_toDisplayPin.scaleY = gm_general.scaleY * 0.9;
       a_toDisplayPin.x      = j_mapImgsData.OutsideAreas[i].toDisplayPins.x * gm_general.scaleX;
       a_toDisplayPin.y      = j_mapImgsData.OutsideAreas[i].toDisplayPins.y * gm_general.scaleY;
       a_toDisplayPin.alpha  = 0;
       a_PageContainer.addChild(a_toDisplayPin);
       a_toDisplayPins.push(a_toDisplayPin);
       // ---- 2.2.5 各エリアに配置される「ピンを非表示にする画像」の設置 --------------------------
-      var a_toHidePin = new createjs.Bitmap("./../img/" + j_mapImgsData.ToHidePinImg); // *p
-      a_toHidePin.scaleX = gm_general.scaleX;
-      a_toHidePin.scaleY = gm_general.scaleY;
+      var a_toHidePin = new createjs.Bitmap("./img/" + j_mapImgsData.ToHidePinImg); // *p
+      a_toHidePin.scaleX = gm_general.scaleX * 0.9;
+      a_toHidePin.scaleY = gm_general.scaleY * 0.9;
       a_toHidePin.x      = j_mapImgsData.OutsideAreas[i].toHidePins.x * gm_general.scaleX;
       a_toHidePin.y      = j_mapImgsData.OutsideAreas[i].toHidePins.y * gm_general.scaleY;
       a_toHidePin.alpha = 1;
@@ -229,7 +229,7 @@ function init(event){
 
     // --- 3. 構内マップの配置 ----------------------------------------------------------------------------------------
     var InsideTopContainer = new createjs.Container();   // 構内マップで表示されるオブジェクトが格納されている。
-    var cm_img             = new createjs.Bitmap("./../img/" + j_mapImgsData.Campus.top); // *p
+    var cm_img             = new createjs.Bitmap("./img/" + j_mapImgsData.Campus.top); // *p
     // --- 3.1 構内マップTOPの画像サイズの取得 ----------------------------------------------------
     var cm_size = await getImageSize(cm_img);
     var c_rects = []; // 構内から棟に
@@ -247,7 +247,7 @@ function init(event){
     }
     InsideTopContainer.addChild(cm_img);
     // ---  3.2「構外への矢印画像」の設置 ---------------------------------------------------------
-    var toOutsideArrow = new createjs.Bitmap("./../img/" + j_mapImgsData.ToOutsideArrow); // *p
+    var toOutsideArrow = new createjs.Bitmap("./img/" + j_mapImgsData.ToOutsideArrow); // *p
     // 位置、角度のセット
     toOutsideArrow.scaleX = gm_general.scaleX * 0.9;
     toOutsideArrow.scaleY = gm_general.scaleY * 0.9;
@@ -276,7 +276,7 @@ function init(event){
       var j_balloon        = j_mapImgsData.Campus.balloons[i];
       var j_balloonRect    = j_mapImgsData.Campus.balloonRects[i]; 
       // ---- 3.4.1 吹き出し画像の設置 ------------------------------------------------------------
-      var c_balloon        = new createjs.Bitmap("./../img/" + j_balloon.img); // 吹き出し画像 // *p
+      var c_balloon        = new createjs.Bitmap("./img/" + j_balloon.img); // 吹き出し画像 // *p
       var c_balloonRects   = [];                                             // i番目吹き出しに載せられる四角たちが格納されている。
       c_balloon.scaleX     = gm_general.scaleX * 0.26; // *z スケール調整
       c_balloon.scaleY     = gm_general.scaleY *0.26; // *z
@@ -322,7 +322,7 @@ function init(event){
     for(var i=0;i<j_mapImgsData.Campus.buildings.length;i++){
       bfm_sizes_tmp[i] = []; // 2次元配列化
       for(var j=0;j<j_mapImgsData.Campus.buildings[i].floorImg.length;j++){
-        var fm_img = new createjs.Bitmap("./../img/"+ j_mapImgsData.Campus.buildings[i].floorImg[j]); // *p
+        var fm_img = new createjs.Bitmap("./img/"+ j_mapImgsData.Campus.buildings[i].floorImg[j]); // *p
         bfm_sizes_tmp[i][j] = getImageSize(fm_img);
       }
     }
@@ -345,7 +345,7 @@ function init(event){
       for(var j=0;j<j_mapImgsData.Campus.buildings[i].floorImg.length;j++){
         var FloorContainer = new createjs.Container(); // j階のオブジェクトが全て格納される
         // ---- 4.2.1 各フロアの拡大画像の配置 ----------------------------------------------------
-        var fm_img         = new createjs.Bitmap("./../img/"+ j_mapImgsData.Campus.buildings[i].floorImg[j]); // *p
+        var fm_img         = new createjs.Bitmap("./img/"+ j_mapImgsData.Campus.buildings[i].floorImg[j]); // *p
         var fm_size        = bfm_sizes[i][j];
         // ---- 4.2.2 canvasのサイズに各フロア画像を合わせる。-------------------------------------
         if((canvasElement.width/fm_size[0]) * fm_size[1] > canvasElement.height){
@@ -364,11 +364,11 @@ function init(event){
         var f_pins         = [];                       // i棟j階におけるピン画像が全て格納される 
         var f_PinContainer = new createjs.Container(); // i棟j階におけるピン画像が全て格納されたコンテナ
         // ---- 4.2.4 ピン画像・サイズの取得 ------------------------------------------------------
-        var f_pin1Tmp = new createjs.Bitmap("./../img/"+j_mapImgsData.PinImg_1); // *p
+        var f_pin1Tmp = new createjs.Bitmap("./img/"+j_mapImgsData.PinImg_1); // *p
         var f_pin1Size = await getImageSize(f_pin1Tmp); // pinの画像サイズを取得
         for(var k=0;k<j_mapImgsData.Campus.buildings[i].pins[j].length;k++){
           // ---- 4.2.5 ピン画像を設置 ------------------------------------------------------------
-          var f_pin    = new createjs.Bitmap("./../img/"+j_mapImgsData.PinImg_1); // フロア内k番目のピン // *p
+          var f_pin    = new createjs.Bitmap("./img/"+j_mapImgsData.PinImg_1); // フロア内k番目のピン // *p
           f_pin.scaleX = gm_general.scaleX;
           f_pin.scaleY = gm_general.scaleY;
           f_pin.x      = j_mapImgsData.Campus.buildings[i].pins[j][k].x * gm_general.scaleX;
@@ -398,9 +398,9 @@ function init(event){
             // 上の階へbuttonの設置
             //8棟3階の処理　ここだけ3階への画像になる
             if(i== 3 && j == 0){
-              bf_toUpper[i][j] = new createjs.Bitmap("./../img/" + j_mapImgsData.Campus.goUpperFloorImg_8); // *p
+              bf_toUpper[i][j] = new createjs.Bitmap("./img/" + j_mapImgsData.Campus.goUpperFloorImg_8); // *p
             }else{
-              bf_toUpper[i][j] = new createjs.Bitmap("./../img/" + j_mapImgsData.Campus.goUpperFloorImg); // *p
+              bf_toUpper[i][j] = new createjs.Bitmap("./img/" + j_mapImgsData.Campus.goUpperFloorImg); // *p
             }
             bf_toUpper[i][j].scaleX = gm_general.scaleX;
             bf_toUpper[i][j].scaleY = gm_general.scaleY;
@@ -423,10 +423,10 @@ function init(event){
             // 下の階へbuttonの設置
             if(i== 3 && j == 1){
               //8棟3階の処理　ここだけ1階への画像になる
-              bf_toLower[i][j] = new createjs.Bitmap("./../img/" + j_mapImgsData.Campus.goLowerFloorImg_8); // *p
+              bf_toLower[i][j] = new createjs.Bitmap("./img/" + j_mapImgsData.Campus.goLowerFloorImg_8); // *p
             }else{
               // それ以外の普通の棟
-              bf_toLower[i][j] = new createjs.Bitmap("./../img/" + j_mapImgsData.Campus.goLowerFloorImg); // *p
+              bf_toLower[i][j] = new createjs.Bitmap("./img/" + j_mapImgsData.Campus.goLowerFloorImg); // *p
             }
             bf_toLower[i][j].scaleX = gm_general.scaleX;
             bf_toLower[i][j].scaleY = gm_general.scaleY;
@@ -438,7 +438,7 @@ function init(event){
         }
         if(f_goULcheck == 0)bf_toLower[i][j] = -1; // 下の階へがない場合-1を格納
         // ---- 4.2.9 「構内TOPへ」画像の設置 -----------------------------------------------------
-        var f_toCampusTop = new createjs.Bitmap("./../img/" + j_mapImgsData.Campus.goTopArrow); // *p
+        var f_toCampusTop = new createjs.Bitmap("./img/" + j_mapImgsData.Campus.goTopArrow); // *p
         f_toCampusTop.scaleX = gm_general.scaleX;
         f_toCampusTop.scaleY = gm_general.scaleY;
         f_toCampusTop.x      = j_mapImgsData.Campus.buildings[i].goTop[j].x * gm_general.scaleX;
@@ -447,18 +447,18 @@ function init(event){
         bf_toCampusTops[i].push(f_toCampusTop);
         
         // ---- 4.2.10 「ピンを表示する画像」の設置 -----------------------------------------------
-        var f_toDisplayPin = new createjs.Bitmap("./../img/" + j_mapImgsData.ToDisplayPinImg); // *p
-        f_toDisplayPin.scaleX = gm_general.scaleX;
-        f_toDisplayPin.scaleY = gm_general.scaleY;
+        var f_toDisplayPin = new createjs.Bitmap("./img/" + j_mapImgsData.ToDisplayPinImg); // *p
+        f_toDisplayPin.scaleX = gm_general.scaleX * 0.9;
+        f_toDisplayPin.scaleY = gm_general.scaleY * 0.9;
         f_toDisplayPin.x      = j_mapImgsData.Campus.buildings[i].toDisplayPins[j].x * gm_general.scaleX;
         f_toDisplayPin.y      = j_mapImgsData.Campus.buildings[i].toDisplayPins[j].y * gm_general.scaleY;
         f_toDisplayPin.alpha  = 0;
         FloorContainer.addChild(f_toDisplayPin);
         bf_toDisplayPins[i].push(f_toDisplayPin);
         // ---- 4.2.11 「ピンを非表示にする画像」の設置 -------------------------------------------
-        var f_toHidePin = new createjs.Bitmap("./../img/" + j_mapImgsData.ToHidePinImg); // *p
-        f_toHidePin.scaleX = gm_general.scaleX;
-        f_toHidePin.scaleY = gm_general.scaleY;
+        var f_toHidePin = new createjs.Bitmap("./img/" + j_mapImgsData.ToHidePinImg); // *p
+        f_toHidePin.scaleX = gm_general.scaleX * 0.9;
+        f_toHidePin.scaleY = gm_general.scaleY * 0.9;
         f_toHidePin.x      = j_mapImgsData.Campus.buildings[i].toHidePins[j].x * gm_general.scaleX;
         f_toHidePin.y      = j_mapImgsData.Campus.buildings[i].toHidePins[j].y * gm_general.scaleY;
         f_toHidePin.alpha  = 1;
@@ -680,50 +680,90 @@ function init(event){
     // ピンを表示 -----------------------------------------------------------------------
     function DisplayPins(event){
       //var i = event.target.eventParam;
+      var TimeLine = new createjs.Timeline();
+      var changetime = 400;
       console.log("hyouzisuruyo");
       for(var i=0;i<a_pinContainers.length;i++){
         for(var j=0;j<a_pinContainers[i].children.length/2;j++){
-          a_pinContainers[i].children[2*j].alpha = 1;
+          TimeLine.addTween(
+            createjs.Tween.get(a_pinContainers[i].children[2*j],{override:false})
+              .to({alpha : 1},changetime)
+          );
           a_pinContainers[i].children[2*j + 1].visible = true;
         }
-        a_toDisplayPins[i].alpha = 0;
-        a_toHidePins[i].alpha = 1;
+        TimeLine.addTween(
+          createjs.Tween.get(a_toDisplayPins[i],{override:false})
+            .to({alpha : 0},changetime)
+        );
+        TimeLine.addTween(
+          createjs.Tween.get(a_toHidePins[i],{override:false})
+            .to({alpha : 1},changetime)
+        );
       }
       for(var i=0;i<bf_toDisplayPins.length;i++){
         for(var j=0;j<bf_toDisplayPins[i].length;j++){
           // f_PinContainersにアクセスする
           for(var k=0;k<BuildingFloorContainers[i][j].children[1].children.length/2;k++){
-            BuildingFloorContainers[i][j].children[1].children[2*k].alpha   = 1;
+            TimeLine.addTween(
+              createjs.Tween.get(BuildingFloorContainers[i][j].children[1].children[2*k],{override:false})
+                .to({alpha : 1},changetime)
+            );
             BuildingFloorContainers[i][j].children[1].children[2*k+1].visible = true;
           }
-          bf_toDisplayPins[i][j].alpha = 0;
-          bf_toHidePins[i][j].alpha = 1;
+          TimeLine.addTween(
+            createjs.Tween.get(bf_toDisplayPins[i][j],{override:false})
+              .to({alpha : 0},changetime)
+          );
+          TimeLine.addTween(
+            createjs.Tween.get(bf_toHidePins[i][j],{override:false})
+              .to({alpha : 1},changetime)
+          );
         }
       }
     }
     // ピンを非表示 ---------------------------------------------------------------------
     function HidePins(event){
       //var i = event.target.eventParam;
-      console.log("hihyouzinisuruyo");
+      var TimeLine = new createjs.Timeline();
+      var changetime = 400;
       for(var i=0;i<a_pinContainers.length;i++){
         for(var j=0;j<a_pinContainers[i].children.length/2;j++){
-          a_pinContainers[i].children[2*j].alpha = 0;
+          TimeLine.addTween(
+            createjs.Tween.get(a_pinContainers[i].children[2*j],{override:false})
+              .to({alpha : 0},changetime)
+          );
           a_pinContainers[i].children[2*j + 1].visible = false;
         }
-        a_toDisplayPins[i].alpha = 1;
-        a_toHidePins[i].alpha = 0;
+        TimeLine.addTween(
+          createjs.Tween.get(a_toDisplayPins[i],{override:false})
+            .to({alpha : 1},changetime)
+        );
+        TimeLine.addTween(
+          createjs.Tween.get(a_toHidePins[i],{override:false})
+            .to({alpha : 0},changetime)
+        );
       }
       for(var i=0;i<bf_toDisplayPins.length;i++){
         for(var j=0;j<bf_toDisplayPins[i].length;j++){
           // f_PinContainersにアクセスする
           for(var k=0;k<BuildingFloorContainers[i][j].children[1].children.length/2;k++){
-            BuildingFloorContainers[i][j].children[1].children[2*k].alpha   = 0;
+            TimeLine.addTween(
+              createjs.Tween.get(BuildingFloorContainers[i][j].children[1].children[2*k],{override:false})
+                .to({alpha : 0},changetime)
+            );
             BuildingFloorContainers[i][j].children[1].children[2*k+1].visible = false;
           }
-          bf_toDisplayPins[i][j].alpha = 1;
-          bf_toHidePins[i][j].alpha = 0;
+          TimeLine.addTween(
+            createjs.Tween.get(bf_toDisplayPins[i][j],{override:false})
+              .to({alpha : 1},changetime)
+          );
+          TimeLine.addTween(
+            createjs.Tween.get(bf_toHidePins[i][j],{override:false})
+              .to({alpha : 0},changetime)
+          );
         }
       }
+      TimeLine.gotoAndPlay("start");
     }
     // DOMに情報を書き込む（構外）-------------------------------------------------------
     function OutsideWriteInfo(event){
