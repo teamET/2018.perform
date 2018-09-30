@@ -1,5 +1,7 @@
 <div class="slide-show w3-content w3-display-container">
-    <p>椚田祭　10月21,22日開催</p>
+    <p id="txt">椚田祭　10月21,22日開催</p>
+    <p id="txt">イベント</p>
+    <p id="txt">模擬店</p>
     <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301309-a8878e00-a34f-11e8-971c-fde728bb12ba.jpg">
     <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301310-a8878e00-a34f-11e8-8ee0-ba6ba791c3bd.jpg">
     <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301311-a8878e00-a34f-11e8-8ce6-7328bdde6fce.jpg">
@@ -19,12 +21,15 @@
     function showDivs(n) {
     var i;
     var x = document.getElementsByClassName("mySlides");
+    var y = document.getElementbyid("txt");
     if (n > x.length) {slideIndex = 1}    
     if (n < 1) {slideIndex = x.length}
     for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";  
+        x[i].style.display = "none";
+        y[i].style.display = "none";
     }
-    x[slideIndex-1].style.display = "block";  
+    x[slideIndex-1].style.display = "block";
+    y[slideIndex-1].style.display = "block"; 
     }
 </script>
 <div>
