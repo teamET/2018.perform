@@ -88,6 +88,22 @@ async function addUser(event, usertype) {
         console.log(body);
     });
     //DBへユーザの追加
+    var nowtime = new Date();
+    var query = 'INSERT INTO UserData (USERID, USERTYPE, BEACONTIME) VALUES ("{id}", "{type}", "{time}")';
+    query = query.replace('{id}', event.source.userId)
+        .replace('{type}', event.postback.data)
+        .replace('{time}', nowtime);
+    connection.query(query, function(err, rows) {
+        console.log(rows);
+    });
+}
+
+function removeUser(event) {
+    var query = 'DELETE FROM UserData WHERE USERID = {id}'
+        .replace("{id}", event.source.userId);
+    connection.query(query, function(err, rows) {
+        console.log(rows);
+    });
 }
 
 /* Type - Beacon */
@@ -133,6 +149,8 @@ router.post('/', function(req, res, next) {
             if (value.beacon.type == "enter") {
                 type_beacon(value);
             }
+        } else if (value.type == "unfollow") {
+            removeUser(value);
         } else {
             console.log(value);
         }
