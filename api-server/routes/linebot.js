@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const crypto = require('crypto');
 var request = require('request');
+var moment = require('moment');
 var connection = require('./mysqlConnection');
 
 /* 環境変数 */
@@ -84,7 +85,7 @@ async function addUser(event, usertype) {
         console.log(body);
     });
     //DBへユーザの追加
-    var nowtime = Date.now();
+    var nowtime = moment().format('YYYY-MM-DD HH:mm:ss');
     var query = 'INSERT INTO UserData (USERID, USERTYPE, BEACONTIME) VALUES ("{id}", "{type}", "{time}")';
     query = query.replace('{id}', event.source.userId)
         .replace('{type}', event.postback.data)
