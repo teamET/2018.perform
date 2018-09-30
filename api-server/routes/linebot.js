@@ -84,7 +84,7 @@ async function addUser(event, usertype) {
         console.log(body);
     });
     //DBへユーザの追加
-    var nowtime = new Date();
+    var nowtime = Date.now();
     var query = 'INSERT INTO UserData (USERID, USERTYPE, BEACONTIME) VALUES ("{id}", "{type}", "{time}")';
     query = query.replace('{id}', event.source.userId)
         .replace('{type}', event.postback.data)
