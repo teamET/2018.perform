@@ -9,6 +9,7 @@ f_-- : 構内のフロア内オブジェクト
 m_-- : MAP画像
 h_-- : html(DOM)
 e_-- : eventチェック用
+z_-- : Hexoに入れた時の座標調整用
 d_-- : デバッグ用
 // *z : 後から座標指定しなきゃダメなところ
 // ** comment  後から実装するべきところ
@@ -17,12 +18,12 @@ d_-- : デバッグ用
 
 window.addEventListener("load",Load);
 
-// 
+// 読み込み・再読み込み（リロード時にも入る）
 function Load(){
   // load JSON // *p
   var queue = new createjs.LoadQueue(true);
   var manifest = [
-    {"src":"/data/mapImgData.json","id":"mapImgs"}
+    {"src":"/data/mapImgData2.json","id":"mapImgs"}
   ]
   /*
   // ** 後で足せ
@@ -54,10 +55,13 @@ function init(event){
   var DisplayContainer = new createjs.Container();                                  // 表示用コンテナ
   stage.addChild(DisplayContainer);
   DisplayContainer.cache(0,0,canvasElement.width,canvasElement.height);
-  stage.setClearColor('#FFFFFF');
+  stage.setClearColor('#333333');
   var gm_general      = new createjs.Bitmap("/img/" + j_mapImgsData.Generalview); // 構外MAP全体画像　すべての基準はこの画像になる。// *p
   main();
-
+  // -- タッチ操作有効化
+  if(createjs.Touch.isSupported() == true){
+    createjs.Touch.enable(stage);
+  }
   // -- 画像の読み込み >> 画像のサイズを返す------------------------
   // return 配列 [0] : width [1] : height
   function getImageSize(bitmap){
@@ -71,8 +75,8 @@ function init(event){
 
   // -- canvasのサイズを変更する ---------------------------------
   function ChangeCanvasSize(width,height){
-    canvasElement.width = width;
-    canvasElement.height = height;
+    canvasElement.style.width = width;
+    canvasElement.style.height = height;
   }
 
   // -- main main(async) : このあとの処理は全てここ　------------------------------------------------------------------
@@ -86,6 +90,11 @@ function init(event){
     gm_general.scaleY = gm_general.scaleX;
     //canvasSizeの調整　全体MAP画像の大きさと同じ大きさにする
     ChangeCanvasSize(gm_general.image.width * gm_general.scaleX,gm_general.image.height * gm_general.scaleY);
+    // 高さを中心に合わせる (基準）(縦横比によって可変する値)
+    var z_General = {};
+    z_General.x = 0;
+    z_General.y = (canvasElement.height-(gm_general.image.height * gm_general.scaleY))/2;
+    gm_general.y = z_General.y;
     
     // :: 親子構造の構築-----------------------------------------------------------------------------------------------
     // 構外MAP内に配置するオブジェクトの定義
@@ -103,8 +112,8 @@ function init(event){
       g_rects[i]          = new createjs.Shape();
       g_rects[i].graphics.beginFill(j_rect.color); // ** 色分けしたいなら後で配列を宣言しましょう
       g_rects[i].graphics.drawRoundRect(0,0,j_rect.width * gm_general.scaleX,j_rect.height * gm_general.scaleY, 20* gm_general.scaleX);
-      g_rects[i].x        = j_rect.x * gm_general.scaleX; // 位置座標セット
-      g_rects[i].y        = j_rect.y * gm_general.scaleY; // 位置座標セット
+      g_rects[i].x        = j_rect.x * gm_general.scaleX + z_General.x ; // 位置座標セット
+      g_rects[i].y        = j_rect.y * gm_general.scaleY + z_General.y ; // 位置座標セット
       g_rects[i].alpha    = 0.15;                       // 透明度
       // ---- 1.2.2 エリア用の四角に対する枠線用オブジェクトの配置 --------------------------------
       var g_rectStroke = new createjs.Shape();
@@ -116,8 +125,8 @@ function init(event){
       // ---- 1.2.3 エリア用の四角に乗せるテキストオブジェクトの配置-------------------------------
       var textSize        = 100 * gm_general.scaleX;
       var g_text          = new createjs.Text(g_areaTexts[i], textSize +"px selif",j_rect.color);
-      g_text.x            = (j_rect.x + parseInt(j_rect.width /2) ) * gm_general.scaleX;
-      g_text.y            = (j_rect.y + parseInt(j_rect.height/2) ) * gm_general.scaleY;
+      g_text.x            = (j_rect.x + parseInt(j_rect.width /2) ) * gm_general.scaleX + z_General.x;
+      g_text.y            = (j_rect.y + parseInt(j_rect.height/2) ) * gm_general.scaleY + z_General.y;
       g_text.textAlign    = "center";
       g_text.textBaseline = "middle";
       // ---- 1.2.4 配置しかく用オブジェクトを配置する --------------------------------------------
@@ -125,13 +134,13 @@ function init(event){
       OutsideContainer.addChild(g_rectStroke);
       OutsideContainer.addChild(g_text);
     }
-    // --- 1.2 構外MAP全体画像の配置 --------------------------------------------------------------
+    // --- 1.2 構外MAP全体へ画像の配置 --------------------------------------------------------------
     var toCampusArrow = new createjs.Bitmap("/img/" + j_mapImgsData.ToCampusArrow); // *p
     // 位置、角度のセット
     toCampusArrow.scaleX   = gm_general.scaleX * 0.9;
     toCampusArrow.scaleY   = gm_general.scaleY * 0.9;
-    toCampusArrow.x        = 2600 * gm_general.scaleX; // *z 座標を入れよう
-    toCampusArrow.y        = 200 * gm_general.scaleY;  // *z
+    toCampusArrow.x        = 2600 * gm_general.scaleX + z_General.x; // *z 座標を入れよう
+    toCampusArrow.y        = 200 * gm_general.scaleY + z_General.y;  // *z
     OutsideContainer.addChild(toCampusArrow);
 
     // --- 2. 小エリアの配置 ------------------------------------------------------------------------------------------
@@ -141,8 +150,8 @@ function init(event){
     var a_toGenerals       = [];                         // エリアから全体に戻るときの画像
     var outSidePins_r      = [];                         // 校外のピンたちの上に隠れている四角（outSidePins_r[Area][num]) 
     var a_pinContainers    = [];                         // エリアごとのピン（画像）が格納されたコンテナが格納 [エリア][番号]
-    var a_toDisplayPins      = [];
-    var a_toHidePins         = [];
+    var a_toDisplayPins    = [];                         // ピン非表示する画像
+    var a_toHidePins       = [];                         // ピンを表示する画像
     // --- 2.1 各エリアの拡大画像の大きさの取得---------------------------------------------------
     for(var i=0;i<j_mapImgsData.OutsideAreas.length;i++){
       var am_img      = new createjs.Bitmap("/img/" + j_mapImgsData.OutsideAreas[i].img); // *p
@@ -181,16 +190,17 @@ function init(event){
         var a_pin        = new createjs.Bitmap("/img/"+j_mapImgsData.PinImg_1); // *p
         a_pin.scaleX     = gm_general.scaleX;
         a_pin.scaleY     = gm_general.scaleY;
-        a_pin.x          = j_mapImgsData.OutsideAreas[i].pins[j].x * gm_general.scaleX;
-        a_pin.y          = j_mapImgsData.OutsideAreas[i].pins[j].y * gm_general.scaleY;
+        a_pin.x          = j_mapImgsData.OutsideAreas[i].pins[j].x * am_img.scaleX + am_img.x;
+        a_pin.y          = j_mapImgsData.OutsideAreas[i].pins[j].y * am_img.scaleY + am_img.y;
         a_PinContainer.addChild(a_pin);
         // ----- 2.2.2.2 エリアにおけるピンの画像の上に配置する四角の設置 -------------------------
         var a_pin_rect   = new createjs.Shape();
-        a_pin_rect.graphics.beginFill("White");
+        a_pin_rect.graphics.beginFill("DarkRed");
         a_pin_rect.graphics.drawRect(0,0,pin1Size[0] * a_pin.scaleX,pin1Size[1] * a_pin.scaleY);      
         a_pin_rect.x     = a_pin.x;
         a_pin_rect.y     = a_pin.y;
-        a_pin_rect.alpha = 0.0059; // *z 透明度の変更
+        //a_pin_rect.alpha = 0.0059; // *z 透明度の変更
+        a_pin_rect.alpha = 0.5;
         a_PinContainer.addChild(a_pin_rect);
         a_pins.push(a_pin_rect);//pinの上に係る四角形たちを入れる（クリック判定は透明の四角形）
       }
@@ -201,16 +211,16 @@ function init(event){
       var a_toGeneral = new createjs.Bitmap("/img/" + j_mapImgsData.GotoGeneralImg); // *p
       a_toGeneral.scaleX = gm_general.scaleX;
       a_toGeneral.scaleY = gm_general.scaleY;
-      a_toGeneral.x      = j_mapImgsData.OutsideAreas[i].goGeneral.x * gm_general.scaleX;
-      a_toGeneral.y      = j_mapImgsData.OutsideAreas[i].goGeneral.y * gm_general.scaleY;
+      a_toGeneral.x      = j_mapImgsData.OutsideAreas[i].goGeneral.x * gm_general.scaleX + am_img.x;
+      a_toGeneral.y      = j_mapImgsData.OutsideAreas[i].goGeneral.y * gm_general.scaleY + am_img.y;
       a_PageContainer.addChild(a_toGeneral);
       a_toGenerals.push(a_toGeneral);
       // ---- 2.2.4 各エリアに配置される「ピンを表示する画像」の設置 ------------------------------
       var a_toDisplayPin = new createjs.Bitmap("/img/" + j_mapImgsData.ToDisplayPinImg); // *p
       a_toDisplayPin.scaleX = gm_general.scaleX * 0.9;
       a_toDisplayPin.scaleY = gm_general.scaleY * 0.9;
-      a_toDisplayPin.x      = j_mapImgsData.OutsideAreas[i].toDisplayPins.x * gm_general.scaleX;
-      a_toDisplayPin.y      = j_mapImgsData.OutsideAreas[i].toDisplayPins.y * gm_general.scaleY;
+      a_toDisplayPin.x      = j_mapImgsData.OutsideAreas[i].toDisplayPins.x * gm_general.scaleX + am_img.x;
+      a_toDisplayPin.y      = j_mapImgsData.OutsideAreas[i].toDisplayPins.y * gm_general.scaleY + am_img.y;
       a_toDisplayPin.alpha  = 0;
       a_PageContainer.addChild(a_toDisplayPin);
       a_toDisplayPins.push(a_toDisplayPin);
@@ -218,8 +228,8 @@ function init(event){
       var a_toHidePin = new createjs.Bitmap("/img/" + j_mapImgsData.ToHidePinImg); // *p
       a_toHidePin.scaleX = gm_general.scaleX * 0.9;
       a_toHidePin.scaleY = gm_general.scaleY * 0.9;
-      a_toHidePin.x      = j_mapImgsData.OutsideAreas[i].toHidePins.x * gm_general.scaleX;
-      a_toHidePin.y      = j_mapImgsData.OutsideAreas[i].toHidePins.y * gm_general.scaleY;
+      a_toHidePin.x      = j_mapImgsData.OutsideAreas[i].toHidePins.x * gm_general.scaleX + am_img.x;
+      a_toHidePin.y      = j_mapImgsData.OutsideAreas[i].toHidePins.y * gm_general.scaleY + am_img.y;
       a_toHidePin.alpha = 1;
       a_PageContainer.addChild(a_toHidePin);
       a_toHidePins.push(a_toHidePin);
@@ -251,18 +261,19 @@ function init(event){
     // 位置、角度のセット
     toOutsideArrow.scaleX = gm_general.scaleX * 0.9;
     toOutsideArrow.scaleY = gm_general.scaleY * 0.9;
-    toOutsideArrow.x      = 200 * gm_general.scaleX; // *z 座標を入れよう
-    toOutsideArrow.y      = 50 * gm_general.scaleY; // *z
+    toOutsideArrow.x      = 200 * gm_general.scaleX + cm_img.x; // *z 座標を入れよう
+    toOutsideArrow.y      = 50 * gm_general.scaleY + cm_img.y; // *z
     InsideTopContainer.addChild(toOutsideArrow);
     // --- 3.3 構内から棟に飛ぶ時の四角 (吹き出しを出すものもある) --------------------------------
     for(var i=0;i<j_mapImgsData.Campus.buildingRects.length;i++){
       var c_rect   = new createjs.Shape();
       var j_rect   = j_mapImgsData.Campus.buildingRects[i];
-      c_rect.graphics.beginFill("White");
+      c_rect.graphics.beginFill("DarkRed");
       c_rect.graphics.drawRect(0,0,j_rect.width * gm_general.scaleX,j_rect.height * gm_general.scaleY);
-      c_rect.x     = j_rect.x * gm_general.scaleX; // 位置座標セット
-      c_rect.y     = j_rect.y * gm_general.scaleY; // 位置座標セット
-      c_rect.alpha = 0.0059;                       // 透明度
+      c_rect.x     = j_rect.x * gm_general.scaleX + cm_img.x; // 位置座標セット
+      c_rect.y     = j_rect.y * gm_general.scaleY + cm_img.y; // 位置座標セット
+      //c_rect.alpha = 0.0059;                       // 透明度
+      c_rect.alpha = 0.5;
       InsideTopContainer.addChild(c_rect);
       c_rects.push(c_rect);
     }
@@ -280,18 +291,19 @@ function init(event){
       var c_balloonRects   = [];                                             // i番目吹き出しに載せられる四角たちが格納されている。
       c_balloon.scaleX     = gm_general.scaleX * 0.26; // *z スケール調整
       c_balloon.scaleY     = gm_general.scaleY *0.26; // *z
-      c_balloon.x          = j_balloon.x * gm_general.scaleX;
-      c_balloon.y          = j_balloon.y * gm_general.scaleY;
+      c_balloon.x          = j_balloon.x * gm_general.scaleX + cm_img.x;
+      c_balloon.y          = j_balloon.y * gm_general.scaleY + cm_img.y;
       BalloonContainer.addChild(c_balloon);
       c_balloons.push(c_balloon);
       // ---- 3.4.2 吹き出しの上の四角形たちの設置 ------------------------------------------------
       for(var j=0;j<j_balloonRect.length;j++){
         var c_balloonRect   = new createjs.Shape();
-        c_balloonRect.graphics.beginFill("White");
+        c_balloonRect.graphics.beginFill("DarkRed");
         c_balloonRect.graphics.drawRect(0,0,j_balloonRect[j].width * gm_general.scaleX,j_balloonRect[j].height * gm_general.scaleY);
-        c_balloonRect.x     = j_balloonRect[j].x * gm_general.scaleX; // 位置座標セット
-        c_balloonRect.y     = j_balloonRect[j].y * gm_general.scaleY; // 位置座標セット
-        c_balloonRect.alpha = 0.0059;                      // 透明度
+        c_balloonRect.x     = j_balloonRect[j].x * gm_general.scaleX + cm_img.x; // 位置座標セット
+        c_balloonRect.y     = j_balloonRect[j].y * gm_general.scaleY + cm_img.y; // 位置座標セット
+        // c_balloonRect.alpha = 0.0059;                      // 透明度
+        c_balloonRect.alpha = 0.5;
         BalloonContainer.addChild(c_balloonRect);
         c_balloonRects.push(c_balloonRect);
       }
@@ -371,16 +383,17 @@ function init(event){
           var f_pin    = new createjs.Bitmap("/img/"+j_mapImgsData.PinImg_1); // フロア内k番目のピン // *p
           f_pin.scaleX = gm_general.scaleX;
           f_pin.scaleY = gm_general.scaleY;
-          f_pin.x      = j_mapImgsData.Campus.buildings[i].pins[j][k].x * gm_general.scaleX;
-          f_pin.y      = j_mapImgsData.Campus.buildings[i].pins[j][k].y * gm_general.scaleY;
+          f_pin.x      = j_mapImgsData.Campus.buildings[i].pins[j][k].x * gm_general.scaleX + fm_img.x;
+          f_pin.y      = j_mapImgsData.Campus.buildings[i].pins[j][k].y * gm_general.scaleY + fm_img.y;
           f_PinContainer.addChild(f_pin);
           // ---- 4.2.6 ピン画像の上に配置する四角の設置 ------------------------------------------
           var f_pin_rect = new createjs.Shape();                                // フロア内k番目のピンの上に置く四角
-          f_pin_rect.graphics.beginFill("White");
+          f_pin_rect.graphics.beginFill("DarkRed");
           f_pin_rect.graphics.drawRect(0,0,f_pin1Size[0] * f_pin.scaleX,f_pin1Size[1] * f_pin.scaleY);      
           f_pin_rect.x = f_pin.x;
           f_pin_rect.y = f_pin.y;
-          f_pin_rect.alpha = 0.0059; // *z 透明度の変更
+          // f_pin_rect.alpha = 0.0059; // *z 透明度の変更
+          f_pin_rect.alpha = 0.5;
           f_PinContainer.addChild(f_pin_rect);
           f_pins.push(f_pin_rect);//pinの上に係る四角形たちを入れる（クリック判定は透明の四角形）
         }
@@ -404,8 +417,8 @@ function init(event){
             }
             bf_toUpper[i][j].scaleX = gm_general.scaleX;
             bf_toUpper[i][j].scaleY = gm_general.scaleY;
-            bf_toUpper[i][j].x      = j_mapImgsData.Campus.buildings[i].goUpper[k].x * gm_general.scaleY;
-            bf_toUpper[i][j].y      = j_mapImgsData.Campus.buildings[i].goUpper[k].y * gm_general.scaleY;
+            bf_toUpper[i][j].x      = j_mapImgsData.Campus.buildings[i].goUpper[k].x * gm_general.scaleX + fm_img.x;
+            bf_toUpper[i][j].y      = j_mapImgsData.Campus.buildings[i].goUpper[k].y * gm_general.scaleY + fm_img.y;
             FloorContainer.addChild(bf_toUpper[i][j]);
             f_goULcheck = 1;
           }
@@ -430,8 +443,8 @@ function init(event){
             }
             bf_toLower[i][j].scaleX = gm_general.scaleX;
             bf_toLower[i][j].scaleY = gm_general.scaleY;
-            bf_toLower[i][j].x      = j_mapImgsData.Campus.buildings[i].goLower[k].x * gm_general.scaleY;
-            bf_toLower[i][j].y      = j_mapImgsData.Campus.buildings[i].goLower[k].y * gm_general.scaleY;
+            bf_toLower[i][j].x      = j_mapImgsData.Campus.buildings[i].goLower[k].x * gm_general.scaleY + fm_img.x;
+            bf_toLower[i][j].y      = j_mapImgsData.Campus.buildings[i].goLower[k].y * gm_general.scaleY + fm_img.y;
             FloorContainer.addChild(bf_toLower[i][j]);
             f_goULcheck = 1;
           }
@@ -441,8 +454,8 @@ function init(event){
         var f_toCampusTop = new createjs.Bitmap("/img/" + j_mapImgsData.Campus.goTopArrow); // *p
         f_toCampusTop.scaleX = gm_general.scaleX;
         f_toCampusTop.scaleY = gm_general.scaleY;
-        f_toCampusTop.x      = j_mapImgsData.Campus.buildings[i].goTop[j].x * gm_general.scaleX;
-        f_toCampusTop.y      = j_mapImgsData.Campus.buildings[i].goTop[j].y * gm_general.scaleY;
+        f_toCampusTop.x      = j_mapImgsData.Campus.buildings[i].goTop[j].x * gm_general.scaleX + fm_img.x;
+        f_toCampusTop.y      = j_mapImgsData.Campus.buildings[i].goTop[j].y * gm_general.scaleY + fm_img.y;
         FloorContainer.addChild(f_toCampusTop);
         bf_toCampusTops[i].push(f_toCampusTop);
         
@@ -450,8 +463,8 @@ function init(event){
         var f_toDisplayPin = new createjs.Bitmap("/img/" + j_mapImgsData.ToDisplayPinImg); // *p
         f_toDisplayPin.scaleX = gm_general.scaleX * 0.9;
         f_toDisplayPin.scaleY = gm_general.scaleY * 0.9;
-        f_toDisplayPin.x      = j_mapImgsData.Campus.buildings[i].toDisplayPins[j].x * gm_general.scaleX;
-        f_toDisplayPin.y      = j_mapImgsData.Campus.buildings[i].toDisplayPins[j].y * gm_general.scaleY;
+        f_toDisplayPin.x      = j_mapImgsData.Campus.buildings[i].toDisplayPins[j].x * gm_general.scaleX + fm_img.x;
+        f_toDisplayPin.y      = j_mapImgsData.Campus.buildings[i].toDisplayPins[j].y * gm_general.scaleY + fm_img.y;
         f_toDisplayPin.alpha  = 0;
         FloorContainer.addChild(f_toDisplayPin);
         bf_toDisplayPins[i].push(f_toDisplayPin);
@@ -459,8 +472,8 @@ function init(event){
         var f_toHidePin = new createjs.Bitmap("/img/" + j_mapImgsData.ToHidePinImg); // *p
         f_toHidePin.scaleX = gm_general.scaleX * 0.9;
         f_toHidePin.scaleY = gm_general.scaleY * 0.9;
-        f_toHidePin.x      = j_mapImgsData.Campus.buildings[i].toHidePins[j].x * gm_general.scaleX;
-        f_toHidePin.y      = j_mapImgsData.Campus.buildings[i].toHidePins[j].y * gm_general.scaleY;
+        f_toHidePin.x      = j_mapImgsData.Campus.buildings[i].toHidePins[j].x * gm_general.scaleX + fm_img.x;
+        f_toHidePin.y      = j_mapImgsData.Campus.buildings[i].toHidePins[j].y * gm_general.scaleY + fm_img.y;
         f_toHidePin.alpha  = 1;
         FloorContainer.addChild(f_toHidePin);
         bf_toHidePins[i].push(f_toHidePin);
@@ -918,9 +931,7 @@ function init(event){
   }
   // ここまでmain ----------------------------------------------------------------------------------------------------
   // リサイズ時の処理 -------------------------------------------------------------------
-  window.addEventListener('resize' , function(){
-    (!window.requestAnimationFrame) ? this.setTimeout(Sizing) : window,requestAnimationFrame(Sizing);
-  });
+  window.addEventListener('resize',Load); // 再ロードさせる
   // 画面更新 ---------------------------------------------------------------------------
   createjs.Ticker.timingMode = createjs.Ticker.RAF;
   createjs.Ticker.on("tick",function(){
