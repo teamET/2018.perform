@@ -105,12 +105,20 @@ function download(dir,title,url){
 }
 
 // default responces
-const HELP_MESSAGE="```\
+const HELP_MESSAGE="booth\n\
+```\
 .help\n\
 .entry <shop name> <class>\n\
-.goods <goods name> <price>\n \
-.text <text>\n.review\n\
-.show\
+.goods <goods name> <price>\n\
+.text <text>\n\
+.tag <number>\n\
+.review\n\
+.show\n\
+```\n\
+event\n\
+```\
+.event <date> <start_time> <end_time> <place> <name> <content> <from>\n\
+.show_event\
 ```";
 
 function help(event){
@@ -170,13 +178,13 @@ function make_template(filename,data){
 
 module.exports={
 	sendFile:slack_upload,
-	postMessage:slack_postMessage,
+	postMessage:slack_postmessage,
 	res:slack_responce,
 	log:slack_log,
 	err:slack_err,
 	download:download,
 	make_template:make_template,
-  help:help
+	help:help,
 	read_list:read_list,
 	json_sort:json_sort
 }
