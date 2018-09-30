@@ -71,8 +71,8 @@ function init(event){
 
   // -- canvasのサイズを変更する ---------------------------------
   function ChangeCanvasSize(width,height){
-    canvasElement.width = width;
-    canvasElement.height = height;
+    canvasElement.style.width = width;
+    canvasElement.style.height = height;
   }
 
   // -- main main(async) : このあとの処理は全てここ　------------------------------------------------------------------
