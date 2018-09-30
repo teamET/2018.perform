@@ -9,14 +9,14 @@ hexo --version
 npm install --save hexo-cli
 hexo generate
 cp -rf ./public/* /var/www/public
-mkdir /var/www/public/data
-echo "{'test':'test'}" > /var/www/public/data/test.json
+echo "{'test':'test'}" > /var/www/public/data/test.json  #/var/www/public/data should be directory
 
 # bot
 cd /root/2018.perform/bot
 npm install
 forever start /root/2018.perform/bot/bot.js
 
+#api-server
 cd /root/2018.perform/api-server
 npm install
 forever start /root/2018.perform/api-server/bin/www
