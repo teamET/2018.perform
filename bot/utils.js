@@ -105,19 +105,27 @@ function download(dir,title,url){
 }
 
 // default responces
-const HELP_MESSAGE="```\
+const HELP_MESSAGE="booth\n\
+```\
 .help\n\
 .entry <shop name> <class>\n\
-.goods <goods name> <price>\n \
-.text <text>\n.review\n\
-.show\
+.goods <goods name> <price>\n\
+.text <text>\n\
+.tag <number>\n\
+.review\n\
+.show\n\
+```\n\
+event\n\
+```\
+.event <date> <start_time> <end_time> <place> <name> <content> <from>\n\
+.show_event\
 ```";
 
 function help(event){
 	slack_responce(HELP_MESSAGE,event);
 }
 
-function slack_postmessage(channel,message){
+function slack_postMessage(channel,message){
 	request.post('https://slack.com/api/chat.postmessage',{
 		form: {
 			token: SLACK_TOKEN,
@@ -170,13 +178,13 @@ function make_template(filename,data){
 
 module.exports={
 	sendFile:slack_upload,
-	postMessage:slack_postMessage,
+	postMessage:slack_postmessage,
 	res:slack_responce,
 	log:slack_log,
 	err:slack_err,
 	download:download,
 	make_template:make_template,
-  help:help
+  help:help,
 	read_list:read_list,
 	json_sort:json_sort
 }
@@ -192,13 +200,14 @@ module.exports={
 
 
 if(require.main ===module){
-
+/*
 	var EVENT_DATA = JSON.parse(fs.readFileSync('./event.json', 'utf8'));
 	var SHOP_DATA = JSON.parse(fs.readFileSync('./shop.json', 'utf8'));
 	make_template('_timetable',EVENT_DATA);
 	make_template('_news',EVENT_DATA);
-	make_template('_shoptable',SHOP_DATA);
-//	slack_postMessage("develop","files/4J/4J.png")
+    */
+	make_template('_shoptable','{"shopname":"4J","goods":{"goods":{"name":"price"},"image":["image"],"text":"text"}}');
+//	slack_postMessage("develop","files/4J/4J.png");
 //	slack_upload("develop","files/4J/4J.png")
 
 	slack_log("hello world");
