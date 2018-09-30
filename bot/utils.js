@@ -108,7 +108,7 @@ function download(dir,title,url){
 const HELP_MESSAGE="```\
 .help\n\
 .entry <shop name> <class>\n\
-.goods <goods name> <price>\n \
+.goods <goods name> <price>\n\
 .text <text>\n.review\n\
 .show\
 ```";
@@ -170,13 +170,13 @@ function make_template(filename,data){
 
 module.exports={
 	sendFile:slack_upload,
-	postMessage:slack_postMessage,
+	postMessage:slack_postmessage,
 	res:slack_responce,
 	log:slack_log,
 	err:slack_err,
 	download:download,
 	make_template:make_template,
-  help:help
+  help:help,
 	read_list:read_list,
 	json_sort:json_sort
 }
