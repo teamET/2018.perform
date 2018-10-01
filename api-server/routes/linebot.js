@@ -13,6 +13,7 @@ const GOOGLE_PROJECT_ID = "kufes-2018";
 const GOOGLE_CLIENT_EMAIL = "dialogflow-qulnmn@kufes-2018.iam.gserviceaccount.com";
 const GOOGLE_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC5NHF7eqbHOyIU\nJIhQJ81rO/C+lxIFMY9VCugm04tUwgvEakK48TMzTNxmFB89MN8jvkCPFHSMuW5A\nNTQNwai2y6kASQVQmHtRBTYaN316NulGcUkhg9ORgSOAuB/VUHqDyHgDUjRFknj4\n0efJpw9ECkxzXP2e0rz/T72By9JxSxkoRq6x4N5k1v4Jr3+J8rHG8D4pZRxZ+olc\nhXdJrPv8QZ56o+TDBywYZHN40zStH+r8QocTPpO+tloegNmjyGZUkAQN8qAMNhyi\niTr6H8yHXrFhihDhtKlR3YHC0b9ON9euUPblU8hdqoGC0ZP+cPrry7BAFyumWJ1v\nR5GgmRTxAgMBAAECggEACmZHeQeKFeXcJAVpIhcaEctr2UfiWyhNRBk4r/Vw/XFn\n979/v6LLnTXTqme22VjFLtygA2jCoqRG7JQQODWHo7wL4Vg4VC47vnDseMxk31f2\nAV6bHKaqWqFFvRSZtQCv4HaBRq53APEYmeAvg8M9uDRb1p6CH0j2E+AGZCNtza6x\nXEFU5va8dc6dcIZcRU7MgpWleZM54MLvffImAosNRSiEtbPqg/YUN/39bybmD9l/\noQBpyfd97oFi4VYsQkthfJ52WZg/RlWG44s/WWe/wL8WWftiIRWylLYwfJjPVtuZ\nRslJm1x6JuU1ATM69RNzbk7HIsvQopZUEg5Kg5p4AQKBgQDmwc0LBtocf3N6QkYA\ntIqNLEi3gkveUFgOjl8nPpT1t8JfW7WzBg3Dfox4V8y0xuqqcx1nyXLj87Hs51t0\nyVPRq5XgNC8gSCaPitRWRu2KIEHy7mQVIXwtSWykekd+KpTaGmlxHoOx67TW6mS7\nJHh8oC81bmSUXZiehRAiVpaXyQKBgQDNdvvI7zm4Hn8dcFSSDoPXtTepNhNv2OHn\n0nza2O7a2CEQfypIkGlBx1MmvIzQrpYfhup+SbTgWYjIS6oDbfVuQpSlhCgrRfPr\nEf4nKK9lbd8IZI7hSJScsz1NgcWHSLghB3uHrecT/AWIwiXhLY9GhVX6taqPmqF6\n/hZIM2b36QKBgQCL+JhwjNp2mNSqH1MpEFpOocMGFTICCwgu5CtRucNPfQSZJR8F\nFbH5mGSKhu9z5IjplWQL1YUsQmD1y6yNHaYLM6J42g6P7VP+k/6SyvlBZKm8OuBY\ndPRG4BfXeRiurhOWbJjy9ch6fvg1uP4bCldPeTbJmUnHOTLfTOVpfs5gCQKBgFu8\nbSzIyt+PFjhBqDDSNEGCUsjFMSZ2El8cFszroLGrYA/qhymA+M36vgCEnOarnLGU\n3mvmYtDsiOrNBaqkVLmXFqFUAU9Y21AwZ2Z6ft1tkfBAXZ7udhQE3zEU6Om/KR7u\nJVRt68d7dckazijc26Sj8cCPjgiyBLlSawZvlODJAoGBALYo35VcRb5FIqF/Kmuj\nW4/pj6MkXK2OPhmPYCTJVkDUJo6EAZhX+/6UlJ2bkhomLujH/YeXwAF9Z/ABFLZz\nzFeR7r6Bh+dhnFq8/63SKwV9mfCpsREMpLarNajITKqu4szANjuuiy3iZyKe2qeD\n9hv5A9oLL+Mq3rLhnCvq7SF4\n-----END PRIVATE KEY-----\n";
 
+//dialogflow
 const session_client = new dialogflow.SessionsClient({
     project_id: GOOGLE_PROJECT_ID,
     credentials: {
@@ -72,11 +73,11 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
     });
 }
 
-/* テンプレートメッセージの作成 */
+/* テンプレートメッセージの作成
 function Build_msg_template(Token) {
     return new Promise(function(resolve, reject) {
     });
-}
+}*/
 
 /* Type - message */
 async function type_message(event) {
@@ -176,28 +177,39 @@ router.post('/', function(req, res, next) {
         res.status(200);
         console.log("line_OK");
         var value = body.events[0];
-        if (value.type == "message"){
-            console.log("message");
-            type_message(value);
-        } else if (value.type == "follow") {
-            console.log("follow");
-            type_follow(value);
-        } else if (value.type == "postback") {
-            console.log("postback");
-            if (value.postback.data == "Student") {
-                addUser(value, "学生");
-            }else if(value.postback.data == "Other") {
-                addUser(value, "来場者");
+        body.events.forEach((event) => {
+            switch(event.type) {
+                case "message":
+                    console.log("message");
+                    type_message(event);
+                    break;
+                case "follow":
+                    console.log("follow");
+                    type_follow(event);
+                    break;
+                case "postback":
+                    console.log("postback");
+                    if (event.postback.data == "Student") {
+                        addUser(event, "学生");
+                    } else if (event.postback.data == "Other") {
+                        addUser(event, "来場者");
+                    }
+                    break;
+                case "beacon":
+                    console.log("beacon");
+                    if (event.beacon.type == "enter") {
+                        type_beacon(event);
+                    }
+                    break;
+                case "unfollow":
+                    console.log("unfollow");
+                    removeUser(event);
+                    break;
+                default:
+                    console.log(event);
+                    break;
             }
-        } else if (value.type == "beacon") {
-            if (value.beacon.type == "enter") {
-                type_beacon(value);
-            }
-        } else if (value.type == "unfollow") {
-            removeUser(value);
-        } else {
-            console.log(value);
-        }
+        });
     } else {
         //認証失敗
         console.log("line_NG");
