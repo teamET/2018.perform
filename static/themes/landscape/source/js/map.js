@@ -18,6 +18,9 @@ d_-- : デバッグ用
 
 window.addEventListener("load",Load);
 
+// 読み込んで初期化して表示するMAP位置
+var currentMapID = "OutsideTop";
+
 // 読み込み・再読み込み（リロード時にも入る）
 function Load(){
   // load JSON // *p
@@ -494,7 +497,74 @@ function init(event){
     EventListener();　// Eventを感知して処理する関数
 
     // :: 初期状態にする。（構外全体MAPを表示）------------------------------------------------------------------------
-    DisplayContainer.addChild(OutsideContainer);
+    MapInit();
+
+    // 初期状態にする関数（再読み込みしたときに正しく表示する）
+    function MapInit(){
+      switch(currentMapID){
+        case "OutsideTop":
+          DisplayContainer.addChild(OutsideContainer);
+          break;
+        case "AreaA":
+          DisplayContainer.addChild(areaContainers[0]);
+          break;
+        case "AreaB":
+          DisplayContainer.addChild(areaContainers[1]);
+          break;
+        case "AreaC":
+          DisplayContainer.addChild(areaContainers[2]);
+          break;
+        case "AreaD":
+          DisplayContainer.addChild(areaContainers[3]);
+          break;
+        case "AreaE":
+          DisplayContainer.addChild(areaContainers[4]);
+          break;
+        case "AreaF":
+          DisplayContainer.addChild(areaContainers[5]);
+          break;
+        case "InsideTop":
+          DisplayContainer.addChild(InsideTopContainer);
+          break;
+        case "BF21":
+          DisplayContainer.addChild(BuildingFloorContainers[0][0]);
+          break;
+        case "BF22":
+          DisplayContainer.addChild(BuildingFloorContainers[0][1]);
+          break;
+        case "BF23":
+          DisplayContainer.addChild(BuildingFloorContainers[0][2]);
+          break;
+        case "BF24":
+          DisplayContainer.addChild(BuildingFloorContainers[0][3]);
+          break;
+        case "BF31":
+          DisplayContainer.addChild(BuildingFloorContainers[1][0]);
+          break;
+        case "BF32":
+          DisplayContainer.addChild(BuildingFloorContainers[1][1]);
+          break;
+        case "BF33":
+          DisplayContainer.addChild(BuildingFloorContainers[1][2]);
+          break;
+        case "BF34":
+          DisplayContainer.addChild(BuildingFloorContainers[1][3]);
+          break;
+        case "BF51":
+          DisplayContainer.addChild(BuildingFloorContainers[2][0]);
+          break;
+        case "BF52":
+          DisplayContainer.addChild(BuildingFloorContainers[2][1]);
+          break;
+        // 8棟：１階・３階だがここは1,2としている
+        case "BF81":
+          DisplayContainer.addChild(BuildingFloorContainers[3][0]);
+          break;
+        case "BF82":
+          DisplayContainer.addChild(BuildingFloorContainers[3][1]);
+          break;
+      }
+    }
     
     // -- イベントを感知して処理する関数 ------------------------------------------------------------------------------
     function EventListener(){
@@ -584,20 +654,24 @@ function init(event){
         }
       } 
     }//ここまでEventListener
+
     // :: イベントに対する処理　関数群 --------------------------------------------------------------------------------
     // 全体画面から各エリアへ飛ぶ -------------------------------------------------------
     function GeneraltoArea(event){
       var i = event.target.eventParam;
+      currentMapID = "Area" + g_areaTexts[i];
       MapChange(OutsideContainer,areaContainers[i]);
     }
     // 構外の各エリアから全体へ ---------------------------------------------------------
     function AreatoGeneral(event){
       var i = event.target.eventParam;
+      currentMapID = "OutsideTop";
       MapChange(areaContainers[i],OutsideContainer);
     }
     // 全体から構内topへ ---------------------------------------------------------------
     function GeneraltoCampusTop(event){
       //MapChange(OutsideContainer,InsideTopContainer);
+      currentMapID = "InsideTop";
       MapChangeAnimation_Slide(OutsideContainer,InsideTopContainer,"right");
     }
     // 構内Topから全体へ ----------------------------------------------------------------
@@ -610,6 +684,7 @@ function init(event){
         }
       }
       //MapChange(InsideTopContainer,OutsideContainer);
+      currentMapID = "OutsideTop";
       MapChangeAnimation_Slide(InsideTopContainer,OutsideContainer,"left");      
     }
     // 構内Topから吹き出しを出力 --------------------------------------------------------
@@ -629,6 +704,7 @@ function init(event){
       }
       if(check==false){
         // 吹き出しに対応していないオブジェクト（5棟など）
+        currentMapID = "BF" + e_buildNum[i] + "1";
         MapChange(InsideTopContainer,BuildingFloorContainers[i][0]);
         return;
       }
@@ -664,6 +740,7 @@ function init(event){
           e_balloons[k] = 0;
         }
       }
+      currentMapID = "BF"+ e_balloonBuildNum[i]+(parseInt(j)+1);
       MapChange(InsideTopContainer,BuildingFloorContainers[buildingIndex[i]][j]);
       //MapChangeAnimation_Fade(InsideTopContainer,BuildingFloorContainers[buildingIndex[i]][j])
     }
@@ -672,6 +749,7 @@ function init(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
       //MapChange(BuildingFloorContainers[i][j],InsideTopContainer);
+      currentMapID = "InsideTop";
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],InsideTopContainer,"left");      
     }
     // 上の階へ -------------------------------------------------------------------------
@@ -680,6 +758,7 @@ function init(event){
       var j = event.target.eventParam2;
       if(bf_toUpper[i][j]==-1)return;
       // MapChange(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j+1]);
+      currentMapID = "BF" + e_buildNum[i]+(parseInt(j)+2);
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j+1],"top");
     }
     // 下の階へ -------------------------------------------------------------------------
@@ -687,6 +766,7 @@ function init(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
       if(bf_toLower[i][j]==-1)return;
+      currentMapID = "BF" + e_buildNum[i]+(parseInt(j));
       //MapChange(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j-1]);
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j-1],"bottom");
     }
