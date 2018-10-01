@@ -88,17 +88,16 @@ async function type_message(event) {
             "type": "text",
             "text": rows[0].BEACONTIME
         };
-    });
-    // Dialogflowへの接続
-    var msg = {
-        "type": "text",
-        "text": event.message.text
-    };
-    var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, msg, msg2
-    ));
-    request.post(tmp, function(error, responce, body) {
-        console.log(body);
+        var msg = {
+            "type": "text",
+            "text": event.message.text
+        };
+        var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+            event.replyToken, msg, msg2
+        ));
+        request.post(tmp, function(error, responce, body) {
+            console.log(body);
+        });
     });
 }
 
