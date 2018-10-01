@@ -26,8 +26,9 @@ function Load(){
   // load JSON // *p
   var queue = new createjs.LoadQueue(true);
   var manifest = [
-    {"src":"/data/mapImgData2.json","id":"mapImgs"}
-  ]
+    {"src":"/data/mapImgData.json","id":"mapImgs"},
+    {"src":"/data/booth.json","id":"shop"}
+  ];
   /*
   // ** 後で足せ
   {"src":"./JSON/mapImgData.json","id":"mapImgs"},
@@ -40,15 +41,16 @@ function Load(){
 // JSONデータが読み込まれたら入る
 function init(event){
   var j_mapImgsData  = event.target.getResult("mapImgs");　// mapImgData.json
-  //var j_shopData     = event.target.getResult("shop");
+  var j_shopData     = event.target.getResult("shop");
+  console.log(j_shopData);
   // - canvas stageの定義　--------------------------------------------------------------------------------------------
   var canvasContainer = document.getElementById("wrap");
   var canvasElement   = document.getElementById("myCanvas");
   var h_shopname      = document.getElementById("shopname");
   // CanvasSizeの大きさ画面サイズに設定する（初期化）
   var Sizing = function(){
-    canvasElement.height = canvasContainer.offsetHeight;
-    canvasElement.width  = canvasContainer.offsetWidth;
+    canvasElement.height = canvasElement.offsetHeight;
+    canvasElement.width  = canvasElement.offsetWidth;
   }
   // CanvasSizeの大きさ画面サイズに設定する（初期化）
   Sizing();
@@ -58,7 +60,7 @@ function init(event){
   var DisplayContainer = new createjs.Container();                                  // 表示用コンテナ
   stage.addChild(DisplayContainer);
   DisplayContainer.cache(0,0,canvasElement.width,canvasElement.height);
-  stage.setClearColor('#333333');
+  stage.setClearColor('#343434');
   var gm_general      = new createjs.Bitmap("/img/" + j_mapImgsData.Generalview); // 構外MAP全体画像　すべての基準はこの画像になる。// *p
   main();
   // -- タッチ操作有効化
@@ -198,12 +200,12 @@ function init(event){
         a_PinContainer.addChild(a_pin);
         // ----- 2.2.2.2 エリアにおけるピンの画像の上に配置する四角の設置 -------------------------
         var a_pin_rect   = new createjs.Shape();
-        a_pin_rect.graphics.beginFill("White");
+        a_pin_rect.graphics.beginFill("DarkRed");
         a_pin_rect.graphics.drawRect(0,0,pin1Size[0] * a_pin.scaleX,pin1Size[1] * a_pin.scaleY);      
         a_pin_rect.x     = a_pin.x;
         a_pin_rect.y     = a_pin.y;
-        a_pin_rect.alpha = 0.0059; // *z 透明度の変更
-        // a_pin_rect.alpha = 0.5;
+        // a_pin_rect.alpha = 0.0059; // *z 透明度の変更
+        a_pin_rect.alpha = 0.5;
         a_PinContainer.addChild(a_pin_rect);
         a_pins.push(a_pin_rect);//pinの上に係る四角形たちを入れる（クリック判定は透明の四角形）
       }
@@ -271,12 +273,12 @@ function init(event){
     for(var i=0;i<j_mapImgsData.Campus.buildingRects.length;i++){
       var c_rect   = new createjs.Shape();
       var j_rect   = j_mapImgsData.Campus.buildingRects[i];
-      c_rect.graphics.beginFill("White");
+      c_rect.graphics.beginFill("DarkRed");
       c_rect.graphics.drawRect(0,0,j_rect.width * gm_general.scaleX,j_rect.height * gm_general.scaleY);
       c_rect.x     = j_rect.x * gm_general.scaleX + cm_img.x; // 位置座標セット
       c_rect.y     = j_rect.y * gm_general.scaleY + cm_img.y; // 位置座標セット
-      c_rect.alpha = 0.0059;                       // 透明度
-      // c_rect.alpha = 0.5;
+      // c_rect.alpha = 0.0059;                       // 透明度
+      c_rect.alpha = 0.5;
       InsideTopContainer.addChild(c_rect);
       c_rects.push(c_rect);
     }
@@ -301,12 +303,12 @@ function init(event){
       // ---- 3.4.2 吹き出しの上の四角形たちの設置 ------------------------------------------------
       for(var j=0;j<j_balloonRect.length;j++){
         var c_balloonRect   = new createjs.Shape();
-        c_balloonRect.graphics.beginFill("White");
+        c_balloonRect.graphics.beginFill("DarkRed");
         c_balloonRect.graphics.drawRect(0,0,j_balloonRect[j].width * gm_general.scaleX,j_balloonRect[j].height * gm_general.scaleY);
         c_balloonRect.x     = j_balloonRect[j].x * gm_general.scaleX + cm_img.x; // 位置座標セット
         c_balloonRect.y     = j_balloonRect[j].y * gm_general.scaleY + cm_img.y; // 位置座標セット
-        c_balloonRect.alpha = 0.0059;                      // 透明度
-        // c_balloonRect.alpha = 0.5;
+        // c_balloonRect.alpha = 0.0059;                      // 透明度
+        c_balloonRect.alpha = 0.5;
         BalloonContainer.addChild(c_balloonRect);
         c_balloonRects.push(c_balloonRect);
       }
@@ -391,12 +393,12 @@ function init(event){
           f_PinContainer.addChild(f_pin);
           // ---- 4.2.6 ピン画像の上に配置する四角の設置 ------------------------------------------
           var f_pin_rect = new createjs.Shape();                                // フロア内k番目のピンの上に置く四角
-          f_pin_rect.graphics.beginFill("White");
+          f_pin_rect.graphics.beginFill("DarkRed");
           f_pin_rect.graphics.drawRect(0,0,f_pin1Size[0] * f_pin.scaleX,f_pin1Size[1] * f_pin.scaleY);      
           f_pin_rect.x = f_pin.x;
           f_pin_rect.y = f_pin.y;
-          f_pin_rect.alpha = 0.0059; // *z 透明度の変更
-          // f_pin_rect.alpha = 0.5;
+          // f_pin_rect.alpha = 0.0059; // *z 透明度の変更
+          f_pin_rect.alpha = 0.5;
           f_PinContainer.addChild(f_pin_rect);
           f_pins.push(f_pin_rect);//pinの上に係る四角形たちを入れる（クリック判定は透明の四角形）
         }
