@@ -79,11 +79,12 @@ function Build_msg_template(Token) {
     });
 }*/
 
-async function DB_get(table, col, id) {
+async function DB_get(table, col, where, id) {
     return new Promise(function(resolve, reject) {
-        var query = 'SELECT {col} FROM {table} WHERE USERID = "{id}"'
+        var query = 'SELECT {col} FROM {table} WHERE {where} = "{id}"'
             .replace("{table}", table)
             .replace("{col}", col)
+            .replace("{where}", where)
             .replace("{id}", id);
         connection.query(query,function(err, rows) {
             resolve(rows[0][col]);
@@ -100,7 +101,7 @@ async function type_message(event) {
     };
     var msg2 = {
         "type": "text",
-        "text": await DB_get("UserData", "BEACONTIME", event.source.userId)
+        "text": await DB_get("UserData", "BEACONTIME", "USERID", event.source.userId)
     };
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
         event.replyToken, msg, msg2
@@ -155,6 +156,7 @@ async function addUser(event, usertype) {
     });
 }
 
+/* Type - unfolow */
 function removeUser(event) {
     console.log("remove");
     var query = 'DELETE FROM UserData WHERE USERID = "{id}"'
@@ -166,6 +168,8 @@ function removeUser(event) {
 
 /* Type - Beacon */
 async function type_beacon(event) {
+    /* beacon侵入時間の更新
+       本来は指定分以内になんども通知が来ないように設定するべき */
     var nowtime = moment().format('YYYY-MM-DD HH:mm:ss');
     var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId)
@@ -173,22 +177,20 @@ async function type_beacon(event) {
     connection.query(query, function(err, rows) {
         console.log(rows);
     });
-    query = 'SELECT MESSAGE FROM BeaconData WHERE BEACONID = "{id}"'
-        .replace("{id}", event.beacon.hwid);
-    connection.query(query, function(err, rows) {
-        console.log("select: " + rows);
-    });
     var msg = {
         "type": "text",
         "text": "ビーコン範囲に入りました"
     };
+    var msg2 = {
+        "type": "text",
+        "text": await DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid)
+    };
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, msg
+        event.replyToken, msg, msg2
     ));
     request.post(tmp, function(error, responce, body) {
         console.log(body);
     });
-    //DB処理が入る
 }
 
 
