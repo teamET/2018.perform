@@ -11,6 +11,7 @@ var fluentLogger = require('fluent-logger').configure('tag_prefix', {
 var logger = require('morgan');
 
 var linebot = require('./routes/linebot');
+var beacon_db = require('./routes/beacondb');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(bodyParser.json());
 //app.use(app.errorHandler());
 
 app.use('/linebot', linebot);
+app.use('/beacon', beacon_db);
 //app.use('/api', apiRouter);
 app.get('/api',(req,res)=>{res.send('hello api');});
 
