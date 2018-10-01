@@ -2,6 +2,11 @@
     <header>
        
     </header>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js">
+    $(function() {
+            $('tr:nth-child(odd)').addClass('odd');
+        });
+    </script>
     <div class="slide-show w3-content w3-display-container">
         <p id="txt">第一体育館</p>
         <p id="txt">第二体育館</p>
@@ -40,57 +45,14 @@
     </script>
     <div>
    </div>
-
-
-
-    
-    <% var gym1 =[
-    {
-        "timestamp": "12:30",
-        "date" : 21,
-        "start_time": "10:00",
-        "end_time": "11:00",
-        "place": "place",
-        "name" : "name",
-        "from": "brassband",
-        "content": "discription"
-    },{
-        "timestamp": "13:30",
-        "date" : 21,
-        "start_time": "11:00",
-        "end_time": "12:00",
-        "place": "place2",
-        "name" : "name2",
-        "from": "けいおん",
-        "content": "discription"
-    }
-]%>
-
-     <div class="w3-card">
-     <div style="height: 400px;"> 
-           <div style="height: 400px;">     
-                <font size="5"><h1>第一体育館前</h1></font>
-                <iframe src=""></iframe>
-                <!--table  style=" margin-left:auto; margin-right:auto;">
-                        <tr>
-                                <th>開始時間</th>
-                                <th>終了時間</th>  
-                                <th>名前</th>
-                                <th>所属</th>
-                        </tr>
-                    <% for (var i = 0; i < 2; i++) { %>
-                        <font size="4">
-                            <tr align="center">
-                                <td><%- gym1[i].start_time%></td>
-                                <td><%- gym1[i].end_time%></td>
-                                <td><%- gym1[i].name %></td>
-                                <td><%- gym1[i].from %></td>
-                             </tr>
-                        </font>
-                    <% } %>
-                </table-->
-            </div>
-    </div>
-    </div>
-
+   
+<div id="skeduler-container"></div>
+<script src="http://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous">
+</script>
+<%- css('fancybox/jquery.skeduler') %>
+<%- js('fancybox/jquery.skeduler') %>
+<%- js('fancybox/skeduler') %>
+<%- js('fancybox/htmlpreview.min') %>
+<%- js('fancybox/jquery-2.2.4.min') %>
 </section>
