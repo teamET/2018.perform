@@ -84,7 +84,10 @@ async function type_message(event) {
     query = 'SELECT BEACONTIME FROM UserData WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId);
     connection.query(query, function(err, rows) {
-        console.log("select: " + rows[0].BEACONTIME);
+        var msg2 = {
+            "type": "text",
+            "text": rows[0].BEACONTIME
+        };
     });
     // Dialogflowへの接続
     var msg = {
@@ -92,7 +95,7 @@ async function type_message(event) {
         "text": event.message.text
     };
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, msg
+        event.replyToken, msg, msg2
     ));
     request.post(tmp, function(error, responce, body) {
         console.log(body);
