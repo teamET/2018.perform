@@ -113,6 +113,7 @@ async function type_message(event) {
 
 /* Type - follow */
 async function type_follow(event) {
+    //rich menuの登録
     var rich_url = urlp_rich_set.replace('{userId}', event.source.userId)
         .replace('{richMenuId}', 'richmenu-b29e60fb9ff07712e58f5c4e9203b477');
     request.post(await Build_responce(rich_url), function(error, responce, body) {
@@ -131,6 +132,16 @@ async function type_follow(event) {
 }
 
 async function addUser(event, usertype) {
+    //DBへユーザの追加
+    var nowtime = moment().format('YYYY-MM-DD HH:mm:ss');
+    var query = 'INSERT INTO UserData (USERID, USERTYPE, BEACONTIME) VALUES ("{id}", "{type}", "{time}")';
+    query = query.replace('{id}', event.source.userId)
+        .replace('{type}', event.postback.data)
+        .replace('{time}', nowtime);
+    connection.query(query, function(err, rows) {
+        console.log(rows);
+    });
+    //rich menuの削除
     var rich_url = urld_rich_delete.replace('{userId}', event.source.userId);
     request.delete(await Build_responce(rich_url), function(error, responce, body) {
         console.log(body);
@@ -144,15 +155,6 @@ async function addUser(event, usertype) {
     ));
     request.post(tmp, function(error, responce, body) {
         console.log(body);
-    });
-    //DBへユーザの追加
-    var nowtime = moment().format('YYYY-MM-DD HH:mm:ss');
-    var query = 'INSERT INTO UserData (USERID, USERTYPE, BEACONTIME) VALUES ("{id}", "{type}", "{time}")';
-    query = query.replace('{id}', event.source.userId)
-        .replace('{type}', event.postback.data)
-        .replace('{time}', nowtime);
-    connection.query(query, function(err, rows) {
-        console.log(rows);
     });
 }
 
@@ -177,13 +179,15 @@ async function type_beacon(event) {
     connection.query(query, function(err, rows) {
         console.log(rows);
     });
+    var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
+    var db_place = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
     var msg = {
         "type": "text",
-        "text": "ビーコン範囲に入りました"
+        "text": "現在，" + await db_place + "にいます"
     };
     var msg2 = {
         "type": "text",
-        "text": await DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid)
+        "text": await db_msg
     };
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
         event.replyToken, msg, msg2
