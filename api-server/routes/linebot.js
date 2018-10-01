@@ -81,6 +81,11 @@ function Build_msg_template(Token) {
 
 /* Type - message */
 async function type_message(event) {
+    query = 'SELECT MESSAGE FROM UserData WHERE USERID = "{id}"'
+        .replace("{id}", event.source.userId);
+    connection.query(query, function(err, rows) {
+        console.log("select: " + rows);
+    });
     // Dialogflowへの接続
     var msg = {
         "type": "text",
@@ -96,7 +101,8 @@ async function type_message(event) {
 
 /* Type - follow */
 async function type_follow(event) {
-    var rich_url = urlp_rich_set.replace('{userId}', event.source.userId).replace('{richMenuId}', 'richmenu-b29e60fb9ff07712e58f5c4e9203b477');
+    var rich_url = urlp_rich_set.replace('{userId}', event.source.userId)
+        .replace('{richMenuId}', 'richmenu-b29e60fb9ff07712e58f5c4e9203b477');
     request.post(await Build_responce(rich_url), function(error, responce, body) {
         console.log(body);
     });
@@ -149,6 +155,18 @@ function removeUser(event) {
 
 /* Type - Beacon */
 async function type_beacon(event) {
+    var nowtime = moment().format('YYYY-MM-DD HH:mm:ss');
+    var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
+        .replace("{id}", event.source.userId)
+        .replace("{time}", nowtime);
+    connection.query(query, function(err, rows) {
+        console.log(rows);
+    });
+    query = 'SELECT MESSAGE FROM BeaconData WHERE BEACONID = "{id}"'
+        .replace("{id}", event.beacon.hwid);
+    connection.query(query, function(err, rows) {
+        console.log("select: " + rows);
+    });
     var msg = {
         "type": "text",
         "text": "ビーコン範囲に入りました"
