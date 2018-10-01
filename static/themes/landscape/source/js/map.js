@@ -42,6 +42,7 @@ function Load(){
 function init(event){
   var j_mapImgsData  = event.target.getResult("mapImgs");　// mapImgData.json
   var j_shopData     = event.target.getResult("shop");
+  console.log(j_shopData);
   // - canvas stageの定義　--------------------------------------------------------------------------------------------
   var canvasContainer = document.getElementById("wrap");
   var canvasElement   = document.getElementById("myCanvas");
