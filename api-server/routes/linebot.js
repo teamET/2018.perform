@@ -79,25 +79,34 @@ function Build_msg_template(Token) {
     });
 }*/
 
+async function DB_get(table, col, id) {
+    return new Promise(function(resolve, reject) {
+        var query = 'SELECT {col} FROM {table} WHERE USERID = "{id}"'
+            .replace("{table}", table)
+            .replace("{col}", col)
+            .replace("{id}", id);
+        connection.query(query,function(err, rows) {
+            resolve(rows[0][col]);
+        })
+    });
+}
+
 /* Type - message */
 async function type_message(event) {
-    query = 'SELECT BEACONTIME FROM UserData WHERE USERID = "{id}"'
-        .replace("{id}", event.source.userId);
-    connection.query(query, function(err, rows) {
-        var msg2 = {
-            "type": "text",
-            "text": rows[0].BEACONTIME
-        };
-        var msg = {
-            "type": "text",
-            "text": event.message.text
-        };
-        var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-            event.replyToken, msg, msg2
-        ));
-        request.post(tmp, function(error, responce, body) {
-            console.log(body);
-        });
+    // Dialogflowへの接続
+    var msg = {
+        "type": "text",
+        "text": event.message.text
+    };
+    var msg2 = {
+        "type": "text",
+        "text": await DB_get("UserData", "BEACONTIME", event.source.userId)
+    };
+    var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+        event.replyToken, msg, msg2
+    ));
+    request.post(tmp, function(error, responce, body) {
+        console.log(body);
     });
 }
 
