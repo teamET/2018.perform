@@ -1,12 +1,6 @@
 var mysql = require('mysql');
 
-var dbConfig = {
-  host: '127.0.0.1',
-  user: 'sun',
-  password: '1999',
-  database: 'linebot'
-};
 
-var connection = mysql.createConnection(dbConfig);
+var connection = mysql.createConnection(process.env.MYSQL_URL);
 
 module.exports = connection;
