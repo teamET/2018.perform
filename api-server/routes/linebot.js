@@ -81,10 +81,10 @@ function Build_msg_template(Token) {
 
 /* Type - message */
 async function type_message(event) {
-    query = 'SELECT MESSAGE FROM UserData WHERE USERID = "{id}"'
+    query = 'SELECT BEACONTIME FROM UserData WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId);
     connection.query(query, function(err, rows) {
-        console.log("select: " + rows);
+        console.log("select: " + rows[0].BEACONTIME);
     });
     // Dialogflowへの接続
     var msg = {
