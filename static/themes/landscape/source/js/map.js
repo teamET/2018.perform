@@ -27,6 +27,7 @@ function Load(){
   var queue = new createjs.LoadQueue(true);
   var manifest = [
     {"src":"/data/mapImgData.json","id":"mapImgs"},
+    {"src":"/data/booth.json","id":"booth"}
   ];
   /*
   // ** 後で足せ
@@ -39,13 +40,13 @@ function Load(){
 }
 // JSONデータが読み込まれたら入る
 function init(event){
-  var j_mapImgsData  = event.target.getResult("mapImgs");　// mapImgData.json
-  var j_shopData     = event.target.getResult("shop");
-  console.log(j_shopData);
+  var j_mapImgsData   = event.target.getResult("mapImgs");　// mapImgData.json
+  var j_boothData     = event.target.getResult("booth");
   // - canvas stageの定義　--------------------------------------------------------------------------------------------
   var canvasContainer = document.getElementById("wrap");
   var canvasElement   = document.getElementById("myCanvas");
-  var h_shopname      = document.getElementById("shopname");
+  var dh_pindata      = document.getElementById("pin");
+  var h_boothdata     = document.getElementById("boothdata");
   // CanvasSizeの大きさ画面サイズに設定する（初期化）
   var Sizing = function(){
     canvasElement.height = canvasElement.offsetHeight;
@@ -863,14 +864,20 @@ function init(event){
     function OutsideWriteInfo(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
-      h_shopname.textContent = "エリア"+g_areaTexts[i]+"の"+j+"番目";
+      dh_pindata.textContent = "エリア"+g_areaTexts[i]+"の"+(parseInt(j)+1)+"番目";
+      h_boothdata.innerHTML  = GetBoothData("booth1");
     }
     // DOMに情報を書き込む（構内）-------------------------------------------------------
     function InsideWriteInfo(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
       var k = event.target.eventParam3;
-      h_shopname.textContent = i+"棟"+j+"階の"+k+"番目のピン";
+      dh_pindata.textContent = e_buildNum[i]+"棟"+(parseInt(j)+1)+"階の"+(parseInt(k)+1)+"番目のピン";
+      h_boothdata.innerHTML  = GetBoothData("booth1");
+    }
+
+    function GetBoothData(boothID){
+      return j_boothData[boothID];
     }
     // ここまでイベントに対する処理の関数群 ---------------------------------------------------------------------------
 
