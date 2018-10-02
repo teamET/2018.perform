@@ -27,7 +27,7 @@ router.post('/create', function(req, res, next) {
     });
 });
 
-router.post('/set', function(req, res, next) {
+router.post('/update', function(req, res, next) {
     //bodyの受け取り
     var body = req.body;
     var query = UPDATE.replace("{msg}", body.message)
