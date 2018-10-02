@@ -7,12 +7,13 @@
         {"x":1750,"y":270,"width":450,"height":250,"color":"DarkRed"},
         {"x":1730,"y":580,"width":450,"height":250,"color":"DarkRed"},
         {"x":1850,"y":900,"width":300,"height":400,"color":"DarkRed"},
-        {"x":2450,"y":1150,"width":350,"height":230,"color":"Green"},
-        {"x":2250,"y":850,"width":230,"height":200,"color":"Blue"}
+        {"x":2450,"y":1150,"width":350,"height":230,"color":"DarkRed"},
+        {"x":2250,"y":850,"width":230,"height":200,"color":"DarkRed"}
     ],
     "ToDisplayPinImg":"map-tool-pin-on.png",
     "ToHidePinImg":"map-tool-pin-off.png",
     "PinImg_1":"map-pin_1.png",
+    "PinImg_2":"map-pin_2.png",
     "GotoGeneralImg":"map-tool-toOutsideTop.png",
     "OutsideAreas":[
         {
