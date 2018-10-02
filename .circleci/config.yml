@@ -24,9 +24,9 @@ jobs:
           command: |
               echo ${CIRCLE_BRANCH},${USER_NAME},${PRODUCTION_SERVER},${DEVELOPMENT_SERVER}
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                export SERVER=root@${AZURE_PRODUCT}
+                export SERVER=kfes@${AZURE_PRODUCT}
               else
-                export SERVER=root@${AZURE_DEVELOP}
+                export SERVER=kfes@${AZURE_DEVELOP}
               fi
               echo ${SERVER}
               rsync -av --delete . ${SERVER}:/root/2018.perform/ 2>&1 >/dev/null
