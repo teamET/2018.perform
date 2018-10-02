@@ -9,7 +9,6 @@ const UPDATE = 'UPDATE BeaconData SET MESSAGE = "{msg}" WHERE BEACONID = "{id}"'
 
 /* MAIN */
 router.post('/create', function(req, res, next) {
-    var responce = "";
     //bodyの受け取り
     var body = req.body;
     var query = INSERT.replace("{id}", body.beaconid)
@@ -17,28 +16,67 @@ router.post('/create', function(req, res, next) {
         .replace("{place}", body.place);
     connection.query(query, function(err, rows) {
         console.log(rows);
+        if (err) {
+            res.status(403);
+            res.send(err);
+        } else {
+            res.status(200);
+            res.send(rows);
+        }
     });
-    res.status(200);
-    res.send(responce);
 });
 
 router.post('/set', function(req, res, next) {
-    var responce = "";
     //bodyの受け取り
     var body = req.body;
     var query = UPDATE.replace("{msg}", body.message)
         .replace("{id}", body.beaconid);
     connection.query(query, function(err, rows) {
         console.log(rows);
+        if (err) {
+            res.status(403);
+            res.send(err);
+        } else {
+            res.status(200);
+            res.send(rows);
+        }
     });
-    res.status(200);
-    res.send(responce);
+});
+
+router.delete('/delete', function(req, res, next) {
+    var query = 'DELETE FROM BeaconData WHERE BEACONID = "{id}"'
+        .replace("{id}", req.body.beaconid);
+    connection.query(query, function(err, rows) {
+        if (err) {
+            res.status(403);
+            res.send(err);
+        } else {
+            res.status(200);
+            res.send(rows);
+        }
+    });
 });
 
 router.get('/get', function(req, res, next) {
-    var responce = "test";
-    res.status(200);
-    res.send(responce);
+    var query = "SELECT * FROM BeaconData";
+    connection.query(query, function(err, rows) {
+        if (err) {
+            res.status(403);
+            res.send(err);
+        } else {
+            var msg = [];
+            for(var i=0; i<rows.length; i++) {
+                var tmp = {
+                    "beaconid": rows[i]["BEACONID"],
+                    "message": rows[i]["MESSAGE"],
+                    "place": rows[i]["PLACE"]
+                };
+                msg.push(tmp);
+            }
+            res.status(200);
+            res.send(msg);
+        }
+    })
 });
 
 module.exports = router;
