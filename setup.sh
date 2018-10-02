@@ -11,8 +11,7 @@ function start_forever(){
 
 function mes(){
     echo $1
-    curl -X POST $WEBHOOK_URL --data-urlencode \
-    "payload={\"channel\": \"#server_log\", \"username\": \"webhookbot\", \"text\": \"\`\`\` $@ \`\`\`\", \"icon_emoji\": \":sunglasses:\"}" 
+    curl -X POST --data-urlencode "payload={\"channel\": \"#server_log\", \"username\": \"webhookbot\", \"text\": \"\`\`\` $@ \`\`\`\", \"icon_emoji\": \":sunglasses:\"}" $WEBHOOK_URL 
 }
 
 hexo --version
