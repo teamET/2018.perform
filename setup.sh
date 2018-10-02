@@ -1,4 +1,4 @@
-source /root/.bash_profile
+source $HOME/.bash_profile
 
 function start_forever(){
     echo start process $1 , $2
@@ -19,7 +19,7 @@ npm --version
 node --version
 
 # hexo
-cd /root/2018.perform/static
+cd $HOME/2018.perform/static
 npm install --save hexo-cli
 hexo generate --force --bail
 cp -rf ./public/* /var/www/public
@@ -27,8 +27,8 @@ echo "{'test':'test'}" > /var/www/public/data/test.json  #/var/www/public/data s
 
 
 
-start_forever /root/2018.perform/bot/ bot.js
-start_forever /root/2018.perform/api-server/ bin/www
+start_forever $HOME/2018.perform/bot/ bot.js
+start_forever $HOME/2018.perform/api-server/ bin/www
 
 
 curl -X POST --data-urlencode "payload={\"channel\": \"#bot\", \"username\": \"webhookbot\", \"text\": \"This is posted to #bot and comes from a bot named webhookbot.\n http://$(hostname -I|cut -f1 -d' ')\n \`$(whoami)@$(hostname -I|cut -f1 -d' ')\`\n\", \"icon_emoji\": \":sunglasses:\"}" $WEBHOOK_URL
