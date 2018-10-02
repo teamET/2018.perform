@@ -98,14 +98,16 @@ async function DB_get(table, col, where, id) {
 
 /* Type - message */
 async function type_message(event) {
-    // Dialogflowへの接続
+    // Dialogflowへの接続今のところしない
     var msg = {"type": "text"};
     switch(event.message.text) {
         case "a":
             msg.text = "さてはお前...aを押したな";
             break;
         case "b":
-            msg.text = "登録時間は" + await DB_get("UserData", "BEACONTIME", "USERID", event.source.userId);
+            var from = moment(await DB_get("UserData", "BEACONTIME", "USERID", event.source.userId));
+            var now = moment();
+            msg.text = "差分は" + now.diff(from)/(1000*60);
             break;
         case "c":
             msg.text = "";
