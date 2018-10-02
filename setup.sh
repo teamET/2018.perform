@@ -1,4 +1,3 @@
-set -ex
 source /root/.bash_profile
 hexo --version
 npm --version
