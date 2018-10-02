@@ -134,7 +134,7 @@ async function type_message(event) {
             }
             break;
         default:
-            msg.text = "個別の返信はできません";
+            msg.text = "個別の返信はできません(*:△:)";
             break;
     }
     if (msg.text) {
