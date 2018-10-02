@@ -1,0 +1,16 @@
+<table class="w3-table w3-white" style="display: block">
+    <tr>
+        <th>時間</th>
+        <th>場所</th>
+        <th>タイトル</th>
+        <th>内容</th>
+    </tr>
+    <% for(var i=0 ; i < 2  ; i += 1 ) {%>
+        <tr>
+            <td><%= data[0].time %></td>
+            <td><%= data[0].place %></td>
+            <td><%= data[0].name %></td>
+            <td><%= data[0].content %></td>
+        </tr>
+    <% } %>
+</table>

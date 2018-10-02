@@ -1,5 +1,5 @@
 {
-  "name": "coskx",
+  "name": "2018.perform",
   "version": "1.0.0",
   "description": "",
   "main": "scraping.js",
@@ -18,12 +18,14 @@
   "homepage": "https://github.com/teamet/coskx#readme",
   "dependencies": {
     "@slack/client": "^4.2.2",
+    "dotenv": "^6.0.0",
     "ejs": "^2.6.1",
     "ejs-lint": "^0.3.0",
     "fs": "0.0.1-security",
     "jsdom": "^11.11.0",
     "pino": "^5.5.0",
     "puppeteer": "^1.4.0",
-    "request": "^2.87.0"
+    "request": "^2.87.0",
+    "winston": "^3.1.0"
   }
 }

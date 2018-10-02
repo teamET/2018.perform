@@ -5,26 +5,32 @@
 version: 2
 jobs:
   build:
-      #    working_directory: ~/repo
-      #    working_directory: ~/api-server
     working_directory: ~/2018.perform/
     docker:
       - image: circleci/node:7.10
     steps:
       - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+      - add_ssh_keys:
+          fingerprints:
+              - "1a:a6:fc:8f:09:ba:34:32:a0:ca:d8:97:de:ea:b0:35"
       - run: 
-          name: install packages
-          #working_directory: ~/2018.perform/api-server
-          command: cd api-server && yarn && yarn install && yarn test
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          name: ssh setup 
+          command: |
+              sudo apt-get update -y && sudo apt-get install -y --fix-missing ssh rsync
+              ssh-keyscan ${AZURE_DEVELOP} >> ~/.ssh/known_hosts
+              ssh-keyscan ${AZURE_PRODUCT} >> ~/.ssh/known_hosts
+      - deploy:
+          name: deploy develop branch
+          command: |
+              echo ${CIRCLE_BRANCH},${USER_NAME},${PRODUCTION_SERVER},${DEVELOPMENT_SERVER}
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                export SERVER=kfes@${AZURE_PRODUCT}
+              else
+                export SERVER=kfes@${AZURE_DEVELOP}
+              fi
+              echo ${SERVER}
+              rsync -av --delete . ${SERVER}:/home/kfes/2018.perform/ 2>&1 >/dev/null
+              ssh ${SERVER} 'source /home/kfes/.bashrc && bash /home/kfes/2018.perform/setup.sh'
 
   test:
     working_directory: ~/2018.perform/
@@ -41,20 +47,9 @@ jobs:
           name: test express server
           working_directory: ~/2018.perform/api-server
           command: yarn test
-  ghost:
-    working_directory: ~/.2018.perfrom
-    docker:
-        - image: circleci/node:7.10
-    steps:
-      - run :
-          name: Install Docker Compose
-          command: |
-            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-            chmod +x ~/docker-compose
-            sudo mv ~/docker-compose /usr/local/bin/docker-compose
-            docker-compose --version
+
 workflows:
-    version: 2
-    build_and_test:
-        jobs:
-            - build
+  version: 2
+  build_and_test:
+    jobs:
+      - build

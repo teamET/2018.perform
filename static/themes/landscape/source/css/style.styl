@@ -23,7 +23,7 @@ input, button
        url(font-icon-path + ".svg#fontawesomeregular?v=#" + font-icon-version) format("svg")
 
 html, body, #container
-  height: 100%
+  height: 500px;
 
 body
   max-width: (column-width + gutter-width) * columns + gutter-width
@@ -89,6 +89,28 @@ if sidebar is left
 if sidebar
   @import "_partial/sidebar"
 
+@media screen and (min-width: 500px) {
+  .header_title {
+    display: none; 
+    }
+}
+
+.shop {
+  box-sizing: inherit;
+  width: 49.5%;
+  padding: 10px;
+  display: inline-block;
+}
+
+.shop img {
+  box-sizing: inherit;
+  width: 100%;
+}
+
+.shop table {
+  box-sizing: inherit;
+  width: 100%;
+}
 .slide-show {
   position: relative;
 }
@@ -107,3 +129,24 @@ if sidebar
 .slide-show img {
   width: 100%;
   }
+
+html,
+body {
+    margin: 0;
+    overflow: scroll;
+    width: 100%;
+    height:100%;
+}
+
+#myCanvas {
+    
+    width: 100%;
+    /* height : 100%; */
+}
+
+#canvas{
+    display : block;
+    justify-content: center;
+    align-items: center;
+}
+

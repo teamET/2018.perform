@@ -1,46 +1,89 @@
 <section id="mogi-shop">
+    <header>
         
-        <header>
-            
-        </header>
-        <main>
-                <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="search_shop_input" onkeyup="search_shop()">
-                <% for(var i=0 ; i < 10 ; i += 1 ) {%>
-                <div class="w3-half" style="display: block;">
-                        <img class="w3-margin w3-circle" src="https://avatars0.githubusercontent.com/u/28134110?s=200&v=4">
-                        <table class="w3-table w3-white" style="width: 250px; display: block" id="search_shop_table">
-                            <p>クラス名</p>
-                            <tr>
-                                <th>item</th>
-                                <th>price</th>
-                            </tr>
-                            <tr>
-                                <td>banana</td>
-                                <td>200en</td>
-                            </tr>
-                        </table>
-                </div>
-            <% } %>
-        </main>
-        <script>
-            function search_shop() {
-                var input, filter, table, tr, td, i;
-                input = document.getElementById("search_shop_input");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("search_shop_table");
-                tr = table.getElementsByTagName("tr");
-                for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                    } else {
-                    tr[i].style.display = "none";
-                    }
-                }
+    </header>
+    
+    <% var data ={
+        "shopname":{
+            "goods":{
+                "name":"price"},
+            "image":["https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png"],
+            "text":"text"},
+        "test":{
+            "goods":{
+                "チョコバナナ":"700",
+                "いちごチョコバナナ":"120"},
+            "image":[
+                "https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png",
+                "https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png",
+                "https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png",
+                "https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png",
+                "https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png"],
+            "text":"text"},
+        "test1":{
+            "goods":{
+                "name":"price",
+                "milkchoco":"700",
+                "banana":"120"},
+            "image":[
+                "https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png",
+                "https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png",
+                "https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png"],
+            "text":"安いよ安いよーー"},
+        "test2":{
+            "goods":{
+                "name":"price",
+                "milkchoco":"700",
+                "banana":"120"},
+            "image":[
+                "https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png",
+                "https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png",
+                "https://user-images.githubusercontent.com/38575274/46117411-1458f280-c23c-11e8-8730-d32b0ed45c31.png"],
+            "text":"安いよ安いよーー"
+        }
+    }%>
+    <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="search_shop_input" onkeyup="search_shop()">
+    <!-- <iframe src=""></iframe> -->
+    <% for(let shopname in data) {%>
+        
+            <div class="shop w3-white">
+                <img src=<%= data[shopname].image[0] %>>
+                <table class="" id="search_shop_table">
+                    <p>Class:&nbsp;<%= shopname %></p>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <%  for( let item in data[shopname].goods ) { %>
+                    <tr>
+                            <td><%= item %></td>
+                            <td><%= data[shopname].goods[item] %>円</td>
+                    </tr>
+                    <% }; %>
+                </table>
+            </div>
+        
+    <% } %>
+    
+    <script>
+        function search_shop() {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("search_shop_input");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("search_shop_table");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+                } else {
+                tr[i].style.display = "none";
                 }
             }
-        </script>
-    </section>
+            }
+        }
+    </script>
+</section>
 
           
