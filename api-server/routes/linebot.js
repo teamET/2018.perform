@@ -99,20 +99,28 @@ async function DB_get(table, col, where, id) {
 /* Type - message */
 async function type_message(event) {
     // Dialogflowへの接続
-    var msg = {
-        "type": "text",
-        "text": event.message.text
-    };
-    var msg2 = {
-        "type": "text",
-        "text": await DB_get("UserData", "BEACONTIME", "USERID", event.source.userId)
-    };
-    var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, msg, msg2
-    ));
-    request.post(tmp, function(error, responce, body) {
-        console.log(body);
-    });
+    var msg = {"type": "text"};
+    switch(event.message.text) {
+        case "a":
+            msg.text = "さてはお前...aを押したな";
+            break;
+        case "b":
+            msg.text = "登録時間は" + await DB_get("UserData", "BEACONTIME", "USERID", event.source.userId);
+            break;
+        case "c":
+            msg.text = "";
+            break;
+        default:
+            break;
+    }
+    if (msg.text) {
+        var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+            event.replyToken, msg
+        ));
+        request.post(tmp, function(error, responce, body) {
+            console.log(body);
+        });
+    }
 }
 
 /* Type - follow */
