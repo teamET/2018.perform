@@ -14,6 +14,7 @@ router.post('/create', function(req, res, next) {
     var query = INSERT.replace("{id}", body.beaconid)
         .replace("{msg}", body.message)
         .replace("{place}", body.place);
+    console.log(query);
     connection.query(query, function(err, rows) {
         console.log(rows);
         if (err) {
@@ -43,7 +44,7 @@ router.post('/set', function(req, res, next) {
     });
 });
 
-router.delete('/delete', function(req, res, next) {
+router.post('/delete', function(req, res, next) {
     var query = 'DELETE FROM BeaconData WHERE BEACONID = "{id}"'
         .replace("{id}", req.body.beaconid);
     connection.query(query, function(err, rows) {
