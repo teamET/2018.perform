@@ -66,18 +66,29 @@ function init(event){
   console.log(p_location);
   // - canvas stageの定義 --------------------------------------------------------------------------------------------
   var canvasContainer = document.getElementById("wrap");
-  var canvasElement   = document.getElementById("myCanvas");
+  //var canvasElement   = document.getElementById("myCanvas");
   var dh_pindata      = document.getElementById("pin");
   var h_boothdata     = document.getElementById("boothdata");
   // CanvasSizeの大きさ画面サイズに設定する（初期化）
   var Sizing = function(){
-    canvasElement.height = canvasElement.offsetHeight;
-    canvasElement.width  = canvasElement.offsetWidth;
+    canvasElement.style.height = String(canvasElement.offsetHeight)+"px";
+    canvasElement.style.width  = String(canvasElement.offsetWidth)+"px";
   }
   // CanvasSizeの大きさ画面サイズに設定する（初期化）
-  Sizing();
+  //Sizing();
   // - stageの定義
+  var canvasElement   = document.getElementById("myCanvas");
   var stage = new createjs.StageGL(canvasElement);
+  stage.canvas.width = canvasElement.offsetHeight;
+  stage.canvas.height = canvasElement.offsetWidth;
+  if(window.devicePixelRatio){
+    canvasElement.width *= devicePixelRatio;
+    canvasElement.height *= devicePixelRatio;
+    canvasElement.style.width = String(canvasElement.width / devicePixelRatio)+"px";
+    canvasElement.style.height = String(canvasElement.height / devicePixelRatio) + "px";
+    stage.scaleX = stage.scaleY = window.devicePixelRatio;
+  }
+  
   // ---------------------------------------------------------------------------------------------------------------   
   var DisplayContainer = new createjs.Container();                                  // 表示用コンテナ
   stage.addChild(DisplayContainer);
