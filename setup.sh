@@ -1,3 +1,4 @@
+set -ex
 source /root/.bash_profile
 hexo --version
 npm --version
@@ -5,21 +6,29 @@ node --version
 
 # hexo
 cd /root/2018.perform/static
-hexo --version
 npm install --save hexo-cli
-hexo generate
+hexo generate --force --bail
 cp -rf ./public/* /var/www/public
 echo "{'test':'test'}" > /var/www/public/data/test.json  #/var/www/public/data should be directory
 
 # bot
 cd /root/2018.perform/bot
 npm install
-[[ forever list |grep bot.js  ]] && forever start --minUptime 1000 --spinSleepTime 1000 /root/2018.perform/bot/bot.js
+if [[ forever list |grep bot.js ]] ; then
+    forever restart --minUptime 1000 --spinSleepTime 1000 /root/2018.perform/bot/bot.js
+else
+    forever restart --minUptime 1000 --spinSleepTime 1000 /root/2018.perform/bot/bot.js
+fi
 
 #api-server
 cd /root/2018.perform/api-server
 npm install
-[[ forever list |grep api-server  ]] && forever start --minUptime 1000 --spinSleepTime 1000 /root/2018.perform/api-server/bin/www
+if [[ forever list |grep api-server ]] ; then
+    forever restart --minUptime 1000 --spinSleepTime 1000 /root/2018.perform/api-server/bin/www
+else
+    forever start --minUptime 1000 --spinSleepTime 1000 /root/2018.perform/api-server/bin/www
+fi
+
 
 
 
