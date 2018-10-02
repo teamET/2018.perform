@@ -96,13 +96,26 @@ async function DB_get(table, col, where, id) {
     });
 }
 
+/* richmenuの切り替え */
+async function rich_change(after, userId) {
+    var rich_url = urld_rich_delete.replace("{userId}", userId);
+    var rich_url2 = urlp_rich_set.replace("{userId}", userId)
+        .replace("{richMenuId}", after);
+    request.delete(await Build_responce(rich_url), function(error, responce, body) {
+        console.log(body);
+        request.post(await Build_responce(rich_url2), function(error, responce, body) {
+            console.log(body);
+        });
+    });
+}
+
 /* Type - message */
 async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg = {"type": "text"};
     switch(event.message.text) {
         case "a":
-            msg.text = "さてはお前...aを押したな";
+            msg.text = "ご意見ご感想ふぉーむへ誘導";
             break;
         case "b":
             var from = moment(await DB_get("UserData", "BEACONTIME", "USERID", event.source.userId));
@@ -110,9 +123,17 @@ async function type_message(event) {
             msg.text = "差分は" + now.diff(from)/(1000*60);
             break;
         case "c":
-            msg.text = "";
+            console.log("near mogi-shop");
+            var userplace = await DB_get("UserData", "PLACE", "USERID", event.source.userId);
+            if (userplace == "") {
+                msg.text = "近くに模擬店がないみたい...\n移動してからもう一度試してください";
+            } else {
+                //userplaceの場所に合う模擬店をjson or htmlから引っ張ってきてテンプレートメッセージにする
+                msg.text = userplace + "にいるから近くの模擬店を取得";
+            }
             break;
         default:
+            msg.text = "個別の返信はできません";
             break;
     }
     if (msg.text) {
@@ -148,18 +169,16 @@ async function type_follow(event) {
 async function addUser(event, usertype) {
     //DBへユーザの追加
     var nowtime = moment().format('YYYY-MM-DD HH:mm:ss');
-    var query = 'INSERT INTO UserData (USERID, USERTYPE, BEACONTIME) VALUES ("{id}", "{type}", "{time}")';
+    var query = 'INSERT INTO UserData (USERID, USERTYPE, BEACONTIME, PLACE) VALUES ("{id}", "{type}", "{time}", "{place}")';
     query = query.replace('{id}', event.source.userId)
         .replace('{type}', event.postback.data)
-        .replace('{time}', nowtime);
+        .replace('{time}', nowtime)
+        .replace('{place}', "");
     connection.query(query, function(err, rows) {
         console.log(rows);
-    });
-    //rich menuの削除
-    var rich_url = urld_rich_delete.replace('{userId}', event.source.userId);
-    request.delete(await Build_responce(rich_url), function(error, responce, body) {
-        console.log(body);
-    });
+    })
+    //richmenuの切り替え
+    rich_change(richdata.normal, event.source.userId);
     var msg = {
         "type": "text",
         "text": usertype + "と認証しました"
@@ -168,11 +187,6 @@ async function addUser(event, usertype) {
         event.replyToken, msg
     ));
     request.post(tmp, function(error, responce, body) {
-        console.log(body);
-    });
-    rich_url = urlp_rich_set.replace("{userId}", event.source.userId)
-        .replace("{richMenuId}", richdata.normal);
-    request.post(await Build_responce(rich_url), function(error, responce, body) {
         console.log(body);
     });
 }
@@ -189,31 +203,58 @@ function removeUser(event) {
 
 /* Type - Beacon */
 async function type_beacon(event) {
-    /* beacon侵入時間の更新
-       本来は指定分以内になんども通知が来ないように設定するべき */
-    var nowtime = moment().format('YYYY-MM-DD HH:mm:ss');
-    var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
+    /* beacon侵入時間の更新 */
+    var tmp = DB_get("UserData", "BEACONTIME", "USERID", event.source.userId);
+    var now = moment();
+    var nowtime = now.format('YYYY-MM-DD HH:mm:ss');
+    var db_time = moment(await tmp);
+    var db_place = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
+    if (now.diff(db_time/(1000*60)) >= 7 ) {
+        var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
+            .replace("{id}", event.source.userId)
+            .replace("{time}", nowtime);
+        connection.query(query, function(err, rows) {
+            console.log(rows);
+        });
+        var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
+        var msg = {
+            "type": "text",
+            "text": "現在，" + await db_place + "にいます"
+        };
+        var msg2 = {
+            "type": "text",
+            "text": "おしらせ\n" + await db_msg
+        };
+        var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+            event.replyToken, msg, msg2
+        ));
+        request.post(tmp, function(error, responce, body) {
+            console.log(body);
+        });
+    }
+    var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId)
-        .replace("{time}", nowtime);
+        .replace("{place}", await db_place);
     connection.query(query, function(err, rows) {
         console.log(rows);
     });
-    var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
-    var db_place = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
-    var msg = {
-        "type": "text",
-        "text": "現在，" + await db_place + "にいます"
-    };
-    var msg2 = {
-        "type": "text",
-        "text": await db_msg
-    };
-    var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, msg, msg2
-    ));
-    request.post(tmp, function(error, responce, body) {
-        console.log(body);
+    if (db_place == "taiikukan") {
+        rich_change(richdata.event, event.source.userId);
+    }
+}
+
+/* 体育館退出用 */
+async function beacon_leave(event) {
+    var db_place = await DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
+    var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
+        .replace("{id}", event.source.userId)
+        .replace("{place}", "");
+    connection.query(query, function(err, rows) {
+        console.log(rows);
     });
+    if (db_place == "taiikukan") {
+        rich_change(richdata.normal, event.source.userId);
+    }
 }
 
 
@@ -253,6 +294,8 @@ router.post('/', function(req, res, next) {
                     console.log("beacon");
                     if (event.beacon.type == "enter") {
                         type_beacon(event);
+                    } else if (event.beacon.type == "leave") {
+                        beacon_leave(event);
                     }
                     break;
                 case "unfollow":
