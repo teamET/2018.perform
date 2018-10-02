@@ -3,6 +3,7 @@ var router = express.Router();
 const crypto = require('crypto');
 var request = require('request');
 var moment = require('moment');
+var fs = require('fs');
 var cheerio = require('cheerio-httpcli');
 const dialogflow = require("dialogflow");
 var connection = require('./mysqlConnection');
@@ -23,7 +24,7 @@ const session_client = new dialogflow.SessionsClient({
     }
 });
 
-var richdata = JSON.parse(fs.readFileSync('./rich.json', 'utf8'));
+var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
 
 /* LINE MessagingAPI URL */
 //URL POST
