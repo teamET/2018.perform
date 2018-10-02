@@ -17,8 +17,8 @@ jobs:
           name: ssh setup 
           command: |
               sudo apt-get update -y && sudo apt-get install -y --fix-missing ssh rsync
-              ssh-keyscan ${DEVELOPMENT_SERVER} >> ~/.ssh/known_hosts
-              ssh-keyscan ${PRODUCTION_SERVER} >> ~/.ssh/known_hosts
+              ssh-keyscan ${AZURE_DEVELOP} >> ~/.ssh/known_hosts
+              ssh-keyscan ${AZURE_PRODUCT} >> ~/.ssh/known_hosts
       - deploy:
           name: deploy develop branch
           command: |
