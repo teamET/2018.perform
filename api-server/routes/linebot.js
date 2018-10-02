@@ -3,6 +3,7 @@ var router = express.Router();
 const crypto = require('crypto');
 var request = require('request');
 var moment = require('moment');
+var cheerio = require('cheerio-httpcli');
 const dialogflow = require("dialogflow");
 var connection = require('./mysqlConnection');
 
@@ -21,6 +22,8 @@ const session_client = new dialogflow.SessionsClient({
         private_key: GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n")
     }
 });
+
+var richdata = JSON.parse(fs.readFileSync('./rich.json', 'utf8'));
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -115,7 +118,7 @@ async function type_message(event) {
 async function type_follow(event) {
     //rich menuの登録
     var rich_url = urlp_rich_set.replace('{userId}', event.source.userId)
-        .replace('{richMenuId}', 'richmenu-b29e60fb9ff07712e58f5c4e9203b477');
+        .replace('{richMenuId}', richdata.start);
     request.post(await Build_responce(rich_url), function(error, responce, body) {
         console.log(body);
     });
@@ -154,6 +157,11 @@ async function addUser(event, usertype) {
         event.replyToken, msg
     ));
     request.post(tmp, function(error, responce, body) {
+        console.log(body);
+    });
+    rich_url = urlp_rich_set.replace("{userId}", event.source.userId)
+        .replace("{richMenuId}", richdata.normal);
+    request.post(await Build_responce(rich_url), function(error, responce, body) {
         console.log(body);
     });
 }
