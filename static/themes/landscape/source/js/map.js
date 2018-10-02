@@ -27,7 +27,8 @@ function Load(){
   var queue = new createjs.LoadQueue(true);
   var manifest = [
     {"src":"/data/mapImgData.json","id":"mapImgs"},
-    {"src":"/data/booth.json","id":"booth"}
+    {"src":"/data/boothsample.json","id":"booth"},
+    {"src":"/data/boothID.json","id":"boothID"}
   ];
   /*
   // ** 後で足せ
@@ -42,6 +43,7 @@ function Load(){
 function init(event){
   var j_mapImgsData   = event.target.getResult("mapImgs");　// mapImgData.json
   var j_boothData     = event.target.getResult("booth");
+  var j_boothID       = event.target.getResult("boothID");
   // - canvas stageの定義　--------------------------------------------------------------------------------------------
   var canvasContainer = document.getElementById("wrap");
   var canvasElement   = document.getElementById("myCanvas");
@@ -865,7 +867,8 @@ function init(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
       dh_pindata.textContent = "エリア"+g_areaTexts[i]+"の"+(parseInt(j)+1)+"番目";
-      h_boothdata.innerHTML  = GetBoothData("booth1");
+      var boothID = j_boothID["Outside" + g_areaTexts[i] + (parseInt(j)+1)];
+      h_boothdata.innerHTML  = GetBoothData(boothID);
     }
     // DOMに情報を書き込む（構内）-------------------------------------------------------
     function InsideWriteInfo(event){
@@ -873,7 +876,8 @@ function init(event){
       var j = event.target.eventParam2;
       var k = event.target.eventParam3;
       dh_pindata.textContent = e_buildNum[i]+"棟"+(parseInt(j)+1)+"階の"+(parseInt(k)+1)+"番目のピン";
-      h_boothdata.innerHTML  = GetBoothData("booth1");
+      var boothID = j_boothID["Inside" + e_buildNum[i] + (parseInt(j)+1) + (parseInt(k)+1)];
+      h_boothdata.innerHTML  = GetBoothData(boothID);
     }
 
     function GetBoothData(boothID){
