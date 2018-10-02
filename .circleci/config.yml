@@ -29,8 +29,8 @@ jobs:
                 export SERVER=kfes@${AZURE_DEVELOP}
               fi
               echo ${SERVER}
-              rsync -av --delete . ${SERVER}:/root/2018.perform/ 2>&1 >/dev/null
-              ssh ${SERVER} 'source /root/.bashrc && bash /root/2018.perform/setup.sh'
+              rsync -av --delete . ${SERVER}:/home/kfes/2018.perform/ 2>&1 >/dev/null
+              ssh ${SERVER} 'source /home/kfes/.bashrc && bash /home/kfes/2018.perform/setup.sh'
 
   test:
     working_directory: ~/2018.perform/
