@@ -8,13 +8,14 @@
         });
     </script>
     <div class="slide-show w3-content w3-display-container">
-        <p id="txt">第一体育館</p>
-        <p id="txt">第二体育館</p>
-        <p id="txt">購買前</p>
+        <p class="txt">第一体育館</p>
+        <p class="txt">第二体育館</p>
+        <p class="txt">購買前</p>
+        <p class="txt">企画</p>
         <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301309-a8878e00-a34f-11e8-971c-fde728bb12ba.jpg">
         <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301310-a8878e00-a34f-11e8-8ee0-ba6ba791c3bd.jpg">
         <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301311-a8878e00-a34f-11e8-8ce6-7328bdde6fce.jpg">
-        
+        <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301310-a8878e00-a34f-11e8-8ee0-ba6ba791c3bd.jpg">
         <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
         <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
     
@@ -32,7 +33,7 @@
         function showDivs(n) {
         var i;
         var x = document.getElementsByClassName("mySlides");
-        var y = document.getElementbyid("txt");
+        var y = document.getElementsByClassName("txt");
         if (n > x.length) {slideIndex = 1}    
         if (n < 1) {slideIndex = x.length}
         for (i = 0; i < x.length; i++) {
