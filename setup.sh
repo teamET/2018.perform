@@ -5,7 +5,7 @@ function start_forever(){
     cd $1
     npm install
     forever restart $2 --minUptime 1000 --spinSleepTime 1000 || \
-        forever restart $2 --minUptime 1000 --spinSleepTime 1000 && forever list)
+        (forever start $2 --minUptime 1000 --spinSleepTime 1000 && forever list)
 }
 
 function mes(){
