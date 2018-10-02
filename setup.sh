@@ -5,7 +5,7 @@ function start_forever(){
     cd $1
     npm install
     forever restart $2 --minUptime 1000 --spinSleepTime 1000 || \
-        (forever start $2 --minUptime 1000 --spinSleepTime 1000 && forever list)
+        (forever start $2 --minUptime 1000 --spinSleepTime 1000 )
 }
 
 function mes(){
@@ -22,16 +22,17 @@ node --version
 cd $HOME/2018.perform/static
 npm install --save hexo-cli
 hexo generate --force --bail
-cp -rf ./public/* /var/www/public
+\cp -rf ./public/* /var/www/public
 echo "{'test':'test'}" > /var/www/public/data/test.json  #/var/www/public/data should be directory
 
 
 
 start_forever $HOME/2018.perform/bot/ bot.js
 start_forever $HOME/2018.perform/api-server/ bin/www
+forever list
 
 
-curl -X POST --data-urlencode "payload={\"channel\": \"#bot\", \"username\": \"webhookbot\", \"text\": \"This is posted to #bot and comes from a bot named webhookbot.\n http://$(hostname -I|cut -f1 -d' ')\n \`$(whoami)@$(hostname -I|cut -f1 -d' ')\`\n\", \"icon_emoji\": \":sunglasses:\"}" $WEBHOOK_URL
+curl -X POST --data-urlencode "payload={\"channel\": \"#bot\", \"username\": \"webhookbot\", \"text\": \"This is posted to #bot and comes from a bot named webhookbot.\n http://$(curl ifconfig.io)\n \`$(whoami)@$(curl ifconfig.io)\`\n\", \"icon_emoji\": \":sunglasses:\"}" $WEBHOOK_URL
 
 curl -X POST --data-urlencode "payload={\"channel\": \"#server_log\", \"username\": \"webhookbot\", \"text\": \"\`\`\`$(cd /var/www/public ;find .|sort)\`\`\`\", \"icon_emoji\": \":sunglasses:\"}" $WEBHOOK_URL
 
