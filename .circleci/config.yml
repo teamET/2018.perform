@@ -14,27 +14,22 @@ jobs:
           fingerprints:
               - "1a:a6:fc:8f:09:ba:34:32:a0:ca:d8:97:de:ea:b0:35"
       - run: 
-          name: install packages
+          name: ssh setup 
           command: |
               sudo apt-get update -y && sudo apt-get install -y --fix-missing ssh rsync
               ssh-keyscan ${DEVELOPMENT_SERVER} >> ~/.ssh/known_hosts
               ssh-keyscan ${PRODUCTION_SERVER} >> ~/.ssh/known_hosts
-              #cd api-server && yarn && yarn install && yarn test
-              #cd static; npm i; npm i -g hexo-cli;hexo g
       - deploy:
           name: deploy develop branch
           command: |
               echo ${CIRCLE_BRANCH},${USER_NAME},${PRODUCTION_SERVER},${DEVELOPMENT_SERVER}
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                export SERVER=root@${PRODUCTION_SERVER}
+                export SERVER=root@${AZURE_PRODUCT}
               else
-                export SERVER=root@${DEVELOPMENT_SERVER}
+                export SERVER=root@${AZURE_DEVELOP}
               fi
               echo ${SERVER}
               rsync -av --delete . ${SERVER}:/root/2018.perform/ 2>&1 >/dev/null
-              #rsync -av --delete ./setup.sh ${SERVER}:/root/2018.perform/setup.sh 2>&1 >/dev/null
-              #rsync -av --delete ./static ${SERVER}:/var/www/static 2>&1 >/dev/null
-              #rsync -av --delete ./bot  ${SERVER}:/root/2018.perform/bot 2>&1 >/dev/null
               ssh ${SERVER} 'source /root/.bashrc && bash /root/2018.perform/setup.sh'
 
   test:
