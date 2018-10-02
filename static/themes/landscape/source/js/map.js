@@ -209,8 +209,9 @@ function init(event){
       // ------------------------------------------------------------------------------------------
       a_PageContainer.addChild(am_img);
       // ---- 2.2.2 各エリアに配置されるピンの設置 ------------------------------------------------
+      // 青ピント赤ピンのサイズは同じ
       var a_pins         = []; //　エリアにおけるピンの画像が入る [エリア]
-      var a_pin1Tmp      = new createjs.Bitmap("/img/"+j_mapImgsData.PinImg_1); // *p
+      var a_pin1Tmp      = new createjs.Bitmap("/img/"+j_mapImgsData.PinImg_1); // *p  // blue
       var pin1Size       = await getImageSize(a_pin1Tmp); // pinの画像サイズを取得
       for(var j=0;j<j_mapImgsData.OutsideAreas[i].pins.length;j++){
         // ----- 2.2.2.1 エリアにおけるピンの画像の設置 -------------------------------------------
@@ -220,6 +221,14 @@ function init(event){
         a_pin.x          = j_mapImgsData.OutsideAreas[i].pins[j].x * am_img.scaleX + am_img.x;
         a_pin.y          = j_mapImgsData.OutsideAreas[i].pins[j].y * am_img.scaleY + am_img.y;
         a_PinContainer.addChild(a_pin);
+        // ----- 2.2.2.1.2 エリアにおけるピンの画像の設置 2 (red) ---------------------------------
+        var a_pin2       = new createjs.Bitmap("/img/"+j_mapImgsData.PinImg_2); // *p
+        a_pin2.scaleX    = gm_general.scaleX;
+        a_pin2.scaleY    = gm_general.scaleY;
+        a_pin2.alpha     = 0;
+        a_pin2.x         = j_mapImgsData.OutsideAreas[i].pins[j].x * am_img.scaleX + am_img.x;
+        a_pin2.y         = j_mapImgsData.OutsideAreas[i].pins[j].y * am_img.scaleY + am_img.y;
+        a_PinContainer.addChild(a_pin2);     
         // ----- 2.2.2.2 エリアにおけるピンの画像の上に配置する四角の設置 -------------------------
         var a_pin_rect   = new createjs.Shape();
         a_pin_rect.graphics.beginFill("White");
@@ -252,12 +261,12 @@ function init(event){
       a_PageContainer.addChild(a_toDisplayPin);
       a_toDisplayPins.push(a_toDisplayPin);
       // ---- 2.2.5 各エリアに配置される「ピンを非表示にする画像」の設置 --------------------------
-      var a_toHidePin = new createjs.Bitmap("/img/" + j_mapImgsData.ToHidePinImg); // *p
+      var a_toHidePin    = new createjs.Bitmap("/img/" + j_mapImgsData.ToHidePinImg); // *p
       a_toHidePin.scaleX = gm_general.scaleX * 0.9;
       a_toHidePin.scaleY = gm_general.scaleY * 0.9;
       a_toHidePin.x      = j_mapImgsData.OutsideAreas[i].toHidePins.x * gm_general.scaleX + am_img.x;
       a_toHidePin.y      = j_mapImgsData.OutsideAreas[i].toHidePins.y * gm_general.scaleY + am_img.y;
-      a_toHidePin.alpha = 1;
+      a_toHidePin.alpha  = 1;
       a_PageContainer.addChild(a_toHidePin);
       a_toHidePins.push(a_toHidePin);
       // このページのデータを格納
@@ -406,13 +415,21 @@ function init(event){
         var f_pin1Tmp = new createjs.Bitmap("/img/"+j_mapImgsData.PinImg_1); // *p
         var f_pin1Size = await getImageSize(f_pin1Tmp); // pinの画像サイズを取得
         for(var k=0;k<j_mapImgsData.Campus.buildings[i].pins[j].length;k++){
-          // ---- 4.2.5 ピン画像を設置 ------------------------------------------------------------
+          // ---- 4.2.5.1 ピン画像を設置 ----------------------------------------------------------
           var f_pin    = new createjs.Bitmap("/img/"+j_mapImgsData.PinImg_1); // フロア内k番目のピン // *p
           f_pin.scaleX = gm_general.scaleX;
           f_pin.scaleY = gm_general.scaleY;
           f_pin.x      = j_mapImgsData.Campus.buildings[i].pins[j][k].x * gm_general.scaleX + fm_img.x;
           f_pin.y      = j_mapImgsData.Campus.buildings[i].pins[j][k].y * gm_general.scaleY + fm_img.y;
           f_PinContainer.addChild(f_pin);
+          // ---- 4.2.5.2 ピン画像を設置 (red) ----------------------------------------------------
+          var f_pin2    = new createjs.Bitmap("/img/"+j_mapImgsData.PinImg_2); // フロア内k番目のピン // *p
+          f_pin2.scaleX = gm_general.scaleX;
+          f_pin2.scaleY = gm_general.scaleY;
+          f_pin2.alpha  = 0;
+          f_pin2.x      = j_mapImgsData.Campus.buildings[i].pins[j][k].x * gm_general.scaleX + fm_img.x;
+          f_pin2.y      = j_mapImgsData.Campus.buildings[i].pins[j][k].y * gm_general.scaleY + fm_img.y;
+          f_PinContainer.addChild(f_pin2);
           // ---- 4.2.6 ピン画像の上に配置する四角の設置 ------------------------------------------
           var f_pin_rect = new createjs.Shape();                                // フロア内k番目のピンの上に置く四角
           f_pin_rect.graphics.beginFill("White");
@@ -527,12 +544,16 @@ function init(event){
 
     // 最初の読み時の処理 （一回目の読み込み時のみ適用）
     function InitMap(){
+      var location = new Object();
+      location["target"] = new Object();
       for(var i=0;i<outSidePins_r.length;i++){
         for(var j=0;j<outSidePins_r[i].length;j++){
           switch(p_location){
             case g_areaTexts[i] +(j+1):
               DisplayContainer.addChild(areaContainers[i]);
-              // pinを赤くする処理
+              location.target.eventParam  = i;
+              location.target.eventParam2 = j;
+              OutsideWriteInfo(location);
               return;
           }
         }
@@ -543,6 +564,10 @@ function init(event){
             switch(p_location){
               case String(e_buildNum[i])+String(j+1)+String(k+1):
                 DisplayContainer.addChild(BuildingFloorContainers[i][j]);
+                location.target.eventParam  = i;
+                location.target.eventParam2 = j;
+                location.target.eventParam3 = k;
+                InsideWriteInfo(location);
                 return;
             }
           }
@@ -682,6 +707,7 @@ function init(event){
       var i = event.target.eventParam;
       currentMapID = "OutsideTop";
       MapChange(areaContainers[i],OutsideContainer);
+      InitPinColor();
     }
     // 全体から構内topへ ---------------------------------------------------------------
     function GeneraltoCampusTop(event){
@@ -765,7 +791,8 @@ function init(event){
       var j = event.target.eventParam2;
       //MapChange(BuildingFloorContainers[i][j],InsideTopContainer);
       currentMapID = "InsideTop";
-      MapChangeAnimation_Slide(BuildingFloorContainers[i][j],InsideTopContainer,"left");      
+      MapChangeAnimation_Slide(BuildingFloorContainers[i][j],InsideTopContainer,"left");     
+      InitPinColor(); 
     }
     // 上の階へ -------------------------------------------------------------------------
     function FloortoUpperFloor(event){
@@ -775,6 +802,7 @@ function init(event){
       // MapChange(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j+1]);
       currentMapID = "BF" + e_buildNum[i]+(parseInt(j)+2);
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j+1],"top");
+      InitPinColor();
     }
     // 下の階へ -------------------------------------------------------------------------
     function FloortoLowerFloor(event){
@@ -784,20 +812,23 @@ function init(event){
       currentMapID = "BF" + e_buildNum[i]+(parseInt(j));
       //MapChange(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j-1]);
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j-1],"bottom");
+      InitPinColor();
     }
     // ピンを表示 -----------------------------------------------------------------------
     function DisplayPins(event){
-      //var i = event.target.eventParam;
       var TimeLine = new createjs.Timeline();
       var changetime = 400;
-      //console.log("hyouzisuruyo");
       for(var i=0;i<a_pinContainers.length;i++){
-        for(var j=0;j<a_pinContainers[i].children.length/2;j++){
+        for(var j=0;j<a_pinContainers[i].children.length/3;j++){
           TimeLine.addTween(
-            createjs.Tween.get(a_pinContainers[i].children[2*j],{override:false})
+            createjs.Tween.get(a_pinContainers[i].children[3*j],{override:false})
               .to({alpha : 1},changetime)
           );
-          a_pinContainers[i].children[2*j + 1].visible = true;
+          TimeLine.addTween(
+            createjs.Tween.get(a_pinContainers[i].children[3*j+1],{override:false})
+              .to({alpha : 0},changetime)
+          );
+          a_pinContainers[i].children[3*j +2].visible = true;
         }
         TimeLine.addTween(
           createjs.Tween.get(a_toDisplayPins[i],{override:false})
@@ -811,12 +842,16 @@ function init(event){
       for(var i=0;i<bf_toDisplayPins.length;i++){
         for(var j=0;j<bf_toDisplayPins[i].length;j++){
           // f_PinContainersにアクセスする
-          for(var k=0;k<BuildingFloorContainers[i][j].children[1].children.length/2;k++){
+          for(var k=0;k<BuildingFloorContainers[i][j].children[1].children.length/3;k++){
             TimeLine.addTween(
-              createjs.Tween.get(BuildingFloorContainers[i][j].children[1].children[2*k],{override:false})
+              createjs.Tween.get(BuildingFloorContainers[i][j].children[1].children[3*k],{override:false})
                 .to({alpha : 1},changetime)
             );
-            BuildingFloorContainers[i][j].children[1].children[2*k+1].visible = true;
+            TimeLine.addTween(
+              createjs.Tween.get(BuildingFloorContainers[i][j].children[1].children[3*k+1],{override:false})
+                .to({alpha : 0},changetime)
+            );
+            BuildingFloorContainers[i][j].children[1].children[3*k+2].visible = true;
           }
           TimeLine.addTween(
             createjs.Tween.get(bf_toDisplayPins[i][j],{override:false})
@@ -831,16 +866,19 @@ function init(event){
     }
     // ピンを非表示 ---------------------------------------------------------------------
     function HidePins(event){
-      //var i = event.target.eventParam;
       var TimeLine = new createjs.Timeline();
       var changetime = 400;
       for(var i=0;i<a_pinContainers.length;i++){
-        for(var j=0;j<a_pinContainers[i].children.length/2;j++){
+        for(var j=0;j<a_pinContainers[i].children.length/3;j++){
           TimeLine.addTween(
-            createjs.Tween.get(a_pinContainers[i].children[2*j],{override:false})
+            createjs.Tween.get(a_pinContainers[i].children[3*j],{override:false})
               .to({alpha : 0},changetime)
           );
-          a_pinContainers[i].children[2*j + 1].visible = false;
+          TimeLine.addTween(
+            createjs.Tween.get(a_pinContainers[i].children[3*j+1],{override:false})
+              .to({alpha : 0},changetime)
+          );
+          a_pinContainers[i].children[3*j+2].visible = false;
         }
         TimeLine.addTween(
           createjs.Tween.get(a_toDisplayPins[i],{override:false})
@@ -854,12 +892,16 @@ function init(event){
       for(var i=0;i<bf_toDisplayPins.length;i++){
         for(var j=0;j<bf_toDisplayPins[i].length;j++){
           // f_PinContainersにアクセスする
-          for(var k=0;k<BuildingFloorContainers[i][j].children[1].children.length/2;k++){
+          for(var k=0;k<BuildingFloorContainers[i][j].children[1].children.length/3;k++){
             TimeLine.addTween(
-              createjs.Tween.get(BuildingFloorContainers[i][j].children[1].children[2*k],{override:false})
+              createjs.Tween.get(BuildingFloorContainers[i][j].children[1].children[3*k],{override:false})
                 .to({alpha : 0},changetime)
             );
-            BuildingFloorContainers[i][j].children[1].children[2*k+1].visible = false;
+            TimeLine.addTween(
+              createjs.Tween.get(BuildingFloorContainers[i][j].children[1].children[3*k+1],{override:false})
+                .to({alpha : 0},changetime)
+            );
+            BuildingFloorContainers[i][j].children[1].children[3*k+2].visible = false;
           }
           TimeLine.addTween(
             createjs.Tween.get(bf_toDisplayPins[i][j],{override:false})
@@ -873,10 +915,75 @@ function init(event){
       }
       TimeLine.gotoAndPlay("start");
     }
+
+    // ピンの色の初期化 -----------------------------------------------------------------
+    function InitPinColor(){
+      // 全てのピンを青色に変化させる
+      var TimeLine = new createjs.Timeline();
+      var changetime = 0;
+      for(var i=0;i<a_pinContainers.length;i++){
+        for(var j=0;j<a_pinContainers[i].children.length/3;j++){
+          a_pinContainers[i].children[3*j  ].alpha   = 1;
+          a_pinContainers[i].children[3*j+1].alpha   = 0;
+          a_pinContainers[i].children[3*j+2].visible = true; //rect
+        }
+      }
+      for(var i=0;i<bf_toDisplayPins.length;i++){
+        for(var j=0;j<bf_toDisplayPins[i].length;j++){
+          // f_PinContainersにアクセスする
+          for(var k=0;k<BuildingFloorContainers[i][j].children[1].children.length/3;k++){
+            BuildingFloorContainers[i][j].children[1].children[3*k  ].alpha   = 1;
+            BuildingFloorContainers[i][j].children[1].children[3*k+1].alpha   = 0;
+            BuildingFloorContainers[i][j].children[1].children[3*k+2].visible = true; // rect
+          }
+        }
+      }
+      TimeLine.gotoAndPlay("start");
+    }
+    // ピンの色を変える(構外）-----------------------------------------------------------
+    function OutsideChangePinColor(area,pinNum){
+      var TimeLine = new createjs.Timeline();
+      var changetime = 400;
+      // a_pinContainers[area].children[3*pinNum]; >> red Pin
+      // a_pinContainrs[area].children[3*pinNum+1] >> blue Pin
+      TimeLine.addTween(
+        createjs.Tween.get(a_pinContainers[area].children[3*pinNum],{override:true})
+          .to({alpha:0},changetime)
+      );
+      TimeLine.addTween(
+        createjs.Tween.get(a_pinContainers[area].children[3*pinNum+1],{override:true})
+          .to({alpha:1},changetime)
+      );
+      TimeLine.gotoAndPlay("start");
+    }
+    // ピンの色を変える（構内）----------------------------------------------------------
+    function InsideChangePinColor(building,floor,pinNum){
+      var TimeLine = new createjs.Timeline();
+      var changetime = 400;
+      // BuildingFloorContainers[building][floor].children[1].children[3*pinNum]; >> red Pin
+      // BuildingFloorContainers[building][floor].children[1].children[3*pinNum]; >> blue Pin
+      TimeLine.addTween(
+        createjs.Tween.get(BuildingFloorContainers[building][floor].children[1].children[3*pinNum],{override:true})
+          .to({alpha:0},changetime)
+      );
+      TimeLine.addTween(
+        createjs.Tween.get(BuildingFloorContainers[building][floor].children[1].children[3*pinNum+1],{override:true})
+          .to({alpha:1},changetime)
+      );
+      TimeLine.gotoAndPlay("start");
+    }
+
+    // BoothData(html)をbooth.jsonから取得する ------------------------------------------
+    function GetBoothData(boothID){
+      return j_boothData[boothID];
+    }
+
     // DOMに情報を書き込む（構外）-------------------------------------------------------
     function OutsideWriteInfo(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
+      InitPinColor();
+      OutsideChangePinColor(i,j);
       dh_pindata.textContent = "エリア"+g_areaTexts[i]+"の"+(parseInt(j)+1)+"番目";
       var boothID = j_boothID["Outside" + g_areaTexts[i] + (parseInt(j)+1)];
       h_boothdata.innerHTML  = GetBoothData(boothID);
@@ -886,14 +993,13 @@ function init(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
       var k = event.target.eventParam3;
+      InitPinColor();
+      InsideChangePinColor(i,j,k);
       dh_pindata.textContent = e_buildNum[i]+"棟"+(parseInt(j)+1)+"階の"+(parseInt(k)+1)+"番目のピン";
       var boothID = j_boothID["Inside" + e_buildNum[i] + (parseInt(j)+1) + (parseInt(k)+1)];
       h_boothdata.innerHTML  = GetBoothData(boothID);
     }
 
-    function GetBoothData(boothID){
-      return j_boothData[boothID];
-    }
     // ここまでイベントに対する処理の関数群 ---------------------------------------------------------------------------
 
     // ページ切り替えについての関数群 ---------------------------------------------------------------------------------
