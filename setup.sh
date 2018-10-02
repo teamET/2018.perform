@@ -13,7 +13,7 @@ echo "{'test':'test'}" > /var/www/public/data/test.json  #/var/www/public/data s
 # bot
 cd /root/2018.perform/bot
 npm install
-if [[ forever list |grep bot.js ]] ; then
+if  forever list |grep bot.js >/dev/null; then
     forever restart --minUptime 1000 --spinSleepTime 1000 /root/2018.perform/bot/bot.js
 else
     forever restart --minUptime 1000 --spinSleepTime 1000 /root/2018.perform/bot/bot.js
@@ -22,7 +22,7 @@ fi
 #api-server
 cd /root/2018.perform/api-server
 npm install
-if [[ forever list |grep api-server ]] ; then
+if forever list |grep api-server < /dev/null ; then
     forever restart --minUptime 1000 --spinSleepTime 1000 /root/2018.perform/api-server/bin/www
 else
     forever start --minUptime 1000 --spinSleepTime 1000 /root/2018.perform/api-server/bin/www
