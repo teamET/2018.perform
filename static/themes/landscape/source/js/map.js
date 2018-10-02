@@ -10,6 +10,7 @@ m_-- : MAP画像
 h_-- : html(DOM)
 e_-- : eventチェック用
 z_-- : Hexoに入れた時の座標調整用
+p_-- : URLパラメータ
 d_-- : デバッグ用
 // *z : 後から座標指定しなきゃダメなところ
 // ** comment  後から実装するべきところ
@@ -20,31 +21,50 @@ window.addEventListener("load",Load);
 
 // 読み込んで初期化して表示するMAP位置
 var currentMapID = "OutsideTop";
-
+var reloadCount  = 0;
+var p_location;
 // 読み込み・再読み込み（リロード時にも入る）
 function Load(){
-  // load JSON // *p
+  // reload時の処理 ----------------------------------------
+  p_location = "reload";
+  reloadCount+=1;// リロードした回数をカウントする
   var queue = new createjs.LoadQueue(true);
   var manifest = [
     {"src":"/data/mapImgData.json","id":"mapImgs"},
     {"src":"/data/boothsample.json","id":"booth"},
     {"src":"/data/boothID.json","id":"boothID"}
   ];
-  /*
-  // ** 後で足せ
-  {"src":"./JSON/mapImgData.json","id":"mapImgs"},
-    {"src":"./JSON/shop.json","id":"shop"},
-    {"src":"./JSON/mapImgDatas.json","id":"id"}
-  */
   queue.loadManifest(manifest,true);
   queue.addEventListener("complete",init);
+}
+
+// 指定したパラメータを取得 key : name
+function getParam(name) {
+    var p_obj = new Object;
+    //console.log(reloadCount);
+    var p_all = location.search.substring(1).split('&');
+    // パラメータを指定しない場合、return Outside
+    if(p_all == ""){
+      return "OutsideTop";
+    }
+    // pair[i]が存在しない場合はいらない
+    for(i=0;p_all[i];i++){
+      var keyValue = p_all[i].split('=');
+      p_obj[keyValue[0]]=keyValue[1];
+    }
+    return p_obj[name];
 }
 // JSONデータが読み込まれたら入る
 function init(event){
   var j_mapImgsData   = event.target.getResult("mapImgs");　// mapImgData.json
   var j_boothData     = event.target.getResult("booth");
   var j_boothID       = event.target.getResult("boothID");
-  // - canvas stageの定義　--------------------------------------------------------------------------------------------
+  // URLパラメータの取得 ----------------------------------------------------------------------------------------------
+  //console.log(getParam("booth"));
+  // 一覧ページから入る処理
+  if(reloadCount==1) p_location = getParam("booth");
+  console.log(p_location);
+  // - canvas stageの定義 --------------------------------------------------------------------------------------------
   var canvasContainer = document.getElementById("wrap");
   var canvasElement   = document.getElementById("myCanvas");
   var dh_pindata      = document.getElementById("pin");
@@ -501,72 +521,63 @@ function init(event){
     EventListener();　// Eventを感知して処理する関数
 
     // :: 初期状態にする。（構外全体MAPを表示）------------------------------------------------------------------------
-    MapInit();
+    if(p_location == "reload") ReloadMapInit();
+    else InitMap();
 
-    // 初期状態にする関数（再読み込みしたときに正しく表示する）
-    function MapInit(){
+
+    // 最初の読み時の処理 （一回目の読み込み時のみ適用）
+    function InitMap(){
+      for(var i=0;i<outSidePins_r.length;i++){
+        for(var j=0;j<outSidePins_r[i].length;j++){
+          switch(p_location){
+            case g_areaTexts[i] +(j+1):
+              DisplayContainer.addChild(areaContainers[i]);
+              // pinを赤くする処理
+              return;
+          }
+        }
+      }
+      for(var i=0;i<bf_pins.length;i++){
+        for(var j=0;j<bf_pins[i].length;j++){
+          for(var k=0;k<bf_pins[i][j].length;k++){
+            switch(p_location){
+              case String(e_buildNum[i])+String(j+1)+String(k+1):
+                DisplayContainer.addChild(BuildingFloorContainers[i][j]);
+                return;
+            }
+          }
+        }
+      }
+      if(p_location == "OutsideTop"){
+        DisplayContainer.addChild(OutsideContainer);
+      }
+    }
+
+    // 再読み込みしたときに正しく表示する関数
+    function ReloadMapInit(){
+      for(var i=0;i<g_areaTexts.length;i++){
+        switch(currentMapID){
+          case "Area"+g_areaTexts[i]:
+            DisplayContainer.addChild(areaContainers[i]);
+            return;
+        }
+      }
+      for(var i=0;i<BuildingFloorContainers.length;i++){
+        for(var j=0;j<BuildingFloorContainers[i].length;j++){
+          switch(currentMapID){
+            case "BF"+ e_buildNum[i]+(parseInt(j)+1):
+              DisplayContainer.addChild(BuildingFloorContainers[i][j]);
+              return;
+          }
+        }
+      }
       switch(currentMapID){
         case "OutsideTop":
           DisplayContainer.addChild(OutsideContainer);
-          break;
-        case "AreaA":
-          DisplayContainer.addChild(areaContainers[0]);
-          break;
-        case "AreaB":
-          DisplayContainer.addChild(areaContainers[1]);
-          break;
-        case "AreaC":
-          DisplayContainer.addChild(areaContainers[2]);
-          break;
-        case "AreaD":
-          DisplayContainer.addChild(areaContainers[3]);
-          break;
-        case "AreaE":
-          DisplayContainer.addChild(areaContainers[4]);
-          break;
-        case "AreaF":
-          DisplayContainer.addChild(areaContainers[5]);
-          break;
+          return;
         case "InsideTop":
           DisplayContainer.addChild(InsideTopContainer);
-          break;
-        case "BF21":
-          DisplayContainer.addChild(BuildingFloorContainers[0][0]);
-          break;
-        case "BF22":
-          DisplayContainer.addChild(BuildingFloorContainers[0][1]);
-          break;
-        case "BF23":
-          DisplayContainer.addChild(BuildingFloorContainers[0][2]);
-          break;
-        case "BF24":
-          DisplayContainer.addChild(BuildingFloorContainers[0][3]);
-          break;
-        case "BF31":
-          DisplayContainer.addChild(BuildingFloorContainers[1][0]);
-          break;
-        case "BF32":
-          DisplayContainer.addChild(BuildingFloorContainers[1][1]);
-          break;
-        case "BF33":
-          DisplayContainer.addChild(BuildingFloorContainers[1][2]);
-          break;
-        case "BF34":
-          DisplayContainer.addChild(BuildingFloorContainers[1][3]);
-          break;
-        case "BF51":
-          DisplayContainer.addChild(BuildingFloorContainers[2][0]);
-          break;
-        case "BF52":
-          DisplayContainer.addChild(BuildingFloorContainers[2][1]);
-          break;
-        // 8棟：１階・３階だがここは1,2としている
-        case "BF81":
-          DisplayContainer.addChild(BuildingFloorContainers[3][0]);
-          break;
-        case "BF82":
-          DisplayContainer.addChild(BuildingFloorContainers[3][1]);
-          break;
+          return;
       }
     }
     
@@ -779,7 +790,7 @@ function init(event){
       //var i = event.target.eventParam;
       var TimeLine = new createjs.Timeline();
       var changetime = 400;
-      console.log("hyouzisuruyo");
+      //console.log("hyouzisuruyo");
       for(var i=0;i<a_pinContainers.length;i++){
         for(var j=0;j<a_pinContainers[i].children.length/2;j++){
           TimeLine.addTween(
