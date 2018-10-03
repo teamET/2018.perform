@@ -25,9 +25,9 @@ const session_client = new dialogflow.SessionsClient({
 });
 
 /* json fileの読み込み */
-var richdata = JSON.parse(fs.readFileSync('./rich.json', 'utf8'));
-var shop_area = JSON.parse(fs.readFileSync('./shop-area.json', 'utf8'));
-var shop_data = JSON.parse(fs.readFileSync('../../bot/shop.json', 'utf8'));
+var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
+var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
+var shop_data = JSON.parse(fs.readFileSync('../bot/shop.json', 'utf8'));
 
 /* LINE MessagingAPI URL */
 //URL POST
