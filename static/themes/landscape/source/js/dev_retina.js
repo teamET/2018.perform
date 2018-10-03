@@ -75,6 +75,21 @@ function init(event){
     canvasElement.style.height  = String(canvasElement.offsetHeight) + "px";
     canvasElement.style.width  = String(canvasElement.offsetWidth) + "px"; 
   }
+  var realToCSSPixels = window.devicePixelRatio;
+
+  // ブラウザがcanvasでCSSピクセルを表示しているサイズを参照し、
+  // デバイスピクセルに合った描画バッファサイズを計算する。
+  var displayWidth  = Math.floor(canvasElement.width  * realToCSSPixels);
+  var displayHeight = Math.floor(canvasElement.height * realToCSSPixels);
+
+  // canvasの描画バッファサイズと表示サイズが異なるかどうか確認する。
+  if (canvasElement.width  !== displayWidth ||
+      canvasElement.height !== displayHeight) {
+
+    // サイズが違っていたら、同じサイズにする。
+    canvasElement.width  = displayWidth;
+    canvasElement.height = displayHeight;
+  }
   // CanvasSizeの大きさ画面サイズに設定する（初期化）
   Sizing();
   // - stageの定義
