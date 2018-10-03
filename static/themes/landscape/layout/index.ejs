@@ -11,13 +11,26 @@
 </div>
 
 <script>
-    function plusDivs(n) {
-        showDivs(slideIndex += n);
-    }
-    
+
     var slideIndex = 1;
     showDivs(slideIndex);
 
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+    function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    var y = document.getElementsByClassName("txt");
+    if (n > x.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        y[i].style.display = "none";
+    }
+    x[slideIndex-1].style.display = "block";
+    y[slideIndex-1].style.display = "block"; 
+    }
     //get loadtime
     function getNow() {
         function to_string(d) {
@@ -35,37 +48,19 @@
             if (data[i].time <= now) break;
         }
         return i;
-
-    function showDivs(n) {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    var y = document.getElementsByClassName("txt");
-    if (n > x.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = x.length}
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-        y[i].style.display = "none";
     }
-    x[slideIndex-1].style.display = "block";
-    y[slideIndex-1].style.display = "block"; 
-
-    }
-    //sort data
-    data.sort(function (a, b) {
-        if (a.time > b.time) {
-            return -1;
-        }
-        if (a.time < b.time) {
-            return 1;
-        }
-        // names must be equal
-        return 0;
-    });
-    //var i = catData(getNow);
-    // window.onload = function () {
-    //     var selText =``;
-    //     document.getElementById("news").innerHTML = selText;
-    // }
+    
+    // //sort data
+    // data.sort(function (a, b) {
+    //     if (a.time > b.time) {
+    //         return -1;
+    //     }
+    //     if (a.time < b.time) {
+    //         return 1;
+    //     }
+    //     // names must be equal
+    //     return 0;
+    // });
 </script>
 <% var data = [
     {
@@ -167,7 +162,7 @@
             <% for (i = 0; i < data.length && count < 6 ; i+=1 ) { %>
                 <%if( loadTime >= data[i].time ){ %>
                     <% count += 1; %>
-                    <div class="post">
+                    <div class="post icon">
                         <%if( LoadNewsTime(0) <= data[i].time ){ %>
                             <img src="https://png.icons8.com/metro/50/000000/new.png">
                         <% } %>

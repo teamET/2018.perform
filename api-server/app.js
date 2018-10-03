@@ -28,10 +28,11 @@ app.use(bodyParser.json());
 //app.use(app.router);
 //app.use(app.errorHandler());
 
-app.use('/linebot', linebot);
-app.use('/beacon', beacon_db);
+app.use('/api/linebot', linebot);
+app.use('/api/beacon', beacon_db);
 //app.use('/api', apiRouter);
 app.get('/api',(req,res)=>{res.send('hello api');});
+app.get('/api/goodbye',(req,res)=>{res.send('goodbye api');});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

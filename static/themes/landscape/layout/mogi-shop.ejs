@@ -51,8 +51,13 @@
     <% for(let shopname in data) {%>
             <div class="shop w3-white">
                 <img src=<%= data[shopname].image[0] %>>
+                
                 <table class="" id="search_shop_table">
-                    <p>Class:&nbsp;<%= shopname %></p>
+                    <p>Class:&nbsp;<%= shopname %>
+                    <a class="icon" href="/map?booth=<%=data[shopname].boothId%>">
+                        <img src="https://png.icons8.com/color/50/000000/marker.png">地図を表示
+                    </a>
+                    </p>
                     <tr>
                         <th></th>
                         <th></th>
@@ -64,7 +69,6 @@
                     </tr>
                     <% }; %>
                 </table>
-                <a href="/map?booth=<%=data[shopname].boothId%>">地図を表示</a>
             </div>
         
     <% } %>
