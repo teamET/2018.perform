@@ -146,7 +146,6 @@ async function type_message(event) {
             }
             break;
         default:
-            console.log(event.message.text);
             msg.text = "個別の返信はできません(*:△:)";
             break;
     }
@@ -232,7 +231,6 @@ async function type_beacon(event) {
     var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId)
         .replace("{place}", await db_place);
-    console.log("beaconplace", db_place);
     connection.query(query);
     if (db_place == "taiikukan") {
         rich_change(richdata.event, event.source.userId);
@@ -283,10 +281,8 @@ router.post('/', function(req, res, next) {
                     break;
                 case "beacon":
                     if (event.beacon.type == "enter") {
-                        console.log("enterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
                         type_beacon(event);
                     } else if (event.beacon.type == "leave") {
-                        console.log("leaveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
                         beacon_leave(event);
                     }
                     break;
