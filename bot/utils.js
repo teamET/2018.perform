@@ -42,6 +42,18 @@ function json_sort(arr){
 	return arr;
 }
 
+function to_Array(shop){
+	Ashop_data = fs.readFileSync("./data/Ashop.json");
+	Ashop = JSON.parse(Ashop_data);
+	var cnt=0;
+	for(key in shop){
+		Ashop[cnt] = shop[key];
+		Ashop[cnt].id = key;
+		cnt++;
+	}
+	fs.writeFileSync('./data/Ashop.json',JSON.stringify(Ashop));
+}
+
 function slack_log(message){
 	winstonlogger.info(message);
 	slack_postMessage("logging",message);
