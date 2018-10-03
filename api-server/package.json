@@ -13,6 +13,7 @@
     "debug": "~2.6.9",
     "dialogflow": "^0.6.0",
     "express": "~4.16.0",
+    "express-fluent-logger": "^0.3.0",
     "fluent-logger": "latest",
     "hbs": "~4.0.1",
     "http-errors": "~1.6.2",

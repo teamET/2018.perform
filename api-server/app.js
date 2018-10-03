@@ -1,25 +1,21 @@
 var createError = require('http-errors');
 var express = require('express');
+var app = express();
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var fluentLogger = require('fluent-logger').configure('tag_prefix', {
-  host: 'localhost',
-  port: 24224,
-  timeout: 3.0,
-});
 var logger = require('morgan');
+var fluentLogger = require('express-fluent-logger');
 
 var linebot = require('./routes/linebot');
 var beacon_db = require('./routes/beacondb');
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(logger('dev'));
+app.use(fluentLogger('td.test_db',{host: 'localhost', port: 24224, timeout: 3.0,responceHeaders:['X-userid']}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
