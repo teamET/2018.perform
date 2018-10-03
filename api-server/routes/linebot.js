@@ -85,7 +85,8 @@ function Build_msg_template(area) {
     return new Promise(function(resolve, reject) {
         var returnText = {
             "type": "template",
-            "hoge": []
+            "altText": "This is the template message.",
+            "template": []
         };
         shop_area[area].forEach((shopname) => {
             var value = shop_data[shopname];
