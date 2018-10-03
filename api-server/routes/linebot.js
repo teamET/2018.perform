@@ -24,7 +24,10 @@ const session_client = new dialogflow.SessionsClient({
     }
 });
 
-var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
+/* json fileの読み込み */
+var richdata = JSON.parse(fs.readFileSync('./rich.json', 'utf8'));
+var shop_area = JSON.parse(fs.readFileSync('./shop-area.json', 'utf8'));
+var shop_data = JSON.parse(fs.readFileSync('../../bot/shop.json', 'utf8'));
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -77,11 +80,22 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
     });
 }
 
-/* テンプレートメッセージの作成
-function Build_msg_template(Token) {
+/* テンプレートメッセージの作成 */
+function Build_msg_template(area) {
     return new Promise(function(resolve, reject) {
+        var returnText = {
+            "type": "template",
+            "hoge": []
+        };
+        shop_area[area].forEach((shopname) => {
+            var value = shop_data[shopname];
+            var name = shopname;
+            var goods_name = value.goods.name;
+            var goods_yen = value.goods.choco;
+            var image = value.image;
+        });
     });
-}*/
+}
 
 async function DB_get(table, col, where, id) {
     return new Promise(function(resolve, reject) {
@@ -114,6 +128,7 @@ async function rich_change(after, userId) {
 async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg = {"type": "text"};
+    var msg2 = undefined;
     switch(event.message.text) {
         case "a":
             msg.text = "ご意見ご感想ふぉーむへ誘導";
@@ -139,7 +154,7 @@ async function type_message(event) {
     }
     if (msg.text) {
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-            event.replyToken, msg
+            event.replyToken, msg, msg2
         ));
         request.post(tmp, function(error, responce, body) {
             console.log(body);
