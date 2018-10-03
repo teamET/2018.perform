@@ -210,7 +210,7 @@ async function type_beacon(event) {
     var nowtime = now.format('YYYY-MM-DD HH:mm:ss');
     var db_time = moment(await tmp);
     var db_place = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
-    if (now.diff(db_time/(1000*60)) >= 7 ) {
+    if ((now.diff(db_time)/(1000*60)) >= 7 ) {
         var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
             .replace("{id}", event.source.userId)
             .replace("{time}", nowtime);
