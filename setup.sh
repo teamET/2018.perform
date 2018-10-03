@@ -32,7 +32,7 @@ start_forever $HOME/2018.perform/api-server/ bin/www
 forever list
 
 
-curl -X POST --data-urlencode "payload={\"channel\": \"#bot\", \"username\": \"webhookbot\", \"text\": \"This is posted to #bot and comes from a bot named webhookbot.\n http://$(curl ifconfig.io)\n \`$(whoami)@$(curl ifconfig.io)\`\n\", \"icon_emoji\": \":sunglasses:\"}" $WEBHOOK_URL
+curl -X POST --data-urlencode "payload={\"channel\": \"#bot\", \"username\": \"webhookbot\", \"text\": \"This is posted to #bot and comes from a bot named webhookbot.\n https://$(curl ifconfig.io)\n \`$(whoami)@$(curl ifconfig.io)\`\n\", \"icon_emoji\": \":sunglasses:\"}" $WEBHOOK_URL
 
 curl -X POST --data-urlencode "payload={\"channel\": \"#server_log\", \"username\": \"webhookbot\", \"text\": \"\`\`\`$(cd /var/www/public ;find .|sort)\`\`\`\", \"icon_emoji\": \":sunglasses:\"}" $WEBHOOK_URL
 
