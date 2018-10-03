@@ -157,6 +157,7 @@ rtm.on("hello",(event)=>{
 
 
 rtm.on("message",(event)=>{
+	//make_template("_timetable.ejs",timetable_data)
 	var channel = event.channel;
 	var text = event.text.replace('　',' ');
 	var ts = event.ts;
@@ -179,8 +180,9 @@ rtm.on("message",(event)=>{
 			return ;
 		}
 		shop_id = text.split(' ')[1];
-		if(list.indexOf(shop_id) == -1){
-			slack("店舗idが間違っています.");
+		console.log("list",list);
+		if(list.indexOf(slack_id) == -1){
+			slack("店舗idが間違っています.",channel);
 			return ;
 		}
 		var name = text.split(' ')[2];
@@ -286,10 +288,10 @@ rtm.on("message",(event)=>{
 		}
 	}else if(text.split(' ')[0]==='.tag_help'){
 		slack("0:食べ物, 1:飲み物, 2:アトラクション, 3:温かいもの, 4:冷たいもの, 5:甘い, 6:しょっぱい",channel);
+	}else if(text.split(' ')[0]==='.line'){
+		
 	}
-	//make_template("_booth.ejs",shop_data)
-	//make_template("_timetable.ejs",timetable_data)
-    utils.save_templates();
+//	utils.save_templates();
 	if(event.files !== undefined){
         save_shop_image(event);
 	}
