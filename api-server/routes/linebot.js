@@ -252,6 +252,7 @@ async function type_beacon(event) {
     var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId)
         .replace("{place}", await db_place);
+    console.log("beaconplace", db_place);
     connection.query(query, function(err, rows) {
         console.log(rows);
     });
@@ -308,10 +309,11 @@ router.post('/', function(req, res, next) {
                     }
                     break;
                 case "beacon":
-                    console.log("beacon");
                     if (event.beacon.type == "enter") {
+                        console.log("enterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
                         type_beacon(event);
                     } else if (event.beacon.type == "leave") {
+                        console.log("leaveeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
                         beacon_leave(event);
                     }
                     break;
