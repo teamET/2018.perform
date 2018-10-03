@@ -3,10 +3,12 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var logger = require('morgan');
 var fluentLogger = require('express-fluent-logger');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var linebot = require('./routes/linebot');
+var beacon_db = require('./routes/beacondb');
 
 
 // view engine setup
@@ -18,17 +20,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
 //app.use(app.router);
 //app.use(app.errorHandler());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.get('/api',(req,res)=>{
-    res.send('hello api');
-});
-app.get('/api/enquete',(req,res)=>{res.send('hello api');});
-app.post('/api/enquete',(req,res)=>{res.send('hello api');});
+app.use('/linebot', linebot);
+app.use('/beacon', beacon_db);
+//app.use('/api', apiRouter);
+app.get('/api',(req,res)=>{res.send('hello api');});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

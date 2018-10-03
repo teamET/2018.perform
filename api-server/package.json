@@ -7,14 +7,20 @@
     "test": "node ./test/test.js"
   },
   "dependencies": {
+    "cheerio-httpcli": "^0.7.3",
     "cookie-parser": "~1.4.3",
+    "crypto": "^1.0.1",
     "debug": "~2.6.9",
+    "dialogflow": "^0.6.0",
     "express": "~4.16.0",
     "express-fluent-logger": "^0.3.0",
     "fluent-logger": "latest",
     "hbs": "~4.0.1",
     "http-errors": "~1.6.2",
+    "moment": "^2.22.2",
     "morgan": "~1.9.0",
+    "mysql": "^2.16.0",
+    "request": "^2.88.0",
     "supertest": "^3.1.0"
   }
 }
