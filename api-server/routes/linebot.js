@@ -118,10 +118,7 @@ async function rich_change(after, userId) {
         .replace("{richMenuId}", after);
     var tmp = await Build_responce(rich_url2)
     request.delete(await Build_responce(rich_url), function(error, responce, body) {
-        console.log(body);
-        request.post(tmp, function(error, responce, body) {
-            console.log(body);
-        });
+        request.post(tmp);
     });
 }
 
@@ -140,7 +137,6 @@ async function type_message(event) {
             msg.text = "差分は" + now.diff(from)/(1000*60);
             break;
         case "c":
-            console.log("near mogi-shop");
             var userplace = await DB_get("UserData", "PLACE", "USERID", event.source.userId);
             if (userplace == "") {
                 msg.text = "近くに模擬店がないみたい...\n移動してからもう一度試してください";
@@ -150,6 +146,7 @@ async function type_message(event) {
             }
             break;
         default:
+            console.log(event.message.text);
             msg.text = "個別の返信はできません(*:△:)";
             break;
     }
@@ -157,9 +154,7 @@ async function type_message(event) {
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
             event.replyToken, msg, msg2
         ));
-        request.post(tmp, function(error, responce, body) {
-            console.log(body);
-        });
+        request.post(tmp);
     }
 }
 
@@ -168,9 +163,7 @@ async function type_follow(event) {
     //rich menuの登録
     var rich_url = urlp_rich_set.replace('{userId}', event.source.userId)
         .replace('{richMenuId}', richdata.start);
-    request.post(await Build_responce(rich_url), function(error, responce, body) {
-        console.log(body);
-    });
+    request.post(await Build_responce(rich_url));
     var msg = {
         "type": "text",
         "text": "東京高専文化祭BOTを友達登録してくれてありがとう！"
@@ -178,9 +171,7 @@ async function type_follow(event) {
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
         event.replyToken, msg
     ));
-    request.post(tmp, function(error, responce, body) {
-        console.log(body);
-    });
+    request.post(tmp);
 }
 
 async function addUser(event, usertype) {
@@ -191,9 +182,7 @@ async function addUser(event, usertype) {
         .replace('{type}', event.postback.data)
         .replace('{time}', nowtime)
         .replace('{place}', "");
-    connection.query(query, function(err, rows) {
-        console.log(rows);
-    })
+    connection.query(query);
     //richmenuの切り替え
     rich_change(richdata.normal, event.source.userId);
     var msg = {
@@ -203,19 +192,14 @@ async function addUser(event, usertype) {
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
         event.replyToken, msg
     ));
-    request.post(tmp, function(error, responce, body) {
-        console.log(body);
-    });
+    request.post(tmp);
 }
 
 /* Type - unfolow */
 function removeUser(event) {
-    console.log("remove");
     var query = 'DELETE FROM UserData WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId);
-    connection.query(query, function(err, rows) {
-        console.log(rows);
-    });
+    connection.query(query);
 }
 
 /* Type - Beacon */
@@ -230,9 +214,7 @@ async function type_beacon(event) {
         var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
             .replace("{id}", event.source.userId)
             .replace("{time}", nowtime);
-        connection.query(query, function(err, rows) {
-            console.log(rows);
-        });
+        connection.query(query);
         var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
         var msg = {
             "type": "text",
@@ -245,17 +227,13 @@ async function type_beacon(event) {
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
             event.replyToken, msg, msg2
         ));
-        request.post(tmp, function(error, responce, body) {
-            console.log(body);
-        });
+        request.post(tmp);
     }
     var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId)
         .replace("{place}", await db_place);
     console.log("beaconplace", db_place);
-    connection.query(query, function(err, rows) {
-        console.log(rows);
-    });
+    connection.query(query);
     if (db_place == "taiikukan") {
         rich_change(richdata.event, event.source.userId);
     }
@@ -267,9 +245,7 @@ async function beacon_leave(event) {
     var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId)
         .replace("{place}", "");
-    connection.query(query, function(err, rows) {
-        console.log(rows);
-    });
+    connection.query(query);
     if (db_place == "taiikukan") {
         rich_change(richdata.normal, event.source.userId);
     }
@@ -293,15 +269,12 @@ router.post('/', function(req, res, next) {
         body.events.forEach((event) => {
             switch(event.type) {
                 case "message":
-                    console.log("message");
                     type_message(event);
                     break;
                 case "follow":
-                    console.log("follow");
                     type_follow(event);
                     break;
                 case "postback":
-                    console.log("postback");
                     if (event.postback.data == "Student") {
                         addUser(event, "学生");
                     } else if (event.postback.data == "Other") {
@@ -318,7 +291,6 @@ router.post('/', function(req, res, next) {
                     }
                     break;
                 case "unfollow":
-                    console.log("unfollow");
                     removeUser(event);
                     break;
                 default:
@@ -331,7 +303,6 @@ router.post('/', function(req, res, next) {
         console.log("line_NG");
         res.status(403);
     }
-    console.log("end");
     res.send(responce);
 });
 
