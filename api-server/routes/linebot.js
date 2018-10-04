@@ -28,7 +28,8 @@ const session_client = new dialogflow.SessionsClient({
 /* json fileの読み込み */
 var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
 var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
-var shop_data = JSON.parse(fs.readFileSync('../bot/shop.json', 'utf8'));
+var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
+var flex_tmp = JSON.parse(fs.readFileSync('./routes/flex_template.json', 'utf8'));
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -81,22 +82,100 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
     });
 }
 
-/* テンプレートメッセージの作成 */
-function Build_msg_template(area) {
-    return new Promise(function(resolve, reject) {
-        var returnText = {
-            "type": "template",
-            "altText": "This is the template message.",
-            "template": []
-        };
-        shop_area[area].forEach((shopname) => {
-            var value = shop_data[shopname];
-            var name = shopname;
-            var goods_name = value.goods.name;
-            var goods_yen = value.goods.choco;
-            var image = value.image;
-        });
-    });
+/* flexメッセージの作成 */
+function Build_flex(shopname, imageurl, goods) {
+    var tmp = {
+        "type": "bubble",
+        "header": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                "type": "text",
+                "text": shopname,
+                "weight": "bold",
+                "size": "lg",
+                "wrap": true
+                }
+            ]
+        },
+        "hero": {
+            "type": "image",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover",
+            "url": imageurl
+        },
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                "type": "text",
+                "text": "商品",
+                "wrap": false,
+                "weight": "bold",
+                "size": "md"
+                },
+                {
+                "type": "separator",
+                "margin": "sm"
+                }
+            ]
+        },
+        "footer": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "separator"
+                },
+                {
+                    "type": "text",
+                    "text": "地図",
+                    "weight": "bold",
+                    "margin": "md"
+                },
+                {
+                    "type": "image",
+                    "size": "full",
+                    "margin": "md",
+                    "aspectRatio": "16:9",
+                    "aspectMode": "cover",
+                    "url": imageurl
+                }
+            ]
+        }
+    }
+    for (var i=0; i<goods.length; i++) {
+        var goodjson = goods[i];
+        var g = {
+            "type": "box",
+            "layout": "horizontal",
+            "margin": "md",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": goodjson.name,
+                    "wrap": true,
+                    "weight": "bold",
+                    "size": "md",
+                    "align": "start",
+                    "flex": 0
+                },
+                {
+                    "type": "text",
+                    "text": "￥" + goodjson.price,
+                    "wrap": true,
+                    "weight": "bold",
+                    "size": "md",
+                    "align": "end"
+                }
+            ]
+        }
+        tmp.body.contents.push(g);
+    }
+    return tmp;
 }
 
 async function DB_get(table, col, where, id) {
@@ -144,7 +223,28 @@ async function type_message(event) {
             } else {
                 //userplaceの場所に合う模擬店をjson or htmlから引っ張ってきてテンプレートメッセージにする
                 msg.text = userplace + "にいるから近くの模擬店を取得";
+                msg2 = {
+                    "type": "flex",
+                    "altText": "This is a flex message.",
+                    "contents": {
+                        "type": "carousel",
+                        "contents": []
+                    }
+                };
+                for (var i=0; i<shop_area[userplace].length; i++) {
+                    console.log(shop_area[userplace]);
+                    var shopid = shop_area[userplace][i];
+                    console.log(shopid);
+                    var data = shop_data[shopid];
+                    console.log(data);
+                    var name = data.shopname;
+                    var image = data.image;
+                    msg2.contents.contents.push(Build_flex(name, "https://aaa.png", data.goods));
+                }
             }
+            break;
+        case "map":
+            msg.text = "sh0h1r0";
             break;
         default:
             msg.text = "個別の返信はできません(*:△:)";
@@ -250,6 +350,7 @@ async function beacon_leave(event) {
     }
 }
 
+/************************* map *************************/
 
 
 /* MAIN */
