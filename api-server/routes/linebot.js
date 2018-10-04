@@ -146,6 +146,8 @@ async function type_message(event) {
                 msg.text = userplace + "にいるから近くの模擬店を取得";
             }
             break;
+        case "map":
+        
         default:
             msg.text = "個別の返信はできません(*:△:)";
             break;
