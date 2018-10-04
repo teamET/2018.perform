@@ -43,14 +43,14 @@ function json_sort(arr){
 }
 
 function to_Array(shop){
-	Ashop_data = fs.readFileSync("./data/Ashop.json");
-	Ashop = JSON.parse(Ashop_data);
+	var Ashop = [];
 	var cnt=0;
 	for(key in shop){
-		Ashop[cnt] = shop[key];
+		Ashop.push(shop[key]);
 		Ashop[cnt].id = key;
 		cnt++;
 	}
+	console.log("Ashop",Ashop);
 	fs.writeFileSync('./data/Ashop.json',JSON.stringify(Ashop));
 }
 
@@ -195,7 +195,8 @@ module.exports={
 	make_template:make_template,
 	help:help,
 	read_list:read_list,
-	json_sort:json_sort
+	json_sort:json_sort,
+	to_Array:to_Array
 }
 
 /*
