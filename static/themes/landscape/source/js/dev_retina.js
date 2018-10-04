@@ -101,6 +101,7 @@ function init(event){
   stage.addChild(DisplayContainer);
   DisplayContainer.cache(0,0,canvasElement.width,canvasElement.height);
   stage.setClearColor('#343434');
+  // var gm_general      = new createjs.Bitmap("https://user-images.githubusercontent.com/38575274/46392238-a3be4400-c71b-11e8-8fb3-b6f466f17ba4.png"); // 構外MAP全体画像　すべての基準はこの画像になる。// *p
   var gm_general      = new createjs.Bitmap("/img/" + j_mapImgsData.Generalview); // 構外MAP全体画像　すべての基準はこの画像になる。// *p
   main();
   // -- タッチ操作有効化
@@ -134,7 +135,7 @@ function init(event){
     gm_general.scaleX = canvasElement.offsetWidth / bmp_size[0];
     gm_general.scaleY = gm_general.scaleX;
     //canvasSizeの調整　全体MAP画像の大きさと同じ大きさにする
-    ChangeCanvasSize(gm_general.image.width * gm_general.scaleX,gm_general.image.height * gm_general.scaleY);
+    //ChangeCanvasSize(gm_general.image.width * gm_general.scaleX,gm_general.image.height * gm_general.scaleY);
     // 高さを中心に合わせる (基準）(縦横比によって可変する値)
     var z_General = {};
     z_General.x = 0;

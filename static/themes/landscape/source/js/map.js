@@ -65,7 +65,6 @@ function init(event){
   if(reloadCount==1) p_location = getParam("booth");
   console.log(p_location);
   // - canvas stageの定義 --------------------------------------------------------------------------------------------
-  var canvasContainer = document.getElementById("wrap");
   var canvasElement   = document.getElementById("myCanvas");
   var dh_pindata      = document.getElementById("pin");
   var h_boothdata     = document.getElementById("boothdata");
@@ -74,26 +73,11 @@ function init(event){
     canvasElement.height = canvasElement.offsetHeight;
     canvasElement.width  = canvasElement.offsetWidth;
   }
-  var Sizing2 = function(){
-    canvasElement.style.height = String(canvasElement.offsetHeight)+"px";
-    canvasElement.style.width  = String(canvasElement.offsetWidth)+"px";
-  }
   // CanvasSizeの大きさ画面サイズに設定する（初期化）
-  Sizing();
+  //Sizing();
   // - stageの定義
   // var canvasElement   = document.getElementById("myCanvas");
   var stage = new createjs.StageGL(canvasElement);
-  /*
-  stage.canvas.width = canvasElement.offsetHeight;
-  stage.canvas.height = canvasElement.offsetWidth;
-  if(window.devicePixelRatio){
-    canvasElement.width *= devicePixelRatio;
-    canvasElement.height *= devicePixelRatio;
-    canvasElement.style.width = String(canvasElement.width / devicePixelRatio)+"px";
-    canvasElement.style.height = String(canvasElement.height / devicePixelRatio) + "px";
-    stage.scaleX = stage.scaleY = window.devicePixelRatio;
-  }
-  */
   // ---------------------------------------------------------------------------------------------------------------   
   var DisplayContainer = new createjs.Container();                                  // 表示用コンテナ
   stage.addChild(DisplayContainer);
@@ -118,8 +102,19 @@ function init(event){
 
   // -- canvasのサイズを変更する ---------------------------------
   function ChangeCanvasSize(width,height){
-    canvasElement.style.width = width;
-    canvasElement.style.height = height;
+    if(window.devicePixelRatio){
+      canvasElement.width *= devicePixelRatio;
+      canvasElement.height *= devicePixelRatio;
+      //canvasElement.style.width = String(width / devicePixelRatio)+"px";
+      //canvasElement.style.height = String(height / devicePixelRatio)+"px";
+      stage.scaleX = stage.scaleY = window.devicePixelRatio;
+    }else{
+      canvasElement.width = width;
+      canvasElement.height = height;
+      //canvasElement.style.width = String(width)+"px";
+      //canvasElement.style.height = String(height)+"px";
+    }
+    stage.updateViewport();
   }
 
   // -- main main(async) : このあとの処理は全てここ　------------------------------------------------------------------
@@ -129,7 +124,7 @@ function init(event){
     // 基準となる画像（構外MAP全体画像）のサイズを取得する。
     var bmp_size = await getImageSize(gm_general); // size[0] : width  size[1] : height
     //画像のスケールの計算
-    gm_general.scaleX = canvasContainer.offsetWidth / bmp_size[0];
+    gm_general.scaleX = canvasElement.offsetWidth / bmp_size[0];
     gm_general.scaleY = gm_general.scaleX;
     //canvasSizeの調整　全体MAP画像の大きさと同じ大きさにする
     ChangeCanvasSize(gm_general.image.width * gm_general.scaleX,gm_general.image.height * gm_general.scaleY);
