@@ -222,9 +222,7 @@ rtm.on("message",(event)=>{
 				shop[shop_id].goods.push(data);
 			}
 			update_shop(shop);
-			slack("商品が登録されました.",channel);
-			slack("タグの登録を行ってください.",channel);
-			slack("0:食べ物, 1:飲み物, 2:アトラクション, 3:温かいもの, 4:冷たいもの, 5:甘い, 6:しょっぱい",channel);
+			slack("商品が登録されました.\nタグの登録を行ってください.\n0:食べ物, 1:飲み物, 2:アトラクション, 3:温かいもの, 4:冷たいもの, 5:甘い, 6:しょっぱい",channel);
 		}catch(e){
 			console.log(e);
 			slack("店舗を登録してください.",channel);
