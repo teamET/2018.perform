@@ -82,21 +82,100 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
     });
 }
 
-/* テンプレートメッセージの作成 */
-function Build_msg_template(area) {
+/* flexメッセージの作成 */
+function Build_flex(shopname, imageurl, goods) {
     return new Promise(function(resolve, reject) {
-        var returnText = {
-            "type": "template",
-            "altText": "This is the template message.",
-            "template": []
-        };
-        shop_area[area].forEach((shopname) => {
-            var value = shop_data[shopname];
-            var name = shopname;
-            var goods_name = value.goods.name;
-            var goods_yen = value.goods.choco;
-            var image = value.image;
+        var tmp = {
+            "type": "bubble",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                    "type": "text",
+                    "text": shopname,
+                    "weight": "bold",
+                    "size": "lg",
+                    "wrap": true
+                    }
+                ]
+            },
+            "hero": {
+                "type": "image",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+                "url": imageurl
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                    "type": "text",
+                    "text": "商品",
+                    "wrap": false,
+                    "weight": "bold",
+                    "size": "md"
+                    },
+                    {
+                    "type": "separator",
+                    "margin": "sm"
+                    }
+                ]
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "text",
+                        "text": "地図",
+                        "weight": "bold",
+                        "margin": "md"
+                    },
+                    {
+                        "type": "image",
+                        "size": "full",
+                        "margin": "md",
+                        "aspectRatio": "16:9",
+                        "aspectMode": "cover",
+                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_5_carousel.png"
+                    }
+                ]
+            }
+        }
+        goods.forEach((goodjson) => {
+            var g = {
+                "type": "box",
+                "layout": "horizontal",
+                "margin": "md",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": goodjson.name,
+                        "wrap": true,
+                        "weight": "bold",
+                        "size": "md",
+                        "align": "start",
+                        "flex": 0
+                    },
+                    {
+                        "type": "text",
+                        "text": "￥" + goodjson.price,
+                        "wrap": true,
+                        "weight": "bold",
+                        "size": "md",
+                        "align": "end"
+                    }
+                ]
+            }
+            tmp.body.contents.push(g);
         });
+        resolve(tmp);
     });
 }
 
@@ -148,8 +227,17 @@ async function type_message(event) {
                 msg2 = {
                     "type": "flex",
                     "altText": "This is a flex message.",
-                    "contents" : flex_tmp
+                    "contents": {
+                        "type": "carousel",
+                        "contents": []
+                    }
                 };
+                shop_area[userplace].forEach((shopid) => {
+                    var data = shop_data[shopid];
+                    var name = data.shopname;
+                    var image = data.image;
+                    msg2.contents.contents.push(await Build_flex(name, "https://aaa.png", data.goods));
+                });
             }
             break;
         case "map":

@@ -28,5 +28,10 @@
         "hoge",
         "hage",
         "huge"
+    ],
+    "test": [
+        "c4J",
+        "test",
+        "id"
     ]
 }
