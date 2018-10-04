@@ -121,6 +121,7 @@ function save_shop_image(event){
 }
 
 function slack(data,channel){
+	utils.log(data);
 	request.post("https://slack.com/api/chat.postMessage",{
 		form: {
 			token: process.env.SLACK_TOKEN,
@@ -139,6 +140,7 @@ const screen = (async(channel,file,shop_id)=>{
 	await page.goto(DEV_SERVER,{waitUntil: "domcontentloaded"});
 	await page.screenshot({path: file+".png", fullPage: true});
 	browser.close();
+	utils.log(file);
 	utils.sendFile(channel,file+".png");
 	return;
 });
