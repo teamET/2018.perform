@@ -232,8 +232,11 @@ async function type_message(event) {
                     }
                 };
                 for (var i=0; i<shop_area[userplace].length; i++) {
+                    console.log(shop_area[userplace]);
                     var shopid = shop_area[userplace][i];
+                    console.log(shopid);
                     var data = shop_data[shopid];
+                    console.log(data);
                     var name = data.shopname;
                     var image = data.image;
                     msg2.contents.contents.push(Build_flex(name, "https://aaa.png", data.goods));
