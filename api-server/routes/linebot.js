@@ -152,6 +152,9 @@ async function type_message(event) {
                 };
             }
             break;
+        case "map":
+            msg.text = "sh0h1r0";
+            break;
         default:
             msg.text = "個別の返信はできません(*:△:)";
             break;
