@@ -147,7 +147,8 @@ function Build_flex(shopname, imageurl, goods) {
             ]
         }
     }
-    goods.forEach((goodjson) => {
+    for (var i=0; i<goods.length; i++) {
+        var goodjson = goods[i];
         var g = {
             "type": "box",
             "layout": "horizontal",
@@ -173,7 +174,7 @@ function Build_flex(shopname, imageurl, goods) {
             ]
         }
         tmp.body.contents.push(g);
-    });
+    }
     return tmp;
 }
 
@@ -230,12 +231,13 @@ async function type_message(event) {
                         "contents": []
                     }
                 };
-                shop_area[userplace].forEach((shopid) => {
+                for (var i=0; i<shop_area[userplace].length; i++) {
+                    var shopid = shop_area[userplace][i];
                     var data = shop_data[shopid];
                     var name = data.shopname;
                     var image = data.image;
                     msg2.contents.contents.push(Build_flex(name, "https://aaa.png", data.goods));
-                });
+                }
             }
             break;
         case "map":
