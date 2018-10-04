@@ -11,12 +11,9 @@ const DEV_SERVER=process.env.DEV_SERVER;
 //const mkdirp = require("mkdirp");
 
 var slack_id;
-//var account_data;
 var account;
-//var shop_data;
 var shop;
 var shop_name;
-var events_data;
 var timetable_data;
 var events;
 var timetable;
@@ -24,24 +21,22 @@ var arr;
 var list;
 var shop_id;
 var tag;
-var tag_data;
-
 
 console.log('start process');
 utils.log("start process",SLACK_TOKEN);
 utils.log("`hello winston`\n> test test",SLACK_TOKEN);
 
 function create_json(){
-    var account_data,shop_data;
+    var account_data,shop_data,events_data,tag_data;
 	try {
 		account_data = fs.readFileSync("./data/account.json");
 		shop_data = fs.readFileSync("./data/shop.json");
+		events_data = fs.readFileSync("./data/events.json");
+		tag_data = fs.readFileSync("./data/list.json");
 		account = JSON.parse(account_data);
 		shop = JSON.parse(shop_data);
 		events = JSON.parse(events_data);
 		tag = JSON.parse(tag_data);
-		console.log("tag",tag);
-
 	}catch(e){
 		account = {
 			"user" :{"id":"id","ShopName":"shopname","Class":"class"}
@@ -49,8 +44,8 @@ function create_json(){
 		shop = {
 			"id" : {
 				"shopname":"shopname",
-				"goods": {
-					"name":"price"},
+				"goods":[{
+					"name":"name","price":"price"}],
 				"image":["image"],
 				"text":"text",
 				"tstamp":"tstamp",
@@ -69,7 +64,6 @@ function create_json(){
 			"from":"from",
 			"tstamp":"tstamp"
 		}];
-	
 		fs.writeFileSync('./data/account.json',JSON.stringify(account));	
 		fs.writeFileSync('./data/shop.json',JSON.stringify(shop));
 		fs.writeFileSync('./data/events.json',JSON.stringify(events));		
@@ -78,10 +72,11 @@ function create_json(){
 
 function update_shop(shop){
     utils.log(shop);
+	utils.to_Array(shop);
     fs.writeFileSync("./data/shop.json",JSON.stringify(shop));
 }
 
-function update_account(shop){
+function update_account(account){
     utils.log(account);
     fs.writeFileSync("./data/account.json",JSON.stringify(account));
 }
@@ -89,9 +84,17 @@ function update_account(shop){
 function save_json(account,shop){
     utils.log(account);
     utils.log(shop);
+	utils.to_Array();
+	console.log("okok");
     fs.writeFileSync("./data/account.json",JSON.stringify(account));
     fs.writeFileSync("./data/shop.json",JSON.stringify(shop));
 }
+
+function update_events(events){
+    utils.log(events);
+    fs.writeFileSync("./data/events.json",JSON.stringify(events));
+}
+
 
 function save_shop_image(event){
     utils.log(event.files[0].url_private_download);
@@ -104,8 +107,8 @@ function save_shop_image(event){
                 if(shop[shop_name].image[count] !== event.files[0].title) count++;
             }
             shop[shop_name].image[count] = event.files[0].title;
-            fs.writeFileSync("shop.json",JSON.stringify(shop));
-            screen(channel,file,shop_name);
+			update_shop(shop);
+			screen(channel,file,shop_name);
         }else{
             slack("店舗を登録してください.",channel);
             console.log("try else");
@@ -168,7 +171,7 @@ rtm.on("message",(event)=>{
 	}else if(event.text.split(" ")[0]===".text"){
 		try{
 			shop[shop_name].text = event.text.slice(6);
-			fs.writeFileSync("./data/shop.json",JSON.stringify(shop));
+			update_shop(shop);
 			slack("テキストが登録されました.",channel);
 		}catch(e){
 			slack("店舗情報を登録してください.",channel);
@@ -180,15 +183,15 @@ rtm.on("message",(event)=>{
 			return ;
 		}
 		shop_id = text.split(' ')[1];
-		console.log("list",list);
-		if(list.indexOf(slack_id) == -1){
+		var cnt=0;
+		if(list.indexOf(shop_id) == -1){
 			slack("店舗idが間違っています.",channel);
 			return ;
 		}
 		var name = text.split(' ')[2];
 		var Class = text.split(' ')[3];
 		account[slack_id] = {"id":shop_id,"ShopName":name,"Class":Class};
-		fs.writeFileSync('account.json',JSON.stringify(account));
+		update_account(account);
 		slack("店舗が登録されました.",channel);
 	}else if(text.split(' ')[0]==='.goods'){
 		try{
@@ -196,22 +199,32 @@ rtm.on("message",(event)=>{
 				slack('商品名または値段の入力方法に誤りがあります.\ne.g.\n.goods <goods name> <price>',channel);
 				return ;
 			}
+			var cnt;
 			var Name = text.split(' ')[1];
 			var Price = text.split(' ')[2];
+			console.log(shop);
 			shop_name = account[slack_id]["ShopName"];
 			shop_id = account[slack_id]["id"];
 			if(shop[shop_id] == undefined){
-				shop[shop_id] = {"shopname":shop_name,goods: {name:"price"},image:["image"],text:"text",tstamp:ts,label:["label"]};
-				fs.writeFileSync('shop.json',JSON.stringify(shop));
-				shop[shop_id].goods[Name] = Price;
+				shop[shop_id] = {"shopname":shop_name,"goods": [{"name":Name,"price":Price}],"image":["image"],"text":"text","tstamp":ts,"label":["label"]};
 			}else{
-				shop[shop_id].goods[Name] = Price;	
+				console.log("ok");
+				console.log(shop[shop_id].goods[0]);
+				for(cnt=0;cnt<shop[shop_id].goods.length;cnt++){
+					if(shop[shop_id].goods[cnt]["name"] == Name){
+						shop[shop_id].goods[cnt]["price"] = Price;
+						slack("値段が更新されました.",channel);
+						update_shop(shop);
+						return ;
+					}
+				}
+				var data = {"name":Name,"price":Price};
+				shop[shop_id].goods.push(data);
 			}
-			fs.writeFileSync("./data/shop.json",JSON.stringify(shop));
-			slack("商品が登録されました.",channel);
-			slack("タグの登録を行ってください.",channel);
-			slack("0:食べ物, 1:飲み物, 2:アトラクション, 3:温かいもの, 4:冷たいもの, 5:甘い, 6:しょっぱい",channel);
+			update_shop(shop);
+			slack("商品が登録されました.\nタグの登録を行ってください.\n0:食べ物, 1:飲み物, 2:アトラクション, 3:温かいもの, 4:冷たいもの, 5:甘い, 6:しょっぱい",channel);
 		}catch(e){
+			console.log(e);
 			slack("店舗を登録してください.",channel);
 		}
 	}else if(text.split(' ')[0]==='.rewiew'){
@@ -246,7 +259,7 @@ rtm.on("message",(event)=>{
 //			console.log("events.length",events.length);
 			events[events.length-1] = {"id":events.length-1,"date":date,"time":time,"start_time":start_time,"end_time":end_time,"place":place,"name":name,"content":content,"from":from,"tstamp":ts};
 			events = utils.json_sort(events);
-			fs.writeFileSync('events.json',JSON.stringify(events));
+			update_events(events);
 			slack("イベントが登録されました.",channel);			
 		}catch(e){
 			slack("アカウントを登録してください",channel);
@@ -279,7 +292,7 @@ rtm.on("message",(event)=>{
 				}
 			}
 			console.log(shop);
-			fs.writeFileSync('shop.json',JSON.stringify(shop));
+			update_shop(shop);
 			slack("タグが登録されました.",channel);
 		}catch(e){
 			console.log(e);

@@ -42,6 +42,18 @@ function json_sort(arr){
 	return arr;
 }
 
+function to_Array(shop){
+	var Ashop = [];
+	var cnt=0;
+	for(key in shop){
+		Ashop.push(shop[key]);
+		Ashop[cnt].id = key;
+		cnt++;
+	}
+	console.log("Ashop",Ashop);
+	fs.writeFileSync('./data/Ashop.json',JSON.stringify(Ashop));
+}
+
 function slack_log(message){
 	winstonlogger.info(message);
 	slack_postMessage("logging",message);
@@ -183,7 +195,8 @@ module.exports={
 	make_template:make_template,
 	help:help,
 	read_list:read_list,
-	json_sort:json_sort
+	json_sort:json_sort,
+	to_Array:to_Array
 }
 
 /*
