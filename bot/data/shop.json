@@ -1,1 +1,1 @@
-{"id":{"shopname":"shopname","goods":{"name":"price"},"image":["image"],"text":"text","tstamp":"tstamp","label":["label"]}}
+{"id":{"shopname":"shopname","goods":[{"name":"name","price":"price"}],"image":["image"],"text":"text","tstamp":"tstamp","label":["label"],"id":"id"},"c4J":{"shopname":"4J","goods":[{"name":"milk","price":"34567"},{"name":"choco","price":"345678"}],"image":["image"],"text":"text","tstamp":"1538624986.000100","label":["label"],"id":"c4J"}}
