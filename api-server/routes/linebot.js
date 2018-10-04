@@ -84,99 +84,97 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
 
 /* flexメッセージの作成 */
 function Build_flex(shopname, imageurl, goods) {
-    return new Promise(function(resolve, reject) {
-        var tmp = {
-            "type": "bubble",
-            "header": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
+    var tmp = {
+        "type": "bubble",
+        "header": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                "type": "text",
+                "text": shopname,
+                "weight": "bold",
+                "size": "lg",
+                "wrap": true
+                }
+            ]
+        },
+        "hero": {
+            "type": "image",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover",
+            "url": imageurl
+        },
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                "type": "text",
+                "text": "商品",
+                "wrap": false,
+                "weight": "bold",
+                "size": "md"
+                },
+                {
+                "type": "separator",
+                "margin": "sm"
+                }
+            ]
+        },
+        "footer": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "separator"
+                },
+                {
                     "type": "text",
-                    "text": shopname,
+                    "text": "地図",
                     "weight": "bold",
-                    "size": "lg",
-                    "wrap": true
-                    }
-                ]
-            },
-            "hero": {
-                "type": "image",
-                "size": "full",
-                "aspectRatio": "20:13",
-                "aspectMode": "cover",
-                "url": imageurl
-            },
-            "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                    "type": "text",
-                    "text": "商品",
-                    "wrap": false,
-                    "weight": "bold",
-                    "size": "md"
-                    },
-                    {
-                    "type": "separator",
-                    "margin": "sm"
-                    }
-                ]
-            },
-            "footer": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "separator"
-                    },
-                    {
-                        "type": "text",
-                        "text": "地図",
-                        "weight": "bold",
-                        "margin": "md"
-                    },
-                    {
-                        "type": "image",
-                        "size": "full",
-                        "margin": "md",
-                        "aspectRatio": "16:9",
-                        "aspectMode": "cover",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_5_carousel.png"
-                    }
-                ]
-            }
+                    "margin": "md"
+                },
+                {
+                    "type": "image",
+                    "size": "full",
+                    "margin": "md",
+                    "aspectRatio": "16:9",
+                    "aspectMode": "cover",
+                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_5_carousel.png"
+                }
+            ]
         }
-        goods.forEach((goodjson) => {
-            var g = {
-                "type": "box",
-                "layout": "horizontal",
-                "margin": "md",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": goodjson.name,
-                        "wrap": true,
-                        "weight": "bold",
-                        "size": "md",
-                        "align": "start",
-                        "flex": 0
-                    },
-                    {
-                        "type": "text",
-                        "text": "￥" + goodjson.price,
-                        "wrap": true,
-                        "weight": "bold",
-                        "size": "md",
-                        "align": "end"
-                    }
-                ]
-            }
-            tmp.body.contents.push(g);
-        });
-        resolve(tmp);
+    }
+    goods.forEach((goodjson) => {
+        var g = {
+            "type": "box",
+            "layout": "horizontal",
+            "margin": "md",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": goodjson.name,
+                    "wrap": true,
+                    "weight": "bold",
+                    "size": "md",
+                    "align": "start",
+                    "flex": 0
+                },
+                {
+                    "type": "text",
+                    "text": "￥" + goodjson.price,
+                    "wrap": true,
+                    "weight": "bold",
+                    "size": "md",
+                    "align": "end"
+                }
+            ]
+        }
+        tmp.body.contents.push(g);
     });
+    return tmp;
 }
 
 async function DB_get(table, col, where, id) {
@@ -236,8 +234,7 @@ async function type_message(event) {
                     var data = shop_data[shopid];
                     var name = data.shopname;
                     var image = data.image;
-                    var f = await Build_flex(name, "https://aaa.png", data.goods);
-                    msg2.contents.contents.push(f);
+                    msg2.contents.contents.push(Build_flex(name, "https://aaa.png", data.goods));
                 });
             }
             break;
