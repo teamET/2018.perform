@@ -236,7 +236,8 @@ async function type_message(event) {
                     var data = shop_data[shopid];
                     var name = data.shopname;
                     var image = data.image;
-                    msg2.contents.contents.push(await Build_flex(name, "https://aaa.png", data.goods));
+                    var f = await Build_flex(name, "https://aaa.png", data.goods);
+                    msg2.contents.contents.push(f);
                 });
             }
             break;
