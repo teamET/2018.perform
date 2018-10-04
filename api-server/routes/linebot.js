@@ -29,6 +29,7 @@ const session_client = new dialogflow.SessionsClient({
 var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
 var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
 var shop_data = JSON.parse(fs.readFileSync('../bot/shop.json', 'utf8'));
+var flex_tmp = JSON.parse(fs.readFileSync('./routes/flex_template.json', 'utf8'));
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -144,6 +145,11 @@ async function type_message(event) {
             } else {
                 //userplaceの場所に合う模擬店をjson or htmlから引っ張ってきてテンプレートメッセージにする
                 msg.text = userplace + "にいるから近くの模擬店を取得";
+                msg2 = {
+                    "type": "flex",
+                    "altText": "This is a flex message.",
+                    "contents" : flex_tmp
+                };
             }
             break;
         default:
