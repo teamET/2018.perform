@@ -142,7 +142,7 @@ function Build_flex(shopname, imageurl, goods) {
                     "margin": "md",
                     "aspectRatio": "16:9",
                     "aspectMode": "cover",
-                    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_5_carousel.png"
+                    "url": imageurl
                 }
             ]
         }
