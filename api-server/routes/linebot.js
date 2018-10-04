@@ -259,6 +259,7 @@ async function beacon_leave(event) {
     }
 }
 
+/************************* map *************************/
 
 
 /* MAIN */
