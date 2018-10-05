@@ -147,7 +147,7 @@ async function type_message(event) {
             }
             break;
         case "map":
-            msg.text = "mapを表示します";
+            //msg.text = "mapを表示します";
             type_image();
             break;
         default:
