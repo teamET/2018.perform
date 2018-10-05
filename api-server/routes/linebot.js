@@ -81,6 +81,14 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
     });
 }
 
+/* 画像メッセージの作成 */
+function Build_imgMsg_text(Token,imgMsg){
+    return new Promise(function(){
+        var tmp = {
+
+        }
+    });
+}
 /* テンプレートメッセージの作成 */
 function Build_msg_template(area) {
     return new Promise(function(resolve, reject) {
@@ -148,7 +156,7 @@ async function type_message(event) {
             break;
         case "map":
             //msg.text = "mapを表示します";
-            type_image();
+            type_image(event);
             break;
         default:
             msg.text = "個別の返信はできません(*:△:)";
@@ -256,7 +264,7 @@ async function beacon_leave(event) {
 }
 
 /* 画像送信用 */
-async function type_image(){
+async function type_image(event){
     var imgMsg = {
         "type": "imagemap",
         "baseUrl": "https://avatars0.githubusercontent.com/u/28134110?s=200&v=4",
