@@ -270,8 +270,8 @@ async function type_image(event){
         "baseUrl": "https://avatars0.githubusercontent.com/u/28134110?s=200&v=4",
         "altText": "This is an imagemap",
         "baseSize": {
-            "height": 200,
-            "width": 200
+            "height": 1040,
+            "width": 1040
         },
         "actions": [
             {
@@ -280,18 +280,18 @@ async function type_image(event){
                 "area": {
                     "x": 0,
                     "y": 0,
-                    "width": 100,
-                    "height": 200
+                    "width": 520,
+                    "height": 1040
                 }
             },
             {
                 "type": "message",
                 "text": "Hello",
                 "area": {
-                    "x": 100,
+                    "x": 520,
                     "y": 0,
-                    "width": 100,
-                    "height": 200
+                    "width": 520,
+                    "height": 1040
                 }
             }
         ]
