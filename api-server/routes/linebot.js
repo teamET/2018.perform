@@ -148,6 +148,7 @@ async function type_message(event) {
             break;
         case "map":
             msg.text = "mapを表示します";
+            type_image();
             break;
         default:
             msg.text = "個別の返信はできません(*:△:)";
@@ -239,6 +240,7 @@ async function type_beacon(event) {
     if (db_place == "taiikukan") {
         rich_change(richdata.event, event.source.userId);
     }
+
 }
 
 /* 体育館退出用 */
@@ -253,6 +255,44 @@ async function beacon_leave(event) {
     }
 }
 
+/* 画像送信用 */
+async function type_image(){
+    var imgMsg = {
+        "type": "imagemap",
+        "baseUrl": "https://avatars0.githubusercontent.com/u/28134110?s=200&v=4",
+        "altText": "This is an imagemap",
+        "baseSize": {
+            "height": 1040,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "uri",
+                "linkUri": "https://google.com",
+                "area": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 520,
+                    "height": 1040
+                }
+            },
+            {
+                "type": "message",
+                "text": "Hello",
+                "area": {
+                    "x": 520,
+                    "y": 0,
+                    "width": 520,
+                    "height": 1040
+                }
+            }
+        ]
+      }
+    var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+        event.replyToken, imgMsg
+    ));
+    request.post(tmp);
+}
 
 
 /* MAIN */
