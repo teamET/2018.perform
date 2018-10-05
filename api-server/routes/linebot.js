@@ -147,7 +147,8 @@ async function type_message(event) {
             }
             break;
         case "map":
-        
+            msg.text = "mapを表示します";
+            break;
         default:
             msg.text = "個別の返信はできません(*:△:)";
             break;
