@@ -82,7 +82,6 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
     });
 }
 
-<<<<<<< HEAD
 /* flexメッセージの作成 */
 function Build_flex(shopname, imageurl, goods) {
     var tmp = {
@@ -177,32 +176,6 @@ function Build_flex(shopname, imageurl, goods) {
         tmp.body.contents.push(g);
     }
     return tmp;
-=======
-/* 画像メッセージの作成 */
-function Build_imgMsg_text(Token,imgMsg){
-    return new Promise(function(){
-        var tmp = {
-
-        }
-    });
-}
-/* テンプレートメッセージの作成 */
-function Build_msg_template(area) {
-    return new Promise(function(resolve, reject) {
-        var returnText = {
-            "type": "template",
-            "altText": "This is the template message.",
-            "template": []
-        };
-        shop_area[area].forEach((shopname) => {
-            var value = shop_data[shopname];
-            var name = shopname;
-            var goods_name = value.goods.name;
-            var goods_yen = value.goods.choco;
-            var image = value.image;
-        });
-    });
->>>>>>> 073fc70a6376ad809b9012bc9d4bd335e20deb6c
 }
 
 async function DB_get(table, col, where, id) {
@@ -322,15 +295,10 @@ async function type_message(event) {
                 }
             }
             break;
-<<<<<<< HEAD
-        case "map":
-            msg.text = "sh0h1r0";
-=======
         case "マップを表示":
             imagemap.usage    = "map";
             imagemap.location = "Top";
             msg = type_imagemap(map);
->>>>>>> 073fc70a6376ad809b9012bc9d4bd335e20deb6c
             break;
         default:
             msg.text = "個別の返信はできません(*:△:)";
@@ -436,13 +404,10 @@ async function beacon_leave(event) {
         rich_change(richdata.normal, event.source.userId);
     }
 }
-<<<<<<< HEAD
 
 /************************* map *************************/
 
 
-=======
->>>>>>> 073fc70a6376ad809b9012bc9d4bd335e20deb6c
 /* MAIN */
 router.post('/', function(req, res, next) {
     var responce = "";
