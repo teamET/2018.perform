@@ -28,6 +28,7 @@ const session_client = new dialogflow.SessionsClient({
 /* json fileの読み込み */
 var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
 var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
+var map_data  = JSON.parse(fs.readFileSync('./routes/mapdata.json','utf8'));
 var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
 var flex_tmp = JSON.parse(fs.readFileSync('./routes/flex_template.json', 'utf8'));
 
@@ -203,34 +204,35 @@ async function rich_change(after, userId) {
 }
 /**
  *  テキストメッセージの生成
- * @param {String} text 
- * @return {obj}   msg
+ * @param {String} text テキストデータ
+ * @return {obj}   msg  テキストメッセージ
  */
 function msg_text(text){
-    var msg = {"type": "text"}
+    var msg = {"type": "text"};
     msg.text = text;
     return msg;
 }
 
 /**
- * イメージマップメッセージ生成
- * @param {obj} usage 使い方(map)
- * @return {obj} msg  イメージマップメッセージ
+ * イメージマップメッセージの生成
+ * @param {string} usage 用途(map)
+ * @param {obj}    data  用途に対応するデータ
+ * @return {obj}   msg  イメージマップメッセージ
  */
-function msg_imagemap(imagemap){
-    if(imagemap.usage == "map"){
+function msg_imagemap(usage,data){
+    if(usage == "map"){
         var msg = {
             "type": "imagemap",
-            "baseUrl": "https://avatars0.githubusercontent.com/u/28134110?s=200&v=4",
+            "baseUrl": "https://user-images.githubusercontent.com/28941562/46568644-21d05400-c983-11e8-91b6-90fa8c79e97f.png",
             "altText": "This is an imagemap",
             "baseSize": {
-                "height": 1040,
+                "height": 585,
                 "width": 1040
             },
             "actions": [
                 {
-                    "type": "uri",
-                    "linkUri": "https://google.com",
+                    "type": "message",
+                    "text": "構内マップへ",
                     "area": {
                         "x": 0,
                         "y": 0,
@@ -240,7 +242,7 @@ function msg_imagemap(imagemap){
                 },
                 {
                     "type": "message",
-                    "text": "Hello",
+                    "text": "構外マップへ",
                     "area": {
                         "x": 520,
                         "y": 0,
@@ -250,6 +252,9 @@ function msg_imagemap(imagemap){
                 }
             ]
         }
+        // console.log(msg.baseUrl);
+        console.log(msg);
+        console.log(map_data);
     }
     return msg;
 }
@@ -258,23 +263,23 @@ async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg  = undefined;
     var msg2 = undefined;
-    var imagemap  = {"usage":undefined};
+    var mapdata  = new Object(); // mapの場所データなど
     switch(event.message.text) {
         case "a":
-            msg.text = "ご意見ご感想ふぉーむへ誘導";
+            msg = msg_text("ご意見ご感想ふぉーむへ誘導");
             break;
         case "b":
             var from = moment(await DB_get("UserData", "BEACONTIME", "USERID", event.source.userId));
             var now = moment();
-            msg.text = "差分は" + now.diff(from)/(1000*60);
+            msg = msg_text("差分は" + now.diff(from)/(1000*60));
             break;
         case "c":
             var userplace = await DB_get("UserData", "PLACE", "USERID", event.source.userId);
             if (userplace == "") {
-                msg.text = "近くに模擬店がないみたい...\n移動してからもう一度試してください";
+                msg = msg_text("近くに模擬店がないみたい...\n移動してからもう一度試してください");
             } else {
                 //userplaceの場所に合う模擬店をjson or htmlから引っ張ってきてテンプレートメッセージにする
-                msg.text = userplace + "にいるから近くの模擬店を取得";
+                msg = msg_text(userplace + "にいるから近くの模擬店を取得");
                 msg2 = {
                     "type": "flex",
                     "altText": "This is a flex message.",
@@ -296,12 +301,11 @@ async function type_message(event) {
             }
             break;
         case "マップを表示":
-            imagemap.usage    = "map";
-            imagemap.location = "Top";
-            msg = type_imagemap(map);
+            mapdata.location = "Top";
+            msg = msg_imagemap("map",mapdata);
             break;
         default:
-            msg.text = "個別の返信はできません(*:△:)";
+            msg = msg_text("個別の返信はできません(*:△:)");
             break;
     }
     if (msg){
