@@ -152,7 +152,7 @@ function msg_imagemap(usage,data){
     if(usage == "map"){
         var msg = {
             "type": "imagemap",
-            "baseUrl": "https://github.com/teamET/2018.perform/tree/develop/static/themes/landscape/source/data/linebot_mapImg/map-InOutChoice.png",
+            "baseUrl": "https://photos.google.com/album/AF1QipNmGAyiaaEnHIHFdXNIftbFNrPtgEkFbAt4SIMe/photo/AF1QipMQ65eCn17m6LcfsbdWbtKAXgFesRadUvI02qGc",
             "altText": "choice inout map",
             "baseSize": {
                 "height": 585,
