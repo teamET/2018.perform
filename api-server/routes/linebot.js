@@ -181,6 +181,8 @@ function msg_imagemap(usage,data){
                 }
             ]
         }
+        // console.log(msg.baseUrl);
+        console.log(msg);
     }
     return msg;
 }
