@@ -224,7 +224,7 @@ function msg_imagemap(usage,data){
     if(usage == "map"){
         var msg = {
             "type": "imagemap",
-            "baseUrl": "/data/linebot_mapImg/map-InOutChoice.png",
+            "baseUrl": "./routes/linebot_mapImg/map-InOutChoice.png",
             "altText": "This is an imagemap",
             "baseSize": {
                 "height": 585,
