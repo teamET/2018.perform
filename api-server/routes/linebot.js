@@ -265,7 +265,7 @@ async function beacon_leave(event) {
 
 /* イメージマップ送信用 */
 async function type_imagemap(event){
-    var imgMsg = {
+    var imgMapMsg = {
         "type": "imagemap",
         "baseUrl": "https://avatars0.githubusercontent.com/u/28134110?s=200&v=4",
         "altText": "This is an imagemap",
@@ -296,7 +296,10 @@ async function type_imagemap(event){
             }
         ]
       }
-    return imgMsg;
+      var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+        event.replyToken, imgMapMsg,msg, msg2
+    ));
+    request.post(tmp);
 }
 
 
