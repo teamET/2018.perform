@@ -82,14 +82,6 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
     });
 }
 
-/* 画像メッセージの作成 */
-function Build_imgMsg_text(Token,imgMsg){
-    return new Promise(function(){
-        var tmp = {
-
-        }
-    });
-}
 /* テンプレートメッセージの作成 */
 function Build_msg_template(area) {
     return new Promise(function(resolve, reject) {
