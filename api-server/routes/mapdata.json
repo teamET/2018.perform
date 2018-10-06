@@ -1,3 +1,62 @@
 {
-    "map":"map"
+    "Top": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/Top/map-InOutChoice",
+        "altText": "表示したいマップを選択してください",
+        "baseSize": {
+            "height": 585,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "構内マップへ",
+                "area": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 520,
+                    "height": 585
+                }
+            },
+            {
+                "type": "message",
+                "text": "構外マップへ",
+                "area": {
+                    "x": 520,
+                    "y": 0,
+                    "width": 520,
+                    "height": 585
+                }
+            }
+        ]
+    },
+    "OutsideTop": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/Top/map-OutsideTop",
+        "altText": "表示したいマップを選択してください",
+        "baseSize": {
+            "height": 585,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "構内マップへ",
+                "area": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 520,
+                    "height": 585
+                }
+            },
+            {
+                "type": "message",
+                "text": "構外マップへ",
+                "area": {
+                    "x": 520,
+                    "y": 0,
+                    "width": 520,
+                    "height": 585
+                }
+            }
+        ]
+    }
 }

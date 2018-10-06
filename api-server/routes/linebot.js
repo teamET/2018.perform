@@ -220,43 +220,15 @@ function msg_text(text){
  * @param {obj}    data  用途に対応するデータ
  * @return {obj}   msg  イメージマップメッセージ
  */
-// height : 585
 function msg_imagemap(usage,data){
+    var msg = {"type":"imagemap"};
     if(usage == "map"){
-        var msg = {
-            "type": "imagemap",
-            "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/map-InOutChoice/test",
-            "altText": "This is an imagemap",
-            "baseSize": {
-                "height": 585,
-                "width": 1040
-            },
-            "actions": [
-                {
-                    "type": "message",
-                    "text": "構内マップへ",
-                    "area": {
-                        "x": 0,
-                        "y": 0,
-                        "width": 520,
-                        "height": 585
-                    }
-                },
-                {
-                    "type": "message",
-                    "text": "構外マップへ",
-                    "area": {
-                        "x": 520,
-                        "y": 0,
-                        "width": 520,
-                        "height": 585
-                    }
-                }
-            ]
-        }
-        // console.log(msg.baseUrl);
-        console.log(msg);
-        console.log(map_data);
+        var location = map_data[data.location];
+        msg.baseUrl  = location.baseUrl;
+        msg.altText  = location.altText;
+        msg.baseSize = location.baseSize;
+        msg.actions  = location.actions;
+        // console.log(msg);
     }
     return msg;
 }
