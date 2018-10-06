@@ -136,6 +136,7 @@ async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg = {"type": "text"};
     var msg2 = undefined;
+    var map = new Object();
     switch(event.message.text) {
         case "a":
             msg.text = "ご意見ご感想ふぉーむへ誘導";
@@ -155,14 +156,14 @@ async function type_message(event) {
             }
             break;
         case "マップを表示":
-            //msg.text = "mapを表示します";
-            type_image(event);
+            map.location = Top;
+            msg = type_imagemap(event,map);
             break;
         default:
             msg.text = "個別の返信はできません(*:△:)";
             break;
     }
-    if (msg.text) {
+    if ((msg.type == "text" && msg.text) || (msg.type == "imagemap" && msg.baseUrl) {
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
             event.replyToken,msg, msg2
         ));
@@ -264,43 +265,50 @@ async function beacon_leave(event) {
 }
 
 /* 画像送信用 */
-async function type_image(event){
-    var imgMsg = {
-        "type": "imagemap",
-        "baseUrl": "https://avatars0.githubusercontent.com/u/28134110?s=200&v=4",
-        "altText": "This is an imagemap",
-        "baseSize": {
-            "height": 1040,
-            "width": 1040
-        },
-        "actions": [
-            {
-                "type": "uri",
-                "linkUri": "https://google.com",
-                "area": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 520,
-                    "height": 1040
-                }
+async function type_imagemap(event,usage){
+    if(usage){
+        var imgmapMsg = {
+            "type": "imagemap",
+            "baseUrl": "https://avatars0.githubusercontent.com/u/28134110?s=200&v=4",
+            "altText": "This is an imagemap",
+            "baseSize": {
+                "height": 1040,
+                "width": 1040
             },
-            {
-                "type": "message",
-                "text": "Hello",
-                "area": {
-                    "x": 520,
-                    "y": 0,
-                    "width": 520,
-                    "height": 1040
+            "actions": [
+                {
+                    "type": "uri",
+                    "linkUri": "https://google.com",
+                    "area": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 520,
+                        "height": 1040
+                    }
+                },
+                {
+                    "type": "message",
+                    "text": "Hello",
+                    "area": {
+                        "x": 520,
+                        "y": 0,
+                        "width": 520,
+                        "height": 1040
+                    }
                 }
-            }
-        ]
-      }
+            ]
+          }
+    }
+    /*
     // どうしても動かなかったのでここはreturnせず関数内で送信することにしました。
-    var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, imgMsg
-    ));
-    request.post(tmp);
+    if(imgmapMsg){
+        var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+            event.replyToken, imgMsg
+        ));
+        request.post(tmp);
+    }
+    */
+   return imgmapMsg;
 }
 
 
