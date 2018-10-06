@@ -152,7 +152,7 @@ function msg_imagemap(usage,data){
     if(usage == "map"){
         var msg = {
             "type": "imagemap",
-            "baseUrl": "https://photos.google.com/share/AF1QipNLbJkH0MV_1BRIAXDE8Tj5ZzKhlTZ-ug2OBnTtWfjmmSqJAjY0zMtLaaDIgN_plw/photo/AF1QipPsjUC-mONuz0cmHzEbI95l6cHYmMMWFQEVV_A7?key=ZjlwQVdIM3AyWmktSTNpTllfdHBfVmNDdTc0dWlB",
+            "baseUrl": "https://user-images.githubusercontent.com/28941562/46568644-21d05400-c983-11e8-91b6-90fa8c79e97f.png",
             "altText": "choice inout map",
             "baseSize": {
                 "height": 585,
