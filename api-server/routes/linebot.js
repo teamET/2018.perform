@@ -153,7 +153,7 @@ function msg_imagemap(usage,data){
         var msg = {
             "type": "imagemap",
             "baseUrl": "https://user-images.githubusercontent.com/28941562/46568644-21d05400-c983-11e8-91b6-90fa8c79e97f.png",
-            "altText": "choice inout map",
+            "altText": "This is an imagemap",
             "baseSize": {
                 "height": 585,
                 "width": 1040
