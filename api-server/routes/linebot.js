@@ -29,6 +29,7 @@ const session_client = new dialogflow.SessionsClient({
 var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
 var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
 var shop_data = JSON.parse(fs.readFileSync('../bot/shop.json', 'utf8'));
+var map_data  = JSON.parse(fs.readFileSync('./routes/mapdata.json','utf8'));
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -151,16 +152,16 @@ function msg_imagemap(usage,data){
     if(usage == "map"){
         var msg = {
             "type": "imagemap",
-            "baseUrl": "https://avatars0.githubusercontent.com/u/28134110?s=200&v=4",
-            "altText": "This is an imagemap",
+            "baseUrl": "https://github.com/teamET/2018.perform/tree/develop/static/themes/landscape/source/data/linebot_mapImg/map-InOutChoice.png",
+            "altText": "choice inout map",
             "baseSize": {
-                "height": 1040,
+                "height": 585,
                 "width": 1040
             },
             "actions": [
                 {
-                    "type": "uri",
-                    "linkUri": "https://google.com",
+                    "type": "message",
+                    "text": "構内マップへ",
                     "area": {
                         "x": 0,
                         "y": 0,
@@ -169,7 +170,7 @@ function msg_imagemap(usage,data){
                     }
                 },
                 {
-                    "type": "message",
+                    "type": "構外マップへ",
                     "text": "Hello",
                     "area": {
                         "x": 520,
