@@ -83,24 +83,6 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
     });
 }
 
-<<<<<<< HEAD
-/* テンプレートメッセージの作成 */
-function Build_msg_template(area) {
-    return new Promise(function(resolve, reject) {
-        var returnText = {
-            "type": "template",
-            "altText": "This is the template message.",
-            "template": []
-        };
-        shop_area[area].forEach((shopname) => {
-            var value = shop_data[shopname];
-            var name = shopname;
-            var goods_name = value.goods.name;
-            var goods_yen = value.goods.choco;
-            var image = value.image;
-        });
-    });
-=======
 /* flexメッセージの作成 */
 function Build_flex(shopname, imageurl, goods) {
     var tmp = {
@@ -195,7 +177,6 @@ function Build_flex(shopname, imageurl, goods) {
         tmp.body.contents.push(g);
     }
     return tmp;
->>>>>>> e01c0e070cd5dff5009a55a4890304701d8fe592
 }
 
 async function DB_get(table, col, where, id) {
@@ -221,6 +202,7 @@ async function rich_change(after, userId) {
         request.post(tmp);
     });
 }
+
 /**
  *  テキストメッセージの生成
  * @param {String} text テキストデータ
@@ -242,7 +224,7 @@ function msg_imagemap(usage,data){
     if(usage == "map"){
         var msg = {
             "type": "imagemap",
-            "baseUrl": "https://user-images.githubusercontent.com/28941562/46568644-21d05400-c983-11e8-91b6-90fa8c79e97f.png",
+            "baseUrl": "/data/linebot_mapImg/map-InOutChoice.png",
             "altText": "This is an imagemap",
             "baseSize": {
                 "height": 585,
