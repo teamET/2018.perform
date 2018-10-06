@@ -3,7 +3,7 @@
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/Top/map-InOutChoice",
         "altText": "表示したいマップを選択してください",
         "baseSize": {
-            "height": 1040,
+            "height": 585,
             "width": 1040
         },
         "actions": [
