@@ -152,7 +152,7 @@ function msg_imagemap(usage,data){
     if(usage == "map"){
         var msg = {
             "type": "imagemap",
-            "baseUrl": "https://photos.google.com/album/AF1QipNmGAyiaaEnHIHFdXNIftbFNrPtgEkFbAt4SIMe/photo/AF1QipMQ65eCn17m6LcfsbdWbtKAXgFesRadUvI02qGc",
+            "baseUrl": "https://photos.google.com/share/AF1QipNLbJkH0MV_1BRIAXDE8Tj5ZzKhlTZ-ug2OBnTtWfjmmSqJAjY0zMtLaaDIgN_plw/photo/AF1QipPsjUC-mONuz0cmHzEbI95l6cHYmMMWFQEVV_A7?key=ZjlwQVdIM3AyWmktSTNpTllfdHBfVmNDdTc0dWlB",
             "altText": "choice inout map",
             "baseSize": {
                 "height": 585,
