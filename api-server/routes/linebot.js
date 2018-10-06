@@ -136,7 +136,7 @@ async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg = {"type": "text"};
     var msg2 = undefined;
-    var imgMapMsg = undefined;
+    var imgMapMsg;
     switch(event.message.text) {
         case "a":
             msg.text = "ご意見ご感想ふぉーむへ誘導";
