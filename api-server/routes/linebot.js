@@ -152,7 +152,7 @@ function msg_imagemap(usage,data){
     if(usage == "map"){
         var msg = {
             "type": "imagemap",
-            "baseUrl": "https://github.com/teamET/2018.perform/blob/develop/static/themes/landscape/source/data/linebot_mapImg/map-InOutChoice.png/1040",
+            "baseUrl": "https://github.com/teamET/2018.perform/blob/develop/static/themes/landscape/source/data/linebot_mapImg/map-InOutChoice/1040",
             "altText": "This is an imagemap",
             "baseSize": {
                 "height": 585,
