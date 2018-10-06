@@ -136,6 +136,7 @@ async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg = {"type": "text"};
     var msg2 = undefined;
+    var imagemapMsg = undefined;
     switch(event.message.text) {
         case "a":
             msg.text = "ご意見ご感想ふぉーむへ誘導";
@@ -156,15 +157,15 @@ async function type_message(event) {
             break;
         case "マップを表示":
             //msg.text = "mapを表示します";
-            type_image(event);
+            imagemapMsg = type_image(event);
             break;
         default:
             msg.text = "個別の返信はできません(*:△:)";
             break;
     }
-    if (msg.text) {
+    if (msg.text || imagemapMsg) {
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-            event.replyToken, msg, msg2
+            event.replyToken, imagemapMsg,msg, msg2
         ));
         request.post(tmp);
     }
@@ -296,10 +297,13 @@ async function type_image(event){
             }
         ]
       }
+    return imgMsg;
+    /*
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
         event.replyToken, imgMsg
     ));
     request.post(tmp);
+    */
 }
 
 
