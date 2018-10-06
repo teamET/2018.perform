@@ -170,8 +170,8 @@ function msg_imagemap(usage,data){
                     }
                 },
                 {
-                    "type": "構外マップへ",
-                    "text": "Hello",
+                    "type": "message",
+                    "text": "構外マップへ",
                     "area": {
                         "x": 520,
                         "y": 0,
@@ -183,6 +183,7 @@ function msg_imagemap(usage,data){
         }
         // console.log(msg.baseUrl);
         console.log(msg);
+        console.log(map_data);
     }
     return msg;
 }
