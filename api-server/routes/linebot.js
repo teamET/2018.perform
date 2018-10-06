@@ -224,7 +224,7 @@ function msg_imagemap(usage,data){
     if(usage == "map"){
         var msg = {
             "type": "imagemap",
-            "baseUrl": "/routes/linebot_mapImg/map-InOutChoice/test/1040",
+            "baseUrl": "https://lh3.googleusercontent.com/soP8IMA8mkLgbwM9F3xd1QyFxGkAmYZao9l8-6So0Bj2SAFh5EmfGeOAfN2YDEKtspPgA4cJaZFPbH10bw-M9Z8rTyVYCFQ29_c5Mq9b1X1rixsFkMVb-V8U1kO8b3SpBVc1Mg9I0L3Z-x-RuFO4ufMVwujsKQUVcqwLS0K6JY32pak4yT7gtNDHcSMjkm_0A8wdSzeh0y0N9dbemlDFlKybGdmf4qF5r0L9D3WQ-uzKnhZy_PhQP6dqC2TpzhJqr9dB8D5BgeE2Ln3zYWbI7lmzJfL_pqACI7Ok6alFoW3AR4z2uyMBfi3HsuhZH4TxnIjozPynC651Sq97yeO6Him30KSCh5F5KFspQ83kF_ybHhAIjmEcLNOajsaq6cvxAe2BWsi2DerEbvhapeQBRdU4hujyLnveE1ntIBlJDsmZwRT-RJv7HpLAd02Zj5W4amPiWeLOsiQzxOxr0GEvXV6WP3R7b1fHnOXucgtQ2f6_HfnXV98CtXoald1tPuVTEEWddlSakZy2Gyvba6RclGmTtBNN68O3wjRLrcmkGa0pB4-O5vg-PDe5lfxiGqeqcezuNx-AP5_cJtu_QwZ4IrNpeLRHo1-kphfNClVBMuYE9s88-oSrW-5Qbb0ouAk=w1280-h720-no",
             "altText": "This is an imagemap",
             "baseSize": {
                 "height": 585,
