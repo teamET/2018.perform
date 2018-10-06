@@ -225,7 +225,7 @@ function msg_imagemap(usage,data){
     if(usage == "map"){
         var msg = {
             "type": "imagemap",
-            "baseUrl": "./routes/linebot_mapImg/map-InOutChoice/test",
+            "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/map-InOutChoice/test",
             "altText": "This is an imagemap",
             "baseSize": {
                 "height": 585,
