@@ -136,7 +136,6 @@ async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg = {"type": "text"};
     var msg2 = undefined;
-    var imgMapMsg = undefined;
     switch(event.message.text) {
         case "a":
             msg.text = "ご意見ご感想ふぉーむへ誘導";
@@ -156,7 +155,8 @@ async function type_message(event) {
             }
             break;
         case "map":
-            imgMapMsg = type_imagemap(event);
+            //msg.text = "mapを表示します";
+            type_image(event);
             break;
         default:
             msg.text = "個別の返信はできません(*:△:)";
@@ -164,7 +164,7 @@ async function type_message(event) {
     }
     if (msg.text) {
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-            event.replyToken, imgMapMsg,msg, msg2
+            event.replyToken, msg, msg2
         ));
         request.post(tmp);
     }
@@ -263,9 +263,9 @@ async function beacon_leave(event) {
     }
 }
 
-/* イメージマップ送信用 */
-async function type_imagemap(event){
-    var imgMapMsg = {
+/* 画像送信用 */
+async function type_image(event){
+    var imgMsg = {
         "type": "imagemap",
         "baseUrl": "https://avatars0.githubusercontent.com/u/28134110?s=200&v=4",
         "altText": "This is an imagemap",
@@ -296,8 +296,8 @@ async function type_imagemap(event){
             }
         ]
       }
-      var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, imgMapMsg,msg, msg2
+    var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+        event.replyToken, imgMsg
     ));
     request.post(tmp);
 }
