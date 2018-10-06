@@ -32,7 +32,7 @@ function create_json(){
 		account_data = fs.readFileSync("./data/account.json");
 		shop_data = fs.readFileSync("./data/shop.json");
 		events_data = fs.readFileSync("./data/events.json");
-		tag_data = fs.readFileSync("./data/list.json");
+		tag_data = fs.readFileSync("./data/tag.json");
 		account = JSON.parse(account_data);
 		shop = JSON.parse(shop_data);
 		events = JSON.parse(events_data);
@@ -95,6 +95,10 @@ function update_events(events){
     fs.writeFileSync("./data/events.json",JSON.stringify(events));
 }
 
+function update_tag(tag){
+    utils.log(tag);
+    fs.writeFileSync("./data/tag.json",JSON.stringify(tag));
+}
 
 function save_shop_image(event){
     utils.log(event.files[0].url_private_download);
@@ -107,6 +111,7 @@ function save_shop_image(event){
                 if(shop[shop_name].image[count] !== event.files[0].title) count++;
             }
             shop[shop_name].image[count] = event.files[0].title;
+			if(shop[shop_id].image[0]==='image') shop[shop_id].image.shift();
 			update_shop(shop);
 			screen(channel,file,shop_name);
         }else{
@@ -121,6 +126,7 @@ function save_shop_image(event){
 }
 
 function slack(data,channel){
+	utils.log(data);
 	request.post("https://slack.com/api/chat.postMessage",{
 		form: {
 			token: process.env.SLACK_TOKEN,
@@ -139,6 +145,7 @@ const screen = (async(channel,file,shop_id)=>{
 	await page.goto(DEV_SERVER,{waitUntil: "domcontentloaded"});
 	await page.screenshot({path: file+".png", fullPage: true});
 	browser.close();
+	utils.log(file);
 	utils.sendFile(channel,file+".png");
 	return;
 });
@@ -153,6 +160,18 @@ function no_goods(event){
 	res(mes,event.channel);
 }
 
+function tag_message(tag,channel){
+	var arr = [];
+	var text;
+	var mes;
+
+	for(var i in tag){
+		text = tag[i].id+":"+tag[i].tag;
+		arr.push(text);
+	}
+	mes = arr.join(' , ');
+	slack(mes,channel);
+}
 rtm.on("hello",(event)=>{
     utils.log("hello slack");
 	console.log("start slack process");
@@ -171,6 +190,7 @@ rtm.on("message",(event)=>{
 	}else if(event.text.split(" ")[0]===".text"){
 		try{
 			shop[shop_name].text = event.text.slice(6);
+			shop[shop_id].tstamp = ts;
 			update_shop(shop);
 			slack("テキストが登録されました.",channel);
 		}catch(e){
@@ -214,15 +234,19 @@ rtm.on("message",(event)=>{
 					if(shop[shop_id].goods[cnt]["name"] == Name){
 						shop[shop_id].goods[cnt]["price"] = Price;
 						slack("値段が更新されました.",channel);
-						update_shop(shop);
+						shop[shop_id].tstamp = ts;
+						update_shop(shop,ts);
 						return ;
 					}
 				}
 				var data = {"name":Name,"price":Price};
 				shop[shop_id].goods.push(data);
 			}
+			shop[shop_id].tstamp = ts;
+			if(shop[shop_id].goods[0].name==='name') shop[shop_id].goods.shift();
 			update_shop(shop);
-			slack("商品が登録されました.\nタグの登録を行ってください.\n0:食べ物, 1:飲み物, 2:アトラクション, 3:温かいもの, 4:冷たいもの, 5:甘い, 6:しょっぱい",channel);
+			slack("商品が登録されました.\nタグの登録を行ってください.",channel);
+			tag_message(tag,channel);
 		}catch(e){
 			console.log(e);
 			slack("店舗を登録してください.",channel);
@@ -284,25 +308,35 @@ rtm.on("message",(event)=>{
 				for(let j in tag){
 					if((tags[i]==tag[j].id)&&(shop[shop_id].label.indexOf(tag[j].tag)==-1)){
 						console.log("tag",tag[j].tag);
-						shop[shop_id].label[cnt] = tag[j].tag;
+//						shop[shop_id].label[cnt] = tag[j].tag;
+						shop[shop_id].label[cnt] = tag[j].id;
 						console.log("list",shop[shop_id].label[cnt]);
-						fs.writeFileSync('shop.json',JSON.stringify(shop));
+						shop[shop_id].tstamp = ts;
+						update_shop(shop);
 						cnt++;
 					}
 				}
 			}
 			console.log(shop);
+			shop[shop_id].tstamp = ts;
+			if(shop[shop_id].label[0]==='label') shop[shop_id].label.shift();
 			update_shop(shop);
 			slack("タグが登録されました.",channel);
 		}catch(e){
 			console.log(e);
 			slack("アカウントを登録してください",channel);
-			
 		}
 	}else if(text.split(' ')[0]==='.tag_help'){
-		slack("0:食べ物, 1:飲み物, 2:アトラクション, 3:温かいもの, 4:冷たいもの, 5:甘い, 6:しょっぱい",channel);
-	}else if(text.split(' ')[0]==='.line'){
-		
+//		slack("0:食べ物, 1:飲み物, 2:アトラクション, 3:温かいもの, 4:冷たいもの, 5:甘い, 6:しょっぱい",channel);
+		tag_message(tag,channel);
+	}else if(text.split(' ')[0]==='.tag_save'){
+		try{
+			var tags = {"id":tag.length,"tag":text.split(' ')[1]};
+			tag.push(tags);
+			update_tag(tag);
+		}catch(e){
+			console.log(e);
+		}
 	}
 //	utils.save_templates();
 	if(event.files !== undefined){

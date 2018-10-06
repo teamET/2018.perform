@@ -19,7 +19,7 @@ const winstonlogger=winston.createLogger({
 
 function read_list(){
 	try{
-		arr = fs.readFileSync('./list.txt').toString().split('\r\n');
+		arr = fs.readFileSync('./data/list.txt').toString().split('\r\n');
 	}catch(e){
 		console.log("can not read list.txt");
 	}
@@ -119,7 +119,6 @@ const HELP_MESSAGE="booth\n\
 .help\n\
 .entry <shop name> <class>\n\
 .goods <goods name> <price>\n\
-.text <text>\n\
 .tag <number>\n\
 .review\n\
 .show\n\
