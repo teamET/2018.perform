@@ -152,7 +152,7 @@ function msg_imagemap(usage,data){
     if(usage == "map"){
         var msg = {
             "type": "imagemap",
-            "baseUrl": "https://user-images.githubusercontent.com/28941562/46568644-21d05400-c983-11e8-91b6-90fa8c79e97f.png/1040",
+            "baseUrl": "https://user-images.githubusercontent.com/28941562/46568644-21d05400-c983-11e8-91b6-90fa8c79e97f.png",
             "altText": "This is an imagemap",
             "baseSize": {
                 "height": 585,
