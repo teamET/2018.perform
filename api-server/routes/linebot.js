@@ -155,7 +155,7 @@ async function type_message(event) {
                 msg.text = userplace + "にいるから近くの模擬店を取得";
             }
             break;
-        case "マップを表示":
+        case "map":
             imgMapMsg = type_imagemap(event);
             break;
         default:
