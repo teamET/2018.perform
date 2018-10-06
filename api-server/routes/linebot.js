@@ -136,7 +136,7 @@ async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg = {"type": "text"};
     var msg2 = undefined;
-    var imgMapMsg;
+    var imgMapMsg = undefined;
     switch(event.message.text) {
         case "a":
             msg.text = "ご意見ご感想ふぉーむへ誘導";
@@ -164,7 +164,7 @@ async function type_message(event) {
     }
     if (msg.text) {
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-            event.replyToken, msg, msg2,imgMapMsg
+            event.replyToken, imgMapMsg,msg, msg2
         ));
         request.post(tmp);
     }
