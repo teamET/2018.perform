@@ -1,5 +1,7 @@
 (function ($) {
-  
+  $win = $(window);
+  var windowWidth = $win.width();
+  console.log(windowWidth);
   var defaultSettings = {
     // Data attributes
     headers: [],  // String[] - Array of column headers
@@ -79,7 +81,6 @@
           k++;
           j++;
         }
-
         coefficients.push(k);
       }
 
@@ -115,10 +116,13 @@
       normalize(
         findCoefficients()
       );
-
+    if ( windowWidth < 500) {
+      var widht_default = 90;
+    }else{
+      var widht_default = 194;
+    }
     for (var i = 0; i < args.args.length; i++) {
-      var width = 194 / (args.args[i] || 1);
-
+      var width = widht_default / (args.args[i] || 1);
       tasks[i].width = width;
       tasks[i].left = (args.indexes[i] * width) || 4;
     }
@@ -127,9 +131,12 @@
       var innerContent = renderInnerCardContent(task);
       var top = getCardTopPosition(task.startTime-9) + 2;
       var height = getCardHeight(task.duration);
-      var width = task.width || 194;
+      if ( windowWidth < 500) {
+        var width = task.width || 194*0.5;
+      }else{
+       var width = task.width || 194;
+      }
       var left = task.left || 4;
-
       var card = $('<div></div>')
         .attr({
           id: 'scheduler-task',
@@ -139,7 +146,7 @@
       card.on('click', function (e) { settings.onClick && settings.onClick(e, task) });
       card.append(innerContent)
         .appendTo(placeholder);
-    }, this);
+      });
   }
   
   /**
