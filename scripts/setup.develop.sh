@@ -16,8 +16,7 @@ cd $HOME/dep/static/
 npm install
 npm install --save hexo-cli
 hexo generate --force --bail
-\cp -rf ./public/* /var/www/public/
-\cp -rf ./public/* /var/www/public/$1
+\cp -uvrf ./public/* /var/www/public/
 echo "{'test':'test'}" > /var/www/public/data/test.json
 
 mes \"#bot\" "development"
