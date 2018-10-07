@@ -288,7 +288,6 @@ async function type_message(event) {
         case "[Top] 構内全体マップへ":
             mapdata.location = "InsideTop";
             msg = msg_imagemap("map",mapdata);
-            console.log(msg);
             msg2 = msg_text("棟を選択してください");            
             break;
         case "[Top] 構外全体マップへ":
@@ -302,8 +301,6 @@ async function type_message(event) {
             msg = msg_text("個別の返信はできません(*:△:)");
             break;
     }
-    console.log(OutsideArea[3][0]);
-    console.log()
     for(var i=0;i<OutsideArea.length;i++){
         for(var j=1;j<OutsideArea[i].length;j++){
             switch(event.message.text){
