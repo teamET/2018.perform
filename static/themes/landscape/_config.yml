@@ -4,9 +4,9 @@ menu:
   #About: /about
   Booth: /mogi-shop
   Event: /event
-  Map: /map
-#  Archives: /archives
-rss: /atom.xml
+  #Map: /map
+#Archives: /archives
+#rss: /atom.xml
 
 # Content
 excerpt_link: Read More
