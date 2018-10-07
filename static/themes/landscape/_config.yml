@@ -1,10 +1,10 @@
 # Header
 menu:
   Home: /
-  About: /about
+  #About: /about
   Booth: /mogi-shop
-  EVENT: /event
-  MAP: /map
+  Event: /event
+  Map: /map
 #  Archives: /archives
 rss: /atom.xml
 
