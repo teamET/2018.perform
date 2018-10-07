@@ -1,6 +1,6 @@
 {
     "Top": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg2/Top/map-InOutChoice",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg3/Top/map-InOutChoice",
         "altText": "表示したいマップを選択してください",
         "baseSize": {
             "height": 585,
@@ -30,7 +30,7 @@
         ]
     },
     "OutsideTop": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg2/Top/map-OutsideTop",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg3/Top/map-OutsideTop",
         "altText": "[Top] 構外全体マップ",
         "baseSize": {
             "height": 469,
@@ -110,7 +110,7 @@
         ]
     },
     "AreaA": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg2/outside/map-mogi-A",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg3/outside/map-mogi-A",
         "altText": "エリアA",
         "baseSize": {
             "height": 598,
@@ -180,7 +180,7 @@
         ]
     },
     "AreaB": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg2/outside/map-mogi-B",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg3/outside/map-mogi-B",
         "altText": "エリアB",
         "baseSize": {
             "height": 600,
@@ -240,7 +240,7 @@
         ]
     },
     "AreaC": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg2/outside/map-mogi-C",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg3/outside/map-mogi-C",
         "altText": "エリアC",
         "baseSize": {
             "height": 692,
@@ -280,7 +280,7 @@
         ]
     },
     "AreaD": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg2/outside/map-mogi-D",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg3/outside/map-mogi-D",
         "altText": "エリアD",
         "baseSize": {
             "height": 654,
@@ -380,7 +380,7 @@
         ]
     },
     "AreaE": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg2/outside/map-mogi-E",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg3/outside/map-mogi-E",
         "altText": "エリアE",
         "baseSize": {
             "height": 654,
@@ -460,7 +460,7 @@
         ]
     },
     "AreaF": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg2/outside/map-mogi-F",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg3/outside/map-mogi-F",
         "altText": "エリアF",
         "baseSize": {
             "height": 655,
@@ -510,7 +510,7 @@
         ]
     },
     "InsideTop": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg2/Top/map-InsideTop",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg3/Top/map-InsideTop",
         "altText": "[Top] 構内全体マップ",
         "baseSize": {
             "height": 565,
