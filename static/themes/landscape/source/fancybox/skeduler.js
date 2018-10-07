@@ -5,7 +5,7 @@
   var data = [[{
       "timestamp": "12:30",
       "date" : 21,
-      "start_time": 10,
+      "start_time": "10.5",
       "duration": 2,
       "end_time": 11,
       "place": "第一体育館",
@@ -15,7 +15,7 @@
     },{
       "timestamp": "13:30",
       "date" : 21,
-      "start_time": 14,
+      "start_time": "14.30",
       "end_time": "12:00",
       "place": "第一体育館",
       "duration": 1,
@@ -153,6 +153,16 @@
       "from": "brassband",
       "content": "discription4"
     }]]
+  var date = new Date();
+  function getNow() {
+    function to_string(d) {
+      return (d < 10) ? '0' + d.toString() : d.toString();
+    }
+    var date = new Date();
+    var now = `${to_string(date.getDay())}/${date.getHours()}:${date.getMinutes()}`
+    console.log(now);
+    return now;
+  }
   for (var i = 0; i < places.length; i++) {
     for (var j = 0; j < data[i].length; j++) {
       startTime=data[i][j].start_time;
@@ -161,8 +171,6 @@
       var columun= places.findIndex(function(x) { x == data[i][j].place; });
 
       var columun = places.indexOf(data[i][j].place);
-      console.log(data[i][j].place);
-      console.log(columun);
       var task = {
         startTime: startTime,
         duration: duration,

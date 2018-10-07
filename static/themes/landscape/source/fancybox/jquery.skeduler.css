@@ -5,7 +5,7 @@
 }
 
 .skeduler-container * {
-    box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 .skeduler-headers {
@@ -118,4 +118,31 @@
 
 #scheduler-task div:hover~.hide-content {
   display: block;
+}
+
+@media screen and (max-width: 500px) {
+  .skeduler-headers > div {
+    flex: 0 0 90px;
+  }
+
+  .skeduler-headers {
+    padding-left: 51px;
+  }
+
+  skeduler-headers:before {
+    width: 40px;
+  }
+
+  .skeduler-main-body > div > div.skeduler-cell {
+    width: 90px;
+  }
+
+  .skeduler-main-timeline div {
+    width: 40px;
+    text-align: left;
+  }
+  .skeduler-main-body > div > .skeduler-task-placeholder > div:hover {
+    min-width: 82px;
+    min-height: 110px;
+  }
 }
