@@ -1,4 +1,6 @@
+echo "arg:" $@
 source $HOME/.bash_profile
+export $DEPLOY_DIR=$HOME/dep/static/
 
 function mes(){
     echo $1,$2
@@ -11,12 +13,14 @@ npm --version
 node --version
 
 # hexo
-cd $HOME/static
+cd $DEPLOY_DIR
 npm install --save hexo-cli
 hexo generate --force --bail
-\cp -rf ./public/* /var/www/public
-echo "{'test':'test'}" > /var/www/public/data/test.json  #/var/www/public/data should be directory
+\cp -rf ./public/* /var/www/public/
+\cp -rf ./public/* /var/www/public/$1
+echo "{'test':'test'}" > /var/www/public/data/test.json
 
 mes \"#bot\" "development"
-mes \"#bot\" "http://$(curl ifconfig.io)\n \`$(whoami)@$(curl ifconfig.io)\`"
-mes \"#server_log\" "\`\`\`$(cd /var/www/public ;find .|sort)\`\`\`"
+mes \"#bot\" "$(find /var/www/public -maxdepth 1 -type d iprintf '%f\n')"
+mes \"#bot\" "http://$(curl ifconfig.io)/$1\n \`ssh $(whoami)@$(curl ifconfig.io)\`"
+mes \"#server_log\" "\`\`\`$(cd /var/www/public/$1 ;find .|sort)\`\`\`"

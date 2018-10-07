@@ -26,15 +26,15 @@ jobs:
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
                 export SERVER=kfes@${AZURE_PRODUCT}
                 rsync -av --delete ./scripts/setup.product.sh ${SERVER}:/home/kfes/setup.sh 2>&1 >/dev/null
-                rsync -av --delete ./static ${SERVER}:/home/kfes/ 2>&1 >/dev/null
-                rsync -av --delete ./bot ${SERVER}:/home/kfes/ 2>&1 >/dev/null
-                rsync -av --delete ./api-server ${SERVER}:/home/kfes/ 2>&1 >/dev/null
+                rsync -av --delete ./static ${SERVER}:/home/kfes/dep 2>&1 >/dev/null
+                rsync -av --delete ./bot ${SERVER}:/home/kfes/dep 2>&1 >/dev/null
+                rsync -av --delete ./api-server ${SERVER}:/home/kfes/dep 2>&1 >/dev/null
                 ssh ${SERVER} 'bash /home/kfes/setup.sh'
               else
                 export SERVER=kfes@${AZURE_DEVELOP}
                 rsync -av --delete ./scripts/setup.develop.sh ${SERVER}:/home/kfes/setup.sh 2>&1 >/dev/null
-                rsync -av --delete ./static ${SERVER}:/home/kfes/static 2>&1 >/dev/null
-                ssh ${SERVER} 'bash /home/kfes/setup.sh'
+                rsync -av --delete ./static ${SERVER}:/home/kfes/dep 2>&1 >/dev/null
+                ssh ${SERVER} 'bash /home/kfes/setup.sh $CIRCLECI_DEPLOY_NUM'
               fi
 
   test:
