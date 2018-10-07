@@ -238,6 +238,13 @@ async function type_message(event) {
     var msg  = undefined;
     var msg2 = undefined;
     var mapdata  = new Object(); // mapの場所データなど
+    // [エリア][ピンの番号]([][0] : エリア名)
+    var OutsideArea =  [["A",1,2,3,4,5],
+                        ["B",1,2,3,4],
+                        ["C",1,2],
+                        ["D",1,2,3,4,5,6,7,8]
+                        ["E",1,2,3,4,5,6],
+                        ["F",1,2,3]];
     switch(event.message.text) {
         case "a":
             msg = msg_text("ご意見ご感想ふぉーむへ誘導");
@@ -278,51 +285,36 @@ async function type_message(event) {
             mapdata.location = "Top";
             msg = msg_imagemap("map",mapdata);
             break;
-        case "構内マップへ":
+        case "[Top] 構内全体マップへ":
             mapdata.location = "InsideTop";
             msg = msg_imagemap("map",mapdata);
             msg2 = msg_text("エリアを選択してください");
             break;
-        case "構外マップへ":
+        case "[Top] 構外全体マップへ":
             mapdata.location = "OutsideTop";
             msg = msg_imagemap("map",mapdata);
             msg2 = msg_text("棟を選択してください");
-            break;
-        case "エリアAへ":
-            mapdata.location = "AreaA";
-            msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
-            break;
-        case "エリアBへ":
-            mapdata.location = "AreaB";
-            msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
-            break;
-        case "エリアCへ":
-            mapdata.location = "AreaC";
-            msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
-            break;
-        case "エリアDへ":
-            mapdata.location = "AreaD";
-            msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
-            break;
-        case "エリアEへ":
-            mapdata.location = "AreaE";
-            msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
-            break;
-        case "エリアFへ":
-            mapdata.location = "AreaF";
-            msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
             break;
         case "実装中":
             break;
         default:
             msg = msg_text("個別の返信はできません(*:△:)");
             break;
+    }
+    for(var i=0;i<OutsideArea.length;i++){
+        for(var j=1;j<OutsideArea[i].length;j++){
+            switch(event.message.text){
+                 case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
+                    break;
+            }
+        }
+        switch(event.message.text){
+            case "エリア"+OutsideArea[i][0]+"へ":
+                mapdata.location = "Area"+OutsideArea[i][0];
+                msg = msg_imagemap("map",mapdata);
+                msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
+                break;
+        }
     }
     if (msg){
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
