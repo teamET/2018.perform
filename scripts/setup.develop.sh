@@ -19,7 +19,7 @@ hexo generate --force --bail
 \cp -uvrf ./public/* /var/www/public/
 echo "{'test':'test'}" > /var/www/public/data/test.json
 
-mes \"#bot\" "development"
+mes \"#bot\" "*development*"
 mes \"#bot\" "$(find /var/www/public -maxdepth 1 -type d iprintf '%f\n')"
-mes \"#bot\" "http://$(curl ifconfig.io)/$1\n \`ssh $(whoami)@$(curl ifconfig.io)\`"
+mes \"#bot\" "https://$(curl ifconfig.io)/$1\n \`ssh $(whoami)@$(curl ifconfig.io)\`"
 mes \"#server_log\" "\`\`\`$(cd /var/www/public/$1 ;find .|sort)\`\`\`"
