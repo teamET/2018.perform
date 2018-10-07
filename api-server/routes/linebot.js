@@ -288,7 +288,7 @@ async function type_message(event) {
         case "[Top] 構内全体マップへ":
             mapdata.location = "InsideTop";
             msg = msg_imagemap("map",mapdata);
-            console.loc(msg);
+            console.log(msg);
             msg2 = msg_text("棟を選択してください");            
             break;
         case "[Top] 構外全体マップへ":
