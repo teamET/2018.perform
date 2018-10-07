@@ -281,10 +281,42 @@ async function type_message(event) {
         case "構内マップへ":
             mapdata.location = "InsideTop";
             msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("エリアを選択してください");
             break;
         case "構外マップへ":
             mapdata.location = "OutsideTop";
             msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("棟を選択してください");
+            break;
+        case "エリアAへ":
+            mapdata.location = "AreaA";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
+            break;
+        case "エリアBへ":
+            mapdata.location = "AreaB";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
+            break;
+        case "エリアCへ":
+            mapdata.location = "AreaC";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
+            break;
+        case "エリアDへ":
+            mapdata.location = "AreaD";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
+            break;
+        case "エリアEへ":
+            mapdata.location = "AreaE";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
+            break;
+        case "エリアFへ":
+            mapdata.location = "AreaF";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
             break;
         case "実装中":
             break;

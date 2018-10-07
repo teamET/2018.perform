@@ -31,7 +31,7 @@
     },
     "OutsideTop": {
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/Top/map-OutsideTop2",
-        "altText": "表示したいマップを選択してください",
+        "altText": "構外エリアを選択してください",
         "baseSize": {
             "height": 469,
             "width": 1040
@@ -39,29 +39,69 @@
         "actions": [
             {
                 "type": "message",
-                "text": "構内マップへ",
+                "text": "エリアAへ",
                 "area": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 520,
-                    "height": 585
+                    "x": 200,
+                    "y": 50,
+                    "width": 200,
+                    "height": 120
                 }
             },
             {
                 "type": "message",
-                "text": "構外マップへ",
+                "text": "エリアBへ",
                 "area": {
-                    "x": 520,
-                    "y": 0,
-                    "width": 520,
-                    "height": 585
+                    "x": 445,
+                    "y": 19,
+                    "width": 149,
+                    "height": 97
+                }
+            },
+            {
+                "type": "message",
+                "text": "エリアCへ",
+                "area": {
+                    "x": 445,
+                    "y": 135,
+                    "width": 158,
+                    "height": 97
+                }
+            },
+            {
+                "type": "message",
+                "text": "エリアDへ",
+                "area": {
+                    "x": 445,
+                    "y": 253,
+                    "width": 148,
+                    "height": 136
+                }
+            },
+            {
+                "type": "message",
+                "text": "エリアEへ",
+                "area": {
+                    "x": 672,
+                    "y": 303,
+                    "width": 167,
+                    "height": 87
+                }
+            },
+            {
+                "type": "message",
+                "text": "エリアFへ",
+                "area": {
+                    "x": 613,
+                    "y": 211,
+                    "width": 114,
+                    "height": 76
                 }
             }
         ]
     },
     "InsideTop": {
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/Top/map-InsideTop",
-        "altText": "表示したいマップを選択してください",
+        "altText": "構内マップTOP（表示したいマップを選択してください）",
         "baseSize": {
             "height": 565,
             "width": 1040
@@ -74,7 +114,7 @@
                     "x": 0,
                     "y": 0,
                     "width": 520,
-                    "height": 585
+                    "height": 565
                 }
             },
             {
@@ -84,37 +124,187 @@
                     "x": 520,
                     "y": 0,
                     "width": 520,
-                    "height": 585
+                    "height": 565
                 }
             }
         ]
     },
     "AreaA": {
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/outside/map-mogi-A",
-        "altText": "表示したいマップを選択してください",
+        "altText": "エリアA",
         "baseSize": {
-            "height": 565,
+            "height": 598,
             "width": 1040
         },
         "actions": [
             {
                 "type": "message",
-                "text": "構内マップへ",
+                "text": "実装中",
                 "area": {
                     "x": 0,
                     "y": 0,
                     "width": 520,
-                    "height": 585
+                    "height": 598
                 }
             },
             {
                 "type": "message",
-                "text": "構外マップへ",
+                "text": "実装中",
                 "area": {
                     "x": 520,
                     "y": 0,
                     "width": 520,
-                    "height": 585
+                    "height": 598
+                }
+            }
+        ]
+    },
+    "AreaB": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/outside/map-mogi-B",
+        "altText": "エリアB",
+        "baseSize": {
+            "height": 568,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "実装中",
+                "area": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 520,
+                    "height": 598
+                }
+            },
+            {
+                "type": "message",
+                "text": "実装中",
+                "area": {
+                    "x": 520,
+                    "y": 0,
+                    "width": 520,
+                    "height": 598
+                }
+            }
+        ]
+    },
+    "AreaC": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/outside/map-mogi-C",
+        "altText": "エリアC",
+        "baseSize": {
+            "height": 691,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "実装中",
+                "area": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 520,
+                    "height": 598
+                }
+            },
+            {
+                "type": "message",
+                "text": "実装中",
+                "area": {
+                    "x": 520,
+                    "y": 0,
+                    "width": 520,
+                    "height": 598
+                }
+            }
+        ]
+    },
+    "AreaD": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/outside/map-mogi-D",
+        "altText": "エリアD",
+        "baseSize": {
+            "height": 692,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "実装中",
+                "area": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 520,
+                    "height": 598
+                }
+            },
+            {
+                "type": "message",
+                "text": "実装中",
+                "area": {
+                    "x": 520,
+                    "y": 0,
+                    "width": 520,
+                    "height": 598
+                }
+            }
+        ]
+    },
+    "AreaE": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/outside/map-mogi-E",
+        "altText": "エリアE",
+        "baseSize": {
+            "height": 693,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "実装中",
+                "area": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 520,
+                    "height": 598
+                }
+            },
+            {
+                "type": "message",
+                "text": "実装中",
+                "area": {
+                    "x": 520,
+                    "y": 0,
+                    "width": 520,
+                    "height": 598
+                }
+            }
+        ]
+    },
+    "AreaF": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg/outside/map-mogi-F",
+        "altText": "エリアF",
+        "baseSize": {
+            "height": 694,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "実装中",
+                "area": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 520,
+                    "height": 598
+                }
+            },
+            {
+                "type": "message",
+                "text": "実装中",
+                "area": {
+                    "x": 520,
+                    "y": 0,
+                    "width": 520,
+                    "height": 598
                 }
             }
         ]
