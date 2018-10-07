@@ -98,12 +98,11 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
 
 /**
  * 模擬店のflexを作成する
- * @param  {string} shopname 名前を指定
- * @param  {string} imageurl urlを指定（https）
- * @param  {obj} goods 商品名と値段の辞書の配列
+ * @param  {string} shopid ショップid
  * @return {obj} Bulid_msg_textに渡す
  */
-function Build_flex(shopname, imageurl, goods) {
+function Build_flex(shopid) {
+    var data = shop_data[shopid];
     var tmp = {
         "type": "bubble",
         "header": {
@@ -112,7 +111,7 @@ function Build_flex(shopname, imageurl, goods) {
             "contents": [
                 {
                 "type": "text",
-                "text": shopname,
+                "text": data.shopname,
                 "weight": "bold",
                 "size": "lg",
                 "wrap": true
@@ -124,7 +123,7 @@ function Build_flex(shopname, imageurl, goods) {
             "size": "full",
             "aspectRatio": "20:13",
             "aspectMode": "cover",
-            "url": imageurl
+            "url": data.image
         },
         "body": {
             "type": "box",
@@ -162,13 +161,13 @@ function Build_flex(shopname, imageurl, goods) {
                     "margin": "md",
                     "aspectRatio": "16:9",
                     "aspectMode": "cover",
-                    "url": imageurl
+                    "url": data.image
                 }
             ]
         }
     }
-    for (var i=0; i<goods.length; i++) {
-        var goodjson = goods[i];
+    for (var i=0; i<data.goods.length; i++) {
+        var goodjson = data.goods[i];
         var g = {
             "type": "box",
             "layout": "horizontal",
@@ -326,14 +325,8 @@ async function type_message(event) {
                     }
                 };
                 for (var i=0; i<shop_area[userplace].length; i++) {
-                    console.log(shop_area[userplace]);
                     var shopid = shop_area[userplace][i];
-                    console.log(shopid);
-                    var data = shop_data[shopid];
-                    console.log(data);
-                    var name = data.shopname;
-                    var image = data.image;
-                    msg2.contents.contents.push(Build_flex(name, "https://aaa.png", data.goods));
+                    msg2.contents.contents.push(Build_flex(shopid));
                 }
             }
             break;
