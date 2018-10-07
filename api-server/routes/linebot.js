@@ -286,6 +286,8 @@ async function type_message(event) {
             mapdata.location = "OutsideTop";
             msg = msg_imagemap("map",mapdata);
             break;
+        case "実装中":
+            break;
         default:
             msg = msg_text("個別の返信はできません(*:△:)");
             break;
