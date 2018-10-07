@@ -41,7 +41,12 @@ const urlg_download_message = "https://api.line.me/v2/bot/message/{messageId}/co
 //LINE URL DELETE
 const urld_rich_delete = "https://api.line.me/v2/bot/user/{userId}/richmenu";
 
-/* responceの作成.全てこれを介す. */
+/**
+ * LINEに渡すBodyを生成する
+ * @param  {string} url LINE MessagingAPI エンドポイントを指定
+ * @param  {obj} [res_body] Build_msg_textの返り値を指定
+ * @return {obj} LINEにPOSTするJson Body
+ */
 function Build_responce(url, res_body) {
     return new Promise(function(resolve, reject) {
         var tmp = {
@@ -57,7 +62,15 @@ function Build_responce(url, res_body) {
     });
 }
 
-/* メッセージの作成 */
+/**
+ * LINEのmessageオブジェクトを生成する -> Build_responceに渡す
+ * @param  {} Token - replyToken
+ * @param  {} message1 
+ * @param  {} [message2]
+ * @param  {} [message3]
+ * @param  {} [message4]
+ * @param  {} [message5]
+ */
 function Build_msg_text(Token, message1, message2, message3, message4, message5) {
     return new Promise(function(resolve, reject) {
         var tmp = {
@@ -83,7 +96,13 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
     });
 }
 
-/* flexメッセージの作成 */
+/**
+ * 模擬店のflexを作成する
+ * @param  {string} shopname 名前を指定
+ * @param  {string} imageurl urlを指定（https）
+ * @param  {obj} goods 商品名と値段の辞書の配列
+ * @return {obj} Bulid_msg_textに渡す
+ */
 function Build_flex(shopname, imageurl, goods) {
     var tmp = {
         "type": "bubble",
@@ -179,6 +198,14 @@ function Build_flex(shopname, imageurl, goods) {
     return tmp;
 }
 
+/**
+ * データベースからデータ取得
+ * @param  {string} table テーブル名
+ * @param  {string} col 取得したい列名
+ * @param  {string} where 検索する列名
+ * @param  {string} id キー
+ * @return {string} 検索した結果
+ */
 async function DB_get(table, col, where, id) {
     return new Promise(function(resolve, reject) {
         var query = 'SELECT {col} FROM {table} WHERE {where} = "{id}"'
@@ -192,7 +219,11 @@ async function DB_get(table, col, where, id) {
     });
 }
 
-/* richmenuの切り替え */
+/**
+ * リッチメニューの切り替え
+ * @param  {string} after 切り替え後のリッチメニューId（richdata）
+ * @param  {string} userId 切り替えるユーザId
+ */
 async function rich_change(after, userId) {
     var rich_url = urld_rich_delete.replace("{userId}", userId);
     var rich_url2 = urlp_rich_set.replace("{userId}", userId)
@@ -202,6 +233,7 @@ async function rich_change(after, userId) {
         request.post(tmp);
     });
 }
+
 /**
  *  テキストメッセージの生成
  * @param {String} text テキストデータ
@@ -258,7 +290,12 @@ function msg_imagemap(usage,data){
     }
     return msg;
 }
-/* Type - message */
+
+/**
+ * Event - messageの時のおおもと
+ * 基本的にlineへのレスポンスはここで行う
+ * @param  {obj} event LINEからのBody
+ */
 async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg  = undefined;
@@ -316,7 +353,11 @@ async function type_message(event) {
     }
 }
 
-/* Type - follow */
+
+/**
+ * Event - followの時
+ * @param  {obj} event LINEからのBody
+ */
 async function type_follow(event) {
     //rich menuの登録
     var rich_url = urlp_rich_set.replace('{userId}', event.source.userId)
@@ -331,7 +372,11 @@ async function type_follow(event) {
     ));
     request.post(tmp);
 }
-
+/**
+ * ユーザが初回登録をした
+ * @param  {obj} event LINEからのBody
+ * @param  {string} usertype 学生 or 来場者
+ */
 async function addUser(event, usertype) {
     //DBへユーザの追加
     var nowtime = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -353,14 +398,20 @@ async function addUser(event, usertype) {
     request.post(tmp);
 }
 
-/* Type - unfolow */
+/**
+ * ユーザがブロックした
+ * @param  {obj} event LINEからのBody
+ */
 function removeUser(event) {
     var query = 'DELETE FROM UserData WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId);
     connection.query(query);
 }
 
-/* Type - Beacon */
+/**
+ * ビーコンに侵入した時のおおもと
+ * @param  {obj} event LINEからのBody
+ */
 async function type_beacon(event) {
     /* beacon侵入時間の更新 */
     var tmp = DB_get("UserData", "BEACONTIME", "USERID", event.source.userId);
@@ -368,11 +419,13 @@ async function type_beacon(event) {
     var nowtime = now.format('YYYY-MM-DD HH:mm:ss');
     var db_time = moment(await tmp);
     var db_place = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
+    //前回の侵入から7分経っている -> 更新してメッセージを送信
     if ((now.diff(db_time)/(1000*60)) >= 7 ) {
         var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
             .replace("{id}", event.source.userId)
             .replace("{time}", nowtime);
         connection.query(query);
+        //メッセージを整形
         var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
         var msg = {
             "type": "text",
@@ -387,17 +440,22 @@ async function type_beacon(event) {
         ));
         request.post(tmp);
     }
+    //ユーザがいる場所を登録
     var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId)
         .replace("{place}", await db_place);
     connection.query(query);
+    //体育館に侵入したならリッチメニューを切り替える
     if (db_place == "taiikukan") {
         rich_change(richdata.event, event.source.userId);
     }
 
 }
 
-/* 体育館退出用 */
+/**
+ * ビーコンから退出した（体育館専用）
+ * @param  {obj} event LINEからのBody
+ */
 async function beacon_leave(event) {
     var db_place = await DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
     var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
@@ -408,8 +466,6 @@ async function beacon_leave(event) {
         rich_change(richdata.normal, event.source.userId);
     }
 }
-
-/************************* map *************************/
 
 
 /* MAIN */
@@ -424,7 +480,7 @@ router.post('/', function(req, res, next) {
         //認証成功
         res.status(200);
         console.log("line_OK");
-        var value = body.events[0];
+        //Eventは複数
         body.events.forEach((event) => {
             switch(event.type) {
                 case "message":
@@ -434,18 +490,12 @@ router.post('/', function(req, res, next) {
                     type_follow(event);
                     break;
                 case "postback":
-                    if (event.postback.data == "Student") {
-                        addUser(event, "学生");
-                    } else if (event.postback.data == "Other") {
-                        addUser(event, "来場者");
-                    }
+                    if (event.postback.data == "Student") { addUser(event, "学生"); }
+                    else if (event.postback.data == "Other") { addUser(event, "来場者"); }
                     break;
                 case "beacon":
-                    if (event.beacon.type == "enter") {
-                        type_beacon(event);
-                    } else if (event.beacon.type == "leave") {
-                        beacon_leave(event);
-                    }
+                    if (event.beacon.type == "enter") { type_beacon(event); }
+                    else if (event.beacon.type == "leave") { beacon_leave(event); }
                     break;
                 case "unfollow":
                     removeUser(event);
