@@ -242,7 +242,7 @@ async function type_message(event) {
     var OutsideArea =  [["A",1,2,3,4,5],
                         ["B",1,2,3,4],
                         ["C",1,2],
-                        ["D",1,2,3,4,5,6,7,8]
+                        ["D",1,2,3,4,5,6,7,8],
                         ["E",1,2,3,4,5,6],
                         ["F",1,2,3]];
     switch(event.message.text) {
@@ -288,12 +288,13 @@ async function type_message(event) {
         case "[Top] 構内全体マップへ":
             mapdata.location = "InsideTop";
             msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("エリアを選択してください");
+            console.loc(msg);
+            msg2 = msg_text("棟を選択してください");            
             break;
         case "[Top] 構外全体マップへ":
             mapdata.location = "OutsideTop";
             msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("棟を選択してください");
+            msg2 = msg_text("エリアを選択してください");
             break;
         case "実装中":
             break;
@@ -301,12 +302,13 @@ async function type_message(event) {
             msg = msg_text("個別の返信はできません(*:△:)");
             break;
     }
+    console.log(OutsideArea[3][0]);
+    console.log()
     for(var i=0;i<OutsideArea.length;i++){
         for(var j=1;j<OutsideArea[i].length;j++){
             switch(event.message.text){
                  case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
-                    console.log("エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示")
-                    break;
+                 break;
             }
         }
         switch(event.message.text){
