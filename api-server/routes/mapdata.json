@@ -522,19 +522,19 @@
                 "text": "実装中",
                 "area": {
                     "x": 0,
-                    "y" : 520,
-                    "width" : 0,
-                    "height": 585
+                    "y" : 0,
+                    "width" : 520,
+                    "height": 565
                 }
             },
             {
                 "type": "message",
                 "text": "実装中",
                 "area": {
-                    "x": 0,
-                    "y" : 520,
-                    "width" : 0,
-                    "height": 585
+                    "x": 520,
+                    "y" : 0,
+                    "width" : 520,
+                    "height": 565
                 }
             }
         ]
