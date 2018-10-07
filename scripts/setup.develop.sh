@@ -1,6 +1,5 @@
 echo "arg:" $@
 source $HOME/.bash_profile
-export $DEPLOY_DIR=$HOME/dep/static/
 
 function mes(){
     echo $1,$2
@@ -13,7 +12,8 @@ npm --version
 node --version
 
 # hexo
-cd $DEPLOY_DIR
+cd $HOME/dep/static/
+npm install
 npm install --save hexo-cli
 hexo generate --force --bail
 \cp -rf ./public/* /var/www/public/
