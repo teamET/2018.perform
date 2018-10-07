@@ -278,6 +278,14 @@ async function type_message(event) {
             mapdata.location = "Top";
             msg = msg_imagemap("map",mapdata);
             break;
+        case "構内マップへ":
+            mapdata.location = "InsideTop";
+            msg = msg_imagemap("map",mapdata);
+            break;
+        case "構外マップへ":
+            mapdata.location = "OutsideTop";
+            msg = msg_imagemap("map",mapdata);
+            break;
         default:
             msg = msg_text("個別の返信はできません(*:△:)");
             break;
