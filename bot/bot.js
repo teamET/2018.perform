@@ -201,7 +201,7 @@ rtm.on("message",(event)=>{
    }else{
        shop_id=shopd[0];
        shop_name=shopd[1];
-       if(!shop[shop_id]) shop[shop_id]={"goods":[]};
+       if(!shop[shop_id]) shop[shop_id]={"goods":[],"image":[],"label":[]};
        console.log(shop_id,shop_name);
    }
 	slack_id = event.user;
@@ -230,7 +230,6 @@ rtm.on("message",(event)=>{
 		update_account(account);
 		slack("店舗が登録されました.",channel);
 	}*/else if(text.split(' ')[0]==='.goods'){
-//		try{
         if(text.split(' ').length != 3){
             slack('商品名または値段の入力方法に誤りがあります.\ne.g.\n.goods <goods name> <price>',channel);
             return ;
@@ -240,10 +239,6 @@ rtm.on("message",(event)=>{
         var Price = text.split(' ')[2];
         console.log(shop);
         shop_name = account[slack_id]["name"];
-        /*
-        if(shop[shop_id] == undefined){
-            shop[shop_id] = {"shopname":shop_name,"goods": [{"name":Name,"price":Price}],"image":["image"],"text":"text","tstamp":ts,"label":["label"]};
-        }else{*/
         console.log(shop[shop_id].goods[0]);
         for(cnt=0;cnt<shop[shop_id].goods.length;cnt++){
             if(shop[shop_id].goods[cnt]["name"] == Name){
@@ -256,33 +251,16 @@ rtm.on("message",(event)=>{
         }
         var data = {"name":Name,"price":Price};
         shop[shop_id].goods.push(data);
-//        }
         shop[shop_id].tstamp = ts;
         if(shop[shop_id].goods[0].name==='name') shop[shop_id].goods.shift();
         update_shop(shop);
         slack("商品が登録されました.\nタグの登録を行ってください.",channel);
         tag_message(tag,channel);
-/*		}catch(e){
-			console.log(e);
-			slack("店舗を登録してください.",channel);
-		}*/
 	}else if(text.split(' ')[0]==='.rewiew'){
-		try{
-//			shop_id = account[slack_id]["id"];
-			screen('./files/'+shop_id+shop_id,shop_id);
-		}catch(e){
-			slack("アカウントを登録してください",channel);
-		}
+        screen('./files/'+shop_id+shop_id,shop_id);
 	}else if(text.split(' ')[0]==='.show'){
         slack("```show shop data```",event.channel);
         slack("```"+JSON.stringify(shop[shop_id])+"```",event.channel);
-/*		try{
-//			shop_id = account[slack_id]["id"];
-			var shop_data =JSON.stringify(shop[shop_id]);			
-			slack(shop_data,channel);			
-		}catch(e){
-			slack("アカウントを登録してください",channel);
-		}*/
 	}else if(text.split(' ')[0]==='.event'){
 		try{
 			if(text.split(' ').length != 8){
@@ -310,39 +288,33 @@ rtm.on("message",(event)=>{
 		slack(events_text,channel);
 	}else if(text.split(' ')[0]==='.tag'){
 		try{
-//			shop_id = account[slack_id]["id"];
-			var tags = text.split(' ');
-			console.log("tags",tags);
-			tags.shift();
-			console.log("tags",tags);
-			var cnt=0;
-			console.log(shop);
-			for(var key in shop[shop_id].label) cnt++;
-			console.log("cnt",cnt);
-			console.log("tag",tag);
-			
-			for(let i in tags){
-				for(let j in tag){
-					if((tags[i]==tag[j].id)&&(shop[shop_id].label.indexOf(tag[j].tag)==-1)){
-						console.log("tag",tag[j].tag);
-//						shop[shop_id].label[cnt] = tag[j].tag;
-						shop[shop_id].label[cnt] = tag[j].id;
-						console.log("list",shop[shop_id].label[cnt]);
-						shop[shop_id].tstamp = ts;
-						update_shop(shop);
-						cnt++;
-					}
-				}
-			}
-			console.log(shop);
-			shop[shop_id].tstamp = ts;
-			if(shop[shop_id].label[0]==='label') shop[shop_id].label.shift();
-			update_shop(shop);
-			slack("タグが登録されました.",channel);
-		}catch(e){
-			console.log(e);
-			slack("アカウントを登録してください",channel);
-		}
+        var tags = text.split(' ');
+        console.log("tags",tags);
+        tags.shift();
+        console.log("tags",tags);
+        var cnt=0;
+        console.log(shop);
+        for(var key in shop[shop_id].label) cnt++;
+        console.log("cnt",cnt);
+        console.log("tag",tag);
+        
+        for(let i in tags){
+            for(let j in tag){
+                if((tags[i]==tag[j].id)&&(shop[shop_id].label.indexOf(tag[j].tag)==-1)){
+                    console.log("tag",tag[j].tag);
+                    shop[shop_id].label[cnt] = tag[j].id;
+                    console.log("list",shop[shop_id].label[cnt]);
+                    shop[shop_id].tstamp = ts;
+                    update_shop(shop);
+                    cnt++;
+                }
+            }
+        }
+        console.log(shop);
+        shop[shop_id].tstamp = ts;
+        if(shop[shop_id].label[0]==='label') shop[shop_id].label.shift();
+        update_shop(shop);
+        slack("タグが登録されました.",channel);
 	}else if(text.split(' ')[0]==='.tag_help'){
 //		slack("0:食べ物, 1:飲み物, 2:アトラクション, 3:温かいもの, 4:冷たいもの, 5:甘い, 6:しょっぱい",channel);
 		tag_message(tag,channel);
