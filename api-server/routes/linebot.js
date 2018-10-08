@@ -6,6 +6,7 @@ var moment = require('moment');
 var fs = require('fs');
 var cheerio = require('cheerio-httpcli');
 const dialogflow = require("dialogflow");
+const dropboxV2Api = require('dropbox-v2-api');
 var connection = require('./mysqlConnection');
 
 /* 環境変数 */
@@ -14,6 +15,7 @@ const accessToken = process.env.accessToken;
 const GOOGLE_PROJECT_ID = process.env.GOOGLE_PROJECT_ID;
 const GOOGLE_CLIENT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
+const dropbox = process.env.dropbox;
 
 //dialogflow
 const session_client = new dialogflow.SessionsClient({
@@ -24,6 +26,10 @@ const session_client = new dialogflow.SessionsClient({
     }
 });
 
+//DropBox
+const dbx = dropboxV2Api.authenticate({
+    token: dropbox
+});
 
 /* json fileの読み込み */
 const flex_tmp = require("./flex_template.json");
@@ -186,13 +192,33 @@ function msg_imagemap(usage,data){
     return msg;
 }
 
-function image_download(messageID) {
-    let url = urlg_download_message.replace("{messageId}", messageID);
-    request.get(url, function(err, res, body) {
-        if(body) {
+async function image_download(event) {
+    let url = urlg_download_message.replace("{messageId}", event.message.id);
+    let tmp = DB_get("UserData", "USERTYPE", "USERID", event.source.userId);
+    let option = await Build_responce(url);
+    option.encoding = null;
+    let nowtime = moment().format('HH:mm:ss:SSS');
+    let usertype = await tmp;
+    request.get(option, function(err, res, body) {
+        if(err) {
             console.log(body);
-            let buf = new Buffer(body);
-            fs.writeFileSync("../../../test.jpg", buf);
+        } else {
+            let path = "/kufes18/" + usertype + "/" +nowtime+ ".png"
+            fs.writeFileSync("../" + nowtime + ".png", body, "binary");
+            dbx({
+                resource: 'files/upload',
+                parameters: {
+                    path: path
+                },
+                readStream: fs.createReadStream("../" + nowtime + ".png")
+            }, (err, result, response) => {
+                //upload completed
+                fs.unlink("../" + nowtime + ".png",  function (err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+            });
         }
     });
 }
@@ -203,9 +229,6 @@ function image_download(messageID) {
  * @param  {obj} event LINEからのBody
  */
 async function type_message(event) {
-    if (event.message.type == "image") {
-        image_download(event.message.id);
-    }
     // Dialogflowへの接続今のところしない
     var msg  = undefined;
     var msg2 = undefined;
@@ -272,6 +295,11 @@ async function type_message(event) {
                 msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
                 break;
         }
+    }
+    //画像を送信してきた時の処理
+    if (event.message.type == "image") {
+        image_download(event);
+        msg = msg_text("画像を送信してくれてありがとう(o・∇・o)");
     }
     if (msg){
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
