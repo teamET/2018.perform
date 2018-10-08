@@ -490,7 +490,6 @@ router.post('/pushmessage/send', async function(req, res, next) {
         request.post(await Build_responce(urlp_push, tmp))
         users.length = 0;
     }
-    let responce = "";
     res.status = 200;
     res.send(responce);
 });
