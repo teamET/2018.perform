@@ -218,7 +218,9 @@ async function image_download(event) {
             request.post(option, function(error, res, body) {
                 if (error) {
                     console.log(body);
-                };
+                } else {
+                    console.log(body);
+                }
             });
         }
     });
