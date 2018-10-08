@@ -196,20 +196,22 @@ async function image_download(event) {
     let tmp = DB_get("UserData", "USERTYPE", "USERID", event.source.userId);
     let option = await Build_responce(url);
     option.encoding = null;
-    let nowtime = moment().format('HH:mm:ss.SSS');
+    let nowtime = moment().format('HH:mm:ss:SSS');
     let usertype = await tmp;
     request.get(option, function(err, res, body) {
         if(err) {
             console.log(body);
         } else {
             let path = "/kufes18/" + usertype + "/" +nowtime+ ".png"
-            fs.writeFileSync("../../test.png", body, "binary");
+            fs.writeFileSync("../" + nowtime + ".png", body, "binary");
             dbx({
                 resource: 'files/upload',
                 parameters: {
                     path: path
                 },
-                readStream: fs.createReadStream('../../test.png')
+                readStream: fs.createReadStream("../" + nowtime + ".png")
+            }, function(res) {
+                fs.unlink("../" + nowtime + ".png");
             });
         }
     });
