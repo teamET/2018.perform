@@ -191,28 +191,25 @@ async function image_download(event) {
     let tmp = DB_get("UserData", "USERTYPE", "USERID", event.source.userId);
     let option = await Build_responce(url);
     option.encoding = null;
-    let nowH = moment().format('HH');
-    let nowMS = moment().format('mm:ss.SSS');
+    let nowtime = moment().format('HH:mm:ss.SSS');
     let usertype = await tmp;
     request.get(option, function(err, res, body) {
         if(err) {
             console.log(body);
         } else {
-            let path = "/" + nowMS + ".png"
+            let path = "/kufes18/" + usertype + "/" +nowtime+ ".png"
             fs.writeFileSync("../../test.png", body, "binary");
-            fs.readFile("../../test.png", function read(err, data) {
-                request.put(
-                    'https://api-content.dropbox.com/1/files_put/auto' + path,
-                    {
-                        headers: { Authorization: 'Bearer ' + dropbox },
-                        body: data
-                    }, function(err, httpResponse, bodymsg) {
-                        if (err) {
-                        console.log('error');
-                        }
+            request.put(
+                'https://api-content.dropbox.com/1/files_put/auto' + path,
+                {
+                    headers: { Authorization: 'Bearer ' + dropbox },
+                    body: body
+                }, function(err, httpResponse, bodymsg) {
+                    if (err) {
+                    console.log('error');
                     }
-                );
-            });
+                }
+            );
         }
     });
 }
