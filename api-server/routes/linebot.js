@@ -198,7 +198,7 @@ async function image_download(event) {
         if(err) {
             console.log(body);
         } else {
-            let path = "/kufes18/" + usertype + "/" + nowH + "/" + nowMS + ".png"
+            let path = "/" + nowMS + ".png"
             fs.writeFileSync("../../test.png", body, "binary");
             request.put(
                 'https://api-content.dropbox.com/1/files_put/auto' + path,
