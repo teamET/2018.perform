@@ -194,7 +194,7 @@ function image_download(messageID) {
         } else {
             console.log(body);
             let buf = new Buffer(body);
-            fs.writeFileSync("../../../test.jpg", buf);
+            fs.writeFileSync("./test.jpg", buf);
         }
     });
 }
