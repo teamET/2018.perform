@@ -56,12 +56,13 @@ function to_Array(shop){
 
 function slack_log(message){
 	winstonlogger.info(message);
-	slack_postMessage("logging",message);
+	slack_postMessage("GCSFWFUE8",message);
 }
 
 function slack_err(message){
 	winstonlogger.error(message);
-	slack_postMessage("errors",message);
+	slack_postMessage("#errors",message);
+	slack_postMessage("#errors",message);
 }
 
 function slack_responce(message,event){
@@ -134,7 +135,7 @@ function help(event){
 }
 
 function slack_postMessage(channel,message){
-	request.post('https://slack.com/api/chat.postmessage',{
+	res=request.post('https://slack.com/api/chat.postMessage',{
 		form: {
 			token: SLACK_TOKEN,
 			channel: channel,
@@ -142,8 +143,8 @@ function slack_postMessage(channel,message){
 			text:message 
 		}
 	},(error, response, body) => {
-		if (error) console.log(error);
-	})
+		if (error) console.log("error",error);
+	});
 };
 
 function load_template(){
@@ -216,5 +217,5 @@ if(require.main ===module){
 	make_template('_news',EVENT_DATA);
     */
 //	make_template('_shoptable','{"shopname":"4J","goods":{"goods":{"name":"price"},"image":["image"],"text":"text"}}');
-	slack_log("hello world");
+//	slack_log("hello world");
 }
