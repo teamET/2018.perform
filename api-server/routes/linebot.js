@@ -6,9 +6,8 @@ var moment = require('moment');
 var fs = require('fs');
 var cheerio = require('cheerio-httpcli');
 const dialogflow = require("dialogflow");
-var Dropbox = require('dropbox').Dropbox;
+const dropboxV2Api = require('dropbox-v2-api');
 var connection = require('./mysqlConnection');
-require('isomorphic-fetch')
 
 /* 環境変数 */
 const channelSecret = process.env.channelSecret;
@@ -28,7 +27,9 @@ const session_client = new dialogflow.SessionsClient({
 });
 
 //DropBox
-var dbx = new Dropbox({ accessToken: dropbox });
+const dropbox = dropboxV2Api.authenticate({
+    token: dropbox
+});
 
 /* json fileの読み込み */
 const flex_tmp = require("./flex_template.json");
@@ -203,14 +204,15 @@ async function image_download(event) {
         } else {
             let path = "/kufes18/" + usertype + "/" +nowtime+ ".png"
             fs.writeFileSync("../../test.png", body, "binary");
-            let option = {
-                "contents": body,
-                "path": path,
-                "mode": {".tag": "add"},
-                "autorename": true,
-                "mute": false
-            };
-            dbx.filesUpload(option);
+            dropbox({
+                resource: 'files/upload',
+                parameters: {
+                    path: path
+                },
+                readStream: fs.createReadStream('../../test.png')
+            }, (err, result, response) => {
+                console.log(response);
+            });
         }
     });
 }
