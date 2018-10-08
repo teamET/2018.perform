@@ -217,9 +217,11 @@ async function image_download(event) {
             };
             request.post(option, function(error, res, body) {
                 if (error) {
-                    console.log(body);
+    		    console.log("error");
+                    console.log(error);
                 } else {
-                    console.log(body);
+		    console.log("ok");
+                    console.log(res);
                 }
             });
         }
