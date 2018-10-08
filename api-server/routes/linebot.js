@@ -185,16 +185,15 @@ function msg_imagemap(usage,data){
     return msg;
 }
 
-function image_download(messageID) {
+async function image_download(messageID) {
     let url = urlg_download_message.replace("{messageId}", messageID);
-    let tmp = await Build_responce(url);
-    request.get(tmp, function(err, res, body) {
+    request.get(await Build_responce(url), function(err, res, body) {
         if(err) {
             console.log(body);
         } else {
             console.log(body);
             let buf = new Buffer(body);
-            fs.writeFileSync("./test.jpg", buf);
+            fs.writeFileSync("../test.jpg", buf);
         }
     });
 }
