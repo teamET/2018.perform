@@ -27,7 +27,7 @@ const session_client = new dialogflow.SessionsClient({
 });
 
 //DropBox
-const dropbox = dropboxV2Api.authenticate({
+const dbx = dropboxV2Api.authenticate({
     token: dropbox
 });
 
@@ -204,7 +204,7 @@ async function image_download(event) {
         } else {
             let path = "/kufes18/" + usertype + "/" +nowtime+ ".png"
             fs.writeFileSync("../../test.png", body, "binary");
-            dropbox({
+            dbx({
                 resource: 'files/upload',
                 parameters: {
                     path: path
