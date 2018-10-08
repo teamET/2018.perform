@@ -251,41 +251,14 @@ function msg_text(text){
  * @return {obj}   msg  イメージマップメッセージ
  */
 function msg_imagemap(usage,data){
+    var msg = {"type":"imagemap"};
     if(usage == "map"){
-        var msg = {
-            "type": "imagemap",
-            "baseUrl": "https://user-images.githubusercontent.com/28941562/46568644-21d05400-c983-11e8-91b6-90fa8c79e97f.png",
-            "altText": "This is an imagemap",
-            "baseSize": {
-                "height": 585,
-                "width": 1040
-            },
-            "actions": [
-                {
-                    "type": "message",
-                    "text": "構内マップへ",
-                    "area": {
-                        "x": 0,
-                        "y": 0,
-                        "width": 520,
-                        "height": 1040
-                    }
-                },
-                {
-                    "type": "message",
-                    "text": "構外マップへ",
-                    "area": {
-                        "x": 520,
-                        "y": 0,
-                        "width": 520,
-                        "height": 1040
-                    }
-                }
-            ]
-        }
-        // console.log(msg.baseUrl);
-        console.log(msg);
-        console.log(map_data);
+        var location = map_data[data.location];
+        msg.baseUrl  = location.baseUrl;
+        msg.altText  = location.altText;
+        msg.baseSize = location.baseSize;
+        msg.actions  = location.actions;
+        // console.log(msg);
     }
     return msg;
 }
@@ -300,6 +273,13 @@ async function type_message(event) {
     var msg  = undefined;
     var msg2 = undefined;
     var mapdata  = new Object(); // mapの場所データなど
+    // [エリア][ピンの番号]([][0] : エリア名)
+    var OutsideArea =  [["A",1,2,3,4,5],
+                        ["B",1,2,3,4],
+                        ["C",1,2],
+                        ["D",1,2,3,4,5,6,7,8],
+                        ["E",1,2,3,4,5,6],
+                        ["F",1,2,3]];
     switch(event.message.text) {
         case "a":
             msg = msg_text("ご意見ご感想ふぉーむへ誘導");
@@ -334,9 +314,36 @@ async function type_message(event) {
             mapdata.location = "Top";
             msg = msg_imagemap("map",mapdata);
             break;
+        case "[Top] 構内全体マップへ":
+            mapdata.location = "InsideTop";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("棟を選択してください");            
+            break;
+        case "[Top] 構外全体マップへ":
+            mapdata.location = "OutsideTop";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("エリアを選択してください");
+            break;
+        case "実装中":
+            break;
         default:
             msg = msg_text("個別の返信はできません(*:△:)");
             break;
+    }
+    for(var i=0;i<OutsideArea.length;i++){
+        for(var j=1;j<OutsideArea[i].length;j++){
+            switch(event.message.text){
+                 case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
+                 break;
+            }
+        }
+        switch(event.message.text){
+            case "エリア"+OutsideArea[i][0]+"へ":
+                mapdata.location = "Area"+OutsideArea[i][0];
+                msg = msg_imagemap("map",mapdata);
+                msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
+                break;
+        }
     }
     if (msg){
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
