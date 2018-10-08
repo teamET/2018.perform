@@ -172,17 +172,23 @@ function tag_message(tag,channel){
 	mes = arr.join(' , ');
 	slack(mes,channel);
 }
+
+function id2mogiid(id){
+    var mogiid="";
+    return mogiid;
+}
+
 rtm.on("hello",(event)=>{
     utils.log("hello slack");
 	console.log("start slack process");
 });
-
 
 rtm.on("message",(event)=>{
 	//make_template("_timetable.ejs",timetable_data)
 	var channel = event.channel;
 	var text = event.text.replace('　',' ');
 	var ts = event.ts;
+    const shop_id=id2mogiid(event.channel);
 	slack_id = event.user;
 	utils.log(event);
 	if(event.text.split(" ")[0]===".help"){
@@ -197,7 +203,7 @@ rtm.on("message",(event)=>{
 			slack("店舗情報を登録してください.",channel);
 		}
 		slack("this text is registered",channel);
-	}else if(text.split(' ')[0]==='.entry'){
+	}/*else if(text.split(' ')[0]==='.entry'){
 		if(text.split(' ').length != 4){
 			slack('入力方法に誤りがあります.\ne.g.\n.entry <store id> <store name> <class>',channel);
 			return ;
@@ -213,7 +219,7 @@ rtm.on("message",(event)=>{
 		account[slack_id] = {"id":shop_id,"ShopName":name,"Class":Class};
 		update_account(account);
 		slack("店舗が登録されました.",channel);
-	}else if(text.split(' ')[0]==='.goods'){
+	}*/else if(text.split(' ')[0]==='.goods'){
 		try{
 			if(text.split(' ').length != 3){
 				slack('商品名または値段の入力方法に誤りがあります.\ne.g.\n.goods <goods name> <price>',channel);
@@ -224,7 +230,7 @@ rtm.on("message",(event)=>{
 			var Price = text.split(' ')[2];
 			console.log(shop);
 			shop_name = account[slack_id]["ShopName"];
-			shop_id = account[slack_id]["id"];
+//			shop_id = account[slack_id]["id"];
 			if(shop[shop_id] == undefined){
 				shop[shop_id] = {"shopname":shop_name,"goods": [{"name":Name,"price":Price}],"image":["image"],"text":"text","tstamp":ts,"label":["label"]};
 			}else{
@@ -253,14 +259,14 @@ rtm.on("message",(event)=>{
 		}
 	}else if(text.split(' ')[0]==='.rewiew'){
 		try{
-			shop_id = account[slack_id]["id"];
+//			shop_id = account[slack_id]["id"];
 			screen('./files/'+shop_id+shop_id,shop_id);
 		}catch(e){
 			slack("アカウントを登録してください",channel);
 		}
 	}else if(text.split(' ')[0]==='.show'){
 		try{
-			shop_id = account[slack_id]["id"];
+//			shop_id = account[slack_id]["id"];
 			var shop_data =JSON.stringify(shop[shop_id]);			
 			slack(shop_data,channel);			
 		}catch(e){
@@ -293,7 +299,7 @@ rtm.on("message",(event)=>{
 		slack(events_text,channel);
 	}else if(text.split(' ')[0]==='.tag'){
 		try{
-			shop_id = account[slack_id]["id"];
+//			shop_id = account[slack_id]["id"];
 			var tags = text.split(' ');
 			console.log("tags",tags);
 			tags.shift();
