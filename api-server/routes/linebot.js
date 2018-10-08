@@ -471,10 +471,7 @@ router.post('/pushmessage/send', async function(req, res, next) {
         if (i%150 == 149) {
             let tmp = {
                 "to": users,
-                "messages": [{
-                    "type": "text",
-                    "text": msg
-                }]
+                "messages": [msg]
             }
             request.post(await Build_responce(urlp_push, tmp))
             users.length = 0;
@@ -483,20 +480,10 @@ router.post('/pushmessage/send', async function(req, res, next) {
     if (users.length != 0) {
         let tmp = {
             "to": users,
-            "messages": [{
-                "type": "text",
-                "text": msg
-            }]
+            "messages": [msg]
         }
         console.log(tmp.to);
-        request.post(await Build_responce(urlp_push, tmp), function (error, response, body) {
-            if (!error) {
-                console.log(response);
-            }
-            else {
-                console.log("Error!!");
-            }
-        });
+        request.post(await Build_responce(urlp_push, tmp));
         users.length = 0;
     }
     res.status = 200;
