@@ -44,6 +44,7 @@ var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
 //URL POST
 const urlp_reply = "https://api.line.me/v2/bot/message/reply";
 const urlp_rich_set = "https://api.line.me/v2/bot/user/{userId}/richmenu/{richMenuId}";
+const urlp_push = "https://api.line.me/v2/bot/message/multicast";
 //LINE URL GET
 const urlg_download_message = "https://api.line.me/v2/bot/message/{messageId}/content";
 //LINE URL DELETE
@@ -133,7 +134,7 @@ function Build_flex(shopid) {
  * @param  {string} id キー
  * @return {string} 検索した結果
  */
-async function DB_get(table, col, where, id) {
+function DB_get(table, col, where, id) {
     return new Promise(function(resolve, reject) {
         var query = 'SELECT {col} FROM {table} WHERE {where} = "{id}"'
             .replace("{table}", table)
@@ -469,6 +470,49 @@ router.post('/', function(req, res, next) {
         console.log("line_NG");
         res.status(403);
     }
+    res.send(responce);
+});
+
+function pushOnlyDB(query) {
+    return new Promise(function(resolve, reject) {
+        connection.query(query,function(err, rows) {
+            resolve(rows);
+        });
+    });
+}
+
+/**
+ * 受け取るデータは
+ * @param {string} param mysql検索キー（where以下）
+ * @param {string} message 送信する文面
+ */
+router.post('/pushmessage/send', async function(req, res, next) {
+    var responce = "";
+    const body = req.body; // Request body string
+    let msg = msg_text(body.message);
+    var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
+    let rows = await pushOnlyDB(query);
+    let users = [];
+    for (let i=0; i<rows.length; i++) {
+        users.push(rows[i]["USERID"]);
+        if (i%150 == 149) {
+            let tmp = {
+                "to": users,
+                "messages": [msg]
+            }
+            request.post(await Build_responce(urlp_push, tmp))
+            users.length = 0;
+        }
+    }
+    if (users.length != 0) {
+        let tmp = {
+            "to": users,
+            "messages": [msg]
+        }
+        request.post(await Build_responce(urlp_push, tmp));
+        users.length = 0;
+    }
+    res.status = 200;
     res.send(responce);
 });
 
