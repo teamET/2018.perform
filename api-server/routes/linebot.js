@@ -464,7 +464,6 @@ router.post('/pushmessage/send', async function(req, res, next) {
     let msg = msg_text(body.message);
     var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
     let rows = await pushOnlyDB(query);
-    console.log(rows);
     let users = [];
     for (let i=0; i<rows.length; i++) {
         users.push(rows[i]["USERID"]);
@@ -482,7 +481,6 @@ router.post('/pushmessage/send', async function(req, res, next) {
             "to": users,
             "messages": [msg]
         }
-        console.log(tmp.to);
         request.post(await Build_responce(urlp_push, tmp));
         users.length = 0;
     }
