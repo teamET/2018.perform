@@ -6,6 +6,7 @@ var moment = require('moment');
 var fs = require('fs');
 var cheerio = require('cheerio-httpcli');
 const dialogflow = require("dialogflow");
+var Dropbox = require('dropbox').Dropbox;
 var connection = require('./mysqlConnection');
 
 /* 環境変数 */
@@ -25,6 +26,8 @@ const session_client = new dialogflow.SessionsClient({
     }
 });
 
+//DropBox
+var dbx = new Dropbox({ accessToken: dropbox });
 
 /* json fileの読み込み */
 const flex_tmp = require("./flex_template.json");
@@ -199,31 +202,14 @@ async function image_download(event) {
         } else {
             let path = "/kufes18/" + usertype + "/" +nowtime+ ".png"
             fs.writeFileSync("../../test.png", body, "binary");
-            option = {
-                url: "https://content.dropboxapi.com/2/files/upload",
-                headers: {
-                    "Authorization": "Bearer " + dropbox,
-                    "Content-Type": "application/octet-stream",
-                    "Dropbox-API-Arg": {
-                        "path": path,
-                        "mode": "add",
-                        "autorename": true,
-                        "mute": false,
-                        "strict_conflict": false
-                    }
-                },
-                encoding: null,
-                body: body
+            let option = {
+                "contents": body,
+                "path": path,
+                "mode": {".tag": "add"},
+                "autorename": true,
+                "mute": false
             };
-            request.post(option, function(error, res, body) {
-                if (error) {
-    		    console.log("error");
-                    console.log(error);
-                } else {
-		    console.log("ok");
-                    console.log(res);
-                }
-            });
+            dbx.filesUpload(option);
         }
     });
 }
