@@ -8,6 +8,7 @@ var cheerio = require('cheerio-httpcli');
 const dialogflow = require("dialogflow");
 var Dropbox = require('dropbox').Dropbox;
 var connection = require('./mysqlConnection');
+require('isomorphic-fetch')
 
 /* 環境変数 */
 const channelSecret = process.env.channelSecret;

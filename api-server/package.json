@@ -13,7 +13,7 @@
     "crypto": "^1.0.1",
     "debug": "~2.6.9",
     "dialogflow": "^0.6.0",
-    "dropbox": "^4.0.9",
+    "dropbox-v2-api": "^2.1.17",
     "express": "~4.16.0",
     "express-fluent-logger": "^0.3.0",
     "fluent-logger": "latest",
@@ -25,5 +25,6 @@
     "nodemon": "^1.18.4",
     "request": "^2.88.0",
     "supertest": "^3.1.0"
-  }
+  },
+  "devDependencies": {}
 }
