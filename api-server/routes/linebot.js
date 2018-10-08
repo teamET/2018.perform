@@ -191,9 +191,7 @@ async function image_download(messageID) {
         if(err) {
             console.log(body);
         } else {
-            console.log(body);
-            let buf = new Buffer(body);
-            fs.writeFileSync("../test.jpg", buf);
+            fs.writeFileSync("../../test.jpg", body);
         }
     });
 }
