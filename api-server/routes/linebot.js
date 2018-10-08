@@ -203,18 +203,17 @@ async function image_download(event) {
                 url: "https://content.dropboxapi.com/2/files/upload",
                 headers: {
                     "Authorization": "Bearer " + dropbox,
-                    "Content-Type": "application/octet-stream"
+                    "Content-Type": "application/octet-stream",
+                    "Dropbox-API-Arg": {
+                        "path": path,
+                        "mode": "add",
+                        "autorename": true,
+                        "mute": false,
+                        "strict_conflict": false
+                    }
                 },
-                formData: {
-                    "myfile": fs.createReadStream("../../test.png")
-                },
-                body: {
-                    "path": path,
-                    "mode": "add",
-                    "autorename": true,
-                    "mute": false,
-                    "strict_conflict": false
-                }
+                encoding: null,
+                body: body
             };
             request.post(option, function(error, res, body) {
                 if (error) {
