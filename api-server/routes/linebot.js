@@ -200,17 +200,19 @@ async function image_download(event) {
         } else {
             let path = "/" + nowMS + ".png"
             fs.writeFileSync("../../test.png", body, "binary");
-            request.put(
-                'https://api-content.dropbox.com/1/files_put/auto' + path,
-                {
-                    headers: { Authorization: 'Bearer ' + dropbox },
-                    body: body
-                }, function(err, httpResponse, bodymsg) {
-                    if (err) {
-                    console.log('error');
+            fs.readFile("../../test.png", function read(err, data) {
+                request.put(
+                    'https://api-content.dropbox.com/1/files_put/auto' + path,
+                    {
+                        headers: { Authorization: 'Bearer ' + dropbox },
+                        body: data
+                    }, function(err, httpResponse, bodymsg) {
+                        if (err) {
+                        console.log('error');
+                        }
                     }
-                }
-            );
+                );
+            });
         }
     });
 }
