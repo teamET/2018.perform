@@ -210,7 +210,8 @@ async function image_download(event) {
                     path: path
                 },
                 readStream: fs.createReadStream("../" + nowtime + ".png")
-            }, function(res) {
+            }, (err, result, response) => {
+                //upload completed
                 fs.unlink("../" + nowtime + ".png");
             });
         }
