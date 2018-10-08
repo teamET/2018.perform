@@ -187,11 +187,14 @@ function msg_imagemap(usage,data){
 
 async function image_download(messageID) {
     let url = urlg_download_message.replace("{messageId}", messageID);
-    request.get(await Build_responce(url), function(err, res, body) {
+    let option = await Build_responce(url);
+    option.encoding = null;
+    request.get(option, function(err, res, body) {
         if(err) {
             console.log(body);
         } else {
-            fs.writeFileSync("../../test.jpg", body);
+            fs.writeFileSync("../../test.png", body, "binary");
+	    console.log("end");
         }
     });
 }
