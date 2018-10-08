@@ -14,6 +14,7 @@ const accessToken = process.env.accessToken;
 const GOOGLE_PROJECT_ID = process.env.GOOGLE_PROJECT_ID;
 const GOOGLE_CLIENT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
+const dropbox = process.env.dropbox;
 
 //dialogflow
 const session_client = new dialogflow.SessionsClient({
@@ -185,16 +186,31 @@ function msg_imagemap(usage,data){
     return msg;
 }
 
-async function image_download(messageID) {
-    let url = urlg_download_message.replace("{messageId}", messageID);
+async function image_download(event) {
+    let url = urlg_download_message.replace("{messageId}", event.message.id);
+    let tmp = DB_get("UserData", "USERTYPE", "USERID", event.source.userId);
     let option = await Build_responce(url);
     option.encoding = null;
+    let nowH = moment().format('HH');
+    let nowMS = moment().format('mm:ss.SSS');
+    let usertype = await tmp;
     request.get(option, function(err, res, body) {
         if(err) {
             console.log(body);
         } else {
+            let path = "/kufes18/" + usertype + "/" + nowH + "/" + nowMS + ".png"
             fs.writeFileSync("../../test.png", body, "binary");
-	    console.log("end");
+            request.put(
+                'https://api-content.dropbox.com/1/files_put/auto' + path,
+                {
+                    headers: { Authorization: 'Bearer ' + dropbox },
+                    body: body
+                }, function(err, httpResponse, bodymsg) {
+                    if (err) {
+                    console.log('error');
+                    }
+                }
+            );
         }
     });
 }
@@ -205,9 +221,6 @@ async function image_download(messageID) {
  * @param  {obj} event LINEからのBody
  */
 async function type_message(event) {
-    if (event.message.type == "image") {
-        image_download(event.message.id);
-    }
     // Dialogflowへの接続今のところしない
     var msg  = undefined;
     var msg2 = undefined;
@@ -274,6 +287,11 @@ async function type_message(event) {
                 msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
                 break;
         }
+    }
+    //画像を送信してきた時の処理
+    if (event.message.type == "image") {
+        image_download(event);
+        msg = msg_text("画像を送信してくれてありがとう(o・∇・o)");
     }
     if (msg){
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
