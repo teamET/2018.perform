@@ -38,6 +38,7 @@ var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
 //URL POST
 const urlp_reply = "https://api.line.me/v2/bot/message/reply";
 const urlp_rich_set = "https://api.line.me/v2/bot/user/{userId}/richmenu/{richMenuId}";
+const urlp_push = "https://api.line.me/v2/bot/message/multicast";
 //LINE URL GET
 const urlg_download_message = "https://api.line.me/v2/bot/message/{messageId}/content";
 //LINE URL DELETE
@@ -441,6 +442,49 @@ router.post('/', function(req, res, next) {
         console.log("line_NG");
         res.status(403);
     }
+    res.send(responce);
+});
+
+/**
+ * 受け取るデータは
+ * @param {string} param mysql検索キー（where以下）
+ * @param {string} message 送信する文面
+ */
+router.post('/pushmessage/send', async function(req, res, next) {
+    var responce = "";
+    const body = req.body; // Request body string
+    let msg = msg_text(body.message);
+    var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
+    connection.query(query,function(err, rows) {
+        let users = [];
+        for (let i=0; i<rows.length; i++) {
+            users.push(rows[i]["USERID"]);
+            if (i%150 == 149) {
+                let tmp = {
+                    "to": users,
+                    "messages": [{
+                        "type": "text",
+                        "text": msg
+                    }]
+                }
+                request.post(await Build_responce(urlp_push, tmp))
+                users.length = 0;
+            }
+        }
+        if (users.length != 0) {
+            let tmp = {
+                "to": users,
+                "messages": [{
+                    "type": "text",
+                    "text": msg
+                }]
+            }
+            request.post(await Build_responce(urlp_push, tmp))
+            users.length = 0;
+        }
+    })
+    let responce = "";
+    res.status = 200;
     res.send(responce);
 });
 
