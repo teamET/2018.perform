@@ -1,12 +1,12 @@
 # Header
 menu:
   Home: /
-  About: /about
+  #About: /about
   Booth: /mogi-shop
-  EVENT: /event
-  MAP: /map
-#  Archives: /archives
-rss: /atom.xml
+  Event: /event
+  #Map: /map
+#Archives: /archives
+#rss: /atom.xml
 
 # Content
 excerpt_link: Read More
@@ -32,7 +32,7 @@ archive_type: 'monthly'
 show_count: false
 
 # Miscellaneous
-google_analytics: 'UA-121910998-5'
+google_analytics: 'UA-121910998-7'
 gauges_analytics:
 favicon: /favicon.png
 twitter:

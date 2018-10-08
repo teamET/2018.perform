@@ -19,7 +19,7 @@ const winstonlogger=winston.createLogger({
 
 function read_list(){
 	try{
-		arr = fs.readFileSync('./list.txt').toString().split('\r\n');
+		arr = fs.readFileSync('./data/list.txt').toString().split('\r\n');
 	}catch(e){
 		console.log("can not read list.txt");
 	}
@@ -42,14 +42,27 @@ function json_sort(arr){
 	return arr;
 }
 
+function to_Array(shop){
+	var Ashop = [];
+	var cnt=0;
+	for(key in shop){
+		Ashop.push(shop[key]);
+		Ashop[cnt].id = key;
+		cnt++;
+	}
+	console.log("Ashop",Ashop);
+	fs.writeFileSync('./data/Ashop.json',JSON.stringify(Ashop));
+}
+
 function slack_log(message){
 	winstonlogger.info(message);
-	slack_postmessage("logging",message);
+	slack_postMessage("GCSFWFUE8",message);
 }
 
 function slack_err(message){
 	winstonlogger.error(message);
-	slack_postMessage("errors",message);
+	slack_postMessage("#errors",message);
+	slack_postMessage("#errors",message);
 }
 
 function slack_responce(message,event){
@@ -90,7 +103,6 @@ function slack_upload(channel,image){
 	});
 };
 
-//file=utils.download(shop_name,event.files[0].title,event.files[0].url_private_download);
 function download(dir,title,url){
 	var dir='./files/'+dir;
 	var fname=dir+'/'+title;
@@ -98,19 +110,16 @@ function download(dir,title,url){
 	request({
 		url:url,
 		headers:{'Authorization': 'Bearer '+SLACK_TOKEN}
-//		headers:{'authorization': 'bearer '+slack_token}
 	}).pipe(fs.createWriteStream(fname));
 	console.log("download file successed",dir,fname,url);
 	return fname;
 }
 
-// default responces
 const HELP_MESSAGE="booth\n\
 ```\
 .help\n\
 .entry <shop name> <class>\n\
 .goods <goods name> <price>\n\
-.text <text>\n\
 .tag <number>\n\
 .review\n\
 .show\n\
@@ -126,7 +135,7 @@ function help(event){
 }
 
 function slack_postMessage(channel,message){
-	request.post('https://slack.com/api/chat.postmessage',{
+	res=request.post('https://slack.com/api/chat.postMessage',{
 		form: {
 			token: SLACK_TOKEN,
 			channel: channel,
@@ -134,8 +143,8 @@ function slack_postMessage(channel,message){
 			text:message 
 		}
 	},(error, response, body) => {
-		if (error) console.log(error);
-	})
+		if (error) console.log("error",error);
+	});
 };
 
 function load_template(){
@@ -178,15 +187,16 @@ function make_template(filename,data){
 
 module.exports={
 	sendFile:slack_upload,
-	postMessage:slack_postmessage,
+	slack_postMessage:slack_postMessage,
 	res:slack_responce,
 	log:slack_log,
 	err:slack_err,
 	download:download,
 	make_template:make_template,
-  help:help,
+	help:help,
 	read_list:read_list,
-	json_sort:json_sort
+	json_sort:json_sort,
+	to_Array:to_Array
 }
 
 /*
@@ -206,12 +216,6 @@ if(require.main ===module){
 	make_template('_timetable',EVENT_DATA);
 	make_template('_news',EVENT_DATA);
     */
-	make_template('_shoptable','{"shopname":"4J","goods":{"goods":{"name":"price"},"image":["image"],"text":"text"}}');
-//	slack_postMessage("develop","files/4J/4J.png");
-//	slack_upload("develop","files/4J/4J.png")
-
-	slack_log("hello world");
-	slack_postMessage("develop","files/4J/4J.png")
-	slack_upload("develop","files/4J/4J.png")
-
+//	make_template('_shoptable','{"shopname":"4J","goods":{"goods":{"name":"price"},"image":["image"],"text":"text"}}');
+//	slack_log("hello world");
 }
