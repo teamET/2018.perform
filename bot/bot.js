@@ -6,13 +6,17 @@ const jsdom=require("jsdom");
 const {RTMClient}=require("@slack/client");
 const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const utils= require("./utils.js");
+//load json
+const account= require("./private/id2mogiid.json");
+const shop= require("./public/shop.json");
+//load env
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
 const DEV_SERVER=process.env.DEV_SERVER;
 //const mkdirp = require("mkdirp");
 
 var slack_id;
-var account;
-var shop;
+//var account;
+//var shop;
 var shop_name;
 var timetable_data;
 var events;
@@ -22,26 +26,20 @@ var list;
 var shop_id;
 var tag;
 
-console.log('start process');
-utils.log("start process",SLACK_TOKEN);
-utils.log("`hello winston`\n> test test",SLACK_TOKEN);
-
 function create_json(){
     var account_data,shop_data,events_data,tag_data;
 	try {
-		account_data = fs.readFileSync("./data/account.json");
+//        account_data = fs.readFileSync("./data/account.json");
 		shop_data = fs.readFileSync("./data/shop.json");
 		events_data = fs.readFileSync("./data/events.json");
 		tag_data = fs.readFileSync("./data/tag.json");
-		account = JSON.parse(account_data);
-		shop = JSON.parse(shop_data);
+//		account = JSON.parse(account_data);
+//		shop = JSON.parse(shop_data);
 		events = JSON.parse(events_data);
 		tag = JSON.parse(tag_data);
 	}catch(e){
-		account = {
-			"user" :{"id":"id","ShopName":"shopname","Class":"class"}
-		};
-		shop = {
+//		account = { "user" :{"id":"id","ShopName":"shopname","Class":"class"} };
+/*		shop = {
 			"id" : {
 				"shopname":"shopname",
 				"goods":[{
@@ -51,7 +49,7 @@ function create_json(){
 				"tstamp":"tstamp",
 				"label":["label"]
 			}
-		};
+		};*/
 		events = [{
 			"id":"id",
 			"date":"date",
@@ -64,7 +62,7 @@ function create_json(){
 			"from":"from",
 			"tstamp":"tstamp"
 		}];
-		fs.writeFileSync('./data/account.json',JSON.stringify(account));	
+//		fs.writeFileSync('./data/account.json',JSON.stringify(account));	
 		fs.writeFileSync('./data/shop.json',JSON.stringify(shop));
 		fs.writeFileSync('./data/events.json',JSON.stringify(events));		
 	}
@@ -76,10 +74,12 @@ function update_shop(shop){
     fs.writeFileSync("./data/shop.json",JSON.stringify(shop));
 }
 
+/*
 function update_account(account){
     utils.log(account);
     fs.writeFileSync("./data/account.json",JSON.stringify(account));
 }
+*/
 
 function save_json(account,shop){
     utils.log(account);
@@ -172,32 +172,48 @@ function tag_message(tag,channel){
 	mes = arr.join(' , ');
 	slack(mes,channel);
 }
+
+function get_mogiid(event){
+    console.log(event.channel);
+    try{
+        return [account[event.channel]["id"],account[event.channel]["name"]];
+        console.log("mogi",id,name);
+//        return [id,name];
+    }catch(e){
+        console.log('not mogi',event.channel);
+        return undefined;
+    }
+}
+
 rtm.on("hello",(event)=>{
     utils.log("hello slack");
 	console.log("start slack process");
 });
 
-
 rtm.on("message",(event)=>{
-	//make_template("_timetable.ejs",timetable_data)
 	var channel = event.channel;
 	var text = event.text.replace('　',' ');
 	var ts = event.ts;
+    var shopd=get_mogiid(event);
+   if(!shopd){
+        console.log("not in booth");
+        return;
+   }else{
+       shop_id=shopd[0];
+       shop_name=shopd[1];
+       if(!shop[shop_id]) shop[shop_id]={"goods":[],"image":[],"label":[]};
+       console.log(shop_id,shop_name);
+   }
 	slack_id = event.user;
-	utils.log(event);
 	if(event.text.split(" ")[0]===".help"){
+        slack("\`\`\`"+shop_name+"\`\`\`",event.channel);
 		utils.help(event);
 	}else if(event.text.split(" ")[0]===".text"){
-		try{
-			shop[shop_name].text = event.text.slice(6);
-			shop[shop_id].tstamp = ts;
-			update_shop(shop);
-			slack("テキストが登録されました.",channel);
-		}catch(e){
-			slack("店舗情報を登録してください.",channel);
-		}
-		slack("this text is registered",channel);
-	}else if(text.split(' ')[0]==='.entry'){
+        shop[shop_id].text = event.text.slice(6);
+        shop[shop_id].tstamp = ts;
+        update_shop(shop);
+        slack("テキストが登録されました.",channel);
+	}/*else if(text.split(' ')[0]==='.entry'){
 		if(text.split(' ').length != 4){
 			slack('入力方法に誤りがあります.\ne.g.\n.entry <store id> <store name> <class>',channel);
 			return ;
@@ -213,59 +229,38 @@ rtm.on("message",(event)=>{
 		account[slack_id] = {"id":shop_id,"ShopName":name,"Class":Class};
 		update_account(account);
 		slack("店舗が登録されました.",channel);
-	}else if(text.split(' ')[0]==='.goods'){
-		try{
-			if(text.split(' ').length != 3){
-				slack('商品名または値段の入力方法に誤りがあります.\ne.g.\n.goods <goods name> <price>',channel);
-				return ;
-			}
-			var cnt;
-			var Name = text.split(' ')[1];
-			var Price = text.split(' ')[2];
-			console.log(shop);
-			shop_name = account[slack_id]["ShopName"];
-			shop_id = account[slack_id]["id"];
-			if(shop[shop_id] == undefined){
-				shop[shop_id] = {"shopname":shop_name,"goods": [{"name":Name,"price":Price}],"image":["image"],"text":"text","tstamp":ts,"label":["label"]};
-			}else{
-				console.log("ok");
-				console.log(shop[shop_id].goods[0]);
-				for(cnt=0;cnt<shop[shop_id].goods.length;cnt++){
-					if(shop[shop_id].goods[cnt]["name"] == Name){
-						shop[shop_id].goods[cnt]["price"] = Price;
-						slack("値段が更新されました.",channel);
-						shop[shop_id].tstamp = ts;
-						update_shop(shop,ts);
-						return ;
-					}
-				}
-				var data = {"name":Name,"price":Price};
-				shop[shop_id].goods.push(data);
-			}
-			shop[shop_id].tstamp = ts;
-			if(shop[shop_id].goods[0].name==='name') shop[shop_id].goods.shift();
-			update_shop(shop);
-			slack("商品が登録されました.\nタグの登録を行ってください.",channel);
-			tag_message(tag,channel);
-		}catch(e){
-			console.log(e);
-			slack("店舗を登録してください.",channel);
-		}
+	}*/else if(text.split(' ')[0]==='.goods'){
+        if(text.split(' ').length != 3){
+            slack('商品名または値段の入力方法に誤りがあります.\ne.g.\n.goods <goods name> <price>',channel);
+            return ;
+        }
+        var cnt;
+        var Name = text.split(' ')[1];
+        var Price = text.split(' ')[2];
+        console.log(shop);
+        shop_name = account[slack_id]["name"];
+        console.log(shop[shop_id].goods[0]);
+        for(cnt=0;cnt<shop[shop_id].goods.length;cnt++){
+            if(shop[shop_id].goods[cnt]["name"] == Name){
+                shop[shop_id].goods[cnt]["price"] = Price;
+                slack("値段が更新されました.",channel);
+                shop[shop_id].tstamp = ts;
+                update_shop(shop,ts);
+                return ;
+            }
+        }
+        var data = {"name":Name,"price":Price};
+        shop[shop_id].goods.push(data);
+        shop[shop_id].tstamp = ts;
+        if(shop[shop_id].goods[0].name==='name') shop[shop_id].goods.shift();
+        update_shop(shop);
+        slack("商品が登録されました.\nタグの登録を行ってください.",channel);
+        tag_message(tag,channel);
 	}else if(text.split(' ')[0]==='.rewiew'){
-		try{
-			shop_id = account[slack_id]["id"];
-			screen('./files/'+shop_id+shop_id,shop_id);
-		}catch(e){
-			slack("アカウントを登録してください",channel);
-		}
+        screen('./files/'+shop_id+shop_id,shop_id);
 	}else if(text.split(' ')[0]==='.show'){
-		try{
-			shop_id = account[slack_id]["id"];
-			var shop_data =JSON.stringify(shop[shop_id]);			
-			slack(shop_data,channel);			
-		}catch(e){
-			slack("アカウントを登録してください",channel);
-		}
+        slack("```show shop data```",event.channel);
+        slack("```"+JSON.stringify(shop[shop_id])+"```",event.channel);
 	}else if(text.split(' ')[0]==='.event'){
 		try{
 			if(text.split(' ').length != 8){
@@ -293,39 +288,33 @@ rtm.on("message",(event)=>{
 		slack(events_text,channel);
 	}else if(text.split(' ')[0]==='.tag'){
 		try{
-			shop_id = account[slack_id]["id"];
-			var tags = text.split(' ');
-			console.log("tags",tags);
-			tags.shift();
-			console.log("tags",tags);
-			var cnt=0;
-			console.log(shop);
-			for(var key in shop[shop_id].label) cnt++;
-			console.log("cnt",cnt);
-			console.log("tag",tag);
-			
-			for(let i in tags){
-				for(let j in tag){
-					if((tags[i]==tag[j].id)&&(shop[shop_id].label.indexOf(tag[j].tag)==-1)){
-						console.log("tag",tag[j].tag);
-//						shop[shop_id].label[cnt] = tag[j].tag;
-						shop[shop_id].label[cnt] = tag[j].id;
-						console.log("list",shop[shop_id].label[cnt]);
-						shop[shop_id].tstamp = ts;
-						update_shop(shop);
-						cnt++;
-					}
-				}
-			}
-			console.log(shop);
-			shop[shop_id].tstamp = ts;
-			if(shop[shop_id].label[0]==='label') shop[shop_id].label.shift();
-			update_shop(shop);
-			slack("タグが登録されました.",channel);
-		}catch(e){
-			console.log(e);
-			slack("アカウントを登録してください",channel);
-		}
+        var tags = text.split(' ');
+        console.log("tags",tags);
+        tags.shift();
+        console.log("tags",tags);
+        var cnt=0;
+        console.log(shop);
+        for(var key in shop[shop_id].label) cnt++;
+        console.log("cnt",cnt);
+        console.log("tag",tag);
+        
+        for(let i in tags){
+            for(let j in tag){
+                if((tags[i]==tag[j].id)&&(shop[shop_id].label.indexOf(tag[j].tag)==-1)){
+                    console.log("tag",tag[j].tag);
+                    shop[shop_id].label[cnt] = tag[j].id;
+                    console.log("list",shop[shop_id].label[cnt]);
+                    shop[shop_id].tstamp = ts;
+                    update_shop(shop);
+                    cnt++;
+                }
+            }
+        }
+        console.log(shop);
+        shop[shop_id].tstamp = ts;
+        if(shop[shop_id].label[0]==='label') shop[shop_id].label.shift();
+        update_shop(shop);
+        slack("タグが登録されました.",channel);
 	}else if(text.split(' ')[0]==='.tag_help'){
 //		slack("0:食べ物, 1:飲み物, 2:アトラクション, 3:温かいもの, 4:冷たいもの, 5:甘い, 6:しょっぱい",channel);
 		tag_message(tag,channel);
@@ -348,6 +337,7 @@ if(require.main ===module){
 	if(SLACK_TOKEN === undefined){
 		console.log("slack token is not defined");
 	}
+    console.log(account);
 	utils.log("start process");
 	create_json();
 	list = utils.read_list();
