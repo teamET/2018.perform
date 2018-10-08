@@ -445,16 +445,8 @@ router.post('/', function(req, res, next) {
     res.send(responce);
 });
 
-/**
- * 受け取るデータは
- * @param {string} param mysql検索キー（where以下）
- * @param {string} message 送信する文面
- */
-router.post('/pushmessage/send', async function(req, res, next) {
-    var responce = "";
-    const body = req.body; // Request body string
-    let msg = msg_text(body.message);
-    var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
+
+await function pushmessageOnly(query, msg) {
     connection.query(query,function(err, rows) {
         let users = [];
         for (let i=0; i<rows.length; i++) {
@@ -483,7 +475,19 @@ router.post('/pushmessage/send', async function(req, res, next) {
             users.length = 0;
         }
     })
-    let responce = "";
+}
+
+/**
+ * 受け取るデータは
+ * @param {string} param mysql検索キー（where以下）
+ * @param {string} message 送信する文面
+ */
+router.post('/pushmessage/send', function(req, res, next) {
+    var responce = "";
+    const body = req.body; // Request body string
+    let msg = msg_text(body.message);
+    var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
+    pushmessageOnly(query, msg);
     res.status = 200;
     res.send(responce);
 });
