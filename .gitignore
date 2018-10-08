@@ -90,6 +90,7 @@ workspace/
 bootstrap
 account.json
 shop.json
+private/
 *.env
 public
 db.json
