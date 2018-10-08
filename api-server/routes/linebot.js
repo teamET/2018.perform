@@ -210,8 +210,6 @@ async function image_download(event) {
                     path: path
                 },
                 readStream: fs.createReadStream('../../test.png')
-            }, (err, result, response) => {
-                console.log(response);
             });
         }
     });
