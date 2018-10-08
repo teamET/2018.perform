@@ -187,8 +187,10 @@ function msg_imagemap(usage,data){
 
 function image_download(messageID) {
     let url = urlg_download_message.replace("{messageId}", messageID);
-    request.get(url, function(err, res, body) {
-        if(body) {
+    request.get(await Build_responce(url), function(err, res, body) {
+        if(err) {
+            console.log(body);
+        } else {
             console.log(body);
             let buf = new Buffer(body);
             fs.writeFileSync("../../../test.jpg", buf);
