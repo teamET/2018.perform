@@ -489,7 +489,14 @@ router.post('/pushmessage/send', async function(req, res, next) {
             }]
         }
         console.log(tmp.to);
-        request.post(await Build_responce(urlp_push, tmp))
+        request.post(await Build_responce(urlp_push, tmp), function (error, response, body) {
+            if (!error) {
+                console.log(response);
+            }
+            else {
+                console.log("Error!!");
+            }
+        });
         users.length = 0;
     }
     res.status = 200;
