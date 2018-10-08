@@ -446,7 +446,7 @@ router.post('/', function(req, res, next) {
 });
 
 
-await function pushmessageOnly(query, msg) {
+async function pushmessageOnly(query, msg) {
     connection.query(query,function(err, rows) {
         let users = [];
         for (let i=0; i<rows.length; i++) {
