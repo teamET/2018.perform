@@ -185,12 +185,26 @@ function msg_imagemap(usage,data){
     return msg;
 }
 
+function image_download(messageID) {
+    let url = urlg_download_message.replace("{messageId}", messageID);
+    request.get(url, function(err, res, body) {
+        if(body) {
+            console.log(body);
+            let buf = new Buffer(body);
+            fs.writeFileSync("../../../test.jpg", buf);
+        }
+    });
+}
+
 /**
  * Event - messageの時のおおもと
  * 基本的にlineへのレスポンスはここで行う
  * @param  {obj} event LINEからのBody
  */
 async function type_message(event) {
+    if (event.message.type == "image") {
+        image_download(event.message.id);
+    }
     // Dialogflowへの接続今のところしない
     var msg  = undefined;
     var msg2 = undefined;
