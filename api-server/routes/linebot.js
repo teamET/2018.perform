@@ -26,11 +26,13 @@ const session_client = new dialogflow.SessionsClient({
 
 
 /* json fileの読み込み */
+const flex_tmp = require("./flex_template.json");
+const flex_item = require("./flex_item.json");
+const flex_image = require("./shop-map.json");
 var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
 var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
 var map_data  = JSON.parse(fs.readFileSync('./routes/mapdata.json','utf8'));
 var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
-var flex_tmp = JSON.parse(fs.readFileSync('./routes/flex_template.json', 'utf8'));
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -103,95 +105,15 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
  */
 function Build_flex(shopid) {
     var data = shop_data[shopid];
-    var tmp = {
-        "type": "bubble",
-        "header": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-                {
-                "type": "text",
-                "text": data.shopname,
-                "weight": "bold",
-                "size": "lg",
-                "wrap": true
-                }
-            ]
-        },
-        "hero": {
-            "type": "image",
-            "size": "full",
-            "aspectRatio": "20:13",
-            "aspectMode": "cover",
-            "url": data.image
-        },
-        "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-                {
-                "type": "text",
-                "text": "商品",
-                "wrap": false,
-                "weight": "bold",
-                "size": "md"
-                },
-                {
-                "type": "separator",
-                "margin": "sm"
-                }
-            ]
-        },
-        "footer": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-                {
-                    "type": "separator"
-                },
-                {
-                    "type": "text",
-                    "text": "地図",
-                    "weight": "bold",
-                    "margin": "md"
-                },
-                {
-                    "type": "image",
-                    "size": "full",
-                    "margin": "md",
-                    "aspectRatio": "16:9",
-                    "aspectMode": "cover",
-                    "url": data.image
-                }
-            ]
-        }
-    }
+    var tmp = flex_tmp;
+    tmp.header.contents[0].text = data.shopname;
+    tmp.hero.url = data.image[0];
+    tmp.footer.contents[2].url = flex_image[shopid];
     for (var i=0; i<data.goods.length; i++) {
         var goodjson = data.goods[i];
-        var g = {
-            "type": "box",
-            "layout": "horizontal",
-            "margin": "md",
-            "contents": [
-                {
-                    "type": "text",
-                    "text": goodjson.name,
-                    "wrap": true,
-                    "weight": "bold",
-                    "size": "md",
-                    "align": "start",
-                    "flex": 0
-                },
-                {
-                    "type": "text",
-                    "text": "￥" + goodjson.price,
-                    "wrap": true,
-                    "weight": "bold",
-                    "size": "md",
-                    "align": "end"
-                }
-            ]
-        }
+        var g = flex_item;
+        g.contents[0].text = goodjson.name;
+        g.contents[1].text = goodjson.price + "円";
         tmp.body.contents.push(g);
     }
     return tmp;
@@ -281,22 +203,13 @@ async function type_message(event) {
                         ["E",1,2,3,4,5,6],
                         ["F",1,2,3]];
     switch(event.message.text) {
-        case "a":
-            msg = msg_text("ご意見ご感想ふぉーむへ誘導");
-            break;
-        case "b":
-            var from = moment(await DB_get("UserData", "BEACONTIME", "USERID", event.source.userId));
-            var now = moment();
-            msg = msg_text("差分は" + now.diff(from)/(1000*60));
-            break;
-        case "c":
+        case "近くの模擬店を探す":
             var userplace = await DB_get("UserData", "PLACE", "USERID", event.source.userId);
-            if (userplace == "") {
+            if (userplace == "" || userplace == "hazama" || userplace == "joho") {
                 msg = msg_text("近くに模擬店がないみたい...\n移動してからもう一度試してください");
             } else {
                 //userplaceの場所に合う模擬店をjson or htmlから引っ張ってきてテンプレートメッセージにする
-                msg = msg_text(userplace + "にいるから近くの模擬店を取得");
-                msg2 = {
+                msg = {
                     "type": "flex",
                     "altText": "This is a flex message.",
                     "contents": {
@@ -306,7 +219,7 @@ async function type_message(event) {
                 };
                 for (var i=0; i<shop_area[userplace].length; i++) {
                     var shopid = shop_area[userplace][i];
-                    msg2.contents.contents.push(Build_flex(shopid));
+                    msg.contents.contents.push(Build_flex(shopid));
                 }
             }
             break;
@@ -429,11 +342,11 @@ async function type_beacon(event) {
         var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
         var msg = {
             "type": "text",
-            "text": "現在，" + await db_place + "にいます"
+            "text": "現在，" + await db_place + "です"
         };
         var msg2 = {
             "type": "text",
-            "text": "おしらせ\n" + await db_msg
+            "text": "[おしらせ]\n" + await db_msg
         };
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
             event.replyToken, msg, msg2
@@ -457,13 +370,17 @@ async function type_beacon(event) {
  * @param  {obj} event LINEからのBody
  */
 async function beacon_leave(event) {
+    var p = DB_get("UserData", "PLACE", "USERID", event.source.userId);
     var db_place = await DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
-    var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
-        .replace("{id}", event.source.userId)
-        .replace("{place}", "");
-    connection.query(query);
-    if (db_place == "taiikukan") {
-        rich_change(richdata.normal, event.source.userId);
+    var user_place = await p;
+    if (db_place == user_place) {
+        var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
+            .replace("{id}", event.source.userId)
+            .replace("{place}", "");
+        connection.query(query);
+        if (db_place == "taiikukan") {
+            rich_change(richdata.normal, event.source.userId);
+        }
     }
 }
 
