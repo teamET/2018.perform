@@ -212,7 +212,11 @@ async function image_download(event) {
                 readStream: fs.createReadStream("../" + nowtime + ".png")
             }, (err, result, response) => {
                 //upload completed
-                fs.unlink("../" + nowtime + ".png");
+                fs.unlink("../" + nowtime + ".png",  function (err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
             });
         }
     });
