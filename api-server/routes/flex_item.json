@@ -1,24 +1,24 @@
 {
-    "type": "box",
-    "layout": "horizontal",
-    "margin": "md",
-    "contents": [
+  "type": "box",
+  "layout": "horizontal",
+  "margin": "md",
+  "contents": [
       {
-        "type": "text",
-        "text": "チョコバナナ",
-        "wrap": true,
-        "weight": "bold",
-        "size": "md",
-        "align": "start",
-        "flex": 0
+          "type": "text",
+          "text": "",
+          "wrap": true,
+          "weight": "bold",
+          "size": "md",
+          "align": "start",
+          "flex": 0
       },
       {
-        "type": "text",
-        "text": "￥250",
-        "wrap": true,
-        "weight": "bold",
-        "size": "md",
-        "align": "end"
+          "type": "text",
+          "text": "",
+          "wrap": true,
+          "weight": "bold",
+          "size": "md",
+          "align": "end"
       }
-    ]
-  }
+  ]
+}
