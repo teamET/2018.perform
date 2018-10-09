@@ -190,13 +190,13 @@
         return tasks;
     }
     var tasks=get_schedule(20);
-   console.log(tasks);
+    console.log(tasks);
     jQuery("#skeduler-container").skeduler({
         headers: places,
         tasks: tasks,
         cardTemplate: '<div>${id}</div><div>${title}</div><div class="hide-content">${content}</div>',
         onClick: function (e, t) { console.log(e, t); }
     });
-    $('#sche20').click(()=>{task=get_schedule(20);});
-    $('#sche21').click(()=>{task=get_schedule(21);});
+//    $('#sche20').click(()=>{task=get_schedule(20);});
+//    $('#sche21').click(()=>{task=get_schedule(21);});
 })(jQuery);
