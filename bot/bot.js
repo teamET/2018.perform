@@ -21,7 +21,7 @@ var events;
 var timetable;
 var arr;
 var list;
-//var tag;
+var photos=[];
 
 function create_json(){
     var events_data,tag_data;
@@ -114,7 +114,7 @@ function admin(event){
 			{
 				url:'https://kunugida2018.tokyo-ct.ac.jp/api/beacon/update',
 				form:{
-					"place":A,B,C,D,E,F,tailkukan,hazama,seimon,joho.All,
+					"place":[A,B,C,D,E,F,tailkukan,hazama,seimon,joho.All],
 					"message":event.text.split(' ')[1]
 				}
 			},
@@ -137,6 +137,10 @@ rtm.on("message",(event)=>{
     var shopd=get_mogiid(event);
 	if(event.channel=="GCS4TEWGZ"){
 //		admin(event);
+		return;
+	}else if(event.channel=="CD0KZSRQ9"){
+		photos.push(utils.download("photo_club",event.files[0].title,event.files[0].url_private_download));
+		slack(JSON.stringify(photos));
 		return;
 	}else if(shopd){
         shop_id=shopd[0];
