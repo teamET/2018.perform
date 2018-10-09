@@ -164,7 +164,7 @@
     return now;
   }
 
-  function get_schedule(date){
+  const tasks=(date)=>{
       for (var i = 0; i < places.length; i++) {
         for (var j = 0; j < data[i].length; j++) {
           startTime=data[i][j].start_time;
@@ -189,9 +189,10 @@
       }
       return tasks;
   }
+  console.log(tasks);
   jQuery("#skeduler-container").skeduler({
     headers: places,
-    tasks: get_schedule(21),
+    tasks: tasks,
     cardTemplate: '<div>${id}</div><div>${title}</div><div class="hide-content">${content}</div>',
     onClick: function (e, t) { console.log(e, t); }
   });
