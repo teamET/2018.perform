@@ -180,7 +180,9 @@
         content: data[i][j].content,
         width: 0
       };
-      tasks.push(task);
+        if(data[i][j].date==21){
+          tasks.push(task);
+        }
     }
   }
   //console.log("tasks count: " + tasks.length);
