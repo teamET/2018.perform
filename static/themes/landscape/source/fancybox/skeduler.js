@@ -191,7 +191,7 @@
   }
   jQuery("#skeduler-container").skeduler({
     headers: places,
-    tasks: get_schedule(date),
+    tasks: get_schedule(21),
     cardTemplate: '<div>${id}</div><div>${title}</div><div class="hide-content">${content}</div>',
     onClick: function (e, t) { console.log(e, t); }
   });
