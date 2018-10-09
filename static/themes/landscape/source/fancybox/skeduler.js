@@ -164,7 +164,7 @@
     return now;
   }
 
-  const tasks=(date)=>{
+  const get_schedule=(date)=>{
       for (var i = 0; i < places.length; i++) {
         for (var j = 0; j < data[i].length; j++) {
           startTime=data[i][j].start_time;
@@ -189,6 +189,7 @@
       }
       return tasks;
   }
+  var tasks=get_schedule(21);
   console.log(tasks);
   jQuery("#skeduler-container").skeduler({
     headers: places,
