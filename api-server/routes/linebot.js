@@ -6,6 +6,7 @@ var moment = require('moment');
 var fs = require('fs');
 var cheerio = require('cheerio-httpcli');
 const dialogflow = require("dialogflow");
+const dropboxV2Api = require('dropbox-v2-api');
 var connection = require('./mysqlConnection');
 
 /* 環境変数 */
@@ -14,6 +15,7 @@ const accessToken = process.env.accessToken;
 const GOOGLE_PROJECT_ID = process.env.GOOGLE_PROJECT_ID;
 const GOOGLE_CLIENT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
+const dropbox = process.env.dropbox;
 
 //dialogflow
 const session_client = new dialogflow.SessionsClient({
@@ -24,23 +26,36 @@ const session_client = new dialogflow.SessionsClient({
     }
 });
 
+//DropBox
+const dbx = dropboxV2Api.authenticate({
+    token: dropbox
+});
 
 /* json fileの読み込み */
+const flex_tmp = require("./flex_template.json");
+const flex_item = require("./flex_item.json");
+const flex_image = require("./shop-map.json");
 var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
 var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
+var map_data  = JSON.parse(fs.readFileSync('./routes/mapdata.json','utf8'));
 var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
-var flex_tmp = JSON.parse(fs.readFileSync('./routes/flex_template.json', 'utf8'));
 
 /* LINE MessagingAPI URL */
 //URL POST
 const urlp_reply = "https://api.line.me/v2/bot/message/reply";
 const urlp_rich_set = "https://api.line.me/v2/bot/user/{userId}/richmenu/{richMenuId}";
+const urlp_push = "https://api.line.me/v2/bot/message/multicast";
 //LINE URL GET
 const urlg_download_message = "https://api.line.me/v2/bot/message/{messageId}/content";
 //LINE URL DELETE
 const urld_rich_delete = "https://api.line.me/v2/bot/user/{userId}/richmenu";
 
-/* responceの作成.全てこれを介す. */
+/**
+ * LINEに渡すBodyを生成する
+ * @param  {string} url LINE MessagingAPI エンドポイントを指定
+ * @param  {obj} [res_body] Build_msg_textの返り値を指定
+ * @return {obj} LINEにPOSTするJson Body
+ */
 function Build_responce(url, res_body) {
     return new Promise(function(resolve, reject) {
         var tmp = {
@@ -56,7 +71,15 @@ function Build_responce(url, res_body) {
     });
 }
 
-/* メッセージの作成 */
+/**
+ * LINEのmessageオブジェクトを生成する -> Build_responceに渡す
+ * @param  {} Token - replyToken
+ * @param  {} message1 
+ * @param  {} [message2]
+ * @param  {} [message3]
+ * @param  {} [message4]
+ * @param  {} [message5]
+ */
 function Build_msg_text(Token, message1, message2, message3, message4, message5) {
     return new Promise(function(resolve, reject) {
         var tmp = {
@@ -82,103 +105,36 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
     });
 }
 
-/* flexメッセージの作成 */
-function Build_flex(shopname, imageurl, goods) {
-    var tmp = {
-        "type": "bubble",
-        "header": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-                {
-                "type": "text",
-                "text": shopname,
-                "weight": "bold",
-                "size": "lg",
-                "wrap": true
-                }
-            ]
-        },
-        "hero": {
-            "type": "image",
-            "size": "full",
-            "aspectRatio": "20:13",
-            "aspectMode": "cover",
-            "url": imageurl
-        },
-        "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-                {
-                "type": "text",
-                "text": "商品",
-                "wrap": false,
-                "weight": "bold",
-                "size": "md"
-                },
-                {
-                "type": "separator",
-                "margin": "sm"
-                }
-            ]
-        },
-        "footer": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-                {
-                    "type": "separator"
-                },
-                {
-                    "type": "text",
-                    "text": "地図",
-                    "weight": "bold",
-                    "margin": "md"
-                },
-                {
-                    "type": "image",
-                    "size": "full",
-                    "margin": "md",
-                    "aspectRatio": "16:9",
-                    "aspectMode": "cover",
-                    "url": imageurl
-                }
-            ]
-        }
-    }
-    for (var i=0; i<goods.length; i++) {
-        var goodjson = goods[i];
-        var g = {
-            "type": "box",
-            "layout": "horizontal",
-            "margin": "md",
-            "contents": [
-                {
-                    "type": "text",
-                    "text": goodjson.name,
-                    "wrap": true,
-                    "weight": "bold",
-                    "size": "md",
-                    "align": "start",
-                    "flex": 0
-                },
-                {
-                    "type": "text",
-                    "text": "￥" + goodjson.price,
-                    "wrap": true,
-                    "weight": "bold",
-                    "size": "md",
-                    "align": "end"
-                }
-            ]
-        }
+/**
+ * 模擬店のflexを作成する
+ * @param  {string} shopid ショップid
+ * @return {obj} Bulid_msg_textに渡す
+ */
+function Build_flex(shopid) {
+    var data = shop_data[shopid];
+    var tmp = flex_tmp;
+    tmp.header.contents[0].text = data.shopname;
+    tmp.hero.url = data.image[0];
+    tmp.footer.contents[2].url = flex_image[shopid];
+    for (var i=0; i<data.goods.length; i++) {
+        var goodjson = data.goods[i];
+        var g = flex_item;
+        g.contents[0].text = goodjson.name;
+        g.contents[1].text = goodjson.price + "円";
         tmp.body.contents.push(g);
     }
     return tmp;
 }
 
-async function DB_get(table, col, where, id) {
+/**
+ * データベースからデータ取得
+ * @param  {string} table テーブル名
+ * @param  {string} col 取得したい列名
+ * @param  {string} where 検索する列名
+ * @param  {string} id キー
+ * @return {string} 検索した結果
+ */
+function DB_get(table, col, where, id) {
     return new Promise(function(resolve, reject) {
         var query = 'SELECT {col} FROM {table} WHERE {where} = "{id}"'
             .replace("{table}", table)
@@ -191,7 +147,11 @@ async function DB_get(table, col, where, id) {
     });
 }
 
-/* richmenuの切り替え */
+/**
+ * リッチメニューの切り替え
+ * @param  {string} after 切り替え後のリッチメニューId（richdata）
+ * @param  {string} userId 切り替えるユーザId
+ */
 async function rich_change(after, userId) {
     var rich_url = urld_rich_delete.replace("{userId}", userId);
     var rich_url2 = urlp_rich_set.replace("{userId}", userId)
@@ -202,28 +162,92 @@ async function rich_change(after, userId) {
     });
 }
 
-/* Type - message */
+/**
+ *  テキストメッセージの生成
+ * @param {String} text テキストデータ
+ * @return {obj}   msg  テキストメッセージ
+ */
+function msg_text(text){
+    var msg = {"type": "text"};
+    msg.text = text;
+    return msg;
+}
+
+/**
+ * イメージマップメッセージの生成
+ * @param {string} usage 用途(map)
+ * @param {obj}    data  用途に対応するデータ
+ * @return {obj}   msg  イメージマップメッセージ
+ */
+function msg_imagemap(usage,data){
+    var msg = {"type":"imagemap"};
+    if(usage == "map"){
+        var location = map_data[data.location];
+        msg.baseUrl  = location.baseUrl;
+        msg.altText  = location.altText;
+        msg.baseSize = location.baseSize;
+        msg.actions  = location.actions;
+        // console.log(msg);
+    }
+    return msg;
+}
+
+async function image_download(event) {
+    let url = urlg_download_message.replace("{messageId}", event.message.id);
+    let tmp = DB_get("UserData", "USERTYPE", "USERID", event.source.userId);
+    let option = await Build_responce(url);
+    option.encoding = null;
+    let nowtime = moment().format('HH:mm:ss:SSS');
+    let usertype = await tmp;
+    request.get(option, function(err, res, body) {
+        if(err) {
+            console.log(body);
+        } else {
+            let path = "/kufes18/" + usertype + "/" +nowtime+ ".png"
+            fs.writeFileSync("../" + nowtime + ".png", body, "binary");
+            dbx({
+                resource: 'files/upload',
+                parameters: {
+                    path: path
+                },
+                readStream: fs.createReadStream("../" + nowtime + ".png")
+            }, (err, result, response) => {
+                //upload completed
+                fs.unlink("../" + nowtime + ".png",  function (err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+            });
+        }
+    });
+}
+
+/**
+ * Event - messageの時のおおもと
+ * 基本的にlineへのレスポンスはここで行う
+ * @param  {obj} event LINEからのBody
+ */
 async function type_message(event) {
     // Dialogflowへの接続今のところしない
-    var msg = {"type": "text"};
+    var msg  = undefined;
     var msg2 = undefined;
+    var mapdata  = new Object(); // mapの場所データなど
+    // [エリア][ピンの番号]([][0] : エリア名)
+    var OutsideArea =  [["A",1,2,3,4,5],
+                        ["B",1,2,3,4],
+                        ["C",1,2],
+                        ["D",1,2,3,4,5,6,7,8],
+                        ["E",1,2,3,4,5,6],
+                        ["F",1,2,3]];
     switch(event.message.text) {
-        case "a":
-            msg.text = "ご意見ご感想ふぉーむへ誘導";
-            break;
-        case "b":
-            var from = moment(await DB_get("UserData", "BEACONTIME", "USERID", event.source.userId));
-            var now = moment();
-            msg.text = "差分は" + now.diff(from)/(1000*60);
-            break;
-        case "c":
+        case "近くの模擬店を探す":
             var userplace = await DB_get("UserData", "PLACE", "USERID", event.source.userId);
-            if (userplace == "") {
-                msg.text = "近くに模擬店がないみたい...\n移動してからもう一度試してください";
+            if (userplace == "" || userplace == "hazama" || userplace == "joho") {
+                msg = msg_text("近くに模擬店がないみたい...\n移動してからもう一度試してください");
             } else {
                 //userplaceの場所に合う模擬店をjson or htmlから引っ張ってきてテンプレートメッセージにする
-                msg.text = userplace + "にいるから近くの模擬店を取得";
-                msg2 = {
+                msg = {
                     "type": "flex",
                     "altText": "This is a flex message.",
                     "contents": {
@@ -232,33 +256,64 @@ async function type_message(event) {
                     }
                 };
                 for (var i=0; i<shop_area[userplace].length; i++) {
-                    console.log(shop_area[userplace]);
                     var shopid = shop_area[userplace][i];
-                    console.log(shopid);
-                    var data = shop_data[shopid];
-                    console.log(data);
-                    var name = data.shopname;
-                    var image = data.image;
-                    msg2.contents.contents.push(Build_flex(name, "https://aaa.png", data.goods));
+                    msg.contents.contents.push(Build_flex(shopid));
                 }
             }
             break;
-        case "map":
-            msg.text = "sh0h1r0";
+        case "マップを表示":
+            mapdata.location = "Top";
+            msg = msg_imagemap("map",mapdata);
+            break;
+        case "[Top] 構内全体マップへ":
+            mapdata.location = "InsideTop";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("棟を選択してください");            
+            break;
+        case "[Top] 構外全体マップへ":
+            mapdata.location = "OutsideTop";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("エリアを選択してください");
+            break;
+        case "実装中":
             break;
         default:
-            msg.text = "個別の返信はできません(*:△:)";
+            msg = msg_text("個別の返信はできません(*:△:)");
             break;
     }
-    if (msg.text) {
+    for(var i=0;i<OutsideArea.length;i++){
+        for(var j=1;j<OutsideArea[i].length;j++){
+            switch(event.message.text){
+                 case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
+                 break;
+            }
+        }
+        switch(event.message.text){
+            case "エリア"+OutsideArea[i][0]+"へ":
+                mapdata.location = "Area"+OutsideArea[i][0];
+                msg = msg_imagemap("map",mapdata);
+                msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
+                break;
+        }
+    }
+    //画像を送信してきた時の処理
+    if (event.message.type == "image") {
+        image_download(event);
+        msg = msg_text("画像を送信してくれてありがとう(o・∇・o)");
+    }
+    if (msg){
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-            event.replyToken, msg, msg2
+            event.replyToken,msg, msg2
         ));
         request.post(tmp);
     }
 }
 
-/* Type - follow */
+
+/**
+ * Event - followの時
+ * @param  {obj} event LINEからのBody
+ */
 async function type_follow(event) {
     //rich menuの登録
     var rich_url = urlp_rich_set.replace('{userId}', event.source.userId)
@@ -273,7 +328,11 @@ async function type_follow(event) {
     ));
     request.post(tmp);
 }
-
+/**
+ * ユーザが初回登録をした
+ * @param  {obj} event LINEからのBody
+ * @param  {string} usertype 学生 or 来場者
+ */
 async function addUser(event, usertype) {
     //DBへユーザの追加
     var nowtime = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -295,14 +354,20 @@ async function addUser(event, usertype) {
     request.post(tmp);
 }
 
-/* Type - unfolow */
+/**
+ * ユーザがブロックした
+ * @param  {obj} event LINEからのBody
+ */
 function removeUser(event) {
     var query = 'DELETE FROM UserData WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId);
     connection.query(query);
 }
 
-/* Type - Beacon */
+/**
+ * ビーコンに侵入した時のおおもと
+ * @param  {obj} event LINEからのBody
+ */
 async function type_beacon(event) {
     /* beacon侵入時間の更新 */
     var tmp = DB_get("UserData", "BEACONTIME", "USERID", event.source.userId);
@@ -310,47 +375,57 @@ async function type_beacon(event) {
     var nowtime = now.format('YYYY-MM-DD HH:mm:ss');
     var db_time = moment(await tmp);
     var db_place = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
+    //前回の侵入から7分経っている -> 更新してメッセージを送信
     if ((now.diff(db_time)/(1000*60)) >= 7 ) {
         var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
             .replace("{id}", event.source.userId)
             .replace("{time}", nowtime);
         connection.query(query);
+        //メッセージを整形
         var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
         var msg = {
             "type": "text",
-            "text": "現在，" + await db_place + "にいます"
+            "text": "現在，" + await db_place + "です"
         };
         var msg2 = {
             "type": "text",
-            "text": "おしらせ\n" + await db_msg
+            "text": "[おしらせ]\n" + await db_msg
         };
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
             event.replyToken, msg, msg2
         ));
         request.post(tmp);
     }
+    //ユーザがいる場所を登録
     var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
         .replace("{id}", event.source.userId)
         .replace("{place}", await db_place);
     connection.query(query);
+    //体育館に侵入したならリッチメニューを切り替える
     if (db_place == "taiikukan") {
         rich_change(richdata.event, event.source.userId);
     }
+
 }
 
-/* 体育館退出用 */
+/**
+ * ビーコンから退出した（体育館専用）
+ * @param  {obj} event LINEからのBody
+ */
 async function beacon_leave(event) {
+    var p = DB_get("UserData", "PLACE", "USERID", event.source.userId);
     var db_place = await DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
-    var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
-        .replace("{id}", event.source.userId)
-        .replace("{place}", "");
-    connection.query(query);
-    if (db_place == "taiikukan") {
-        rich_change(richdata.normal, event.source.userId);
+    var user_place = await p;
+    if (db_place == user_place) {
+        var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
+            .replace("{id}", event.source.userId)
+            .replace("{place}", "");
+        connection.query(query);
+        if (db_place == "taiikukan") {
+            rich_change(richdata.normal, event.source.userId);
+        }
     }
 }
-
-/************************* map *************************/
 
 
 /* MAIN */
@@ -365,7 +440,7 @@ router.post('/', function(req, res, next) {
         //認証成功
         res.status(200);
         console.log("line_OK");
-        var value = body.events[0];
+        //Eventは複数
         body.events.forEach((event) => {
             switch(event.type) {
                 case "message":
@@ -375,18 +450,12 @@ router.post('/', function(req, res, next) {
                     type_follow(event);
                     break;
                 case "postback":
-                    if (event.postback.data == "Student") {
-                        addUser(event, "学生");
-                    } else if (event.postback.data == "Other") {
-                        addUser(event, "来場者");
-                    }
+                    if (event.postback.data == "Student") { addUser(event, "学生"); }
+                    else if (event.postback.data == "Other") { addUser(event, "来場者"); }
                     break;
                 case "beacon":
-                    if (event.beacon.type == "enter") {
-                        type_beacon(event);
-                    } else if (event.beacon.type == "leave") {
-                        beacon_leave(event);
-                    }
+                    if (event.beacon.type == "enter") { type_beacon(event); }
+                    else if (event.beacon.type == "leave") { beacon_leave(event); }
                     break;
                 case "unfollow":
                     removeUser(event);
@@ -401,6 +470,49 @@ router.post('/', function(req, res, next) {
         console.log("line_NG");
         res.status(403);
     }
+    res.send(responce);
+});
+
+function pushOnlyDB(query) {
+    return new Promise(function(resolve, reject) {
+        connection.query(query,function(err, rows) {
+            resolve(rows);
+        });
+    });
+}
+
+/**
+ * 受け取るデータは
+ * @param {string} param mysql検索キー（where以下）
+ * @param {string} message 送信する文面
+ */
+router.post('/pushmessage/send', async function(req, res, next) {
+    var responce = "";
+    const body = req.body; // Request body string
+    let msg = msg_text(body.message);
+    var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
+    let rows = await pushOnlyDB(query);
+    let users = [];
+    for (let i=0; i<rows.length; i++) {
+        users.push(rows[i]["USERID"]);
+        if (i%150 == 149) {
+            let tmp = {
+                "to": users,
+                "messages": [msg]
+            }
+            request.post(await Build_responce(urlp_push, tmp))
+            users.length = 0;
+        }
+    }
+    if (users.length != 0) {
+        let tmp = {
+            "to": users,
+            "messages": [msg]
+        }
+        request.post(await Build_responce(urlp_push, tmp));
+        users.length = 0;
+    }
+    res.status = 200;
     res.send(responce);
 });
 

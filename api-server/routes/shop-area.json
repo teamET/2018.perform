@@ -1,37 +1,61 @@
 {
     "A": [
-        "hoge",
-        "hage",
-        "huge"
+        "v4E",
+        "abd",
+        "v4C",
+        "cm",
+        "htb"
     ],
     "B": [
-        "hoge",
-        "hage",
-        "huge"
+        "c2D",
+        "hb",
+        "v2AC",
+        "bsk"
     ],
     "C": [
-        "hoge",
-        "hage",
+        "v5E",
+        "v2M",
         "huge"
     ],
     "D": [
-        "hoge",
-        "hage",
-        "huge"
+        "fb",
+        "bd",
+        "kusa",
+        "sw",
+        "yku",
+        "vb",
+        "fs",
+        "1AC"
+    ],
+    "taiikukan": [
+        "fb",
+        "bd",
+        "kusa",
+        "sw",
+        "yku",
+        "vb",
+        "fs",
+        "1AC"
     ],
     "E": [
-        "hoge",
-        "hage",
-        "huge"
+        "hl",
+        "v5C",
+        "c4J",
+        "tnf",
+        "v3D",
+        "cyc"
+    ],
+    "seimon": [
+        "hl",
+        "v5C",
+        "c4J",
+        "tnf",
+        "v3D",
+        "cyc"
     ],
     "F": [
-        "hoge",
-        "hage",
-        "huge"
-    ],
-    "testbot": [
-        "c4J",
-        "test",
-        "id"
+        "c2C",
+        "c4M",
+        "v5E"
     ]
 }
