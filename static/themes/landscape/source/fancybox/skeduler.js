@@ -193,12 +193,13 @@
         var tasks=get_schedule(date);
         console.log(tasks);
         jQuery("#skeduler-container").skeduler({
-        headers: places,
-        tasks: tasks,
-        cardTemplate: '<div>${id}</div><div>${title}</div><div class="hide-content">${content}</div>',
-        onClick: function (e, t) { console.log(e, t); }
+            headers: places,
+            tasks: tasks,
+            cardTemplate: '<div>${id}</div><div>${title}</div><div class="hide-content">${content}</div>',
+            onClick: function (e, t) { console.log(e, t); }
         });
   }
   $('#sche20').click(()=>{update_schedule(20);});
   $('#sche21').click(()=>{update_schedule(21);});
+    update_schedule(20);
 })(jQuery);
