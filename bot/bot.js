@@ -41,7 +41,7 @@ function create_json(){
             "from":"from",
             "tstamp":"tstamp"
         }];
-        fs.writeFileSync('./private/events.json',JSON.stringify(events));		
+        fs.writeFileSync('./public/events.json',JSON.stringify(events));		
     }
 }
 
@@ -107,6 +107,24 @@ function get_mogiid(event){
     }
 }
 
+function admin(event){
+	if(event.text.split(' ')[0]===".message"){
+		slack("get admin message");
+		request.post(
+			{
+				url:'https://kunugida2018.tokyo-ct.ac.jp/api/beacon/update',
+				form:{
+					"place":A,B,C,D,E,F,tailkukan,hazama,seimon,joho.All,
+					"message":event.text.split(' ')[1]
+				}
+			},
+			(err,res,body)=>{
+				if(err)utils.log(err);
+				utils.log(res);
+			});
+	}
+}
+
 rtm.on("hello",(event)=>{
     utils.log("hello slack");
     console.log("start slack process");
@@ -117,7 +135,10 @@ rtm.on("message",(event)=>{
     var text = event.text.replace('　',' ');
     var ts = event.ts;
     var shopd=get_mogiid(event);
-    if(shopd){
+	if(event.channel=="GCS4TEWGZ"){
+//		admin(event);
+		return;
+	}else if(shopd){
         shop_id=shopd[0];
         shop_name=shopd[1];
         if(!shop[shop_id]) shop[shop_id]={"goods":[],"image":[],"label":[]};
@@ -167,7 +188,6 @@ rtm.on("message",(event)=>{
             "label : "+shop[shop_id]["label"]+"\n"+
             "text : "+shop[shop_id]["text"]+"\n"+
             "```",event.channel);
-//      screen(event.channel,file,shop_name);
     }else if(text.split(' ')[0]==='.event'){
         try{
             if(text.split(' ').length != 8){
