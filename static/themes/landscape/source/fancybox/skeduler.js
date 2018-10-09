@@ -163,33 +163,35 @@
     console.log(now);
     return now;
   }
-  for (var i = 0; i < places.length; i++) {
-    for (var j = 0; j < data[i].length; j++) {
-      startTime=data[i][j].start_time;
-      //width 0->100% 0.5->half
-      duration=data[i][j].duration;
-      var columun= places.findIndex(function(x) { x == data[i][j].place; });
 
-      var columun = places.indexOf(data[i][j].place);
-      var task = {
-        startTime: startTime,
-        duration: duration,
-        column: columun,
-        id: data[i][j].from,
-        title: data[i][j].name,
-        content: data[i][j].content,
-        width: 0
-      };
-        if(data[i][j].date==21){
-          tasks.push(task);
+  function get_schedule(date){
+      for (var i = 0; i < places.length; i++) {
+        for (var j = 0; j < data[i].length; j++) {
+          startTime=data[i][j].start_time;
+          //width 0->100% 0.5->half
+          duration=data[i][j].duration;
+          var columun= places.findIndex(function(x) { x == data[i][j].place; });
+
+          var columun = places.indexOf(data[i][j].place);
+          var task = {
+            startTime: startTime,
+            duration: duration,
+            column: columun,
+            id: data[i][j].from,
+            title: data[i][j].name,
+            content: data[i][j].content,
+            width: 0
+          };
+            if(data[i][j].date==date){
+              tasks.push(task);
+            }
         }
-    }
+      }
+      return tasks;
   }
-  //console.log("tasks count: " + tasks.length);
-  //console.log(JSON.stringify(tasks));
   jQuery("#skeduler-container").skeduler({
     headers: places,
-    tasks: tasks,
+    tasks: get_schedule(date),
     cardTemplate: '<div>${id}</div><div>${title}</div><div class="hide-content">${content}</div>',
     onClick: function (e, t) { console.log(e, t); }
   });
