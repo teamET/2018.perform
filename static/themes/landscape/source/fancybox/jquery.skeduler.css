@@ -11,14 +11,14 @@
 
 .skeduler-headers {
   color: #fbf9e2;
-  border-left: 1px solid #162f57 ;
+  border-left: 1px solid #fff ;
   display: flex;
   padding-left: 60px;
   position: relative;
 }
 
 .skeduler-headers:before {
-  border-top: 1px solid #162f57 ;
+  border-top: 1px solid #fff ;
   content: "";
   width: 60px;
   position: absolute;
@@ -29,16 +29,16 @@
   flex: 0 0 200px;
   height: 30px;
   padding-top: 10px;
-  background-color: #162f57;
-  border-left: 1px solid #162f57 ;
-  border-bottom: 1px solid #162f57 ;
-  border-top: 1px solid #162f57 ;
+  background-color: #272822;
+  border-left: 1px solid #fff ;
+  border-bottom: 1px solid #fff ;
+  border-top: 1px solid #fff ;
   text-align: center;
 }
 
 .skeduler-headers > div:last-child,
 .skeduler-main-body > div > div.skeduler-cell  {
-  border-right: 1px solid #162f57 ;
+  border-right: 1px solid #fff ;
 }
 
 .skeduler-main {
@@ -55,13 +55,13 @@
   text-align: left;
   padding-left: 10px;
   padding-top: 3px;
-  color: #333333;
-  border-right: 1px solid #162f57 ;
-  border-left: 1px solid #162f57 ;
+  color: #fff;
+  border-right: 1px solid #fff ;
+  border-left: 1px solid #fff ;
 }
 
 .skeduler-main-timeline div:first-child {
-    border-top: 1px solid #162f57 ;
+    border-top: 1px solid #fff ;
 }
 
 .skeduler-main-body {
@@ -70,13 +70,13 @@
 
 .skeduler-main-timeline div,
 .skeduler-main-body > div > div.skeduler-cell {
-  background-color: #FFFFFF;
+  background-color: #272822;
 }
 
 .skeduler-main-timeline div:nth-child(even),
 .skeduler-main-body > div > div.skeduler-cell:nth-child(odd) {
-  border-top: 1px dotted #162f57;
-  border-bottom: 1px solid #162f57;
+  /* border-top: 0.5px dotted #fff; */
+  border-bottom: 1px dotted #fff;
 }
 
 .skeduler-main-body > div > div.skeduler-cell {
@@ -92,7 +92,7 @@
 .skeduler-main-body > div > .skeduler-task-placeholder > div {
   position: absolute;
   overflow: hidden;
-  background-color: #272822;
+  background-color: #fd971f;
   padding: 10px;
   box-sizing: border-box;
   box-shadow: 0px .125em .25em rgba(0,0,0,.25);

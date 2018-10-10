@@ -21,7 +21,7 @@
     schedulerContainerCssClass: 'skeduler-main',
     taskPlaceholderCssClass: 'skeduler-task-placeholder',
     cellCssClass: 'skeduler-cell',
-
+    oddCellCssClass: 'odd skeduler-cell',
     lineHeight: 30,      // height of one half-hour line in grid
     borderWidth: 1,      // width of board of grid cell
 
@@ -194,9 +194,13 @@
         .text(toTimeString(i))
         .appendTo(scheduleTimelineEl);
       div.clone().appendTo(scheduleTimelineEl);
-
-      gridColumnElement.append(div.clone().addClass(settings.cellCssClass));
-      gridColumnElement.append(div.clone().addClass(settings.cellCssClass));
+      if(i%2==0){
+        gridColumnElement.append(div.clone().addClass(settings.cellCssClass));
+        gridColumnElement.append(div.clone().addClass(settings.cellCssClass));
+      }else{
+        gridColumnElement.append(div.clone().addClass(settings.oddCellCssClass));
+        gridColumnElement.append(div.clone().addClass(settings.oddCellCssClass));
+      }
     }
 
     // Populate grid
