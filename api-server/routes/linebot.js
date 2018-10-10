@@ -394,7 +394,7 @@ async function type_message(event) {
                     }
                 }
                 //msg = Build_flexButton(text);
-                msg2 = msg_text(buttonTexts.length);
+                msg = msg_text(buttonTexts.length);
                 break;
         }
     }
