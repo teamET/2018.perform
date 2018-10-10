@@ -17,25 +17,7 @@ d_-- : デバッグ用
 // *p : pathが配置されていること
 */
 
-window.addEventListener("load",WidthCheck);
-
-/**
- * windowの横幅を見て、スマホ～タブレットサイズの場合別リンクに飛ばす。
- */
-function WidthCheck(){
-  console.log(window.innerWidth);
-  if(window.innerWidth < 1100) GoLINELink();
-  else Load();
-}
-/**
- * 別リンクに飛ばす(window.location.assign("url")))
- */
-function GoLINELink(){
-  console.log("end");
-  window.location.assign("https://google.co.jp/");
-  window.msg.textContent = "Moving...";
-  setInterval(()=>window.msg.textContent+=".", 10);
-}
+window.addEventListener("load",Load);
 
 // 読み込んで初期化して表示するMAP位置
 var currentMapID = "OutsideTop";
@@ -88,19 +70,38 @@ function init(event){
   var h_boothdata     = document.getElementById("boothdata");
   // CanvasSizeの大きさ画面サイズに設定する（初期化）
   var Sizing = function(){
-    canvasElement.height = canvasElement.offsetHeight;
-    canvasElement.width  = canvasElement.offsetWidth;
+    canvasElement.height = canvasElement.offsetHeight * window.devicePixelRatio;
+    canvasElement.width  = canvasElement.offsetWidth  * window.devicePixelRatio;
+    canvasElement.style.height  = String(canvasElement.offsetHeight) + "px";
+    canvasElement.style.width  = String(canvasElement.offsetWidth) + "px"; 
+  }
+  var realToCSSPixels = window.devicePixelRatio;
+
+  // ブラウザがcanvasでCSSピクセルを表示しているサイズを参照し、
+  // デバイスピクセルに合った描画バッファサイズを計算する。
+  var displayWidth  = Math.floor(canvasElement.width  * realToCSSPixels);
+  var displayHeight = Math.floor(canvasElement.height * realToCSSPixels);
+
+  // canvasの描画バッファサイズと表示サイズが異なるかどうか確認する。
+  if (canvasElement.width  !== displayWidth ||
+      canvasElement.height !== displayHeight) {
+
+    // サイズが違っていたら、同じサイズにする。
+    canvasElement.width  = displayWidth;
+    canvasElement.height = displayHeight;
   }
   // CanvasSizeの大きさ画面サイズに設定する（初期化）
-  //Sizing();
+  Sizing();
   // - stageの定義
-  // var canvasElement   = document.getElementById("myCanvas");
   var stage = new createjs.StageGL(canvasElement);
+  stage.scaleX = window.devicePixelRatio;
+  stage.scaleY = window.devicePixelRatio;
   // ---------------------------------------------------------------------------------------------------------------   
   var DisplayContainer = new createjs.Container();                                  // 表示用コンテナ
   stage.addChild(DisplayContainer);
   DisplayContainer.cache(0,0,canvasElement.width,canvasElement.height);
   stage.setClearColor('#343434');
+  // var gm_general      = new createjs.Bitmap("https://user-images.githubusercontent.com/38575274/46392238-a3be4400-c71b-11e8-8fb3-b6f466f17ba4.png"); // 構外MAP全体画像　すべての基準はこの画像になる。// *p
   var gm_general      = new createjs.Bitmap("/img/" + j_mapImgsData.Generalview); // 構外MAP全体画像　すべての基準はこの画像になる。// *p
   main();
   // -- タッチ操作有効化
@@ -120,19 +121,8 @@ function init(event){
 
   // -- canvasのサイズを変更する ---------------------------------
   function ChangeCanvasSize(width,height){
-    if(window.devicePixelRatio){
-      canvasElement.width *= devicePixelRatio;
-      canvasElement.height *= devicePixelRatio;
-      //canvasElement.style.width = String(width / devicePixelRatio)+"px";
-      //canvasElement.style.height = String(height / devicePixelRatio)+"px";
-      stage.scaleX = stage.scaleY = window.devicePixelRatio;
-    }else{
-      canvasElement.width = width;
-      canvasElement.height = height;
-      //canvasElement.style.width = String(width)+"px";
-      //canvasElement.style.height = String(height)+"px";
-    }
-    stage.updateViewport();
+    canvasElement.style.width = width;
+    canvasElement.style.height = height;
   }
 
   // -- main main(async) : このあとの処理は全てここ　------------------------------------------------------------------
@@ -145,11 +135,12 @@ function init(event){
     gm_general.scaleX = canvasElement.offsetWidth / bmp_size[0];
     gm_general.scaleY = gm_general.scaleX;
     //canvasSizeの調整　全体MAP画像の大きさと同じ大きさにする
-    ChangeCanvasSize(gm_general.image.width * gm_general.scaleX,gm_general.image.height * gm_general.scaleY);
+    //ChangeCanvasSize(gm_general.image.width * gm_general.scaleX,gm_general.image.height * gm_general.scaleY);
     // 高さを中心に合わせる (基準）(縦横比によって可変する値)
     var z_General = {};
     z_General.x = 0;
-    z_General.y = (canvasElement.height-(gm_general.image.height * gm_general.scaleY))/2;
+    //z_General.y = (canvasElement.height-(gm_general.image.height * gm_general.scaleY))/2;
+    z_General.y = 0;
     gm_general.y = z_General.y;
     
     // :: 親子構造の構築-----------------------------------------------------------------------------------------------
