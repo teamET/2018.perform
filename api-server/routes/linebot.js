@@ -382,7 +382,7 @@ async function type_message(event) {
                     "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
                     "contents": {}
                 }
-                var buttonTexts = ["1","2","3","4"];
+                var buttonTexts = ["1","2","3","4","5","6","7","8"];
                 /*for(j=1;j<=mapdata[i].length;j++){
                     if(i==3 && j==2){
                         buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
