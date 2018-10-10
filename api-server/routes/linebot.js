@@ -383,7 +383,8 @@ async function type_message(event) {
                     "type": "flex",
                     "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
                     "contents": {}
-                }
+                }*/
+                
                 var buttonTexts = [];
                 for(j=1;j<=mapdata[i].length;j++){
                     if(i==3 && j==2){
@@ -392,8 +393,8 @@ async function type_message(event) {
                         buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
                     }
                 }
-                msg = Build_flexButton(text);
-                */
+                //msg = Build_flexButton(text);
+                msg2 = msg_text(buttonTexts.length);
                 break;
         }
     }
