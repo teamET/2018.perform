@@ -334,13 +334,15 @@ async function type_message(event) {
         for(var j=1;j<OutsideArea[i].length;j++){
             switch(event.message.text){
                 case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
+                    /*
                     msg = {
                         "type": "flex",
                         "altText": "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報",
                         "contents": {}
                     };
                     msg.contents = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
-                    msg = msg_text("debug message");
+                    */
+                    msg = msg_text("debug message [エリアの模擬店情報]");
                     break;
             }
         }
@@ -358,13 +360,15 @@ async function type_message(event) {
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
                     case mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報を表示":
+                        /*
                         msg = {
                             "type": "flex",
                             "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報",
                             "contents": {}
                         };
                         msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
-                        msg = msg_text("debug message");
+                        */
+                        msg = msg_text("debug message [~棟~階~番目の模擬店情報へ]");
                         break;
                 }
             }
@@ -372,7 +376,8 @@ async function type_message(event) {
         switch(event.message.text){
             case mapBFdata[i][0]+"棟へ":
                 // flex
-                msg = {
+                msg = msg_text("debug message [~棟へ]")
+                /*msg = {
                     "type": "flex",
                     "altText":  mapBFdata[i][0]+"棟へ",
                     "contents": {}
@@ -386,6 +391,7 @@ async function type_message(event) {
                     }
                 }
                 msg.contents = Build_flexButton(buttonTexts);
+                */
                 break;
         }
     }
