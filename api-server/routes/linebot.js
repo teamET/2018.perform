@@ -376,21 +376,24 @@ async function type_message(event) {
         switch(event.message.text){
             case mapBFdata[i][0]+"棟へ":
                 // flex
+                var text = "";
                 //msg = msg_text("debug message [~棟へ]")
-                msg = {
+                /*msg = {
                     "type": "flex",
                     "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
                     "contents": {}
-                }
-                var buttonTexts = ["1","2","3","4","5","6","7","8"];
-                /*for(j=1;j<=mapdata[i].length;j++){
+                }*/
+                //var buttonTexts = [];
+                for(j=1;j<=mapdata[i].length;j++){
                     if(i==3 && j==2){
-                        buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
+                        //buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
+                        text += mapBFdata[i][0]+"棟"+3+"階へ";
                     }else{
                         buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
+                        text +=mapBFdata[i][0]+"棟"+j+"階へ";
                     }
-                }*/
-                msg.contents = Build_flexButton(buttonTexts);
+                }
+                msg = Build_flexButton(text);
                 break;
         }
     }
