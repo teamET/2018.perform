@@ -5,7 +5,8 @@ var moment = require('moment');
 var connection = require('./mysqlConnection');
 
 const INSERT = 'INSERT INTO BeaconData (BEACONID, MESSAGE, PLACE) VALUES ("{id}", "{msg}", "{place}")';
-const UPDATE = 'UPDATE BeaconData SET MESSAGE = "{msg}" WHERE BEACONID = "{id}"';
+const UPDATE = 'UPDATE BeaconData SET MESSAGE = "{msg}" WHERE PLACE = "{place}"';
+const U = 'UPDATE BeaconData SET MESSAGE = "{msg}" WHERE PLACE IS NOT NULL'
 
 /* MAIN */
 router.post('/create', function(req, res, next) {
@@ -31,7 +32,10 @@ router.post('/update', function(req, res, next) {
     //bodyの受け取り
     var body = req.body;
     var query = UPDATE.replace("{msg}", body.message)
-        .replace("{id}", body.beaconid);
+        .replace("{place}", body.place);
+    if (body.place == "ALL") {
+        query = U.replace("{msg}", body.message);
+    }
     connection.query(query, function(err, rows) {
         console.log(rows);
         if (err) {
