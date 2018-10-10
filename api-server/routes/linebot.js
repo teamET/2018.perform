@@ -377,23 +377,23 @@ async function type_message(event) {
             case mapBFdata[i][0]+"棟へ":
                 // flex
                 var text = "";
-                //msg = msg_text("debug message [~棟へ]")
-                /*msg = {
+                msg = msg_text("debug message ["+mapBFdata[i][0]+"棟へ]");
+                /*
+                msg = {
                     "type": "flex",
                     "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
                     "contents": {}
-                }*/
-                //var buttonTexts = [];
+                }
+                var buttonTexts = [];
                 for(j=1;j<=mapdata[i].length;j++){
                     if(i==3 && j==2){
-                        //buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
-                        text += mapBFdata[i][0]+"棟"+3+"階へ";
+                        buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
                     }else{
                         buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
-                        text +=mapBFdata[i][0]+"棟"+j+"階へ";
                     }
                 }
                 msg = Build_flexButton(text);
+                */
                 break;
         }
     }
