@@ -94,7 +94,7 @@ if sidebar
   color: #fbf9e2;
   box-sizing: inherit;
   width: 32%;
-  padding: 10px;
+  padding: 10px 10px 30px 10px;
   display: inline-block;
 }
 
@@ -104,12 +104,18 @@ if sidebar
 }
 
 .shop table {
+  background-color: rgba(0,0,0,0.4);
   box-sizing: inherit;
   width: 100%;
-
-  background-color: #272822;
   color: #fbf9e2;
+  box-shadow: 0px .125em .25em rgba(0,0,0,.25);
 }
+
+.shop td {
+  border: solid 0.5px #272822;  /* 枠線指定 */
+  padding: 10px;      /* 余白指定 */
+}
+
 .slide-show {
   position: relative;
 }
