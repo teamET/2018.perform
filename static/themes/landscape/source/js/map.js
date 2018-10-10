@@ -17,8 +17,24 @@ d_-- : デバッグ用
 // *p : pathが配置されていること
 */
 
-window.addEventListener("load",Load);
-
+window.addEventListener("load",WidthCheck);
+ /**
+ * windowの横幅を見て、スマホ～タブレットサイズの場合別リンクに飛ばす。
+ */
+function WidthCheck(){
+  console.log(window.innerWidth);
+  if(window.innerWidth < 1100) GoLINELink();
+  else Load();
+}
+/**
+ * 別リンクに飛ばす(window.location.assign("url")))
+ */
+function GoLINELink(){
+  console.log("end");
+  window.location.assign("https://google.co.jp/");
+  window.msg.textContent = "Moving...";
+  setInterval(()=>window.msg.textContent+=".", 10);
+}
 // 読み込んで初期化して表示するMAP位置
 var currentMapID = "OutsideTop";
 var reloadCount  = 0;
