@@ -340,6 +340,7 @@ async function type_message(event) {
                         "contents": {}
                     };
                     msg.contents = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
+                    msg = msg_text("debug message");
                     break;
             }
         }
@@ -363,6 +364,7 @@ async function type_message(event) {
                             "contents": {}
                         };
                         msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                        msg = msg_text("debug message");
                         break;
                 }
             }
