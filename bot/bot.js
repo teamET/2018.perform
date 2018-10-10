@@ -139,7 +139,9 @@ rtm.on("message",(event)=>{
 //		admin(event);
 		return;
 	}else if(event.channel=="CD0KZSRQ9"){
-		photos.push(utils.download("photo_club",event.files[0].title,event.files[0].url_private_download));
+		if(event.files[0]){
+			photos.push(utils.download("photo_club",event.files[0].title,event.files[0].url_private_download));
+		}
 		slack(JSON.stringify(photos));
 		return;
 	}else if(shopd){
