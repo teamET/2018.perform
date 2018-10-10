@@ -9,7 +9,7 @@ const utils= require("./utils.js");
 //load json
 const account= require("./private/id2mogiid.json");
 const shop= require("./public/shop.json");
-const tag= require("./public/tag.json");
+
 //load env
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
 const DEV_SERVER=process.env.DEV_SERVER;
@@ -25,6 +25,11 @@ var photos=[];
 
 function create_json(){
     var events_data,tag_data;
+	try {
+		const tag=JSON.parse(fs.readFileSync("./private/tag.json"));
+	}catch(e){
+		console.log(e);
+	}
     try {
         events_data = fs.readFileSync("./public/events.json");
         events = JSON.parse(events_data);
@@ -132,17 +137,17 @@ rtm.on("hello",(event)=>{
 
 rtm.on("message",(event)=>{
     var channel = event.channel;
-    var text = event.text.replace('　',' ');
+    if(event.text){event.text = event.text.replace('　',' ');}
     var ts = event.ts;
     var shopd=get_mogiid(event);
 	if(event.channel=="GCS4TEWGZ"){
 //		admin(event);
 		return;
 	}else if(event.channel=="CD0KZSRQ9"){
-		if(event.files[0]){
+		if(event.files){
 			photos.push(utils.download("photo_club",event.files[0].title,event.files[0].url_private_download));
+			slack(JSON.stringify(photos),event.channel);
 		}
-		slack(JSON.stringify(photos));
 		return;
 	}else if(shopd){
         shop_id=shopd[0];
