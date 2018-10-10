@@ -1,7 +1,7 @@
 {
     "ToCampusArrow":"map-tool-toInside.png",
     "ToOutsideArrow":"map-tool-toOutside.png",
-    "Generalview": "map2.png",
+    "Generalview": "map.png",
     "AreaRects":[
         {"x":1050,"y":300,"width":500,"height":250,"color":"DarkRed"},
         {"x":1750,"y":270,"width":450,"height":250,"color":"DarkRed"},
