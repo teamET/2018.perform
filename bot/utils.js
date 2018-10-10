@@ -104,9 +104,9 @@ function slack_upload(channel,image){
 };
 
 function download(dir,title,url){
-	var dir='./files/'+dir;
+	var dir='./public/'+dir;
 	var fname=dir+'/'+title;
-	mkdirp(dir,(err)=>{console.log(err);});
+	mkdirp(dir,(err)=>{slack_log(err);});
 	request({
 		url:url,
 		headers:{'Authorization': 'Bearer '+SLACK_TOKEN}
