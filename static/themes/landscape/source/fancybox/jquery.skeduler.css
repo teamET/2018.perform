@@ -6,6 +6,7 @@
 
 .skeduler-container * {
   box-sizing: content-box;
+  text-align: center;
 }
 
 .skeduler-headers {
