@@ -26,7 +26,7 @@ html, body, #container
   height: 500px;
 
 body
-  max-width: (column-width + gutter-width) * columns + gutter-width
+  max-width: 100%
   margin: 0 auto
   padding: 0 gutter-width
   background: color-background
@@ -90,9 +90,10 @@ if sidebar
   @import "_partial/sidebar"
 
 .shop {
-  background-color: white;
+  background-color: #272822;
+  color: #fbf9e2;
   box-sizing: inherit;
-  width: 49.5%;
+  width: 32%;
   padding: 10px;
   display: inline-block;
 }
@@ -105,6 +106,9 @@ if sidebar
 .shop table {
   box-sizing: inherit;
   width: 100%;
+
+  background-color: #272822;
+  color: #fbf9e2;
 }
 .slide-show {
   position: relative;
@@ -145,9 +149,7 @@ td {
 
 .post {
     position: relative;
-    border-right: 2px solid #d0d5d8;
     border-bottom: 2px solid #d0d5d8;
-    border-left: 1px solid #d0d5d8;
     padding: 5px;
     
 }
@@ -158,7 +160,7 @@ td {
 
 .post .title {
     font-size: 14px;
-    color: #ee002d;
+    color: #e99130;
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 10px;
@@ -166,6 +168,7 @@ td {
 }
 
 .post .content h6 {
+    color: #fbf9e2;
     font-size: 14px;
     line-height: 1.6;
     margin-bottom: 10px;
@@ -173,10 +176,11 @@ td {
 }
 
 .post .content h6:focus {
-    color: #ee002d;
+    color: #e99130;
 }
 
 .post .date {
+    color: #fbf9e2;
     margin-bottom: 0;
     line-height: 1;
 }
@@ -186,7 +190,7 @@ td {
 }
 
 .news {
-    background-color: #ffffff;
+    background-color: #272822;
     position: relative;
     width: 100%;
     min-height: 1px;
@@ -195,8 +199,28 @@ td {
 }
 
 .news h1{
+  text-align: center;
+  color: #fbf9e2;
   font-size: 28px;
   }
+
+.about { 
+  padding: 20px 20px 20px 80px;
+  color:  #fbf9e2;
+  background-color: #272822;
+  }
+
+.about h1 {
+  text-align: center;
+  color: #fbf9e2;
+  font-size: 28px;
+  }
+
+@media screen and (max-width: 1024px) {
+  .shop {
+  width: 49.5%;
+  }
+}
 
 @media screen and (max-width: 500px) {
   .shop {
@@ -216,7 +240,6 @@ td {
     width 49.5%;
     display: inline-block;
   }
-
 }
 
 html,
@@ -281,6 +304,10 @@ body {
   width:  33.33%;
   height 30px;
   overflow: hidden;
+  }
+
+  .about { 
+  padding: 20px 20px 20px 20px;
   }
 
   body {
