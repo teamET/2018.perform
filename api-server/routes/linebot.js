@@ -308,7 +308,7 @@ async function type_message(event) {
                 "altText":  "TOP",
                 "contents": {}
             };
-            var buttonTexts = ["構外マップへ","構内マップへ"];
+            var buttonTexts = ["[Top] 構外全体マップへ","[Top] 構内全体マップへ"];
             msg.contents = Build_flexButton(buttonTexts);
             break;
         case "[Top] 構内全体マップへ":
