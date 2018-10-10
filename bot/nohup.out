@@ -1,0 +1,1787 @@
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'v4C', name: 'クレープ', org: '４C有志' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : チョコバナナ\ngoods : []\nimage : [\"IMG_20180928_080830.jpg\"]\nlabel : \ntext : undefined\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```チョコバナナ```","level":"info"}
+booth
+```.help
+.entry <shop name> <class>
+.goods <goods name> <price>
+.tag <number>
+.review
+.show
+```
+event
+```.event <date> <start_time> <end_time> <place> <name> <content> <from>
+.show_event```
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'v4C', name: 'クレープ', org: '４C有志' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : チョコバナナ\ngoods : []\nimage : [\"IMG_20180928_080830.jpg\"]\nlabel : \ntext : undefined\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : チョコバナナ\ngoods : []\nimage : [\"IMG_20180928_080830.jpg\"]\nlabel : \ntext : undefined\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9230A11
+c2D サツマイモ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD94TMBFU
+c2C パンケーキ屋さん
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5QQ12
+c4M お好み焼き
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACAZ0D
+v4E 団子カフェ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJ9XC6
+v4C クレープ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEG18R
+abd 留学生
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9231CLT
+v5D 綿飴屋
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEGDCH
+hl タピオカ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD94TNLUA
+v2M たこ焼き
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9231WFM
+v2AS チジミ屋
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G1J9M
+v5C チャーハン
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD94TP1EW
+c1AC 飲み物
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACCG3X
+v4C 焼き餃子
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACCLHK
+v3D フルーツサンド
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBMDL
+not mogi GDAFJBMDL
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBV0E
+fb トルネードポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACDHMK
+bd チュロス
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8CJQLRE
+hb わらび餅
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJCJ4W
+cm けんちん汁
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5TQCC
+htb 焼き鳥
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEJKG9
+vb ホットドッグ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD94TQSH0
+bsk 牛串
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJCY6S
+tnf フランクフルト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACE99B
+cyc 今川焼き
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G3P1D
+not mogi GDA6G3P1D
+GD9234A9H
+v5M スタンプラリー
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9234DTM
+c14 ゲーム
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACEQ0M
+vM 学科企画
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD94TRH3L
+c13 射的
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJDPGE
+v14 バトルドーム
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8CJRYFJ
+c4D トリックオアトリート
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G4LTH
+kusa 森のミュージアム
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8CJSBHN
+pg 写真展示
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8CJSGAC
+gcat ゲーム展示
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8CJSML0
+tea お茶出し
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : チョコバナナ\ngoods : []\nimage : [\"IMG_20180928_080830.jpg\"]\nlabel : \ntext : undefined\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5QQ12
+c4M お好み焼き
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8CJSML0
+tea お茶出し
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJ9XC6
+v4C クレープ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9234DTM
+c14 ゲーム
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8CJSGAC
+gcat ゲーム展示
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJCJ4W
+cm けんちん汁
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9230A11
+c2D サツマイモ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9234A9H
+v5M スタンプラリー
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD94TNLUA
+v2M たこ焼き
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9231WFM
+v2AS チジミ屋
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G1J9M
+v5C チャーハン
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACDHMK
+bd チュロス
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBV0E
+fb トルネードポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJDPGE
+v14 バトルドーム
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJCY6S
+tnf フランクフルト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEGDCH
+hl タピオカ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8CJQLRE
+hb わらび餅
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+DCSSBCD7X
+not mogi DCSSBCD7X
+DCSSBCD7X
+not mogi DCSSBCD7X
+DCSSBCD7X
+not mogi DCSSBCD7X
+DCSSBCD7X
+not mogi DCSSBCD7X
+GD94TQSH0
+bsk 牛串
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACE99B
+cyc 今川焼き
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD94TRH3L
+c13 射的
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5TQCC
+htb 焼き鳥
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACCG3X
+v4C 焼き餃子
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G4LTH
+kusa 森のミュージアム
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACAZ0D
+v4E 団子カフェ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : チョコバナナ\ngoods : []\nimage : [\"IMG_20180928_080830.jpg\"]\nlabel : \ntext : undefined\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```チョコバナナ```","level":"info"}
+booth
+```.help
+.entry <shop name> <class>
+.goods <goods name> <price>
+.tag <number>
+.review
+.show
+```
+event
+```.event <date> <start_time> <end_time> <place> <name> <content> <from>
+.show_event```
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+/home/kfes/workspace/2018.perform/bot/bot.js:135
+    var text = event.text.replace('　',' ');
+                          ^
+
+TypeError: Cannot read property 'replace' of undefined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:135:27)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'v4C', name: 'クレープ', org: '４C有志' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'v4C', name: 'クレープ', org: '４C有志' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'v4C', name: 'クレープ', org: '４C有志' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```チョコバナナ```","level":"info"}
+booth
+```.help
+.entry <shop name> <class>
+.goods <goods name> <price>
+.tag <number>
+.review
+.show
+```
+event
+```.event <date> <start_time> <end_time> <place> <name> <content> <from>
+.show_event```
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+/home/kfes/workspace/2018.perform/bot/bot.js:142
+		photos.push(utils.download("photo_club",event.files[0].title,event.files[0].url_private_download));
+		                                                   ^
+
+TypeError: Cannot read property '0' of undefined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:142:54)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'v4C', name: 'クレープ', org: '４C有志' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+/home/kfes/workspace/2018.perform/bot/bot.js:142
+		if(event.files[0]){
+		              ^
+
+TypeError: Cannot read property '0' of undefined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:142:17)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'v4C', name: 'クレープ', org: '４C有志' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+download file successed ./public/photo_club ./public/photo_club/IMGP0007.JPG https://files.slack.com/files-pri/TCU2B5GDC-FDC6PLN06/download/imgp0007.jpg
+{"message":"[\"./public/photo_club/IMGP0007.JPG\"]","level":"info"}
+{"message":null,"level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```チョコバナナ```","level":"info"}
+booth
+```.help
+.entry <shop name> <class>
+.goods <goods name> <price>
+.tag <number>
+.review
+.show
+```
+event
+```.event <date> <start_time> <end_time> <place> <name> <content> <from>
+.show_event```
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```チョコバナナ```","level":"info"}
+booth
+```.help
+.entry <shop name> <class>
+.goods <goods name> <price>
+.tag <number>
+.review
+.show
+```
+event
+```.event <date> <start_time> <end_time> <place> <name> <content> <from>
+.show_event```
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : チョコバナナ\ngoods : []\nimage : []\nlabel : \ntext : undefined\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{ c4J: { goods: [], image: [], label: [] } }
+undefined
+{"message":"商品が登録されました.\nタグの登録を行ってください.","level":"info"}
+{"message":"","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : チョコバナナ\ngoods : [{\"name\":\"ばなな\",\"price\":\"100\"}]\nimage : []\nlabel : \ntext : undefined\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"商品名または値段の入力方法に誤りがあります.\ne.g.\n.goods <goods name> <price>","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [],
+     tstamp: '1539147308.000100' } }
+{ name: 'ばなな', price: '100' }
+{"message":"商品が登録されました.\nタグの登録を行ってください.","level":"info"}
+{"message":"","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : チョコバナナ\ngoods : [{\"name\":\"ばなな\",\"price\":\"100\"},{\"name\":\"ななな\",\"price\":\"7654\"}]\nimage : []\nlabel : \ntext : undefined\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```チョコバナナ```","level":"info"}
+booth
+```.help
+.entry <shop name> <class>
+.goods <goods name> <price>
+.tag <number>
+.review
+.show
+```
+event
+```.event <date> <start_time> <end_time> <place> <name> <content> <from>
+.show_event```
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+module.js:675
+    throw err;
+    ^
+
+SyntaxError: /home/kfes/workspace/2018.perform/bot/private/tag.json: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at Object.Module._extensions..json (module.js:672:27)
+    at Module.load (module.js:566:32)
+    at tryModuleLoad (module.js:506:12)
+    at Function.Module._load (module.js:498:3)
+    at Module.require (module.js:597:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/kfes/workspace/2018.perform/bot/bot.js:12:12)
+    at Module._compile (module.js:653:30)
+    at Object.Module._extensions..js (module.js:664:10)
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'v4C', name: 'クレープ', org: '４C有志' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+download file successed ./public/photo_club ./public/photo_club/IMGP0006.JPG https://files.slack.com/files-pri/TCU2B5GDC-FDALYDWDA/download/imgp0006.jpg
+{"message":"[\"./public/photo_club/IMGP0006.JPG\"]","level":"info"}
+{"message":null,"level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+download file successed ./public/photo_club ./public/photo_club/P8060390.JPG https://files.slack.com/files-pri/TCU2B5GDC-FDA4F996U/download/p8060390.jpg
+{"message":"[\"./public/photo_club/IMGP0006.JPG\",\"./public/photo_club/P8060390.JPG\"]","level":"info"}
+{"message":null,"level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+download file successed ./public/photo_club ./public/photo_club/P4070285.JPG https://files.slack.com/files-pri/TCU2B5GDC-FDC83RRSS/download/p4070285.jpg
+{"message":"[\"./public/photo_club/IMGP0006.JPG\",\"./public/photo_club/P8060390.JPG\",\"./public/photo_club/P4070285.JPG\"]","level":"info"}
+{"message":null,"level":"info"}
+CD0KZSRQ9
+not mogi CD0KZSRQ9
+GCSFWFUE8
+not mogi GCSFWFUE8
