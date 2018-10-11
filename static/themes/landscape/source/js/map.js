@@ -23,7 +23,7 @@ window.addEventListener("load",WidthCheck);
  */
 function WidthCheck(){
   console.log(window.innerWidth);
-  if(window.innerWidth < 1100) GoLINELink();
+  if(window.innerWidth < 1050) GoLINELink();
   else Load();
 }
 /**
@@ -70,6 +70,7 @@ function getParam(name) {
     }
     return p_obj[name];
 }
+
 // JSONデータが読み込まれたら入る
 function init(event){
   var j_mapImgsData   = event.target.getResult("mapImgs");　// mapImgData.json
