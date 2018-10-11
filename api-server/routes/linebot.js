@@ -393,6 +393,7 @@ async function type_message(event) {
                         buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
                     }
                 }
+                console.log(buttonTexts);
                 //msg = Build_flexButton(text);
                 msg = msg_text(buttonTexts.length);
                 break;
