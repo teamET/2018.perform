@@ -265,6 +265,9 @@ async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg  = undefined;
     var msg2 = undefined;
+    var msg3 = undefined;
+    var msg4 = undefined;
+    var msg5 = undefined;
     var mapdata  = new Object(); // mapの場所データなど
     // [エリア][ピンの番号]([][0] : エリア名)
     var OutsideArea =  [["A",1,2,3,4,5],
@@ -357,9 +360,19 @@ async function type_message(event) {
     // [2] 構内マップ
     for(var i=0;i<mapBFdata.length;i++){
         for(var j=1;j<mapBFdata[i].length;j++){
+            // フロアの画像送信部
+            switch(event.message.texts){
+                case mapBFdata[i][0] + "棟"+j+"階へ":
+                    console.log("console");
+                    mapdata.location = "I"+mapdata[i][0]+j;
+                    msg = msg_imagemap("map",mapdata);
+                    msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
+                    break;
+            }
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
                     case mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報を表示":
+                        // 模擬店情報送信部
                         /*
                         msg = {
                             "type": "flex",
@@ -373,28 +386,24 @@ async function type_message(event) {
                 }
             }
         }
+        // 階数を選択するflexMessageの送信
         switch(event.message.text){
             case mapBFdata[i][0]+"棟へ":
-                // flex
-                var text = "";
-                msg = msg_text("debug message ["+mapBFdata[i][0]+"棟へ]");
-                /*
                 msg = {
                     "type": "flex",
                     "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
                     "contents": {}
-                }*/
-                
+                }
                 var buttonTexts = [];
-                for(j=1;j<=mapdata[i].length;j++){
+                for(j=1;j<mapBFdata[i].length;j++){
                     if(i==3 && j==2){
                         buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
                     }else{
                         buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
                     }
                 }
-                //msg = Build_flexButton(text);
-                msg = msg_text(buttonTexts.length);
+                console.log(buttonTexts);
+                msg.contents = Build_flexButton(buttonTexts);
                 break;
         }
     }
@@ -406,7 +415,7 @@ async function type_message(event) {
     }
     if (msg){
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-            event.replyToken,msg, msg2
+            event.replyToken,msg, msg2, msg3, msg4, msg5
         ));
         request.post(tmp);
     }

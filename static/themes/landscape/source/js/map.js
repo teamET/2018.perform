@@ -31,7 +31,7 @@ function WidthCheck(){
  */
 function GoLINELink(){
   console.log("end");
-  window.location.assign("https://google.co.jp");
+  window.location.assign("https://kunugida2018.tokyo-ct.ac.jp/lineat/?map=true");
   window.msg.textContent = "Moving...";
   setInterval(()=>window.msg.textContent+=".", 10);
 }
@@ -313,8 +313,8 @@ function init(event){
     // 位置、角度のセット
     toOutsideArrow.scaleX = gm_general.scaleX * 0.9;
     toOutsideArrow.scaleY = gm_general.scaleY * 0.9;
-    toOutsideArrow.x      = 200 * gm_general.scaleX + cm_img.x; // *z 座標を入れよう
-    toOutsideArrow.y      = 50 * gm_general.scaleY + cm_img.y; // *z
+    toOutsideArrow.x      = 80 * gm_general.scaleX + cm_img.x; // *z 座標を入れよう
+    toOutsideArrow.y      = 0 * gm_general.scaleY + cm_img.y; // *z
     InsideTopContainer.addChild(toOutsideArrow);
     // --- 3.3 構内から棟に飛ぶ時の四角 (吹き出しを出すものもある) --------------------------------
     for(var i=0;i<j_mapImgsData.Campus.buildingRects.length;i++){
