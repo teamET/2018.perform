@@ -118,10 +118,14 @@ function download(dir,title,url){
 const HELP_MESSAGE="booth\n\
 ```\
 .help\n\
+.entry <shop name>\n\
 .goods <goods name> <price>\n\
+.del_goods <goods name>\n\
 .tag <number>\n\
+.del_tag <number>\n\
 .review\n\
 .show\n\
+.show_tag\n\
 ```\n\
 event\n\
 ```\

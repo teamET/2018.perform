@@ -22,11 +22,12 @@ var timetable;
 var arr;
 var list;
 var photos=[];
+var tag;
 
 function create_json(){
-    var events_data,tag_data;
+    var events_data;
 	try {
-		const tag=JSON.parse(fs.readFileSync("./private/tag.json"));
+		tag=JSON.parse(fs.readFileSync("./private/tag.json"));
 	}catch(e){
 		console.log(e);
 	}
@@ -152,7 +153,8 @@ rtm.on("message",(event)=>{
 	}else if(shopd){
         shop_id=shopd[0];
         shop_name=shopd[1];
-        if(!shop[shop_id]) shop[shop_id]={"goods":[],"image":[],"label":[]};
+        if(!shop[shop_id]) shop[shop_id]={"shopname":shop_name,"goods":[],"image":[],"label":[]};
+        if(!shop[shop_id].shopname) shop[shop_id].shopname=shop_name;
         console.log(shop_id,shop_name);
     }else{
         return;
@@ -165,14 +167,17 @@ rtm.on("message",(event)=>{
         shop[shop_id].text = event.text.slice(6);
         shop[shop_id].tstamp = ts;
         slack("テキストが登録されました.",channel);
-    }else if(text.split(' ')[0]==='.goods'){
-        if(text.split(' ').length != 3){
+    }else if(event.text.split(" ")[0]===".entry"){
+		shop[shop_id].shopname = event.text.split(" ")[1];
+        slack("店舗名が登録されました.",channel);
+    }else if(event.text.split(' ')[0]==='.goods'){
+        if(event.text.split(' ').length != 3){
             slack('商品名または値段の入力方法に誤りがあります.\ne.g.\n.goods <goods name> <price>',channel);
             return ;
         }
         var cnt;
-        var Name = text.split(' ')[1];
-        var Price = text.split(' ')[2];
+        var Name = event.text.split(' ')[1];
+        var Price = event.text.split(' ')[2];
         console.log(shop);
         console.log(shop[shop_id].goods[0]);
         for(cnt=0;cnt<shop[shop_id].goods.length;cnt++){
@@ -189,19 +194,42 @@ rtm.on("message",(event)=>{
         if(shop[shop_id].goods[0].name==='name') shop[shop_id].goods.shift();
         slack("商品が登録されました.\nタグの登録を行ってください.",channel);
         tag_message(tag,channel);
-    }else if(text.split(' ')[0]==='.rewiew'){
+    }else if(event.text.split(' ')[0]==='.del_goods'){
+		var cnt;
+		var Name = event.text.split(" ")[1];
+		for(cnt=0;cnt<shop[shop_id].goods.length;cnt++){
+	        if(shop[shop_id].goods[cnt]["name"] == Name){
+	            shop[shop_id].goods.splice(cnt,1);
+	            slack("商品を削除しました.",channel);
+	            return ;
+        	}
+    	}
+    }else if(event.text.split(' ')[0]==='.show_tag'){
+        tag_message(tag,channel);
+    }else if(event.text.split(' ')[0]==='.del_tag'){
+		var tags = event.text.split(' ');
+        var cnt;
+		tags.shift();
+        for(let i in tags){
+			cnt = shop[shop_id].label.indexOf(tags[i])
+            if(cnt!==-1){
+                shop[shop_id].label.splice(cnt,1);
+                shop[shop_id].tstamp = ts;
+        		slack("タグが削除されました.",channel);
+            }
+        }
+    }else if(event.text.split(' ')[0]==='.rewiew'){
         screen('./public/'+shop_id+shop_id,shop_id);
-    }else if(text.split(' ')[0]==='.show'){
+    }else if(event.text.split(' ')[0]==='.show'){
         slack("```"+
-            "name : "+shop_name+"\n"+
+            "name : "+JSON.stringify(shop[shop_id]["shopname"])+"\n"+
             "goods : "+JSON.stringify(shop[shop_id]["goods"])+"\n"+
             "image : "+JSON.stringify(shop[shop_id]["image"])+"\n"+
             "label : "+shop[shop_id]["label"]+"\n"+
-            "text : "+shop[shop_id]["text"]+"\n"+
             "```",event.channel);
-    }else if(text.split(' ')[0]==='.event'){
+    }else if(event.text.split(' ')[0]==='.event'){
         try{
-            if(text.split(' ').length != 8){
+            if(event.text.split(' ').length != 8){
                 slack('registed data is invarid.\n'+
                     'e.g.\n'+
                     '.event <date> <start_time> <end_time> <place> <name> <content> <from>\n'+
@@ -210,13 +238,13 @@ rtm.on("message",(event)=>{
                         channel);
                 return ;
             }
-            var date = text.split(' ')[1];
-            var start_time = text.split(' ')[2];
-            var end_time = text.split(' ')[3];
-            var place = text.split(' ')[4];
-            var name = text.split(' ')[5];
-            var content = text.split(' ')[6];
-            var from = text.split(' ')[7];
+            var date = event.text.split(' ')[1];
+            var start_time = event.text.split(' ')[2];
+            var end_time = event.text.split(' ')[3];
+            var place = event.text.split(' ')[4];
+            var name = event.text.split(' ')[5];
+            var content = event.text.split(' ')[6];
+            var from = event.text.split(' ')[7];
             var time = '2018/10/'+date+'/'+start_time+':00';
             events[events.length-1] = {"id":events.length-1,"date":date,"time":time,"start_time":start_time,"end_time":end_time,"place":place,"name":name,"content":content,"from":from,"tstamp":ts};
             events = utils.json_sort(events);
@@ -224,11 +252,11 @@ rtm.on("message",(event)=>{
         }catch(e){
             slack("想定外のエラーが発生しました",channel);
         }
-    }else if(text.split(' ')[0]==='.show_event'){
+    }else if(event.text.split(' ')[0]==='.show_event'){
         var events_text = JSON.stringify(events,null,'\t')
         slack(events_text,channel);
-    }else if(text.split(' ')[0]==='.tag'){
-        var tags = text.split(' ');
+    }else if(event.text.split(' ')[0]==='.tag'){
+        var tags = event.text.split(' ');
         console.log("tags",tags);
         tags.shift();
         console.log("tags",tags);
@@ -239,8 +267,8 @@ rtm.on("message",(event)=>{
         console.log("tag",tag);
         for(let i in tags){
             for(let j in tag){
-                if((tags[i]==tag[j].id)&&(shop[shop_id].label.indexOf(tag[j].tag)==-1)){
-                    console.log("tag",tag[j].tag);
+                if((tags[i]==tag[j].id)&&(shop[shop_id].label.indexOf(tag[j].id)==-1)){
+                    console.log("tag",tag[j].id);
                     shop[shop_id].label[cnt] = tag[j].id;
                     console.log("list",shop[shop_id].label[cnt]);
                     shop[shop_id].tstamp = ts;
@@ -252,12 +280,11 @@ rtm.on("message",(event)=>{
         shop[shop_id].tstamp = ts;
         if(shop[shop_id].label[0]==='label') shop[shop_id].label.shift();
         slack("タグが登録されました.",channel);
-    }else if(text.split(' ')[0]==='.tag_help'){
-        //		slack("0:食べ物, 1:飲み物, 2:アトラクション, 3:温かいもの, 4:冷たいもの, 5:甘い, 6:しょっぱい",channel);
+    }else if(event.text.split(' ')[0]==='.tag_help'){
         tag_message(tag,channel);
-    }else if(text.split(' ')[0]==='.tag_save'){
+    }else if(event.text.split(' ')[0]==='.tag_save'){
         try{
-            var tags = {"id":tag.length,"tag":text.split(' ')[1]};
+            var tags = {"id":tag.length,"tag":event.text.split(' ')[1]};
             tag.push(tags);
         }catch(e){
             console.log(e);
