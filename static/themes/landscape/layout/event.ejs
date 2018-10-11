@@ -1,55 +1,18 @@
 <section id="event">
-    <header>
-       
-    </header>
-    </script-->
-    <!-- <div class="slide-show w3-content w3-display-container">
-        <p class="txt">第一体育館</p>
-        <p class="txt">第二体育館</p>
-        <p class="txt">購買前</p>
-        <p class="txt">企画</p>
-        <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301309-a8878e00-a34f-11e8-971c-fde728bb12ba.jpg">
-        <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301310-a8878e00-a34f-11e8-8ee0-ba6ba791c3bd.jpg">
-        <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301311-a8878e00-a34f-11e8-8ce6-7328bdde6fce.jpg">
-        <img class="mySlides" src="https://user-images.githubusercontent.com/38575274/44301310-a8878e00-a34f-11e8-8ee0-ba6ba791c3bd.jpg">
-        <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-        <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-    
-    </div> -->
-
-    <script>
-        var slideIndex = 1;
-        showDivs(slideIndex);
-
-        function plusDivs(n) {
-        showDivs(slideIndex += n);
-        }
-        
-
-        function showDivs(n) {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        var y = document.getElementsByClassName("txt");
-        if (n > x.length) {slideIndex = 1}    
-        if (n < 1) {slideIndex = x.length}
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-            y[i].style.display = "none";
-        }
-        x[slideIndex-1].style.display = "block";
-        y[slideIndex-1].style.display = "block";
-        }
+    <script>   
     </script>
-    <div>
-   </div>
-<div class="event">
+    <div class="event">
+        <div align="center">
+            <button id="sche20" class="w3-button w3-black">20</button>
+            <button id="sche21" class="w3-button w3-black">21</button>
+        </div>
+    </div>
     <div class="w3-content" id="skeduler-container"></div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
 
-    <%- css('fancybox/jquery.skeduler') %>
-    <%- js('fancybox/jquery.skeduler') %>
-    <%- js('fancybox/skeduler') %>
-    <%- js('fancybox/htmlpreview.min') %>
-    <%- js('fancybox/jquery-2.2.4.min') %>
-    </section>
-</div>
+    <%- js('skeduler/jquery-2.2.4.min') %>  
+    <%- js('skeduler/jquery.skeduler') %>
+    <%- css('skeduler/jquery.skeduler') %>
+
+    <%- js('skeduler/skeduler') %>  
+</section>

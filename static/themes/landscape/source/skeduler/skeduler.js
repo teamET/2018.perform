@@ -1,4 +1,6 @@
 (function generate() {
+  window.jQuery = window.$;
+  console.log(window.$,window.$("#skeduler-container"),window.$("#skeduler-container").skeduler);
   console.log("generate");
   var tasks = [];
   var places = ["第一体育館", "第二体育館", "購買前", "企画"]
@@ -153,42 +155,60 @@
       "from": "brassband",
       "content": "discription4"
     }]]
-  var date = new Date();
-  function getNow() {
-    function to_string(d) {
-      return (d < 10) ? '0' + d.toString() : d.toString();
-    }
     var date = new Date();
-    var now = `${to_string(date.getDay())}/${date.getHours()}:${date.getMinutes()}`
-    console.log(now);
-    return now;
-  }
-  for (var i = 0; i < places.length; i++) {
-    for (var j = 0; j < data[i].length; j++) {
-      startTime=data[i][j].start_time;
-      //width 0->100% 0.5->half
-      duration=data[i][j].duration;
-      var columun= places.findIndex(function(x) { x == data[i][j].place; });
-
-      var columun = places.indexOf(data[i][j].place);
-      var task = {
-        startTime: startTime,
-        duration: duration,
-        column: columun,
-        id: data[i][j].from,
-        title: data[i][j].name,
-        content: data[i][j].content,
-        width: 0
-      };
-      tasks.push(task);
+    function getNow() {
+        function to_string(d) {
+            return (d < 10) ? '0' + d.toString() : d.toString();
+        }
+        var date = new Date();
+        var now = `${to_string(date.getDay())}/${date.getHours()}:${date.getMinutes()}`
+        console.log(now);
+        return now;
     }
-  }
-  //console.log("tasks count: " + tasks.length);
-  //console.log(JSON.stringify(tasks));
-  jQuery("#skeduler-container").skeduler({
-    headers: places,
-    tasks: tasks,
-    cardTemplate: '<div>${id}</div><div>${title}</div><div class="hide-content">${content}</div>',
-    onClick: function (e, t) { console.log(e, t); }
+
+    const get_schedule=(date)=>{
+        console.log(date);
+        for (var i = 0; i < places.length; i++) {
+            for (var j = 0; j < data[i].length; j++) {
+                startTime=data[i][j].start_time;
+                //width 0->100% 0.5->half
+                duration=data[i][j].duration;
+                var columun= places.findIndex(function(x) { x == data[i][j].place; });
+
+                var columun = places.indexOf(data[i][j].place);
+                var task = {
+                    startTime: startTime,
+                    duration: duration,
+                    column: columun,
+                    id: data[i][j].from,
+                    title: data[i][j].name,
+                    content: data[i][j].content,
+                    width: 0
+                };
+                if(data[i][j].date==date){
+                    tasks.push(task);
+                }
+            }
+        }
+        return tasks;
+    }
+    var tasks=get_schedule(21);
+    set_tasks(tasks);
+    function set_tasks(tasks) {
+      jQuery("#skeduler-container").skeduler({
+        headers: places,
+        tasks: tasks,
+        cardTemplate: '<div>${id}</div><div>${title}</div><div class="hide-content">${content}</div>',
+        onClick: function (e, t) { console.log(e, t); }
+      });
+    }
+   $('#sche20').on('click',()=>{
+      tasks = get_schedule(20);
+      set_tasks(tasks);
+    });
+   $('#sche21').on('click',()=>{ 
+      tasks = get_schedule(21);
+      console.log(21);
+      set_tasks(tasks);
   });
 })(jQuery);
