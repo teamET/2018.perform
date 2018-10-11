@@ -23,7 +23,8 @@
         <% if (theme.rss){ %>
           <a id="nav-rss-link" class="nav-icon" href="<%- url_for(theme.rss) %>" title="<%= __('rss_feed') %>"></a>
         <% } %>
-        <a id="nav-search-btn" class="nav-icon" title="<%= __('search') %>"></a>
+        <a class="icon" href="https://www.tokyo-ct.ac.jp/"><img src="https://user-images.githubusercontent.com/38575274/46780016-75f98080-cd55-11e8-9336-ad8786da7607.png"><a>
+        <!-- <a id="nav-search-btn" class="nav-icon" title="<%= __('search') %>"></a> -->
       </nav>
       <div id="search-form-wrap">
         <%- search_form({button: '&#xF002;'}) %>
