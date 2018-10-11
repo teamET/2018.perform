@@ -4,10 +4,10 @@ menu:
   #About: /about
   Booth: /mogi-shop
   Event: /event
-  Photo: /gallery
+  Gallery: /gallery
+  Access: /access
+  Link: /link
   #Map: /map
-#Archives: /archives
-#rss: /atom.xml
 
 # Content
 excerpt_link: Read More
