@@ -31,7 +31,7 @@ function WidthCheck(){
  */
 function GoLINELink(){
   console.log("end");
-  window.location.assign("https://google.co.jp/");
+  window.location.assign("https://google.co.jp");
   window.msg.textContent = "Moving...";
   setInterval(()=>window.msg.textContent+=".", 10);
 }
