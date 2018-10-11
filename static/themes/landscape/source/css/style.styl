@@ -27,8 +27,8 @@ html, body, #container
 
 body
   max-width: 100%
-  margin: 0 auto
-  padding: 0 gutter-width
+  margin: 0 0
+  padding: 0 0
   background: color-background
   font: font-size font-sans
   -webkit-text-size-adjust: 100%
@@ -94,7 +94,7 @@ if sidebar
   color: #fbf9e2;
   box-sizing: inherit;
   width: 32%;
-  padding: 10px;
+  padding: 10px 10px 30px 10px;
   display: inline-block;
 }
 
@@ -104,12 +104,18 @@ if sidebar
 }
 
 .shop table {
+  background-color: rgba(0,0,0,0.4);
   box-sizing: inherit;
   width: 100%;
-
-  background-color: #272822;
   color: #fbf9e2;
+  box-shadow: 0px .125em .25em rgba(0,0,0,.25);
 }
+
+.shop td {
+  border: solid 0.5px #272822;  /* 枠線指定 */
+  padding: 10px;      /* 余白指定 */
+}
+
 .slide-show {
   position: relative;
 }
@@ -151,7 +157,8 @@ td {
     position: relative;
     border-bottom: 2px solid #d0d5d8;
     padding: 5px;
-    
+    width: 48%;
+    display: inline-block;  
 }
 
 .post:first-child {
@@ -185,62 +192,50 @@ td {
     line-height: 1;
 }
 
+.post:hover {
+  background: rgba(0,0,0,0.5);  
+}
 .icon img{
-    max-width: 18px;
+    max-width: 28px;
 }
 
 .news {
+    float: left;
     background-color: #272822;
     position: relative;
-    width: 100%;
+    width: 45%;
     min-height: 1px;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 50px 20px 20px 20px;
 }
 
-.news h1{
-  text-align: center;
-  color: #fbf9e2;
-  font-size: 28px;
+.about{
+  width: 49%;
+  float: left;
   }
 
-.about { 
-  padding: 20px 20px 20px 80px;
-  color:  #fbf9e2;
-  background-color: #272822;
-  }
-
-.about h1 {
-  text-align: center;
-  color: #fbf9e2;
-  font-size: 28px;
-  }
-
-@media screen and (max-width: 1024px) {
-  .shop {
-  width: 49.5%;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .shop {
+.about-content { 
   box-sizing: inherit;
   width: 100%;
-  padding: 10px;
-  display: inline-block;
+  margin: 20px;
+  padding: 20px;
+  color:  #fbf9e2;
+  background-color: rgba(0,0,0,0.5);
+  // background-image: url("https://user-images.githubusercontent.com/38575274/46751773-731b7300-ccf6-11e8-98fd-5416c5258d20.png");
   }
-}
 
-@media screen and (min-width: 500px) {
-  .header_title {
-    display: none; 
-    }
-
-  .post {
-    width 49.5%;
-    display: inline-block;
+.about h1,.access h1,.news h1,.link-table h1 {
+  text-align: center;
+  color:#fbf9e2;
+  font-size: 28px;
+  padding-bottom: 20px;
   }
-}
+
+.about p {
+  opacity: 1;
+  line-height: 200%;
+  }
+
+
 
 html,
 body {
@@ -262,35 +257,81 @@ body {
     align-items: center;
 }
 
-
-
-.link {
-  position: relative;
-  border: solid 0.5px #ffffff;
-}
-
-.link p {
-  font-size: 36px;
+.link-table {
   text-align: center;
-  position: absolute;
-  color: white;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  margin:0;
-  padding:0;
+  min-height: 300px;
+  color: #fbf9e2;
+  font-size: 18px;
+  }
+.link-table p:hover{
+  color: #fd971f;
+  }
+
+// .link {
+//   position: relative;
+//   border: solid 0.5px #ffffff;
+// }
+
+// .link p {
+//   font-size: 36px;
+//   text-align: center;
+//   position: absolute;
+//   color: white;
+//   top: 50%;
+//   left: 50%;
+//   -ms-transform: translate(-50%,-50%);
+//   -webkit-transform: translate(-50%,-50%);
+//   transform: translate(-50%,-50%);
+//   margin:0;
+//   padding:0;
+// }
+
+// .link img {
+//   width: 100%;
+//   height: 200px;
+
+//   overflow: hidden;
+//   }
+
+.access{
+  text-align: center;
+  color: #fbf9e2;
+  }
+
+
+@media screen and (min-width: 500px) {
+  .header_title {
+    display: none; 
+    }
 }
 
-.link img {
-  width: 100%;
-  height: 200px;
+@media screen and (max-width: 1024px) {
+  .shop {
+  width: 49.5%;
+  }
+}
 
+@media screen and (max-width: 500px) {
+  .shop {
+  box-sizing: inherit;
+  width: 100%;
+  padding: 10px;
+  display: inline-block;
+  }
+
+  .post {
+  width: 100%;
+  }
+
+  .about{
+  width: 100%;
   overflow: hidden;
   }
 
-@media screen and (max-width: 500px) {
+  .about-content{
+    margin: 0;
+  }
+
   .slide-show p {
     font-size: 18px;
   }
@@ -306,8 +347,15 @@ body {
   overflow: hidden;
   }
 
-  .about { 
-  padding: 20px 20px 20px 20px;
+
+  .news{
+  padding: 10px;  
+  width: 100%;
+  }
+
+  .post {
+    line-height: 1.2;
+    font-weight: 500;
   }
 
   body {
