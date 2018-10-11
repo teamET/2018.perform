@@ -8,11 +8,13 @@
             "goods": [
               {
                 "name": "チョコ",
-                "price": "3456"
+                "price": "3000",
+                "first_price" :"3456"
               },
               {
                 "name": "ちょこばなな",
-                "price": "400"
+                "price": "400",
+                "first_price" :"400"
               }
             ],
             "image": [
@@ -80,7 +82,8 @@
           "goods": [
             {
               "name": "フランクフルト",
-              "price": "100"
+              "price": "100",
+              "first_price" :"100"
             }
           ],
           "image": [],
@@ -95,7 +98,8 @@
           "goods": [
             {
               "name": "お抹茶(お菓子付き)",
-              "price": "300"
+              "price": "300",
+              "first_price" :"300"
             }
           ],
           "image": [],
@@ -114,7 +118,8 @@
           "goods": [
             {
               "name": "炒飯",
-              "price": "300"
+              "price": "300",
+              "first_price" :"300"
             }
           ],
           "image": [],
@@ -130,15 +135,18 @@
           "goods": [
             {
               "name": "バトルドーム",
-              "price": "50"
+              "price": "50",
+              "first_price" :"50"
             },
             {
               "name": "ビーダマン",
-              "price": "50"
+              "price": "50",
+              "first_price" :"50"
             },
             {
               "name": "ベーブレード",
-              "price": "50"
+              "price": "50",
+              "first_price" :"50"
             }
           ],
           "image": [],
@@ -159,7 +167,8 @@
           "goods": [
             {
               "name": "だんご3本詰合せ",
-              "price": "200"
+              "price": "200",
+              "first_price" :"200"
             }
           ],
           "image": [],
@@ -170,7 +179,8 @@
           "goods": [
             {
               "name": "今川焼",
-              "price": "150"
+              "price": "150",
+              "first_price" :"150"
             }
           ],
           "image": [],
@@ -185,7 +195,8 @@
           "goods": [
             {
               "name": "たこ焼き",
-              "price": "300"
+              "price": "300",
+              "first_price" :"300"
             }
           ],
           "image": [],
@@ -202,11 +213,13 @@
           "goods": [
             {
               "name": "タピオカミルクティー",
-              "price": "200"
+              "price": "200",
+              "first_price" :"200"
             },
             {
               "name": "タピオカカルピス",
-              "price": "200"
+              "price": "200",
+              "first_price" :"200"
             }
           ],
           "image": [],
@@ -222,15 +235,18 @@
           "goods": [
             {
               "name": "チヂミ",
-              "price": "200"
+              "price": "200",
+              "first_price" :"200"
             },
             {
               "name": "チーズ",
-              "price": "50"
+              "price": "50",
+              "first_price" :"50"
             },
             {
               "name": "キムチ",
-              "price": "50"
+              "price": "50",
+              "first_price" :"50"
             }
           ],
           "image": [
@@ -273,8 +289,12 @@
                     <td>
                         <%= data[id].goods[i].name %>
                     </td>
-                    <td>
-                        <%= data[id].goods[i].price %>円</td>
+                    <% if( data[id].goods[i].first_price　== data[id].goods[i].price ){ %>
+                      <td><%= data[id].goods[i].price %>円</td>
+                    <% } else { %>
+                      <td><div class="del"><span><%= data[id].goods[i].first_price %>円</span></div><%= data[id].goods[i].price %>円</td>
+                    <% } %>
+  
                 </tr>
                 <% }; %>
             </table>
