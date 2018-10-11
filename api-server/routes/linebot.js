@@ -265,6 +265,10 @@ async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg  = undefined;
     var msg2 = undefined;
+    var msg3 = undefined;
+    var msg4 = undefined;
+    var msg5 = undefined;
+    
     var mapdata  = new Object(); // mapの場所データなど
     // [エリア][ピンの番号]([][0] : エリア名)
     var OutsideArea =  [["A",1,2,3,4,5],
@@ -382,7 +386,7 @@ async function type_message(event) {
                     "contents": {}
                 }
                 var buttonTexts = [];
-                for(j=1;j<=mapBFdata[i].length;j++){
+                for(j=1;j<mapBFdata[i].length;j++){
                     if(i==3 && j==2){
                         buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
                     }else{
