@@ -6,17 +6,19 @@
 
 .skeduler-container * {
   box-sizing: content-box;
+  text-align: center;
 }
 
 .skeduler-headers {
-  border-left: 1px solid #b0cee9;
+  color: #fbf9e2;
+  border-left: 1px solid #272822 ;
   display: flex;
   padding-left: 60px;
   position: relative;
 }
 
 .skeduler-headers:before {
-  border-top: 1px solid #b0cee9;
+  border-top: 1px solid #272822 ;
   content: "";
   width: 60px;
   position: absolute;
@@ -27,16 +29,16 @@
   flex: 0 0 200px;
   height: 30px;
   padding-top: 10px;
-  background-color: #D3E0EF;
-  border-left: 1px solid #B0CEE9;
-  border-bottom: 1px solid #B0CEE9;
-  border-top: 1px solid #b0cee9;
+  background-color: rgba(0,0,0,.5);
+  border-left: 1px solid #272822;
+  border-bottom: 1px solid #272822;
+  border-top: 1px solid #272822;
   text-align: center;
 }
 
 .skeduler-headers > div:last-child,
 .skeduler-main-body > div > div.skeduler-cell  {
-  border-right: 1px solid #B0CEE9;
+  border-right: 1px solid #272822;
 }
 
 .skeduler-main {
@@ -53,13 +55,13 @@
   text-align: left;
   padding-left: 10px;
   padding-top: 3px;
-  color: #333333;
-  border-right: 1px solid #B0CEE9;
-  border-left: 1px solid #B0CEE9;
+  color: #fff;
+  border-right: 1px solid #272822 ;
+  border-left: 1px solid #272822 ;
 }
 
 .skeduler-main-timeline div:first-child {
-    border-top: 1px solid #B0CEE9;
+    border-top: 1px solid #272822 ;
 }
 
 .skeduler-main-body {
@@ -68,13 +70,13 @@
 
 .skeduler-main-timeline div,
 .skeduler-main-body > div > div.skeduler-cell {
-  background-color: #FFFFFF;
+  background-color: rgba(0,0,0,.8);
 }
 
 .skeduler-main-timeline div:nth-child(even),
 .skeduler-main-body > div > div.skeduler-cell:nth-child(odd) {
-  border-top: 1px dotted #B0CEE9;
-  border-bottom: 1px solid #B0CEE9;
+  /* border-top: 0.5px dotted #fff; */
+  border-bottom: 1px dotted #fff;
 }
 
 .skeduler-main-body > div > div.skeduler-cell {
@@ -90,7 +92,7 @@
 .skeduler-main-body > div > .skeduler-task-placeholder > div {
   position: absolute;
   overflow: hidden;
-  background-color: #576D7C;
+  background-color: #fd971f;
   padding: 10px;
   box-sizing: border-box;
   box-shadow: 0px .125em .25em rgba(0,0,0,.25);
@@ -105,10 +107,10 @@
 
 .skeduler-main-body > div > .skeduler-task-placeholder > div:hover {
   box-shadow: 0 .25em .5em rgba(0,0,0,.5);
-  background-color: #3A9852;
+  background-color: #162f57;
   min-height: 150px;
   min-width: 200px;
-  opacity: 0.8;
+  opacity: 0.9;
   z-index: 9999;
 }
 

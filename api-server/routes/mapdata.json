@@ -519,22 +519,212 @@
         "actions": [
             {
                 "type": "message",
-                "text": "実装中",
+                "text": "[Top] 構外全体マップへ",
                 "area": {
-                    "x": 0,
-                    "y" : 0,
-                    "width" : 520,
-                    "height": 565
+                    "x": 38,
+                    "y": 54,
+                    "width": 200,
+                    "height": 50
                 }
             },
             {
                 "type": "message",
-                "text": "実装中",
+                "text": "2棟へ",
                 "area": {
-                    "x": 520,
-                    "y" : 0,
-                    "width" : 520,
-                    "height": 565
+                    "x": 304,
+                    "y" : 318,
+                    "width" : 410,
+                    "height": 81
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟へ",
+                "area": {
+                    "x": 304,
+                    "y" : 163,
+                    "width" : 412,
+                    "height":  81
+                }
+            },
+            {
+                "type": "message",
+                "text": "5棟へ",
+                "area": {
+                    "x": 304,
+                    "y" : 10,
+                    "width" : 409,
+                    "height":  77
+                }
+            },
+            {
+                "type": "message",
+                "text": "8棟へ",
+                "area": {
+                    "x": 160,
+                    "y" : 474,
+                    "width" : 141,
+                    "height":  79
+                }
+            }
+        ]
+    },
+    "I21": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-1",
+        "altText": "2棟1階",
+        "baseSize": {
+            "height": 566,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 構外全体マップへ",
+                "area": {
+                    "x": 50,
+                    "y": 26,
+                    "width": 216,
+                    "height": 52
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟1階の1番の模擬店を表示",
+                "area": {
+                    "x": 623,
+                    "y": 179,
+                    "width": 94,
+                    "height": 183
+                }
+            }
+        ]
+    },
+    "I22": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-2",
+        "altText": "2棟2階",
+        "baseSize": {
+            "height": 566,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 構外全体マップへ",
+                "area": {
+                    "x": 25,
+                    "y": 13,
+                    "width": 215,
+                    "height": 55
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟2階の1番の模擬店を表示",
+                "area": {
+                    "x": 757,
+                    "y": 179,
+                    "width": 91,
+                    "height": 188
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟2階の2番の模擬店を表示",
+                "area": {
+                    "x": 891,
+                    "y": 185,
+                    "width": 98,
+                    "height": 183
+                }
+            }
+        ]
+    },
+    "I23": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-3",
+        "altText": "2棟3階",
+        "baseSize": {
+            "height": 566,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 構外全体マップへ",
+                "area": {
+                    "x": 52,
+                    "y": 27,
+                    "width": 213,
+                    "height": 51
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟3階の1番の模擬店を表示",
+                "area": {
+                    "x": 364,
+                    "y": 180,
+                    "width": 87,
+                    "height": 189
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟3階の2番の模擬店を表示",
+                "area": {
+                    "x": 487,
+                    "y": 180,
+                    "width": 101,
+                    "height": 189
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟3階の3番の模擬店を表示",
+                "area": {
+                    "x": 625,
+                    "y": 180,
+                    "width": 96,
+                    "height": 189
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟3階の4番の模擬店を表示",
+                "area": {
+                    "x": 757,
+                    "y": 180,
+                    "width": 90,
+                    "height": 189
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟3階の5番の模擬店を表示",
+                "area": {
+                    "x": 891,
+                    "y": 180,
+                    "width": 99,
+                    "height": 189
+                }
+            }
+        ]
+    },
+    "I24": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-4",
+        "altText": "2棟4階",
+        "baseSize": {
+            "height": 566,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 構外全体マップへ",
+                "area": {
+                    "x": 52,
+                    "y": 24,
+                    "width": 215,
+                    "height": 56
                 }
             }
         ]

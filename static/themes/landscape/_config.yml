@@ -4,9 +4,11 @@ menu:
   #About: /about
   Booth: /mogi-shop
   Event: /event
+  Gallery: /gallery
+  Access: /access
+  Link: /link
+  LineBot: /line-bot
   #Map: /map
-#Archives: /archives
-#rss: /atom.xml
 
 # Content
 excerpt_link: Read More

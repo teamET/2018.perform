@@ -1,4 +1,4 @@
-<div class="slide-show w3-content w3-display-container">
+<div class="slide-show">
     <p class="txt">くぬぎだ祭<br>10月21,22日開催</p>
     <p class="txt">EVENTS</p>
     <p class="txt">BOOTH</p>
@@ -159,12 +159,12 @@
             <h1>TOP NEWS</h1>
             <% count = 0; %>
             <% loadTime = LoadNewsTime(10) %>
-            <% for (i = 0; i < data.length && count < 6 ; i+=1 ) { %>
+            <% for (i = 0; i < data.length && count < 4 ; i+=1 ) { %>
                 <%if( loadTime >= data[i].time ){ %>
                     <% count += 1; %>
                     <div class="post icon">
                         <%if( LoadNewsTime(0) <= data[i].time ){ %>
-                            <img src="https://png.icons8.com/metro/50/000000/new.png">
+                            <img src="https://png.icons8.com/ios/50/ffffff/new-filled.png">
                         <% } %>
                         <a href="/event" class="title"><%= data[i].name %></a>
                         <div class="post-meta">
@@ -179,14 +179,14 @@
         </div>
     </div>
 </div>
-<div class=" w3-padding w3-dark-gray">
+<div class="about">
+    <div class="about-content w3-round-large">
     <h1>椚田祭とは</h1>
-    <div style=""> 
-        <%- partial('about', {pagination: 2, index: true}) %>
+    <%- partial('about', {pagination: 2, index: true}) %>
     </div>
 </div>
 <div class="">
-    <p>
+    <!-- <p>
         <div class="w3-third link">
             <img src="https://raw.githubusercontent.com/teamET/2018.perform/develop/static/themes/landscape/source/img/icon_map.png">
             <p>
@@ -196,7 +196,7 @@
         <div class="w3-third link">
             <img src="https://raw.githubusercontent.com/teamET/2018.perform/develop/static/themes/landscape/source/img/icon_about.png">
             <p>
-                <a href="/about">Photo</a>
+                <a href="/gallery">Photo</a>
             </p>
         </div>
         <div class="w3-third link">
@@ -223,5 +223,5 @@
         <p>
             <a href="">Access</a>
         </p>
-    </div>
+    </div> -->
 </div>
