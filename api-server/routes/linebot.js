@@ -373,20 +373,16 @@ async function type_message(event) {
                 }
             }
         }
+        // 階数を選択するflexMessageの送信
         switch(event.message.text){
             case mapBFdata[i][0]+"棟へ":
-                // flex
-                var text = "";
-                msg = msg_text("debug message ["+mapBFdata[i][0]+"棟へ]");
-                /*
                 msg = {
                     "type": "flex",
                     "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
                     "contents": {}
-                }*/
-                
+                }
                 var buttonTexts = [];
-                for(j=1;j<=mapdata[i].length;j++){
+                for(j=1;j<=mapBFdata[i].length;j++){
                     if(i==3 && j==2){
                         buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
                     }else{
@@ -394,8 +390,7 @@ async function type_message(event) {
                     }
                 }
                 console.log(buttonTexts);
-                //msg = Build_flexButton(text);
-                msg = msg_text(buttonTexts.length);
+                msg.contents = Build_flexButton(buttonTexts);
                 break;
         }
     }
