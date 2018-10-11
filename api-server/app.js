@@ -9,6 +9,7 @@ var fluentLogger = require('express-fluent-logger');
 
 var linebot = require('./routes/linebot');
 var beacon_db = require('./routes/beacondb');
+var index = require('./routes/index');
 
 
 // view engine setup
@@ -32,7 +33,7 @@ app.use('/api/linebot', linebot);
 app.use('/api/beacon', beacon_db);
 //app.use('/api', apiRouter);
 app.get('/api',(req,res)=>{res.send('hello api');});
-app.get('/api/goodbye',(req,res)=>{res.send('goodbye api');});
+app.use('/api/hp', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
