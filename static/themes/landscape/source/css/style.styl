@@ -195,10 +195,19 @@ td {
 .post:hover {
   background: rgba(0,0,0,0.5);  
 }
-.icon img{
+.icon img {
     max-width: 28px;
 }
 
+.badge img {
+  max-width: 32px;
+  opacity: 0.8;
+}
+
+.badge img:hover {
+  opacity: 1;
+  max-width: 35px;
+  }
 .news {
     float: left;
     background-color: #272822;
@@ -223,7 +232,7 @@ td {
   // background-image: url("https://user-images.githubusercontent.com/38575274/46751773-731b7300-ccf6-11e8-98fd-5416c5258d20.png");
   }
 
-.gallery h1,.about h1,.access h1,.news h1,.link-table h1 {
+.about h1,.access h1,.news h1,.link-table h1 {
   text-align: center;
   color:#fbf9e2;
   font-size: 28px;
@@ -235,10 +244,7 @@ td {
   line-height: 200%;
   }
 
-.gallery {
-  min-height: 200px;
-  
-  }
+
 
 html,
 body {
