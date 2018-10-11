@@ -31,7 +31,7 @@ function WidthCheck(){
  */
 function GoLINELink(){
   console.log("end");
-  window.location.assign("https://kunugida2018.tokyo-ct.ac.jp/lineat?map=true");
+  window.location.assign("https://kunugida2018.tokyo-ct.ac.jp/lineat/?map=true");
   window.msg.textContent = "Moving...";
   setInterval(()=>window.msg.textContent+=".", 10);
 }
