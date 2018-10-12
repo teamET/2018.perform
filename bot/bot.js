@@ -28,7 +28,7 @@ var tag;
 function create_json(){
     var events_data;
 	try {
-		tag=JSON.parse(fs.readFileSync("./private/tag.json"));
+		tag=JSON.parse(fs.readFileSync("./public/tag.json"));
 	}catch(e){
 		console.log(e);
 	}
