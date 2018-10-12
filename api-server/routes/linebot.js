@@ -373,7 +373,7 @@ async function type_message(event) {
             }
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
-                    case mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報を表示":
+                    case mapBFdata[i][0]+"棟"+j+"階の"+k+"番の模擬店情報を表示":
                         // ** 模擬店情報送信部
                         /*
                         msg = {
@@ -383,7 +383,7 @@ async function type_message(event) {
                         };
                         msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                         */
-                        msg = msg_text("debug message [~棟~階~番目の模擬店情報へ]");
+                        msg = msg_text("debug message [~棟~階~番の模擬店情報へ]");
                         break;
                 }
             }
