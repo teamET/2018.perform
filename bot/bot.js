@@ -6,6 +6,7 @@ const jsdom=require("jsdom");
 const {RTMClient}=require("@slack/client");
 const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const utils= require("./utils.js");
+require('date-utils');
 //load json
 const account= require("./private/id2mogiid.json");
 const shop= require("./public/shop.json");
@@ -39,6 +40,8 @@ function create_json(){
             "id":"id",
             "date":"date",
             "time":"time",
+			"display_time":"display_time",
+			"duration":"duration",
             "start_time":"start_time",
             "end_time":"end_time",
             "place":"place",
@@ -58,12 +61,13 @@ function backup(name,data){
 
 function save_shop_image(event,shop_id){
     utils.log(event.files[0].url_private_download);
-    var count = 0;
-    file=utils.download(shop_name,event.files[0].title,event.files[0].url_private_download);
+    var count = shop[shop_id].image.length;
+    var title = count+"."+event.files[0].title.split('.')[1];
+    file=utils.download(shop_id,title,event.files[0].url_private_download);
     console.log(shop);
     console.log(shop_id);
     console.log(shop[shop_id]);
-    shop[shop_id].image.push(event.files[0].title);
+    shop[shop_id].image.push(title);
 }
 
 function slack(data,channel){
@@ -80,6 +84,13 @@ function slack(data,channel){
     });
 }
 
+function convert(data){
+	  var Data = data.split(':');
+	  Data[1] = ("0"+Data[1]/60).slice(-2);
+	  if(Data[1].indexOf(".") !== -1) Data[1] = Data[1].slice(1);
+	  Data = Data.join('.');
+	  return Data;
+}
 const screen = (async(channel,file,shop_id)=>{
     const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
     const page = await browser.newPage();
@@ -139,7 +150,9 @@ rtm.on("hello",(event)=>{
 rtm.on("message",(event)=>{
     var channel = event.channel;
     if(event.text){event.text = event.text.replace('　',' ');}
-    var ts = event.ts;
+    var ts = parseInt(event.ts);
+	var dt = new Date();
+	var form_time = dt.toFormat("YYYY/MM/DD/HH24:MI");
     var shopd=get_mogiid(event);
 	if(event.channel=="GCS4TEWGZ"){
 //		admin(event);
@@ -182,6 +195,7 @@ rtm.on("message",(event)=>{
         console.log(shop[shop_id].goods[0]);
         for(cnt=0;cnt<shop[shop_id].goods.length;cnt++){
             if(shop[shop_id].goods[cnt]["name"] == Name){
+                shop[shop_id].goods[cnt]["first_price"] = shop[shop_id].goods[cnt]["price"];
                 shop[shop_id].goods[cnt]["price"] = Price;
                 slack("値段が更新されました.",channel);
                 shop[shop_id].tstamp = ts;
@@ -246,12 +260,23 @@ rtm.on("message",(event)=>{
             var content = event.text.split(' ')[6];
             var from = event.text.split(' ')[7];
             var time = '2018/10/'+date+'/'+start_time+':00';
-            events[events.length-1] = {"id":events.length-1,"date":date,"time":time,"start_time":start_time,"end_time":end_time,"place":place,"name":name,"content":content,"from":from,"tstamp":ts};
+			var display_time = convert(start_time);
+			var duration = (convert(end_time)-display_time).toFixed(2);
+            events[events.length] = {"id":events.length,"date":date,"time":time,"display_time":display_time,"duration":duration,"start_time":start_time,"end_time":end_time,"place":place,"name":name,"content":content,"from":from,"tstamp":ts};
             events = utils.json_sort(events);
             slack("イベントが登録されました.",channel);			
         }catch(e){
-            slack("想定外のエラーが発生しました",channel);
+            console.log(e);
+			slack("想定外のエラーが発生しました",channel);
         }
+    }else if(event.text.split(' ')[0]==='.news'){
+		var from = event.text.split(' ')[1];
+		var content = event.text.split(' ')[2];
+		var start_time = form_time.slice(11,16);
+		var date = form_time.slice(8,9);
+		events[events.length] = {"id":events.length,"date":date,"time":form_time,"display_time":convert(start_time),"duration":"-1","start_time":start_time,"end_time":"-1","place":"-1","name":"-1","content":content,"from":from,"tstamp":ts};
+        events = utils.json_sort(events);
+        slack("ニュースが登録されました.",channel);	
     }else if(event.text.split(' ')[0]==='.show_event'){
         var events_text = JSON.stringify(events,null,'\t')
         slack(events_text,channel);

@@ -130,6 +130,7 @@ const HELP_MESSAGE="booth\n\
 event\n\
 ```\
 .event <date> <start_time> <end_time> <place> <name> <content> <from>\n\
+.news <from> <content>\n\
 .show_event\
 ```";
 
