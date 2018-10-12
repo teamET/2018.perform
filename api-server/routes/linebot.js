@@ -363,11 +363,13 @@ async function type_message(event) {
             // フロアの画像送信部
             switch(event.message.text){
                 case mapBFdata[i][0] + "棟"+j+"階へ":
-                    //console.log("console");
                     mapdata.location = "I"+mapBFdata[i][0]+j;
                     msg = msg_imagemap("map",mapdata);
-                    msg2 = msg_text("[debug] "+mapBFdata[i][0] + "棟"+j+"階へ");
                     break;
+                case "8棟3階へ":
+                    mapdata.location = "I"+82;
+                    msg = msg_imagemap("map",mapdata);
+                    break;                    
             }
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
