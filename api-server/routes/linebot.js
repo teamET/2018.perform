@@ -361,7 +361,7 @@ async function type_message(event) {
     for(var i=0;i<mapBFdata.length;i++){
         for(var j=1;j<mapBFdata[i].length;j++){
             // フロアの画像送信部
-            switch(event.message.texts){
+            switch(event.message.text){
                 case mapBFdata[i][0] + "棟"+j+"階へ":
                     console.log("console");
                     mapdata.location = "I"+mapdata[i][0]+j;
