@@ -232,6 +232,16 @@ rtm.on("message",(event)=>{
         		slack("タグが削除されました.",channel);
             }
         }
+    }else if(event.text.split(' ')[0]==='.del_img'){
+		var cnt = shop[shop_id].image.indexOf(event.text.split(' ')[1]);
+		if(cnt>=0){
+			shop[shop_id].image.splice(cnt,1);
+			slack("画像を削除しました.",channel);
+			return ;
+		}else{
+			slack("一致する画像がありません.",channel);
+			return ;
+		}
     }else if(event.text.split(' ')[0]==='.rewiew'){
         screen('./public/'+shop_id+shop_id,shop_id);
     }else if(event.text.split(' ')[0]==='.show'){
