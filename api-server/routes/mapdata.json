@@ -510,7 +510,7 @@
         ]
     },
     "InsideTop": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/Top/map-InsideTop",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/Top/map-Inside-Top",
         "altText": "[Top] 構内全体マップ",
         "baseSize": {
             "height": 565,
@@ -570,7 +570,7 @@
         ]
     },
     "I21": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-1",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside-2-1",
         "altText": "2棟1階",
         "baseSize": {
             "height": 566,
@@ -600,7 +600,7 @@
         ]
     },
     "I22": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-2",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside-2-2",
         "altText": "2棟2階",
         "baseSize": {
             "height": 566,
@@ -640,7 +640,7 @@
         ]
     },
     "I23": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-3",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside-2-3",
         "altText": "2棟3階",
         "baseSize": {
             "height": 566,
@@ -710,7 +710,7 @@
         ]
     },
     "I24": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-4",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside-2-4",
         "altText": "2棟4階",
         "baseSize": {
             "height": 566,
