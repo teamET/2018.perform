@@ -10,12 +10,12 @@
     <% for(let id in data) {%>
         <% if( data[id].goods.length ){ %>
         <div class="shop">
-            <!-- <% if( data[id].image.length ){ %>
-                <img src="https://kunugida2018.tokyo-ct.ac.jp/data/<%=data[id].shopname %>/<%=data[id].image[0] %>">
+            <% if( data[id].image.length ){ %>
+                <img src="https://kunugida2018.tokyo-ct.ac.jp/data/<%=id%>/<%=data[id].image[0] %>">
             <% }else{ %>
                 <img src="https://user-images.githubusercontent.com/38575274/46793140-f7660880-cd7f-11e8-9e1c-773c09a992c5.png">
-            <% } %> -->
-            <img src="https://user-images.githubusercontent.com/38575274/46794332-925fe200-cd82-11e8-83ce-c614b7235a7a.png">
+            <% } %>
+            <!--img src="https://user-images.githubusercontent.com/38575274/46794332-925fe200-cd82-11e8-83ce-c614b7235a7a.png"-->
             <table class="" id="search_shop_table">
                 <p>
                     <%= data[id].shopname %>
