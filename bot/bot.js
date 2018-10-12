@@ -24,6 +24,7 @@ var arr;
 var list;
 var photos=[];
 var tag;
+var event_text;
 
 function create_json(){
     var events_data;
@@ -181,7 +182,9 @@ rtm.on("message",(event)=>{
         shop[shop_id].tstamp = ts;
         slack("テキストが登録されました.",channel);
     }else if(event.text.split(" ")[0]===".entry"){
-		shop[shop_id].shopname = event.text.split(" ")[1];
+		var Name = event.text.split(' ');
+		Name.shift();
+		shop[shop_id].shopname = Name.join(' ');
         slack("店舗名が登録されました.",channel);
     }else if(event.text.split(' ')[0]==='.goods'){
         if(event.text.split(' ').length != 3){
@@ -273,7 +276,8 @@ rtm.on("message",(event)=>{
 			var display_time = convert(start_time);
 			var duration = (convert(end_time)-display_time).toFixed(2);
             events[events.length] = {"id":events.length,"date":date,"time":time,"display_time":display_time,"duration":duration,"start_time":start_time,"end_time":end_time,"place":place,"name":name,"content":content,"from":from,"tstamp":ts};
-            events = utils.json_sort(events);
+            if(events[0].id == "id") events.shift();
+	    events = utils.json_sort(events);
             slack("イベントが登録されました.",channel);			
         }catch(e){
             console.log(e);
@@ -290,6 +294,10 @@ rtm.on("message",(event)=>{
     }else if(event.text.split(' ')[0]==='.show_event'){
         var events_text = JSON.stringify(events,null,'\t')
         slack(events_text,channel);
+    }else if(event.text.split(',')[0]==='.r'){
+	var event_text = event.text.split(',');
+	event_text.shift();
+	for(let item of event_text) slack(item,channel);
     }else if(event.text.split(' ')[0]==='.tag'){
         var tags = event.text.split(' ');
         console.log("tags",tags);

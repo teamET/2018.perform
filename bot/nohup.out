@@ -32675,3 +32675,5417 @@ GCSFWFUE8
 not mogi GCSFWFUE8
 GCSFWFUE8
 not mogi GCSFWFUE8
+[33mwarn[39m:    --minUptime not set. Defaulting to: 1000ms
+[33mwarn[39m:    --spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"店舗名が登録されました.","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"```name : \"休憩処一休\"\ngoods : []\nimage : [\"0.PNG\"]\nlabel : \n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+[33mwarn[39m:    --minUptime not set. Defaulting to: 1000ms
+[33mwarn[39m:    --spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"```name : \"休憩処一休\"\ngoods : []\nimage : [\"0.PNG\"]\nlabel : \n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+[33mwarn[39m:    --minUptime not set. Defaulting to: 1000ms
+[33mwarn[39m:    --spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"https://files.slack.com/files-pri/TCU2B5GDC-FDCMVMN91/download/img_20180909_222522.jpg","level":"info"}
+download file successed ./public/fs ./public/fs/1.jpg https://files.slack.com/files-pri/TCU2B5GDC-FDCMVMN91/download/img_20180909_222522.jpg
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'ちょこ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: { shopname: 'ラーメン', goods: [], image: [ '0.PNG' ], label: [] },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: { shopname: '休憩処 一休', goods: [], image: [ '0.PNG' ], label: [] },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: { shopname: '焼きそば', goods: [], image: [ '0.jpg' ], label: [] },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+fs
+{ goods: [ { name: 'ワッフル', price: '100' } ],
+  image: [ '0.jpg' ],
+  label: [ '0', '2' ],
+  shopname: 'ワッフル屋',
+  tstamp: 1539300253 }
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":null,"level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"```name : \"ワッフル屋\"\ngoods : [{\"name\":\"ワッフル\",\"price\":\"100\"}]\nimage : [\"0.jpg\",\"1.jpg\"]\nlabel : 0,2\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"画像を削除しました.","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"```name : \"ワッフル屋\"\ngoods : [{\"name\":\"ワッフル\",\"price\":\"100\"}]\nimage : [\"1.jpg\"]\nlabel : 0,2\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDAFJBZ1C
+fs ポテト
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9234DTM
+c14 ゲーム
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD9234DTM
+c14 ゲーム
+/home/kfes/workspace/2018.perform/bot/bot.js:176
+    if(event.text.split(" ")[0]===".help"){
+                  ^
+
+TypeError: Cannot read property 'split' of undefined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:176:19)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+error: Forever detected script exited with code: 1
+error: Script restart attempt #1
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9234DTM
+c14 ゲーム
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD9234DTM
+c14 ゲーム
+/home/kfes/workspace/2018.perform/bot/bot.js:176
+    if(event.text.split(" ")[0]===".help"){
+                  ^
+
+TypeError: Cannot read property 'split' of undefined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:176:19)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+error: Forever detected script exited with code: 1
+error: Script restart attempt #2
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : \"ちょこ\"\ngoods : [{\"name\":\"チョコバナナ\",\"price\":\"200\"}]\nimage : [\"0.png\",\"1.jpg\"]\nlabel : 0,2,6\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9234DTM
+c14 ゲーム
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD9234DTM
+c14 ゲーム
+/home/kfes/workspace/2018.perform/bot/bot.js:176
+    if(event.text.split(" ")[0]===".help"){
+                  ^
+
+TypeError: Cannot read property 'split' of undefined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:176:19)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+error: Forever detected script exited with code: 1
+error: Script restart attempt #3
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9234DTM
+c14 ゲーム
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD9234DTM
+c14 ゲーム
+/home/kfes/workspace/2018.perform/bot/bot.js:176
+    if(event.text.split(" ")[0]===".help"){
+                  ^
+
+TypeError: Cannot read property 'split' of undefined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:176:19)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+error: Forever detected script exited with code: 1
+error: Script restart attempt #4
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACEQ0M
+vM 学科企画
+{"message":"```name : \"ものづくり工房直売所\"\ngoods : [{\"name\":\"キーホルダー\",\"price\":\"100\"},{\"name\":\"ボールペン\",\"price\":\"800\"},{\"name\":\"ペン立て\",\"price\":\"500\"},{\"name\":\"はざまる\",\"price\":\"100\"},{\"name\":\"名前入りプレート\",\"price\":\"300\"}]\nimage : [\"0.PNG\"]\nlabel : 0,13\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACEQ0M
+vM 学科企画
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"```焼きそば```","level":"info"}
+booth
+```.help
+.entry <shop name>
+.goods <goods name> <price>
+.del_goods <goods name>
+.tag <number>
+.del_tag <number>
+.review
+.show
+.show_tag
+```
+event
+```.event <date> <start_time> <end_time> <place> <name> <content> <from>
+.news <from> <content>
+.show_event```
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"```name : \"焼きそば\"\ngoods : []\nimage : [\"0.jpg\"]\nlabel : \n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"店舗名が登録されました.","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'ちょこ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: { shopname: 'ラーメン', goods: [], image: [ '0.PNG' ], label: [] },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: { shopname: '休憩処 一休', goods: [], image: [ '0.PNG' ], label: [] },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: { shopname: 'やーやきそば', goods: [], image: [ '0.jpg' ], label: [] },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+undefined
+{"message":"商品が登録されました.\nタグの登録を行ってください.","level":"info"}
+{"message":"0:模擬店 , 1:アトラクション , 2:食べ物 , 3:飲み物 , 4:温かいもの , 5:冷たいもの , 6:甘い系 , 7:しょっぱい系 , 8:汁物 , 9:ゲーム , 10:展示 , 11:座れる場所 , 12:工作 , 13:キーホルダー","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+tags [ '.tag', '0', '2', '4', '7' ]
+tags [ '0', '2', '4', '7' ]
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'ちょこ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: { shopname: 'ラーメン', goods: [], image: [ '0.PNG' ], label: [] },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: { shopname: '休憩処 一休', goods: [], image: [ '0.PNG' ], label: [] },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [],
+     tstamp: 1539344169 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+cnt 0
+tag [ { id: '0', tag: '模擬店' },
+  { id: '1', tag: 'アトラクション' },
+  { id: '2', tag: '食べ物' },
+  { id: '3', tag: '飲み物' },
+  { id: '4', tag: '温かいもの' },
+  { id: '5', tag: '冷たいもの' },
+  { id: '6', tag: '甘い系' },
+  { id: '7', tag: 'しょっぱい系' },
+  { id: '8', tag: '汁物' },
+  { id: '9', tag: 'ゲーム' },
+  { id: '10', tag: '展示' },
+  { id: '11', tag: '座れる場所' },
+  { id: 12, tag: '工作' },
+  { id: 13, tag: 'キーホルダー' } ]
+tag 0
+list 0
+tag 2
+list 2
+tag 4
+list 4
+tag 7
+list 7
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'ちょこ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: { shopname: 'ラーメン', goods: [], image: [ '0.PNG' ], label: [] },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: { shopname: '休憩処 一休', goods: [], image: [ '0.PNG' ], label: [] },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+{"message":"タグが登録されました.","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"```name : \"やーやきそば\"\ngoods : [{\"name\":\"焼きそば\",\"price\":\"200\"}]\nimage : [\"0.jpg\"]\nlabel : 0,2,4,7\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GDA6G28QP
+sw 焼きそば
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+{"message":"店舗名が登録されました.","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'ちょこ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: { shopname: 'みなみんらーめん', goods: [], image: [ '0.PNG' ], label: [] },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: { shopname: '休憩処 一休', goods: [], image: [ '0.PNG' ], label: [] },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+undefined
+{"message":"商品が登録されました.\nタグの登録を行ってください.","level":"info"}
+{"message":"0:模擬店 , 1:アトラクション , 2:食べ物 , 3:飲み物 , 4:温かいもの , 5:冷たいもの , 6:甘い系 , 7:しょっぱい系 , 8:汁物 , 9:ゲーム , 10:展示 , 11:座れる場所 , 12:工作 , 13:キーホルダー","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8V5T9HA
+yku ラーメン
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+tags [ '.tag', '0', '2', '4', '7', '8' ]
+tags [ '0', '2', '4', '7', '8' ]
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'ちょこ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: 
+   { shopname: 'みなみんらーめん',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [],
+     tstamp: 1539346053 },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: { shopname: '休憩処 一休', goods: [], image: [ '0.PNG' ], label: [] },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+cnt 0
+tag [ { id: '0', tag: '模擬店' },
+  { id: '1', tag: 'アトラクション' },
+  { id: '2', tag: '食べ物' },
+  { id: '3', tag: '飲み物' },
+  { id: '4', tag: '温かいもの' },
+  { id: '5', tag: '冷たいもの' },
+  { id: '6', tag: '甘い系' },
+  { id: '7', tag: 'しょっぱい系' },
+  { id: '8', tag: '汁物' },
+  { id: '9', tag: 'ゲーム' },
+  { id: '10', tag: '展示' },
+  { id: '11', tag: '座れる場所' },
+  { id: 12, tag: '工作' },
+  { id: 13, tag: 'キーホルダー' } ]
+tag 0
+list 0
+tag 2
+list 2
+tag 4
+list 4
+tag 7
+list 7
+tag 8
+list 8
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'ちょこ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: 
+   { shopname: 'みなみんらーめん',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: 1539346139 },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: { shopname: '休憩処 一休', goods: [], image: [ '0.PNG' ], label: [] },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+{"message":"タグが登録されました.","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+{"message":"```name : \"みなみんらーめん\"\ngoods : [{\"name\":\"ラーメン\",\"price\":\"300\"}]\nimage : [\"0.PNG\"]\nlabel : 0,2,4,7,8\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8V5T9HA
+yku ラーメン
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : \"ちょこ\"\ngoods : [{\"name\":\"チョコバナナ\",\"price\":\"200\"}]\nimage : [\"0.png\",\"1.jpg\"]\nlabel : 0,2,6\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"店舗名が登録されました.","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : \"チョコバナナ\"\ngoods : [{\"name\":\"チョコバナナ\",\"price\":\"200\"}]\nimage : [\"0.png\",\"1.jpg\"]\nlabel : 0,2,6\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEG18R
+abd 留学生
+{"message":"```name : \"ぼく留学生\"\ngoods : []\nimage : []\nlabel : 0,2,4,8\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEG18R
+abd 留学生
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'チョコバナナ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: 
+   { shopname: 'みなみんらーめん',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: 1539346139 },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: { shopname: '休憩処 一休', goods: [], image: [ '0.PNG' ], label: [] },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+undefined
+{"message":"商品が登録されました.\nタグの登録を行ってください.","level":"info"}
+{"message":"0:模擬店 , 1:アトラクション , 2:食べ物 , 3:飲み物 , 4:温かいもの , 5:冷たいもの , 6:甘い系 , 7:しょっぱい系 , 8:汁物 , 9:ゲーム , 10:展示 , 11:座れる場所 , 12:工作 , 13:キーホルダー","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"```name : \"休憩処 一休\"\ngoods : [{\"name\":\"\",\"price\":\"Free\"}]\nimage : [\"0.PNG\"]\nlabel : \n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"商品を削除しました.","level":"info"}
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"```name : \"休憩処 一休\"\ngoods : []\nimage : [\"0.PNG\"]\nlabel : \n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'チョコバナナ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: 
+   { shopname: 'みなみんらーめん',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: 1539346139 },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: 
+   { shopname: '休憩処 一休',
+     goods: [],
+     image: [ '0.PNG' ],
+     label: [],
+     tstamp: 1539346652 },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+undefined
+{"message":"商品が登録されました.\nタグの登録を行ってください.","level":"info"}
+{"message":"0:模擬店 , 1:アトラクション , 2:食べ物 , 3:飲み物 , 4:温かいもの , 5:冷たいもの , 6:甘い系 , 7:しょっぱい系 , 8:汁物 , 9:ゲーム , 10:展示 , 11:座れる場所 , 12:工作 , 13:キーホルダー","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+tags [ '.tag', '1', '11' ]
+tags [ '1', '11' ]
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'チョコバナナ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: 
+   { shopname: 'みなみんらーめん',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: 1539346139 },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: 
+   { shopname: '休憩処 一休',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [],
+     tstamp: 1539346713 },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+cnt 0
+tag [ { id: '0', tag: '模擬店' },
+  { id: '1', tag: 'アトラクション' },
+  { id: '2', tag: '食べ物' },
+  { id: '3', tag: '飲み物' },
+  { id: '4', tag: '温かいもの' },
+  { id: '5', tag: '冷たいもの' },
+  { id: '6', tag: '甘い系' },
+  { id: '7', tag: 'しょっぱい系' },
+  { id: '8', tag: '汁物' },
+  { id: '9', tag: 'ゲーム' },
+  { id: '10', tag: '展示' },
+  { id: '11', tag: '座れる場所' },
+  { id: 12, tag: '工作' },
+  { id: 13, tag: 'キーホルダー' } ]
+tag 1
+list 1
+tag 11
+list 11
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'チョコバナナ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: 
+   { shopname: 'みなみんらーめん',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: 1539346139 },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: 
+   { shopname: '休憩処 一休',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '1', '11' ],
+     tstamp: 1539346729 },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+{"message":"タグが登録されました.","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD9ACF59T
+v4D 休憩所
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+CDE2NL1T9
+not mogi CDE2NL1T9
+CDE2NL1T9
+not mogi CDE2NL1T9
+CDE2NL1T9
+not mogi CDE2NL1T9
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : \"チョコバナナ\"\ngoods : [{\"name\":\"チョコバナナ\",\"price\":\"200\"}]\nimage : [\"0.png\",\"1.jpg\"]\nlabel : 0,2,6\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+CDE2NL1T9
+not mogi CDE2NL1T9
+CDE2NL1T9
+not mogi CDE2NL1T9
+CDE2NL1T9
+not mogi CDE2NL1T9
+CDE2NL1T9
+not mogi CDE2NL1T9
+CDE2NL1T9
+not mogi CDE2NL1T9
+CDE2NL1T9
+not mogi CDE2NL1T9
+GCS4TEWGZ
+not mogi GCS4TEWGZ
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : \"チョコバナナ\"\ngoods : [{\"name\":\"チョコバナナ\",\"price\":\"200\"}]\nimage : [\"0.png\",\"1.jpg\"]\nlabel : 0,2,6\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"https://files.slack.com/files-pri/TCU2B5GDC-FDCRMG7T6/download/dispimage_cache.jpg","level":"info"}
+download file successed ./public/c4J ./public/c4J/2.jpg https://files.slack.com/files-pri/TCU2B5GDC-FDCRMG7T6/download/dispimage_cache.jpg
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'チョコバナナ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: 
+   { shopname: 'みなみんらーめん',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: 1539346139 },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: 
+   { shopname: '休憩処 一休',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '1', '11' ],
+     tstamp: 1539346729 },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+c4J
+{ goods: [ { name: 'チョコバナナ', price: '200' } ],
+  image: [ '0.png', '1.jpg' ],
+  label: [ '0', '2', '6' ],
+  tstamp: 1539328411,
+  shopname: 'チョコバナナ' }
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":null,"level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : \"チョコバナナ\"\ngoods : [{\"name\":\"チョコバナナ\",\"price\":\"200\"}]\nimage : [\"0.png\",\"1.jpg\",\"2.jpg\"]\nlabel : 0,2,6\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+CDE2NL1T9
+not mogi CDE2NL1T9
+CDE2NL1T9
+not mogi CDE2NL1T9
+CDE2NL1T9
+not mogi CDE2NL1T9
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```チョコバナナ```","level":"info"}
+booth
+```.help
+.entry <shop name>
+.goods <goods name> <price>
+.del_goods <goods name>
+.tag <number>
+.del_tag <number>
+.review
+.show
+.show_tag
+```
+event
+```.event <date> <start_time> <end_time> <place> <name> <content> <from>
+.news <from> <content>
+.show_event```
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"https://files.slack.com/files-pri/TCU2B5GDC-FDEC4SACE/download/imgp0006.jpg","level":"info"}
+download file successed ./public/c4J ./public/c4J/3.JPG https://files.slack.com/files-pri/TCU2B5GDC-FDEC4SACE/download/imgp0006.jpg
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg', '2.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'チョコバナナ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: 
+   { shopname: 'みなみんらーめん',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: 1539346139 },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: 
+   { shopname: '休憩処 一休',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '1', '11' ],
+     tstamp: 1539346729 },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+c4J
+{ goods: [ { name: 'チョコバナナ', price: '200' } ],
+  image: [ '0.png', '1.jpg', '2.jpg' ],
+  label: [ '0', '2', '6' ],
+  tstamp: 1539328411,
+  shopname: 'チョコバナナ' }
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":null,"level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : \"チョコバナナ\"\ngoods : [{\"name\":\"チョコバナナ\",\"price\":\"200\"}]\nimage : [\"0.png\",\"1.jpg\",\"2.jpg\",\"3.JPG\"]\nlabel : 0,2,6\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"https://files.slack.com/files-pri/TCU2B5GDC-FDD1DTYE6/download/imgp0007.jpg","level":"info"}
+download file successed ./public/c4J ./public/c4J/4.JPG https://files.slack.com/files-pri/TCU2B5GDC-FDD1DTYE6/download/imgp0007.jpg
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg', '2.jpg', '3.JPG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'チョコバナナ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: 
+   { shopname: 'みなみんらーめん',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: 1539346139 },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: 
+   { shopname: '休憩処 一休',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '1', '11' ],
+     tstamp: 1539346729 },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+c4J
+{ goods: [ { name: 'チョコバナナ', price: '200' } ],
+  image: [ '0.png', '1.jpg', '2.jpg', '3.JPG' ],
+  label: [ '0', '2', '6' ],
+  tstamp: 1539328411,
+  shopname: 'チョコバナナ' }
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":null,"level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```name : \"チョコバナナ\"\ngoods : [{\"name\":\"チョコバナナ\",\"price\":\"200\"}]\nimage : [\"0.png\",\"1.jpg\",\"2.jpg\",\"3.JPG\",\"4.JPG\"]\nlabel : 0,2,6\n```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"https://files.slack.com/files-pri/TCU2B5GDC-FDCCZD3TK/download/imgp0008.jpg","level":"info"}
+download file successed ./public/c4J ./public/c4J/5.JPG https://files.slack.com/files-pri/TCU2B5GDC-FDCCZD3TK/download/imgp0008.jpg
+{ c4J: 
+   { goods: [ [Object] ],
+     image: [ '0.png', '1.jpg', '2.jpg', '3.JPG', '4.JPG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539328411,
+     shopname: 'チョコバナナ' },
+  c4D: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1' ],
+     shopname: 'トリックオアトリート',
+     tstamp: 1539317366 },
+  c2C: { goods: [], image: [], label: [] },
+  fs: 
+   { goods: [ [Object] ],
+     image: [ '1.jpg' ],
+     label: [ '0', '2' ],
+     shopname: 'ワッフル屋',
+     tstamp: 1539300253 },
+  pg: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '10' ],
+     shopname: '写真部展示',
+     tstamp: 1539306491 },
+  htb: 
+   { goods: [ [Object], [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '7' ],
+     shopname: '焼き鳥',
+     tstamp: 1539317279 },
+  vb: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'ホットドッグ',
+     tstamp: 1539333214 },
+  v5D: { goods: [], image: [], label: [], shopname: '綿飴屋' },
+  abd: 
+   { goods: [],
+     image: [],
+     label: [ '0', '2', '4', '8' ],
+     shopname: 'ぼく留学生',
+     tstamp: 1539327910 },
+  v3D: { goods: [], image: [ '0.jpg' ], label: [], shopname: 'フルーツサンド' },
+  c4M: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     shopname: 'お好み焼き',
+     tstamp: 1539313757 },
+  tnf: 
+   { goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: '1539236221.000100',
+     shopname: 'フランクフルト' },
+  tea: 
+   { goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '1', '2', '3', '4', '6', '8', '11' ],
+     tstamp: '1539229782.000200',
+     shopname: 'お茶出し' },
+  v5C: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '3', '6' ],
+     tstamp: '1539228746.000100',
+     shopname: 'RiceStyle' },
+  v14: 
+   { goods: [ [Object], [Object], [Object] ],
+     image: [ '0.jpeg' ],
+     label: [ '1' ],
+     tstamp: '1539229207.000100',
+     shopname: '超エキサイティンッ!' },
+  kusa: { goods: [], image: [], label: [] },
+  v4E: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306773,
+     shopname: '団子カフェ' },
+  cyc: 
+   { goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '2', '4', '6' ],
+     tstamp: '1539229653.000100',
+     shopname: '今川焼き' },
+  v2M: 
+   { goods: [ [Object] ],
+     image: [],
+     label: [ '2', '4', '7', '0' ],
+     tstamp: 1539316331,
+     shopname: 'たこ焼き覇世神' },
+  hl: 
+   { shopname: 'タピオカ',
+     goods: [ [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '3', '8' ],
+     tstamp: '1539238129.000200' },
+  v2AS: 
+   { shopname: 'チヂミ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png', '1.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: '1539236968.000100' },
+  cm: 
+   { shopname: '科学部のけんちん汁',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: '1539270928.000100' },
+  c14: 
+   { shopname: 'GameStation',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '9', '1' ],
+     tstamp: '1539247940.000100' },
+  bd: 
+   { shopname: 'チュロス',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2' ],
+     tstamp: 1539306398 },
+  c13: 
+   { shopname: '射的',
+     goods: [ [Object] ],
+     image: [],
+     label: [ '1' ],
+     tstamp: 1539299009 },
+  vM: 
+   { shopname: 'ものづくり工房直売所',
+     goods: [ [Object], [Object], [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', 13 ],
+     tstamp: 1539316331 },
+  nr: 
+   { shopname: 'クレープ屋さん',
+     goods: [ [Object], [Object], [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539315415 },
+  gcat: 
+   { shopname: 'GCATゲーム制作部ゲーム展示',
+     goods: [],
+     image: [ '0.png' ],
+     label: [ '10', '1', '9' ],
+     tstamp: 1539316339 },
+  c2D: 
+   { shopname: 'いも八王子',
+     goods: [ [Object] ],
+     image: [ '0.png' ],
+     label: [ '0', '2', '4', '6' ],
+     tstamp: 1539314537 },
+  v5M: { shopname: 'スタンプラリー', goods: [], image: [ '0.jpg' ], label: [] },
+  fb: { shopname: 'トルネードポテト', goods: [], image: [ '0.jpg' ], label: [] },
+  yku: 
+   { shopname: 'みなみんらーめん',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7', '8' ],
+     tstamp: 1539346139 },
+  hb: 
+   { shopname: 'ハンド餅',
+     goods: [ [Object], [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '6' ],
+     tstamp: 1539314096 },
+  v4D: 
+   { shopname: '休憩処 一休',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '1', '11' ],
+     tstamp: 1539346729 },
+  bsk: 
+   { shopname: '牛串',
+     goods: [ [Object] ],
+     image: [ '0.PNG' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539315177 },
+  sw: 
+   { shopname: 'やーやきそば',
+     goods: [ [Object] ],
+     image: [ '0.jpg' ],
+     label: [ '0', '2', '4', '7' ],
+     tstamp: 1539344217 },
+  v4C: 
+   { shopname: '焼き餃子',
+     goods: [ [Object] ],
+     image: [ '0.JPG' ],
+     label: [ '0', '2', '4' ],
+     tstamp: 1539319237 },
+  c1AC: { shopname: '飲み物', goods: [], image: [ '0.jpg' ], label: [] } }
+c4J
+{ goods: [ { name: 'チョコバナナ', price: '200' } ],
+  image: [ '0.png', '1.jpg', '2.jpg', '3.JPG', '4.JPG' ],
+  label: [ '0', '2', '6' ],
+  tstamp: 1539328411,
+  shopname: 'チョコバナナ' }
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":null,"level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"name : ```[object Object]```","level":"info"}
+{"message":"name : ```[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]```","level":"info"}
+{"message":"name : ```[object Object]```","level":"info"}
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+{"message":"```チョコバナナ```","level":"info"}
+booth
+```.help
+.entry <shop name>
+.goods <goods name> <price>
+.del_goods <goods name>
+.tag <number>
+.del_tag <number>
+.review
+.show
+.show_tag
+```
+event
+```.event <date> <start_time> <end_time> <place> <name> <content> <from>
+.news <from> <content>
+.show_event```
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+GCSFWFUE8
+not mogi GCSFWFUE8
+[33mwarn[39m:    --minUptime not set. Defaulting to: 1000ms
+[33mwarn[39m:    --spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+{"message":"start process","level":"info"}
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
