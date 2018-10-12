@@ -364,9 +364,9 @@ async function type_message(event) {
             switch(event.message.text){
                 case mapBFdata[i][0] + "棟"+j+"階へ":
                     //console.log("console");
-                    mapdata.location = "I"+mapdata[i][0]+j;
-                    //msg = msg_imagemap("map",mapdata);
-                    msg = msg_text("[debug] "+mapBFdata[i][0] + "棟"+j+"階へ "+ " I"+mapdata[i][0]+j);
+                    mapdata.location = "I"+mapBFdata[i][0]+j;
+                    msg = msg_imagemap("map",mapdata);
+                    msg2 = msg_text("[debug] "+mapBFdata[i][0] + "棟"+j+"階へ");
                     break;
             }
             for(var k=1;k<=mapBFdata[i][j];k++){
