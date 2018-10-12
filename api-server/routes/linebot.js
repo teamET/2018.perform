@@ -337,7 +337,7 @@ async function type_message(event) {
         for(var j=1;j<OutsideArea[i].length;j++){
             switch(event.message.text){
                 case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
-                    /*
+                    /* ** 模擬店情報送信部
                     msg = {
                         "type": "flex",
                         "altText": "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報",
@@ -372,7 +372,7 @@ async function type_message(event) {
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
                     case mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報を表示":
-                        // 模擬店情報送信部
+                        // ** 模擬店情報送信部
                         /*
                         msg = {
                             "type": "flex",

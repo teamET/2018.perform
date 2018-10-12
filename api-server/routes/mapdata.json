@@ -510,7 +510,7 @@
         ]
     },
     "InsideTop": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/Top/map-Inside-Top",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/Top/map-InsideTop",
         "altText": "[Top] 構内全体マップ",
         "baseSize": {
             "height": 565,
