@@ -63,11 +63,31 @@ function make_template(filename){
 	return html
 }
 
+function make_gallery(){
+    var data=load_data("shop");
+	var template=load_template("gallery");
+	var html=ejs.render(template,{data: data},(err,str)=>{
+		if(err){
+			utils.err('ejs error',err);
+		}
+		utils.log('ejs results',str);
+	});
+    html=minify(html,{
+        minifyJS:true,
+        removeComments:true,
+        collapseWhitespace:true,
+    })
+	save_html("gallery",html);
+
+}
+
 module.exports={
 	make:make_template
+	make_gallery:make_gallery
 }
 
 
 if(require.main===module){
     make_template("shop");
+    make_gallery();
 }
