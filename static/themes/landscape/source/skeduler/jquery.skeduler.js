@@ -33,7 +33,7 @@
    * Convert double value of hours to zero-preposited string with 30 or 00 value of minutes
    */
   function toTimeString(value) {
-    return (value < 10 ? '0' : '') + Math.floor(value) + (Math.ceil(value) > Math.floor(value) ? ':30' : ':00');
+    return (value < 10 ? '0' : '') + Math.floor(value) + (Math.round(value%1*60) < 1 ? ':0' : ':') + Math.round(value%1*60);
   }
 
   /**
@@ -117,9 +117,9 @@
         findCoefficients()
       );
     if ( windowWidth < 500) {
-      var widht_default = 90;
+      var widht_default = 100;
     }else{
-      var widht_default = 194;
+      var widht_default = 200;
     }
     for (var i = 0; i < args.args.length; i++) {
       var width = widht_default / (args.args[i] || 1);
@@ -132,9 +132,9 @@
       var top = getCardTopPosition(task.startTime-9) + 2;
       var height = getCardHeight(task.duration);
       if ( windowWidth < 500) {
-        var width = task.width || 194*0.5;
+        var width = task.width || 200*0.5;
       }else{
-       var width = task.width || 194;
+       var width = task.width || 200;
       }
       var left = task.left || 4;
       var card = jQuery('<div></div>')

@@ -1,12 +1,10 @@
 
 .skeduler-container {
   font-family: Helvetica, ​Arial, ​sans-serif;
-  box-sizing: inherit;
 }
 
 .skeduler-container * {
   box-sizing: content-box;
-  text-align: center;
 }
 
 .skeduler-headers {
@@ -76,6 +74,7 @@
 .skeduler-main-timeline div:nth-child(even),
 .skeduler-main-body > div > div.skeduler-cell:nth-child(odd) {
   /* border-top: 0.5px dotted #fff; */
+  border-top: 1px dotted rgba(0,0,0,.8);
   border-bottom: 1px dotted #fff;
 }
 
@@ -96,7 +95,7 @@
   padding: 10px;
   box-sizing: border-box;
   box-shadow: 0px .125em .25em rgba(0,0,0,.25);
-  margin-top: 2px;
+  margin-top: 0px;
   cursor: pointer;
   color: #FFFFFF;
   word-wrap: break-word;
@@ -109,7 +108,7 @@
   box-shadow: 0 .25em .5em rgba(0,0,0,.5);
   background-color: #162f57;
   min-height: 150px;
-  min-width: 200px;
+  min-width: 192px;
   opacity: 0.9;
   z-index: 9999;
 }
@@ -119,6 +118,7 @@
 }
 
 #scheduler-task div:hover~.hide-content {
+  padding-top: 10px;
   display: block;
 }
 
