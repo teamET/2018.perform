@@ -34,7 +34,7 @@
                     <td>
                         <%= data[id].goods[i].name %>
                     </td>
-                    <% if( data[id].goods[i].first_price　== data[id].goods[i].price ){ %>
+                    <% if( !data[id].goods[i].first_price ){ %>
                       <td><%= data[id].goods[i].price %>円</td>
                     <% } else { %>
                       <td><div class="del"><span><%= data[id].goods[i].first_price %>円</span></div><%= data[id].goods[i].price %>円</td>
