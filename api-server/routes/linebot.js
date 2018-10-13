@@ -189,9 +189,13 @@ async function rich_change(after, userId) {
     var rich_url = urld_rich_delete.replace("{userId}", userId);
     var rich_url2 = urlp_rich_set.replace("{userId}", userId)
         .replace("{richMenuId}", after);
-    var tmp = await Build_responce(rich_url2)
+    var tmp = await Build_responce(rich_url2);
     request.delete(await Build_responce(rich_url), function(error, responce, body) {
-        request.post(tmp);
+        console.log("rich -> delete");
+        request.post(tmp, function(error, responce, body) {
+            console.log("rich -> set");
+            console.log(body);
+        });
     });
 }
 
