@@ -1,4 +1,10 @@
 {
+<<<<<<< HEAD
     "normal": "richmenu-e8ce7ba877d91b1f3a75f2b5fc17a0a1",
     "start":  "richmenu-10440557c503a77710450d338edf198a"
+=======
+    "normal": "richmenu-62bb974327102e67f067e89f8dd7e5a0",
+    "start":  "richmenu-83b09a0cb5c385d71b5a0f0d22b9dec5",
+    "event": ""
+>>>>>>> stash@{0}
 }

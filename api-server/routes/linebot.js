@@ -337,7 +337,11 @@ async function type_message(event) {
         for(var j=1;j<OutsideArea[i].length;j++){
             switch(event.message.text){
                 case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
+<<<<<<< HEAD
                     /* ** 模擬店情報送信部
+=======
+                    /*
+>>>>>>> stash@{0}
                     msg = {
                         "type": "flex",
                         "altText": "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報",
@@ -361,6 +365,7 @@ async function type_message(event) {
     for(var i=0;i<mapBFdata.length;i++){
         for(var j=1;j<mapBFdata[i].length;j++){
             // フロアの画像送信部
+<<<<<<< HEAD
             switch(event.message.text){
                 case mapBFdata[i][0] + "棟"+j+"階へ":
                     mapdata.location = "I"+mapBFdata[i][0]+j;
@@ -380,6 +385,20 @@ async function type_message(event) {
                         }
                          */
                         // ** 模擬店情報送信部
+=======
+            switch(event.message.texts){
+                case mapBFdata[i][0] + "棟"+j+"階へ":
+                    console.log("console");
+                    mapdata.location = "I"+mapdata[i][0]+j;
+                    msg = msg_imagemap("map",mapdata);
+                    msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
+                    break;
+            }
+            for(var k=1;k<=mapBFdata[i][j];k++){
+                switch(event.message.text){
+                    case mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報を表示":
+                        // 模擬店情報送信部
+>>>>>>> stash@{0}
                         /*
                         msg = {
                             "type": "flex",
@@ -388,7 +407,11 @@ async function type_message(event) {
                         };
                         msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                         */
+<<<<<<< HEAD
                         msg = msg_text("debug message [~棟~階~番の模擬店情報へ]");
+=======
+                        msg = msg_text("debug message [~棟~階~番目の模擬店情報へ]");
+>>>>>>> stash@{0}
                         break;
                 }
             }

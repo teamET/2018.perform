@@ -1,6 +1,10 @@
 {
     "Top": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/Top/map-InOutChoice",
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/Top/map-InOutChoice",
+>>>>>>> stash@{0}
         "altText": "表示したいマップを選択してください",
         "baseSize": {
             "height": 585,
@@ -30,7 +34,11 @@
         ]
     },
     "OutsideTop": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/Top/map-OutsideTop",
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/Top/map-OutsideTop",
+>>>>>>> stash@{0}
         "altText": "[Top] 構外全体マップ",
         "baseSize": {
             "height": 469,
@@ -110,10 +118,17 @@
         ]
     },
     "AreaA": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/outside/map-mogi-A",
         "altText": "エリアA",
         "baseSize": {
             "height": 608,
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-A",
+        "altText": "エリアA",
+        "baseSize": {
+            "height": 598,
+>>>>>>> stash@{0}
             "width": 1040
         },
         "actions": [
@@ -121,69 +136,118 @@
                 "type": "message",
                 "text": "[Top] 構外全体マップへ",
                 "area": {
+<<<<<<< HEAD
                     "x": 720,
                     "y": 32,
                     "width": 269,
                     "height": 69
+=======
+                    "x": 730,
+                    "y": 32,
+                    "width": 268,
+                    "height": 61
+>>>>>>> stash@{0}
                 }
             },
             {
                 "type": "message",
                 "text": "エリアAの1番の模擬店情報を表示",
                 "area": {
+<<<<<<< HEAD
                     "x": 140,
                     "y": 70,
                     "width": 90,
                     "height": 172
+=======
+                    "x": 160,
+                    "y": 81,
+                    "width": 61,
+                    "height": 161
+>>>>>>> stash@{0}
                 }
             },
             {
                 "type": "message",
                 "text": "エリアAの2番の模擬店情報を表示",
                 "area": {
+<<<<<<< HEAD
                     "x": 242,
                     "y": 70,
                     "width": 78,
                     "height": 173
+=======
+                    "x": 255,
+                    "y": 80,
+                    "width": 70,
+                    "height": 163
+>>>>>>> stash@{0}
                 }
             },
             {
                 "type": "message",
                 "text": "エリアAの3番の模擬店情報を表示",
                 "area": {
+<<<<<<< HEAD
                     "x": 483,
                     "y": 70,
                     "width": 85,
                     "height": 184
+=======
+                    "x": 503,
+                    "y": 80,
+                    "width": 69,
+                    "height": 174
+>>>>>>> stash@{0}
                 }
             },
             {
                 "type": "message",
                 "text": "エリアAの4番の模擬店情報を表示",
                 "area": {
+<<<<<<< HEAD
                     "x": 586,
                     "y": 70,
                     "width": 82,
                     "height": 170
+=======
+                    "x": 596,
+                    "y": 82,
+                    "width": 72,
+                    "height": 107
+>>>>>>> stash@{0}
                 }
             },
             {
                 "type": "message",
                 "text": "エリアAの5番の模擬店情報を表示",
                 "area": {
+<<<<<<< HEAD
                     "x": 853,
                     "y": 200,
                     "width": 96,
                     "height": 138
+=======
+                    "x": 872,
+                    "y": 200,
+                    "width": 77,
+                    "height": 117
+>>>>>>> stash@{0}
                 }
             }
         ]
     },
     "AreaB": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/outside/map-mogi-B",
         "altText": "エリアB",
         "baseSize": {
             "height": 598,
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-B",
+        "altText": "エリアB",
+        "baseSize": {
+            "height": 600,
+>>>>>>> stash@{0}
             "width": 1040
         },
         "actions": [
@@ -199,51 +263,94 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアBの1番の模擬店情報を表示",
                 "area": {
                     "x": 224,
                     "y": 11,
                     "width": 107,
                     "height": 148
+=======
+                "text": "エリアBの1番の模擬店を表示",
+                "area": {
+                    "x": 293,
+                    "y": 23,
+                    "width": 78,
+                    "height": 140
+>>>>>>> stash@{0}
                 }
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアBの2番の模擬店情報を表示",
                 "area": {
                     "x": 350,
                     "y": 13,
                     "width": 82,
                     "height": 148
+=======
+                "text": "エリアBの2番の模擬店を表示",
+                "area": {
+                    "x": 359,
+                    "y": 24,
+                    "width": 79,
+                    "height": 135
+>>>>>>> stash@{0}
                 }
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアBの3番の模擬店情報を表示",
                 "area": {
                     "x": 475,
                     "y": 13,
                     "width": 82,
                     "height": 148
+=======
+                "text": "エリアBの3番の模擬店を表示",
+                "area": {
+                    "x": 475,
+                    "y": 24,
+                    "width": 82,
+                    "height": 137
+>>>>>>> stash@{0}
                 }
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアBの4番の模擬店情報を表示",
                 "area": {
                     "x": 594,
                     "y": 13,
                     "width": 79,
                     "height": 151
+=======
+                "text": "エリアBの4番の模擬店を表示",
+                "area": {
+                    "x": 594,
+                    "y": 24,
+                    "width": 79,
+                    "height": 140
+>>>>>>> stash@{0}
                 }
             }
         ]
     },
     "AreaC": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/outside/map-mogi-C",
         "altText": "エリアC",
         "baseSize": {
             "height": 694,
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-C",
+        "altText": "エリアC",
+        "baseSize": {
+            "height": 692,
+>>>>>>> stash@{0}
             "width": 1040
         },
         "actions": [
@@ -259,31 +366,54 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアCの1番の模擬店情報を表示",
                 "area": {
                     "x": 520,
                     "y": 478,
                     "width": 102,
+=======
+                "text": "エリアCの1番の模擬店を表示",
+                "area": {
+                    "x": 528,
+                    "y": 478,
+                    "width": 94,
+>>>>>>> stash@{0}
                     "height": 78
                 }
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアCの2番の模擬店情報を表示",
                 "area": {
                     "x": 510,
                     "y": 568,
                     "width": 116,
+=======
+                "text": "エリアCの2番の模擬店を表示",
+                "area": {
+                    "x": 532,
+                    "y": 568,
+                    "width": 73,
+>>>>>>> stash@{0}
                     "height": 78
                 }
             }
         ]
     },
     "AreaD": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/outside/map-mogi-D",
         "altText": "エリアD",
         "baseSize": {
             "height": 657,
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-D",
+        "altText": "エリアD",
+        "baseSize": {
+            "height": 654,
+>>>>>>> stash@{0}
             "width": 1040
         },
         "actions": [
@@ -299,7 +429,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアDの1番の模擬店情報を表示",
+=======
+                "text": "エリアDの1番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 524,
                     "y": 140,
@@ -309,7 +443,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアDの2番の模擬店情報を表示",
+=======
+                "text": "エリアDの2番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 526,
                     "y": 237,
@@ -319,7 +457,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアDの3番の模擬店情報を表示",
+=======
+                "text": "エリアDの3番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 529,
                     "y": 425,
@@ -329,7 +471,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアDの4番の模擬店情報を表示",
+=======
+                "text": "エリアDの4番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 526,
                     "y": 426,
@@ -339,7 +485,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアDの5番の模擬店情報を表示",
+=======
+                "text": "エリアDの5番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 828,
                     "y": 181,
@@ -349,7 +499,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアDの6番の模擬店情報を表示",
+=======
+                "text": "エリアDの6番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 836,
                     "y": 272,
@@ -359,7 +513,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアDの7番の模擬店情報を表示",
+=======
+                "text": "エリアDの7番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 824,
                     "y": 359,
@@ -369,7 +527,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアDの8番の模擬店情報を表示",
+=======
+                "text": "エリアDの8番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 824,
                     "y": 449,
@@ -380,7 +542,11 @@
         ]
     },
     "AreaE": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/outside/map-mogi-E",
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-E",
+>>>>>>> stash@{0}
         "altText": "エリアE",
         "baseSize": {
             "height": 654,
@@ -399,7 +565,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアEの1番の模擬店情報を表示",
+=======
+                "text": "エリアEの1番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 203,
                     "y": 115,
@@ -409,7 +579,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアEの2番の模擬店情報を表示",
+=======
+                "text": "エリアEの2番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 314,
                     "y": 114,
@@ -419,7 +593,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアEの3番の模擬店情報を表示",
+=======
+                "text": "エリアEの3番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 538,
                     "y": 113,
@@ -429,7 +607,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアEの4番の模擬店情報を表示",
+=======
+                "text": "エリアEの4番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 651,
                     "y": 111,
@@ -439,7 +621,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアEの5番の模擬店情報を表示",
+=======
+                "text": "エリアEの5番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 763,
                     "y": 115,
@@ -449,7 +635,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアEの6番の模擬店情報を表示",
+=======
+                "text": "エリアEの4番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 876,
                     "y": 115,
@@ -460,7 +650,11 @@
         ]
     },
     "AreaF": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/outside/map-mogi-F",
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-F",
+>>>>>>> stash@{0}
         "altText": "エリアF",
         "baseSize": {
             "height": 655,
@@ -479,7 +673,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアFの1番の模擬店情報を表示",
+=======
+                "text": "エリアFの1番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 220,
                     "y": 322,
@@ -489,7 +687,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアFの2番の模擬店情報を表示",
+=======
+                "text": "エリアFの2番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 374,
                     "y": 322,
@@ -499,7 +701,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "エリアFの3番の模擬店情報を表示",
+=======
+                "text": "エリアFの3番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 520,
                     "y": 320,
@@ -510,10 +716,17 @@
         ]
     },
     "InsideTop": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/Top/map-InsideTop",
         "altText": "[Top] 構内全体マップ",
         "baseSize": {
             "height": 564,
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/Top/map-InsideTop",
+        "altText": "[Top] 構内全体マップ",
+        "baseSize": {
+            "height": 565,
+>>>>>>> stash@{0}
             "width": 1040
         },
         "actions": [
@@ -522,9 +735,15 @@
                 "text": "[Top] 構外全体マップへ",
                 "area": {
                     "x": 38,
+<<<<<<< HEAD
                     "y": 21,
                     "width": 210,
                     "height": 52
+=======
+                    "y": 54,
+                    "width": 200,
+                    "height": 50
+>>>>>>> stash@{0}
                 }
             },
             {
@@ -532,7 +751,11 @@
                 "text": "2棟へ",
                 "area": {
                     "x": 304,
+<<<<<<< HEAD
                     "y" : 316,
+=======
+                    "y" : 318,
+>>>>>>> stash@{0}
                     "width" : 410,
                     "height": 81
                 }
@@ -570,7 +793,11 @@
         ]
     },
     "I21": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/inside/map-inside-2-1",
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-1",
+>>>>>>> stash@{0}
         "altText": "2棟1階",
         "baseSize": {
             "height": 566,
@@ -579,7 +806,11 @@
         "actions": [
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "[Top] 構内全体マップへ",
+=======
+                "text": "[Top] 構外全体マップへ",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 50,
                     "y": 26,
@@ -589,13 +820,18 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "2棟1階の1番の模擬店情報を表示",
+=======
+                "text": "2棟1階の1番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 623,
                     "y": 179,
                     "width": 94,
                     "height": 183
                 }
+<<<<<<< HEAD
             },
             {
                 "type": "message",
@@ -606,11 +842,17 @@
                     "width":173,
                     "height": 51
                 }
+=======
+>>>>>>> stash@{0}
             }
         ]
     },
     "I22": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/inside/map-inside-2-2",
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-2",
+>>>>>>> stash@{0}
         "altText": "2棟2階",
         "baseSize": {
             "height": 566,
@@ -619,7 +861,11 @@
         "actions": [
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "[Top] 構内全体マップへ",
+=======
+                "text": "[Top] 構外全体マップへ",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 25,
                     "y": 13,
@@ -629,7 +875,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "2棟2階の1番の模擬店情報を表示",
+=======
+                "text": "2棟2階の1番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 757,
                     "y": 179,
@@ -639,13 +889,18 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "2棟2階の2番の模擬店情報を表示",
+=======
+                "text": "2棟2階の2番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 891,
                     "y": 185,
                     "width": 98,
                     "height": 183
                 }
+<<<<<<< HEAD
             },
             {
                 "type": "message",
@@ -666,11 +921,17 @@
                     "width":174,
                     "height": 56
                 }
+=======
+>>>>>>> stash@{0}
             }
         ]
     },
     "I23": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/inside/map-inside-2-3",
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-3",
+>>>>>>> stash@{0}
         "altText": "2棟3階",
         "baseSize": {
             "height": 566,
@@ -679,7 +940,11 @@
         "actions": [
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "[Top] 構内全体マップへ",
+=======
+                "text": "[Top] 構外全体マップへ",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 52,
                     "y": 27,
@@ -689,7 +954,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "2棟3階の1番の模擬店情報を表示",
+=======
+                "text": "2棟3階の1番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 364,
                     "y": 180,
@@ -699,7 +968,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "2棟3階の2番の模擬店情報を表示",
+=======
+                "text": "2棟3階の2番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 487,
                     "y": 180,
@@ -709,7 +982,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "2棟3階の3番の模擬店情報を表示",
+=======
+                "text": "2棟3階の3番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 625,
                     "y": 180,
@@ -719,7 +996,11 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "2棟3階の4番の模擬店情報を表示",
+=======
+                "text": "2棟3階の4番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 757,
                     "y": 180,
@@ -729,13 +1010,18 @@
             },
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "2棟3階の5番の模擬店情報を表示",
+=======
+                "text": "2棟3階の5番の模擬店を表示",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 891,
                     "y": 180,
                     "width": 99,
                     "height": 189
                 }
+<<<<<<< HEAD
             },
             {
                 "type": "message",
@@ -756,11 +1042,17 @@
                     "width":173,
                     "height": 56
                 }
+=======
+>>>>>>> stash@{0}
             }
         ]
     },
     "I24": {
+<<<<<<< HEAD
         "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg8/inside/map-inside-2-4",
+=======
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-4",
+>>>>>>> stash@{0}
         "altText": "2棟4階",
         "baseSize": {
             "height": 566,
@@ -769,13 +1061,18 @@
         "actions": [
             {
                 "type": "message",
+<<<<<<< HEAD
                 "text": "[Top] 構内全体マップへ",
+=======
+                "text": "[Top] 構外全体マップへ",
+>>>>>>> stash@{0}
                 "area": {
                     "x": 52,
                     "y": 24,
                     "width": 215,
                     "height": 56
                 }
+<<<<<<< HEAD
             },
             {
                 "type": "message",
@@ -1186,6 +1483,8 @@
                     "width":226,
                     "height": 59
                 }
+=======
+>>>>>>> stash@{0}
             }
         ]
     }
