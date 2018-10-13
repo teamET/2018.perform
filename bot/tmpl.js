@@ -54,39 +54,32 @@ function save_html(name,html){
 	});
 }
 
-function make_template(filename){
-    var data=load_data(filename);
-	var template=load_template(filename);
-	var html=ejs.render(template,{data: data},(err,str)=>{
-		if(err){
-			utls.log('ejs error',err);
-		}
-		utils.log('ejs results',str);
-	});
-	save_html(filename,html);
-	return html
-}
-
-function make_gallery(){
-    var data=load_data("shop");
-	var template=load_template("gallery");
+function render_ejs(template,data){
 	var html=ejs.render(template,{data: data},(err,str)=>{
 		if(err){
 			utils.err('ejs error',err);
 		}
 		utils.log('ejs results',str);
 	});
-    html=minify(html,{
-        minifyJS:true,
-        removeComments:true,
-        collapseWhitespace:true,
-    })
-	save_html("gallery",html);
+    return html;
+}
 
+function make_template(filename){
+    var data=load_data(filename);
+	var template=load_template(filename);
+    var html=render_ejs(template,data);
+	save_html(filename,html);
+}
+
+function make_gallery(){
+    var data=load_data("shop");
+	var template=load_template("gallery");
+    var html=render_ejs(template,data);
+	save_html("gallery",html);
 }
 
 module.exports={
-	make:make_template
+	make:make_template,
 	make_gallery:make_gallery
 }
 
