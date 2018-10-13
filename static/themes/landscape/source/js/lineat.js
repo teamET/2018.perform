@@ -10,7 +10,7 @@ function mapInfo(){
   var h_mapinfo = document.getElementById("mapinfo");
   var h_thisinfo = document.getElementById("thisinfo"); 
   if(getParam("map") == "true"){
-    var htmltext = "mapから来ましたね。<br>";
+    var htmltext = "スマートフォン・タブレットではこちらのホームページマップを表示することができません<br>LINE＠では、スマートフォン向けの詳細マップの表示を含め、以下の機能を実装しています。<br>是非登録をよろしくお願いします。<br>";
     WriteInfo(h_mapinfo,htmltext);
     WriteInfo(h_thisinfo,"");
   }
