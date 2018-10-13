@@ -179,7 +179,7 @@ function init(event){
       g_rects[i].graphics.drawRoundRect(0,0,j_rect.width * gm_general.scaleX,j_rect.height * gm_general.scaleY, 20* gm_general.scaleX);
       g_rects[i].x        = j_rect.x * gm_general.scaleX + z_General.x ; // 位置座標セット
       g_rects[i].y        = j_rect.y * gm_general.scaleY + z_General.y ; // 位置座標セット
-      g_rects[i].alpha    = 0.15;                       // 透明度
+      g_rects[i].alpha    = 0.22;                       // 透明度
       // ---- 1.2.2 エリア用の四角に対する枠線用オブジェクトの配置 --------------------------------
       var g_rectStroke = new createjs.Shape();
       g_rectStroke.graphics.beginStroke(j_rect.color);
@@ -189,7 +189,7 @@ function init(event){
       g_rectStroke.y      = g_rects[i].y;
       // ---- 1.2.3 エリア用の四角に乗せるテキストオブジェクトの配置-------------------------------
       var textSize        = 100 * gm_general.scaleX;
-      var g_text          = new createjs.Text(g_areaTexts[i], textSize +"px selif",j_rect.color);
+      var g_text          = new createjs.Text(g_areaTexts[i], textSize +"px selif","#F75C2F");
       g_text.x            = (j_rect.x + parseInt(j_rect.width /2) ) * gm_general.scaleX + z_General.x;
       g_text.y            = (j_rect.y + parseInt(j_rect.height/2) ) * gm_general.scaleY + z_General.y;
       g_text.textAlign    = "center";
@@ -384,7 +384,12 @@ function init(event){
       c_balloonsRects.push(c_balloonRects);
       balloonContainers.push(BalloonContainer);
     }
-
+    // --- 3.5 7棟がクリックされたときに表示される図形の設置 ---------------------------------------
+    var c_sevenStar = new createjs.Shape();
+    c_sevenStar.graphics.beginFill("#fd971f");
+    c_sevenStar.graphics.drawPolyStar(3610* gm_general.scaleX,530* gm_general.scaleY,100* gm_general.scaleY,5,0.6,-90);
+    c_sevenStar.alpha = 0;
+    InsideTopContainer.addChild(c_sevenStar);
     // --- 4. 棟と階のMAPの配置 ---------------------------------------------------------------------------------------
     var BuildingFloorContainers = []; // 棟・階のデータが格納されたコンテナが格納される[棟][階]
     var bfm_sizes_tmp           = []; // await時間短縮用 [棟][階]
@@ -772,6 +777,7 @@ function init(event){
      * 構内Topから全体へ
      */
     function CampusToptoGeneral(event){
+      c_sevenStar.alpha = 0;
       // 吹き出しが出ていたらそれを消す
       for(var k=0;k<c_balloons.length;k++){
         if(e_balloons[k] == 1){
@@ -806,12 +812,24 @@ function init(event){
         currentMapID = "BF" + e_buildNum[i] + "1";
         if(e_buildNum[i] == 7){
           // ** 7棟の処理
-          console.log("7tou");
+          // 今開いている吹き出しを検索して閉じる
+          for(var k=0;k<c_balloons.length;k++){
+            if(e_balloons[k] == 1){
+              InsideTopContainer.removeChild(balloonContainers[k]);
+              e_balloons[k] = 0;
+            }
+          }
+          var nextAlpha;
+          if(c_sevenStar.alpha == 0)nextAlpha = 1;
+          else                      nextAlpha = 0;
+          createjs.Tween.get(c_sevenStar).to({alpha:nextAlpha},500);
         }else{
           MapChange(InsideTopContainer,BuildingFloorContainers[i][0]);
+          createjs.Tween.get(c_sevenStar).to({alpha:0},500);
         }
         return;
       }
+      createjs.Tween.get(c_sevenStar).to({alpha:0},500);
       // すでに出ている吹き出しをクリックしたとき
       if(e_balloons[e_balloonTarget] == 1){
         InsideTopContainer.removeChild(balloonContainers[e_balloonTarget]);
