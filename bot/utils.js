@@ -53,14 +53,15 @@ function to_Array(shop){
 }
 
 function slack_log(message){
+	console.log(message);
 	winstonlogger.info(message);
 	slack_postMessage("GCSFWFUE8",message);
 }
 
 function slack_err(message){
+	console.log(message);
 	winstonlogger.error(message);
-	slack_postMessage("#errors",message);
-	slack_postMessage("#errors",message);
+	slack_postMessage("GCS4U0GKT",message);
 }
 
 function slack_responce(message,event){

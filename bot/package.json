@@ -25,6 +25,7 @@
     "fs": "0.0.1-security",
     "html-minifier": "^3.5.20",
     "jsdom": "^11.11.0",
+    "jsonlint": "^1.6.3",
     "pino": "^5.5.0",
     "puppeteer": "^1.4.0",
     "request": "^2.87.0",
