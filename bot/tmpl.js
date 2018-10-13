@@ -64,7 +64,7 @@ function make_template(filename){
 }
 
 module.exports={
-	make_template:make
+	make:make_template
 }
 
 
