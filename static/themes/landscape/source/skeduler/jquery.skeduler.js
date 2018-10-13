@@ -1,5 +1,5 @@
-(function ($) {
-  $win = $(window);
+(function () {
+  $win = jQuery(window);
   var windowWidth = $win.width();
   console.log(windowWidth);
   var defaultSettings = {
@@ -64,7 +64,7 @@
       }
     }
 
-    return $(result);
+    return jQuery(result);
   }
 
   /**
@@ -137,7 +137,7 @@
        var width = task.width || 194;
       }
       var left = task.left || 4;
-      var card = $('<div></div>')
+      var card = jQuery('<div></div>')
         .attr({
           id: 'scheduler-task',
           style: 'top: ' + top + 'px; height: ' + (height - 4) + 'px; ' + 'width: ' + (width - 8) + 'px; left: ' + left + 'px',
@@ -160,19 +160,19 @@
   * - lineHeight - height of one half-hour cell in grid
   * - borderWidth - width of border of cell in grid
   */
-  $.fn.skeduler = function (options) {
-    settings = $.extend(defaultSettings, options);
+  jQuery.fn.skeduler = function (options) {
+    settings = jQuery.extend(defaultSettings, options);
 
     if (settings.debug) {
       console.time('skeduler');
     }
 
-    var skedulerEl = $(this);
+    var skedulerEl = jQuery(this);
 
     skedulerEl.empty();
     skedulerEl.addClass(settings.containerCssClass);
 
-    var div = $('<div></div>');
+    var div = jQuery('<div></div>');
 
     // Add headers
     var headerContainer = div.clone().addClass(settings.headerContainerCssClass);

@@ -1,12 +1,12 @@
 (function generate() {
-  window.jQuery = window.$;
+  // window.jQuery = window.jQuery;
   console.log(window.$,window.$("#skeduler-container"),window.$("#skeduler-container").skeduler);
   console.log("generate");
   var tasks = [];
   var places = ["第一体育館", "第二体育館", "購買前", "企画"]
   var data = [[{
       "timestamp": "12:30",
-      "date" : 21,
+      "date" : 20,
       "start_time": "10.5",
       "duration": 2,
       "end_time": 11,
@@ -26,7 +26,7 @@
       "content": "discription5"
     },{
       "timestamp": "12:30",
-      "date" : 21,
+      "date" : 20,
       "start_time": 15,
       "duration": 1,
       "end_time": 11,
@@ -36,7 +36,7 @@
       "content": "discription6"
     }],[{
       "timestamp": "13:30",
-      "date" : 21,
+      "date" : 20,
       "start_time": 11,
       "end_time": "12:00",
       "place": "第二体育館",
@@ -86,7 +86,7 @@
       "content": "discription3"
     },{
       "timestamp": "12:30",
-      "date" : 21,
+      "date" : 20,
       "start_time": 13,
       "duration": 1,
       "end_time": 11,
@@ -126,7 +126,7 @@
       "content": "discription3"
     },{
       "timestamp": "12:30",
-      "date" : 21,
+      "date" : 20,
       "start_time": 13,
       "duration": 1,
       "end_time": 11,
@@ -165,9 +165,13 @@
         console.log(now);
         return now;
     }
-
+    var count=0;
     const get_schedule=(date)=>{
-        console.log(date);
+        tasks = [];
+        if(count == 1 ){
+          jQuery.noConflict(true);
+        }
+        count+=1;
         for (var i = 0; i < places.length; i++) {
             for (var j = 0; j < data[i].length; j++) {
                 startTime=data[i][j].start_time;
@@ -202,12 +206,16 @@
         onClick: function (e, t) { console.log(e, t); }
       });
     }
-   $('#sche20').on('click',()=>{
+    
+    jQuery('#sche20').on('click',()=>{
       tasks = get_schedule(20);
+      
+      console.log(20);
       set_tasks(tasks);
-    });
-   $('#sche21').on('click',()=>{ 
+  });
+  jQuery('#sche21').on('click',()=>{ 
       tasks = get_schedule(21);
+      //jQuery.noConflict(true)
       console.log(21);
       set_tasks(tasks);
   });
