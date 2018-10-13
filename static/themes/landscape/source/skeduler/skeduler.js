@@ -1,10 +1,12 @@
 (function generate() {
+  // window.jQuery = window.jQuery;
+  console.log(window.$,window.$("#skeduler-container"),window.$("#skeduler-container").skeduler);
   console.log("generate");
   var tasks = [];
   var places = ["第一体育館", "第二体育館", "購買前", "企画"]
   var data = [[{
       "timestamp": "12:30",
-      "date" : 21,
+      "date" : 20,
       "start_time": "10.5",
       "duration": 2,
       "end_time": 11,
@@ -24,7 +26,7 @@
       "content": "discription5"
     },{
       "timestamp": "12:30",
-      "date" : 21,
+      "date" : 20,
       "start_time": 15,
       "duration": 1,
       "end_time": 11,
@@ -34,7 +36,7 @@
       "content": "discription6"
     }],[{
       "timestamp": "13:30",
-      "date" : 21,
+      "date" : 20,
       "start_time": 11,
       "end_time": "12:00",
       "place": "第二体育館",
@@ -84,7 +86,7 @@
       "content": "discription3"
     },{
       "timestamp": "12:30",
-      "date" : 21,
+      "date" : 20,
       "start_time": 13,
       "duration": 1,
       "end_time": 11,
@@ -124,7 +126,7 @@
       "content": "discription3"
     },{
       "timestamp": "12:30",
-      "date" : 21,
+      "date" : 20,
       "start_time": 13,
       "duration": 1,
       "end_time": 11,
@@ -153,42 +155,68 @@
       "from": "brassband",
       "content": "discription4"
     }]]
-  var date = new Date();
-  function getNow() {
-    function to_string(d) {
-      return (d < 10) ? '0' + d.toString() : d.toString();
-    }
     var date = new Date();
-    var now = `${to_string(date.getDay())}/${date.getHours()}:${date.getMinutes()}`
-    console.log(now);
-    return now;
-  }
-  for (var i = 0; i < places.length; i++) {
-    for (var j = 0; j < data[i].length; j++) {
-      startTime=data[i][j].start_time;
-      //width 0->100% 0.5->half
-      duration=data[i][j].duration;
-      var columun= places.findIndex(function(x) { x == data[i][j].place; });
-
-      var columun = places.indexOf(data[i][j].place);
-      var task = {
-        startTime: startTime,
-        duration: duration,
-        column: columun,
-        id: data[i][j].from,
-        title: data[i][j].name,
-        content: data[i][j].content,
-        width: 0
-      };
-      tasks.push(task);
+    function getNow() {
+        function to_string(d) {
+            return (d < 10) ? '0' + d.toString() : d.toString();
+        }
+        var date = new Date();
+        var now = `${to_string(date.getDay())}/${date.getHours()}:${date.getMinutes()}`
+        console.log(now);
+        return now;
     }
-  }
-  //console.log("tasks count: " + tasks.length);
-  //console.log(JSON.stringify(tasks));
-  jQuery("#skeduler-container").skeduler({
-    headers: places,
-    tasks: tasks,
-    cardTemplate: '<div>${id}</div><div>${title}</div><div class="hide-content">${content}</div>',
-    onClick: function (e, t) { console.log(e, t); }
+    var count=0;
+    const get_schedule=(date)=>{
+        tasks = [];
+        if(count == 1 ){
+          jQuery.noConflict(true);
+        }
+        count+=1;
+        for (var i = 0; i < places.length; i++) {
+            for (var j = 0; j < data[i].length; j++) {
+                startTime=data[i][j].start_time;
+                //width 0->100% 0.5->half
+                duration=data[i][j].duration;
+                var columun= places.findIndex(function(x) { x == data[i][j].place; });
+
+                var columun = places.indexOf(data[i][j].place);
+                var task = {
+                    startTime: startTime,
+                    duration: duration,
+                    column: columun,
+                    id: data[i][j].from,
+                    title: data[i][j].name,
+                    content: data[i][j].content,
+                    width: 0
+                };
+                if(data[i][j].date==date){
+                    tasks.push(task);
+                }
+            }
+        }
+        return tasks;
+    }
+    var tasks=get_schedule(21);
+    set_tasks(tasks);
+    function set_tasks(tasks) {
+      jQuery("#skeduler-container").skeduler({
+        headers: places,
+        tasks: tasks,
+        cardTemplate: '<div>${id}</div><div>${title}</div><div class="hide-content">${content}</div>',
+        onClick: function (e, t) { console.log(e, t); }
+      });
+    }
+    
+    jQuery('#sche20').on('click',()=>{
+      tasks = get_schedule(20);
+      
+      console.log(20);
+      set_tasks(tasks);
+  });
+  jQuery('#sche21').on('click',()=>{ 
+      tasks = get_schedule(21);
+      //jQuery.noConflict(true)
+      console.log(21);
+      set_tasks(tasks);
   });
 })(jQuery);
