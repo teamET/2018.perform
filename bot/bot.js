@@ -8,6 +8,7 @@ const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const utils= require("./utils.js");
 //load json
 const account= require("./private/id2mogiid.json");
+const admin= require("./public/admin.json");
 const shop= require("./public/shop.json");
 
 //load env
@@ -112,7 +113,7 @@ function get_mogiid(event){
     }
 }
 
-function admin(event){
+function admin_message(event){
 	if(event.text.split(' ')[0]===".message"){
 		slack("get admin message");
 		request.post(
@@ -135,17 +136,27 @@ rtm.on("hello",(event)=>{
     console.log("start slack process");
 });
 
+rtm.on("reaction_added",(event)=>{
+//    save_shop_image(event,shop_id);
+});
+
+rtm.on("reaction_removed",(event)=>{
+//    save_shop_image(event,shop_id);
+});
+
+
+
 rtm.on("message",(event)=>{
     var channel = event.channel;
     if(event.text){event.text = event.text.replace('　',' ');}
     var ts = event.ts;
     var shopd=get_mogiid(event);
 	if(event.channel=="GCS4TEWGZ"){
-//		admin(event);
+//		admin_message(event);
 		return;
 	}else if(event.channel=="CD0KZSRQ9"){
 		if(event.files){
-			photos.push(utils.download("photo_club",event.files[0].title,event.files[0].url_private_download));
+//			photos.push(utils.download("photo_club",event.files[0].title,event.files[0].url_private_download));
 			slack(JSON.stringify(photos),event.channel);
 		}
 		return;
@@ -262,9 +273,6 @@ rtm.on("message",(event)=>{
         }catch(e){
             console.log(e);
         }
-    }
-    if(event.files !== undefined){
-        save_shop_image(event,shop_id);
     }
     backup("shop",shop);
     backup("tag",tag);
