@@ -6,6 +6,8 @@ const jsdom=require("jsdom");
 const {RTMClient}=require("@slack/client");
 const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const utils= require("./utils.js");
+const tmpl= require("./tmpl.js");
+
 //load json
 const account= require("./private/id2mogiid.json");
 const shop= require("./public/shop.json");
@@ -52,6 +54,7 @@ function create_json(){
 
 function backup(name,data){
     utils.log("name : ```"+data+"```");
+    utils.make_template(name,data);
     fs.writeFileSync("./public/"+name+".json",JSON.stringify(data));
 }
 
@@ -269,6 +272,7 @@ rtm.on("message",(event)=>{
     backup("shop",shop);
     backup("tag",tag);
     backup("events",events);
+    tmpl.make("shop");
 });
 
 if(require.main ===module){
