@@ -74,8 +74,11 @@ function backup(name,data){
 
 function save_shop_image(event,shop_id){
     utils.log(event.files[0].url_private_download);
-    var count = shop[shop_id].image.length;
-    var title = count+"."+event.files[0].title.split('.')[1];
+    console.log(event.files[0].url_private_download);
+//    var count = shop[shop_id].image.length;
+//    var title = count+"."+event.files[0].title.split('.')[1];
+    var title = event.files[0].url_private_download.split('/').pop();
+    console.log("title",title);
     file=utils.download(shop_id,title,event.files[0].url_private_download);
     console.log(shop);
     console.log(shop_id);
@@ -258,7 +261,7 @@ rtm.on("message",(event)=>{
 			return ;
 		}
     }else if(event.text.split(' ')[0]==='.rewiew'){
-        screen('./public/'+shop_id+shop_id,shop_id);
+        screen('./private/view/'+shop_id,shop_id);
     }else if(event.text.split(' ')[0]==='.show'){
         slack("```"+
             "name : "+JSON.stringify(shop[shop_id]["shopname"])+"\n"+
@@ -287,7 +290,7 @@ rtm.on("message",(event)=>{
             var time = '2018/10/'+date+'/'+start_time+':00';
 			var display_time = convert(start_time);
 			var duration = (convert(end_time)-convert(start_time)).toFixed(2);
-            events[events.length] = {"id":events.length,"date":date,"time":time,"display_time":display_time,"duration":duration,"start_time":start_time,"end_time":end_time,"place":place,"name":name,"content":content,"from":from,"tstamp":ts};
+            events[events.length] = {"id":events.length,"date":date,"time":time,"display_time":display_time,"duration":duration*1,"start_time":start_time,"end_time":end_time,"place":place,"name":name,"content":content,"from":from,"tstamp":ts};
             if(events[0].id == "id") events.shift();
     	    events = utils.json_sort(events);
             slack("イベントが登録されました.",channel);			
