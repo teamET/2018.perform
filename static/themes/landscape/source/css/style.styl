@@ -289,6 +289,7 @@ body {
   color: #fd971f;
   }
 
+
 // .link {
 //   position: relative;
 //   border: solid 0.5px #ffffff;
@@ -327,15 +328,37 @@ body {
   text-align: center;
   }
 
+.square_btn{
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFF;
+    margin: 0.3em 1em;
+    padding: 0.3em 1em;
+    background: #000000;
+    border-top: solid 3px #222222;
+    border-bottom: solid 3px #222222;
+    transition: .4s;
+}
+
+#event{
+  margin-top: 10px;
+  }
+
 @media screen and (min-width: 500px) {
   .header_title {
     display: none; 
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1050px) {
   .shop {
   width: 49.5%;
+  }
+
+  .not-display-mobile {
+    display: none;  
   }
 }
 

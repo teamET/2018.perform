@@ -32,7 +32,7 @@ function id_exist(shopid){
 
 function json_sort(arr){
 	arr.sort(function(a,b) {
- 		return (a.time > b.time ? 1 : 1);
+ 		return (a.time > b.time ? 1 : -1);
 	});
 	for(i = 0 ; i < arr.length ; i++ ){
 　  	arr[i].id = i;
@@ -103,7 +103,7 @@ function slack_upload(channel,image){
 };
 
 function download(dir,title,url){
-	var dir='./public/'+dir;
+	var dir='./private/raw/'+dir;
 	var fname=dir+'/'+title;
 	mkdirp(dir,(err)=>{slack_log(err);});
 	request({
@@ -117,14 +117,19 @@ function download(dir,title,url){
 const HELP_MESSAGE="booth\n\
 ```\
 .help\n\
+.entry <shop name>\n\
 .goods <goods name> <price>\n\
+.del_goods <goods name>\n\
 .tag <number>\n\
+.del_tag <number>\n\
 .review\n\
 .show\n\
+.show_tag\n\
 ```\n\
 event\n\
 ```\
 .event <date> <start_time> <end_time> <place> <name> <content> <from>\n\
+.news <from> <content>\n\
 .show_event\
 ```";
 
