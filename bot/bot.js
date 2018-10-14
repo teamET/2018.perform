@@ -273,7 +273,7 @@ rtm.on("message",(event)=>{
                     'e.g.\n'+
                     '.event <date> <start_time> <end_time> <place> <name> <content> <from>\n'+
                     'ex.\n'+
-                    '.event 22 18:00 19:00 第一体育館 後夜祭 演出部門によるプロジェクションマッピング 演出部門',
+                   '.event 22 18:00 19:00 第一体育館 後夜祭 演出部門によるプロジェクションマッピング 演出部門',
                         channel);
                 return ;
             }
