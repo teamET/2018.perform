@@ -1,4 +1,5 @@
 const dotenv=require("dotenv").config();
+require('date-utils');
 const fs = require("fs");
 const puppeteer = require("puppeteer");
 const request = require("request");
@@ -6,7 +7,8 @@ const jsdom=require("jsdom");
 const {RTMClient}=require("@slack/client");
 const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const utils= require("./utils.js");
-require('date-utils');
+const tmpl= require("./tmpl.js");
+
 //load json
 const account= require("./private/id2mogiid.json");
 const shop= require("./public/shop.json");
@@ -66,6 +68,7 @@ function create_json(){
 
 function backup(name,data){
     utils.log("name : ```"+data+"```");
+    utils.make_template(name,data);
     fs.writeFileSync("./public/"+name+".json",JSON.stringify(data));
 }
 
@@ -353,6 +356,7 @@ rtm.on("message",(event)=>{
     backup("tag",tag);
     backup("events",events);
     backup("news",news);
+    tmpl.make("shop");
 });
 
 rtm.on("reaction_added",(reaction)=>{
