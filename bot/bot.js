@@ -328,7 +328,11 @@ rtm.on("message",(event)=>{
     	for(let item of event_text) slack(item,channel);
     }else if(event.text.split(' ')[0]==='.resize'){
         try{
-            resize(shop_id,"1.jpg");
+            for(let i in shop[shop_id].image){
+                console.log(shop[shop_id].image[i]);
+                resize(shop_id,shop[shop_id].image[i]);
+            }
+//            slack(リサイズが終わりました);
         }catch(e){
              console.log(e);
         }
