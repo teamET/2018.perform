@@ -559,6 +559,16 @@
             },
             {
                 "type": "message",
+                "text": "7棟へ",
+                "area": {
+                    "x": 870,
+                    "y" : 92,
+                    "width" : 160,
+                    "height":  118
+                }
+            },
+            {
+                "type": "message",
                 "text": "8棟へ",
                 "area": {
                     "x": 160,
