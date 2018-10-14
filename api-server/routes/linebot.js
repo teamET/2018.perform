@@ -200,7 +200,7 @@ function Build_LaboFlex_Bubble(laboid){
             time.text = labo_data[laboid].datetime[i].times[j];
             times.contents[1].contents.push(time);
         }
-        //tmp.body.contents[3].contents.push(times);
+        tmp.body.contents[3].contents.push(times);
         var separator = laboFlex_tmpdata.separator;
         tmp.body.contents[3].contents.push(separator);
     }
