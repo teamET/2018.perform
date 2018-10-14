@@ -424,18 +424,9 @@ async function type_message(event) {
             }
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
-                    case 8+"棟"+3+"階の"+1+"番の模擬店情報を表示":
-                        // 研究室情報を送信する
-                        msg = {
-                            "type": "flex",
-                            "altText":  8+"棟"+3+"階の"+1+"番の模擬店情報を表示",
-                            "contents": {}
-                        };
-                        msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+821]);
-                        console.log(msg.contents);
-                        break;
                     case mapBFdata[i][0]+"棟"+j+"階の"+k+"番の模擬店情報を表示":
                         // ** 模擬店情報送信部
+                        console.log(hehee);
                         if(boothID_data["Inside"+mapBFdata[i][0]+j+k].match(/labo/)){
                             // 研究室情報を送信する
                             msg = {
@@ -444,6 +435,7 @@ async function type_message(event) {
                                 "contents": {}
                             };
                             msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            console.log(msg.contents);
                         }else{
                             msg = {
                                 "type": "flex",
