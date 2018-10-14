@@ -40,6 +40,8 @@ var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
 var map_data  = JSON.parse(fs.readFileSync('./routes/mapdata.json','utf8'));
 var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
 var boothID_data   = JSON.parse(fs.readFileSync('./routes/boothID.json','utf8'));
+var laboFlex_tmpdata = JSON.parse(fs.readFileSync('./routes/flex_labo.json'));
+var labo_data = JSON.parse(fs.readFileSync('./routes/labodata.json'));
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -124,6 +126,39 @@ function Build_flex(shopid) {
         g.contents[1].text = goodjson.price + "円";
         tmp.body.contents.push(g);
     }
+    return tmp;
+}
+/**
+ * 研究室のFlexデータを作成する
+ * @param {string} laboid 研究室ID
+ * @return {obj} tmp 研究室のFlexデータ(ひとつだけ。bubbleを返す)
+ */
+function Build_LaboFlex_Bubble(laboid){
+    var tmp = laboFlex_tmpdata.tmp;
+    // 室内番号・詳細・タイトル
+    tmp.body.contents[0].contents[0].text = labo_data[laboid].floor;
+    if(labo_data[laboid] == "3208・3223") tmp.body.contents[0].contents[0].align = "center";
+    else tmp.body.contents[0].contents[0].align = "start";
+    tmp.body.contents[0].contents[1].text = labo_data[laboid].floorText;
+    tmp.body.contents[1].text = labo_data[laboid].title;
+    tmp.body.contents[1].size = labo_data[laboid].titleSize;
+    // 日付・実施時間
+    for(var i=0;i<labo_data[laboid].datetime.length;i++){
+        var date = laboFlex_tmpdata.dateTmp;
+        date.contents[1].text = labo_data[laboid].datetime[i].date;
+        tmp.body.contents[3].contents.push(date);
+        var times = laboFlex_tmpdata.timesTmp;
+        for(var j=0;j<labo_data[laboid].datetime[i].times.length;j++){
+            var time = laboFlex_tmpdata.timeTmp;
+            time.text = labo_data[laboid].datetime[i].times[j];
+            times.contents[1].contents.push(time);
+        }
+        tmp.body.contents[3].contents.push(times);
+        var separator = laboFlex_tmpdata.separator;
+        tmp.body.contents[3].contents.push(separator);
+    }
+    // 補足情報
+    tmp.body.contents[4].text = labo_data[laboid].supplementation;
     return tmp;
 }
 
@@ -324,7 +359,13 @@ async function type_message(event) {
             msg = msg_imagemap("map",mapdata);
             msg2 = msg_text("エリアを選択してください");
             break;
-        case "実装中":
+        case "debug":
+            msg = {
+                "type": "flex",
+                "altText":  "debug",
+                "contents": {}
+            };
+            msg.contents = Build_LaboFlex_Bubble("labo9");
             break;
         default:
             msg = msg_text("個別の返信はできません(*:△:)");
@@ -337,19 +378,14 @@ async function type_message(event) {
         for(var j=1;j<OutsideArea[i].length;j++){
             switch(event.message.text){
                 case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
-<<<<<<< HEAD
-                    /* ** 模擬店情報送信部
-=======
-                    /*
->>>>>>> stash@{0}
+                    // ** 模擬店情報送信部
                     msg = {
                         "type": "flex",
                         "altText": "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報",
                         "contents": {}
                     };
                     msg.contents = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
-                    */
-                    msg = msg_text("debug message [エリアの模擬店情報]");
+                    msg2 = msg_text("debug message [エリアの模擬店情報]");
                     break;
             }
         }
@@ -365,7 +401,6 @@ async function type_message(event) {
     for(var i=0;i<mapBFdata.length;i++){
         for(var j=1;j<mapBFdata[i].length;j++){
             // フロアの画像送信部
-<<<<<<< HEAD
             switch(event.message.text){
                 case mapBFdata[i][0] + "棟"+j+"階へ":
                     mapdata.location = "I"+mapBFdata[i][0]+j;
@@ -379,39 +414,21 @@ async function type_message(event) {
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
                     case mapBFdata[i][0]+"棟"+j+"階の"+k+"番の模擬店情報を表示":
-                        /*
                         if(mapdata[i][0] == 8 && j ==2){
                             j = 3;
                         }
-                         */
                         // ** 模擬店情報送信部
-=======
-            switch(event.message.texts){
-                case mapBFdata[i][0] + "棟"+j+"階へ":
-                    console.log("console");
-                    mapdata.location = "I"+mapdata[i][0]+j;
-                    msg = msg_imagemap("map",mapdata);
-                    msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
-                    break;
-            }
-            for(var k=1;k<=mapBFdata[i][j];k++){
-                switch(event.message.text){
-                    case mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報を表示":
-                        // 模擬店情報送信部
->>>>>>> stash@{0}
-                        /*
-                        msg = {
-                            "type": "flex",
-                            "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報",
-                            "contents": {}
-                        };
-                        msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
-                        */
-<<<<<<< HEAD
-                        msg = msg_text("debug message [~棟~階~番の模擬店情報へ]");
-=======
-                        msg = msg_text("debug message [~棟~階~番目の模擬店情報へ]");
->>>>>>> stash@{0}
+                        if(boothID_data["Inside"+mapBFdata[i][0]+j+k].match(/labo/)){
+                            
+                        }else{
+                            msg = {
+                                "type": "flex",
+                                "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報",
+                                "contents": {}
+                            };
+                            msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                        }
+                        msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
                         break;
                 }
             }

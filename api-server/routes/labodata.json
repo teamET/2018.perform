@@ -1,0 +1,403 @@
+{
+	"labo1": {
+		"floor": "2105",
+		"floorText": "2棟1階\n分析・無機化学室",
+		"title": "化学おもしろ実験",
+		"titleSize": "xxl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"10:00 ~ 16:00"
+				]
+			}
+		],
+		"supplementation": "液体窒素を使った低温の世界や色の変化が\n織りなす不思議な世界をご覧いただきます。"
+	},
+	"labo2": {
+		"floor": "2108",
+		"floorText": "2棟1階\n多目的実験室",
+		"title": "ドライアイスを作ってみよう",
+		"titleSize": "lg",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"10:00 ~ 16:00"
+				]
+			}
+		],
+		"supplementation": "ドライアイスを使った\n化学実験を楽しんでください。"
+	},
+	"labo3": {
+		"floor": "2205",
+		"floorText": "2棟2階\n1年1組教室",
+		"title": "びっくりケミストリー",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"9:30 ~ 16:00"
+				]
+			}
+		],
+		"supplementation": "物質工学科の3年生が取り組んだ独創的な\n実験・研究の成果と2年生が制作した\n色々な実験動画をご覧いただきます。"
+	},
+	"labo4": {
+		"floor": "3101",
+		"floorText": "3棟1階\n物理実験室",
+		"title": "色の万華鏡",
+		"titleSize": "xxl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"10:00 ~ 11:00",
+					"11:00 ~ 12:00",
+					"13:00 ~ 14:00",
+					"14:00 ~ 15:00"
+				]
+			}
+		],
+		"supplementation": "6枚の鏡シートに自分で絵を彫り描いて\nサイコロ形に貼り合わせると、\n反射によって無限の世界が体験できます。"
+	},
+	"labo5": {
+		"floor": "3102",
+		"floorText": "3棟1階\n応用物理実験室",
+		"title": "音と光で遊ぼう",
+		"titleSize": "xxl",
+		"datetime": [
+			{
+				"date": "20日",
+				"times": [
+					"12:00 ~ 14:30"
+				]
+			}
+		],
+		"supplementation": "音と光を使った実験装置を紹介したり、\n実験のデモンストレーションをお見せします"
+	},
+	"labo6": {
+		"floor": "3208・3223",
+		"floorText": "3棟2階\n多目的室",
+		"title": "スーパー竹とんぼを作ろう",
+		"titleSize": "lg",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"10:00 ~",
+					"16:00 ~"
+				]
+			}
+		],
+		"supplementation": "裏山の竹を切って加工した素材を用いて、\n天高く舞い上るスーパー竹トンボを作ります"
+	},
+	"labo7": {
+		"floor": "3201",
+		"floorText": "3棟2階\n第1創造工房",
+		"title": "ミニ工場を創ろう！",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"10:00 ~ 15:00"
+				]
+			}
+		],
+		"supplementation": "簡単な電気配線で\n自動的に動く装置をつくります。"
+	},
+	"labo8": {
+		"floor": "3302",
+		"floorText": "3棟3階\n電子デバイス実験室",
+		"title": "楽しいはんだ付け工作",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"10:00 ~ 12:00"
+				]
+			}
+		],
+		"supplementation": "LEDを使った簡単な電子回路を\nハンダづけで作製します。"
+	},
+	"labo9": {
+		"floor": "3305",
+		"floorText": "3棟3階\nエネルギー環境実験室",
+		"title": "レゴ太陽光・風力発電の\n体験講座",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "20日",
+				"times": [
+					"13:00 ~ 15:00"
+				]
+			},
+			{
+				"date": "21日",
+				"times": [
+					"10:00 ~ 12:00",
+					"13:00 ~ 15:00"
+				]
+			}
+		],
+		"supplementation": "レゴブロックを利用して\n太陽光発電・風力発電を組立て\n発電の仕組みを\n体験的に学ぶことができます。"
+	},
+	"labo10": {
+		"floor": "3棟3階",
+		"floorText": " ",
+		"title": "電気工学科研究室公開",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo11": {
+		"floor": "3棟4階",
+		"floorText": " ",
+		"title": "電子工学科研究室公開",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo12": {
+		"floor": "3403",
+		"floorText": "3棟4階\n電子工学科実験室",
+		"title": "５年学生実験作品展示",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo13": {
+		"floor": "3406",
+		"floorText": "3棟4階\n専攻科多目的室",
+		"title": "４Dプロジェクト演習",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo14": {
+		"floor": "3411",
+		"floorText": "3棟4階\n特別教室",
+		"title": "はんだ付け体験教室\n（光はざまるバッジ製作）",
+		"titleSize": "lg",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo15": {
+		"floor": "3421",
+		"floorText": "3棟4階\n多目的室",
+		"title": "永井研究室卒業研究\n脳波関連実験展示\n永吉研究室卒研（物性関連）展示",
+		"titleSize": "md",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo16": {
+		"floor": "4105",
+		"floorText": "4棟1階\n自学自習室",
+		"title": "機械工学科の卒研展示",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo17": {
+		"floor": "7102",
+		"floorText": "7棟1階\n電算室",
+		"title": "情報工学科説明会",
+		"titleSize": "xxl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo18": {
+		"floor": "7203",
+		"floorText": "7棟2階\n情報工学実験室",
+		"title": "足し算器の製作",
+		"titleSize": "xxl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"10:00 ~ 12:00"
+				]
+			}
+		],
+		"supplementation": "IC等の部品でブレッドボード上に\n足し算をする回路を製作します。\n  コンピュータの計算の基本的な仕組みの\n一部を知る事ができます。"
+	},
+	"labo19": {
+		"floor": "7306",
+		"floorText": "7棟3階",
+		"title": "情報工学科研究室公開",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo20": {
+		"floor": "7308",
+		"floorText": "7棟3階",
+		"title": "風に向かって走る\nウィンドカーを作ろう",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "21日",
+				"times": [
+					"12:00 ~ 13:00"
+				]
+			}
+		],
+		"supplementation": "風車を使って風に向かって走る\nウィンドカーを作ります"
+	},
+	"labo21": {
+		"floor": "7308",
+		"floorText": "7棟3階",
+		"title": "暗号の仕組みを知ろう",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "20日",
+				"times": [
+					"13:00 ~ 15:00"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo22": {
+		"floor": "7408",
+		"floorText": "7棟4階",
+		"title": "情報工学科研究室公開",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo23": {
+		"floor": "7棟5階",
+		"floorText": " ",
+		"title": "情報工学科研究室公開",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo24": {
+		"floor": "8101",
+		"floorText": "8棟1階",
+		"title": "学校説明会",
+		"titleSize": "xxl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					""
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo25": {
+		"floor": "8301",
+		"floorText": "8棟3階",
+		"title": "高専生と話そう",
+		"titleSize": "xxl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					""
+				]
+			}
+		],
+		"supplementation": " "
+	},
+	"labo26": {
+		"floor": "8401",
+		"floorText": "8棟4階",
+		"title": "個別相談会",
+		"titleSize": "xxl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					""
+				]
+			}
+		],
+		"supplementation": " "
+	}
+}
