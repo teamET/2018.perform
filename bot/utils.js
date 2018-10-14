@@ -165,6 +165,7 @@ module.exports={
 	read_list:read_list,
 	allow_image:allow_image,
 	disallow_image:disallow_image,
+    fileid2url:fileid2url,
 	json_sort:json_sort,
 	to_Array:to_Array
 }
@@ -182,7 +183,8 @@ async function fileid2url(fileid){
                 reject();
             }else{
                 data=JSON.parse(body);
-                download_url=data.file.url_private_download;
+                console.log(data);
+                download_url=data.files[0].url_private_download;
                 resolve(download_url);
             } 
         });
