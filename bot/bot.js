@@ -70,7 +70,6 @@ function create_json(){
 
 function backup(name,data){
     utils.log("name : ```"+data+"```");
-    utils.make_template(name,data);
     fs.writeFileSync("./public/"+name+".json",JSON.stringify(data));
 }
 
@@ -393,14 +392,14 @@ rtm.on("reaction_added",(event)=>{
     }
 });
 
-rtm.on("reaction_removed"){
+rtm.on("reaction_removed",(event)=>{
     console.log("disallow",event);
     if(event.item.type==="file"){
         utils.disallow_image(event);
     }
-}
+});
 
-if(require.main ===module){
+if(require.main ===module);{
     if(SLACK_TOKEN === undefined){
         console.log("slack token is not defined");
     }
