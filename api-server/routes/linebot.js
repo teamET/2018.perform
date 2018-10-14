@@ -475,7 +475,7 @@ async function type_message(event) {
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
                     case mapBFdata[i][0]+"棟"+j+"階の"+k+"番の模擬店情報を表示":
-                        if(mapdata[i][0] == 8 && j ==2){
+                        if(mapBFdata[i][0] == 8 && j ==2){
                             j = 3;
                         }
                         // ** 模擬店情報送信部
@@ -486,6 +486,7 @@ async function type_message(event) {
                                 "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の研究室情報",
                                 "contents": {}
                             };
+                            console.log(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                             msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                         }else{
                             msg = {
