@@ -282,8 +282,8 @@ rtm.on("message",(event)=>{
             var content = event.text.split(' ')[6];
             var from = event.text.split(' ')[7];
             var time = '2018/10/'+date+'/'+start_time+':00';
-			var display_time = start_time.replace(':','.');
-			var duration = convert(end_time)-convert(start_time);
+			var display_time = convert(start_time);
+			var duration = (convert(end_time)-convert(start_time)).toFixed(2);
             events[events.length] = {"id":events.length,"date":date,"time":time,"display_time":display_time,"duration":duration,"start_time":start_time,"end_time":end_time,"place":place,"name":name,"content":content,"from":from,"tstamp":ts};
             if(events[0].id == "id") events.shift();
     	    events = utils.json_sort(events);
