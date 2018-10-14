@@ -445,14 +445,14 @@ async function type_message(event) {
                         }
                         
                         break;
-                    case 8+"棟"+3+"階の"+k+"番の模擬店情報を表示":
+                    case 8+"棟"+3+"階の"+1+"番の模擬店情報を表示":
                         // 研究室情報を送信する
                         msg = {
                             "type": "flex",
                             "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の研究室情報",
                             "contents": {}
                         };
-                        msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                        msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+821]);
                 }
             }
         }
