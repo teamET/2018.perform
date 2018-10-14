@@ -381,7 +381,7 @@ async function type_message(event) {
                 "altText": "8棟3階の1番の模擬店情報を表示",
                 "contents": {}
             };
-            msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside821"]);
+            msg.contents = Build_LaboFlex_Bubble("labo25");
             break;
         default:
             msg = msg_text("個別の返信はできません(*:△:)");
