@@ -168,26 +168,29 @@ module.exports={
 }
 
 async function fileid2url(fileid){
-    var url="";
-	await request.post({url:'https://slack.com/api/files.info',
-        form: {
-            token: SLACK_TOKEN,
-            file: fileid,
-        }
-	},async (error, response, body) => {
-        if (error){
-            console.log("error",error);
-        }else{
-            data=await ((body)=>{
-                return JSON.parse(body);
-//                return data.file.url_private_download;
-            })(body);
-            console.log(data);
-            download_url=await data.file.url_private_download;
-            console.log(download_url);
-            return download_url;
-        } 
-	});
+    return new Promise((resolve,reject)=>{
+        request.post({url:'https://slack.com/api/files.info',
+            form: {
+                token: SLACK_TOKEN,
+                file: fileid,
+            }
+        },(error, response, body) => {
+            if (error){
+                console.log("error",error);
+                reject();
+            }else{
+                data=((body)=>{
+                    data=JSON.parse(body);
+                    download_url=data.file.url_private_download;
+    //                return data.file.url_private_download;
+                })(body);
+//                console.log(data);
+//                console.log(download_url);
+                resolve(download_url);
+            } 
+        });
+
+    });
 }
 
 async function main(fileid){
