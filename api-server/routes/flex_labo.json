@@ -82,7 +82,7 @@
             },
             {
                 "type": "text",
-                "text": "10/20",
+                "text": "",
                 "size": "sm",
                 "color": "#111111",
                 "align": "end"
