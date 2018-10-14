@@ -135,7 +135,7 @@ function Build_flex(shopid) {
  */
 function Build_LaboFlex_Bubble(laboid){
     var tmp = laboFlex_tmpdata.tmp;
-    tmp.body.contents[3] = []; // objの削除
+    tmp.body.contents[3].contents = []; // 初期化
     console.log(tmp.body.contents[3]);
     // 室内番号・詳細・タイトル
     tmp.body.contents[0].contents[0].text = labo_data[laboid].floor;
