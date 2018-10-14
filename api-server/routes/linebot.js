@@ -135,6 +135,7 @@ function Build_flex(shopid) {
  */
 function Build_LaboFlex_Bubble(laboid){
     var tmp = laboFlex_tmpdata.tmp;
+    console.log(tmp.body.contents[3]);
     // 室内番号・詳細・タイトル
     tmp.body.contents[0].contents[0].text = labo_data[laboid].floor;
     if(labo_data[laboid] == "3208・3223") tmp.body.contents[0].contents[0].align = "center";
@@ -161,7 +162,6 @@ function Build_LaboFlex_Bubble(laboid){
     }
     // 補足情報
     tmp.body.contents[4].text = labo_data[laboid].supplementation;
-    console.log(tmp.body.contents[3]);
     return tmp;
 }
 
