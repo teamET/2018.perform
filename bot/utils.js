@@ -103,7 +103,7 @@ function slack_upload(channel,image){
 };
 
 function download(dir,title,url){
-	var dir='./public/'+dir;
+	var dir='./private/raw/'+dir;
 	var fname=dir+'/'+title;
 	mkdirp(dir,(err)=>{slack_log(err);});
 	request({

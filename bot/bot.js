@@ -168,7 +168,7 @@ rtm.on("message",(event)=>{
         shop[shop_id].text = event.text.slice(6);
         shop[shop_id].tstamp = ts;
         slack("テキストが登録されました.",channel);
-    }else if(text.split(' ')[0]==='.goods'){
+    }else if(event.text.split(' ')[0]==='.goods'){
         if(text.split(' ').length != 3){
             slack('商品名または値段の入力方法に誤りがあります.\ne.g.\n.goods <goods name> <price>',channel);
             return ;
@@ -192,7 +192,7 @@ rtm.on("message",(event)=>{
         if(shop[shop_id].goods[0].name==='name') shop[shop_id].goods.shift();
         slack("商品が登録されました.\nタグの登録を行ってください.",channel);
         tag_message(tag,channel);
-    }else if(text.split(' ')[0]==='.rewiew'){
+    }else if(event.text.split(' ')[0]==='.rewiew'){
         screen('./public/'+shop_id+shop_id,shop_id);
     }else if(text.split(' ')[0]==='.show'){
         slack("```"+
@@ -209,7 +209,7 @@ rtm.on("message",(event)=>{
                     'e.g.\n'+
                     '.event <date> <start_time> <end_time> <place> <name> <content> <from>\n'+
                     'ex.\n'+
-                    '.event 22 18:00 19:00 第一体育館 後夜祭 演出部門によるプロジェクションマッピング 演出部門',
+                   '.event 22 18:00 19:00 第一体育館 後夜祭 演出部門によるプロジェクションマッピング 演出部門',
                         channel);
                 return ;
             }

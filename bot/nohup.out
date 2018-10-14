@@ -1,0 +1,431 @@
+[33mwarn[39m:    --minUptime not set. Defaulting to: 1000ms
+[33mwarn[39m:    --spinSleepTime not set. Your script will exit if it does not stay up for at least 1000ms
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+start process
+{"message":"start process","level":"info"}
+hello slack
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEG18R
+abd 留学生
+/home/kfes/workspace/2018.perform/bot/bot.js:171
+    }else if(text.split(' ')[0]==='.goods'){
+          ^
+
+ReferenceError: text is not defined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:171:11)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+error: Forever detected script exited with code: 1
+error: Script restart attempt #1
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+start process
+{"message":"start process","level":"info"}
+hello slack
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEG18R
+abd 留学生
+/home/kfes/workspace/2018.perform/bot/bot.js:171
+    }else if(text.split(' ')[0]==='.goods'){
+          ^
+
+ReferenceError: text is not defined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:171:11)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+error: Forever detected script exited with code: 1
+error: Script restart attempt #2
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+start process
+{"message":"start process","level":"info"}
+hello slack
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+/home/kfes/workspace/2018.perform/bot/bot.js:171
+    }else if(text.split(' ')[0]==='.goods'){
+          ^
+
+ReferenceError: text is not defined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:171:11)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+error: Forever detected script exited with code: 1
+error: Script restart attempt #3
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+start process
+{"message":"start process","level":"info"}
+hello slack
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEHCPK
+c4J チョコバナナ
+/home/kfes/workspace/2018.perform/bot/bot.js:171
+    }else if(text.split(' ')[0]==='.goods'){
+          ^
+
+ReferenceError: text is not defined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:171:11)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+error: Forever detected script exited with code: 1
+error: Script restart attempt #4
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+start process
+{"message":"start process","level":"info"}
+hello slack
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEG18R
+abd 留学生
+/home/kfes/workspace/2018.perform/bot/bot.js:171
+    }else if(text.split(' ')[0]==='.goods'){
+          ^
+
+ReferenceError: text is not defined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:171:11)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+error: Forever detected script exited with code: 1
+error: Script restart attempt #5
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+start process
+{"message":"start process","level":"info"}
+hello slack
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
+GD8GEG18R
+abd 留学生
+/home/kfes/workspace/2018.perform/bot/bot.js:171
+    }else if(text.split(' ')[0]==='.goods'){
+          ^
+
+ReferenceError: text is not defined
+    at RTMClient.rtm.on (/home/kfes/workspace/2018.perform/bot/bot.js:171:11)
+    at RTMClient.emit (/home/kfes/workspace/2018.perform/bot/node_modules/eventemitter3/index.js:181:35)
+    at RTMClient.onWebsocketMessage (/home/kfes/workspace/2018.perform/bot/node_modules/@slack/client/dist/RTMClient.js:475:14)
+    at WebSocket.onMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/event-target.js:120:16)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/websocket.js:720:20)
+    at emitOne (events.js:116:13)
+    at Receiver.emit (events.js:211:7)
+    at Receiver.dataMessage (/home/kfes/workspace/2018.perform/bot/node_modules/ws/lib/receiver.js:414:14)
+error: Forever detected script exited with code: 1
+error: Script restart attempt #6
+{ GD9230A11: { id: 'c2D', name: 'サツマイモ', org: '2Dクラス' },
+  GD94TMBFU: { id: 'c2C', name: 'パンケーキ屋さん', org: '２Cクラス' },
+  GD8V5QQ12: { id: 'c4M', name: 'お好み焼き', org: '４M有志' },
+  GD9ACAZ0D: { id: 'v4E', name: '団子カフェ', org: '４E有志' },
+  GDAFJ9XC6: { id: 'nr', name: 'クレープ', org: '農林同好会' },
+  GD8GEG18R: { id: 'abd', name: '留学生', org: '留学生' },
+  GD9231CLT: { id: 'v5D', name: '綿飴屋', org: '５D有志' },
+  GD8GEGDCH: { id: 'hl', name: 'タピオカ', org: '手話' },
+  GD94TNLUA: { id: 'v2M', name: 'たこ焼き', org: '２M有志' },
+  GD9231WFM: { id: 'v2AS', name: 'チジミ屋', org: '２年専攻科有志' },
+  GDA6G1J9M: { id: 'v5C', name: 'チャーハン', org: '５C有志' },
+  GD94TP1EW: { id: 'c1AC', name: '飲み物', org: '１年専攻科' },
+  GD9ACCG3X: { id: 'v4C', name: '焼き餃子', org: '４C有志' },
+  GD9ACCLHK: { id: 'v3D', name: 'フルーツサンド', org: '３D有志' },
+  GD8GEHCPK: { id: 'c4J', name: 'チョコバナナ', org: '４Jクラス' },
+  GDA6G28QP: { id: 'sw', name: '焼きそば', org: '水泳部' },
+  GDAFJBV0E: { id: 'fb', name: 'トルネードポテト', org: 'サッカー' },
+  GDAFJBZ1C: { id: 'fs', name: 'ポテト', org: 'フットサル' },
+  GD8V5T9HA: { id: 'yku', name: 'ラーメン', org: '野球' },
+  GD9ACDHMK: { id: 'bd', name: 'チュロス', org: 'バトミントン' },
+  GD8CJQLRE: { id: 'hb', name: 'わらび餅', org: 'ハンドボール' },
+  GDAFJCJ4W: { id: 'cm', name: 'けんちん汁', org: '科学部' },
+  GD8V5TQCC: { id: 'htb', name: '焼き鳥', org: '硬式テニス' },
+  GD8GEJKG9: { id: 'vb', name: 'ホットドッグ', org: 'バレー部' },
+  GD94TQSH0: { id: 'bsk', name: '牛串', org: 'バスケ' },
+  GDAFJCY6S: { id: 'tnf', name: 'フランクフルト', org: '陸上' },
+  GD9ACE99B: { id: 'cyc', name: '今川焼き', org: '自動車' },
+  GD9234A9H: { id: 'v5M', name: 'スタンプラリー', org: '５M有志' },
+  GD9234DTM: { id: 'c14', name: 'ゲーム', org: '４組クラス' },
+  GD9ACEQ0M: { id: 'vM', name: '学科企画', org: 'M科有志' },
+  GD94TRH3L: { id: 'c13', name: '射的', org: '３組クラス' },
+  GDAFJDPGE: { id: 'v14', name: 'バトルドーム', org: '１組有志' },
+  GD8CJRYFJ: { id: 'c4D', name: 'トリックオアトリート', org: '４Ｄクラス' },
+  GD9ACF59T: { id: 'v4D', name: '休憩所', org: '４Ｄ有志' },
+  GDA6G4LTH: { id: 'kusa', name: '森のミュージアム', org: '農林同好会' },
+  GD8CJSBHN: { id: 'pg', name: '写真展示', org: '写真部' },
+  GD8CJSGAC: { id: 'gcat', name: 'ゲーム展示', org: 'Ｇ－ＣＡＴ' },
+  GD8CJSML0: { id: 'tea', name: 'お茶出し', org: '茶道部' } }
+start process
+{"message":"start process","level":"info"}
+hello slack
+{"message":"hello slack","level":"info"}
+start slack process
+GCSFWFUE8
+not mogi GCSFWFUE8
