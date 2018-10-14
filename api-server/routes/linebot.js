@@ -375,13 +375,13 @@ async function type_message(event) {
                 msg.contents.contents.push(Build_LaboFlex_Bubble("labo"+i));
             }
             break;
-        case "あ":
+        case "8棟3階の1番の模擬店情報を表示":
             msg = {
                 "type": "flex",
-                "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の研究室情報",
+                "altText": "8棟3階の1番の模擬店情報を表示",
                 "contents": {}
             };
-            msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside811"]);
+            msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside821"]);
             break;
         default:
             msg = msg_text("個別の返信はできません(*:△:)");
