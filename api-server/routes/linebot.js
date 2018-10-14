@@ -360,14 +360,14 @@ async function type_message(event) {
             msg2 = msg_text("エリアを選択してください");
             break;
         case "debug":
-        /* 
+        
             msg = {
                 "type": "flex",
                 "altText":  "debug",
                 "contents": {}
             };
-            msg.contents = Build_LaboFlex_Bubble("labo9");*/
-            msg = msg_text("debug");
+            msg.contents = Build_LaboFlex_Bubble("labo9");
+            
             break;
         case "7棟の情報を表示":
             msg = msg_text("工事中");
