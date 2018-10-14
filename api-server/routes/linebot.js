@@ -406,24 +406,18 @@ async function type_message(event) {
             msg = msg_imagemap("map",mapdata);
             msg2 = msg_text("エリアを選択してください");
             break;
-        case "debug":
-            msg = {
-                "type": "flex",
-                "altText":  "debug",
-                "contents": {}
-            };
-            msg.contents = Build_LaboFlex_Bubble("labo9");
-            break;
-        case "debug2":
-            msg = {
-                "type": "flex",
-                "altText":  "debug",
-                "contents": {}
-            };
-            msg.contents = Build_LaboFlex_Bubble("labo10");            
-            break;
         case "7棟の情報を表示":
-            msg = msg_text("工事中");
+            msg = {
+                "type": "flex",
+                "altText": "7棟の研究室情報",
+                "contents": {
+                    "type": "carousel",
+                    "contents": []
+                }
+            };
+            for (var i=17; i<= 23; i++) {
+                msg.contents.contents.push(Build_LaboFlex_Bubble("labo"+i));
+            }
             break;
         case "labo9":
             msg = msg_text(labo_data[laboid].floor);
@@ -491,8 +485,9 @@ async function type_message(event) {
                                 "contents": {}
                             };
                             msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
                         }
-                        msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
+                        
                         break;
                     case 8+"棟"+3+"階の"+k+"番の模擬店情報を表示":
                         // 研究室情報を送信する
