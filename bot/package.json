@@ -24,6 +24,7 @@
     "ejs-lint": "^0.3.0",
     "forever": "^0.15.3",
     "fs": "0.0.1-security",
+    "imagemagick": "^0.1.3",
     "html-minifier": "^3.5.20",
     "jsdom": "^11.11.0",
     "jsonlint": "^1.6.3",
