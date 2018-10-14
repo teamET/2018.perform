@@ -432,6 +432,7 @@ async function type_message(event) {
                             "contents": {}
                         };
                         msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+821]);
+                        console.log(msg.contents);
                         break;
                     case mapBFdata[i][0]+"棟"+j+"階の"+k+"番の模擬店情報を表示":
                         // ** 模擬店情報送信部
