@@ -134,9 +134,8 @@ function Build_flex(shopid) {
  * @return {obj} tmp 研究室のFlexデータ(ひとつだけ。bubbleを返す)
  */
 function Build_LaboFlex_Bubble(laboid){
-    var tmpx = laboFlex_tmpdata.tmp;
-    var tmp = JSON.stringify(tmpx);
-    var tmp = JSON.parse(tmp);
+    // JSONの参照私を値渡しにする
+    var tmp = JSON.parse(JSON.stringify(laboFlex_tmpdata.tmp));
     tmp.body.contents[3].contents = []; // 初期化
     // 室内番号・詳細・タイトル
     tmp.body.contents[0].contents[0].text = labo_data[laboid].floor;
@@ -147,57 +146,12 @@ function Build_LaboFlex_Bubble(laboid){
     tmp.body.contents[1].size = labo_data[laboid].titleSize;
     // 日付・実施時間
     for(var i=0;i<labo_data[laboid].datetime.length;i++){
-        var date = {
-            "type": "box",
-            "layout": "horizontal",
-            "margin": "xxl",
-            "contents": [
-                {
-                    "type": "text",
-                    "text": "日付",
-                    "size": "sm",
-                    "color": "#555555",
-                    "flex": 0
-                },
-                {
-                    "type": "text",
-                    "text": "",
-                    "size": "sm",
-                    "color": "#111111",
-                    "align": "end"
-                }
-            ]
-        };
+        var date = JSON.parse(JSON.stringify(laboFlex_tmpdata.dateTmp));
         date.contents[1].text = labo_data[laboid].datetime[i].date;
         tmp.body.contents[3].contents.push(date);
-        var times = {
-            "type": "box",
-            "layout": "horizontal",
-            "margin": "xxl",
-            "contents": [
-                {
-                    "type": "text",
-                    "text": "実施時間",
-                    "size": "sm",
-                    "color": "#555555",
-                    "gravity": "center",
-                    "flex": 0
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": []
-                }
-            ]
-        };
+        var times = JSON.parse(JSON.stringify(laboFlex_tmpdata.timesTmp));
         for(var j=0;j<labo_data[laboid].datetime[i].times.length;j++){
-            var time = {
-                "type": "text",
-                "text": "",
-                "size": "sm",
-                "color": "#111111",
-                "align": "end"
-            };
+            var time = JSON.parse(JSON.stringify(laboFlex_tmpdata.timeTmp));
             time.text = labo_data[laboid].datetime[i].times[j];
             times.contents[1].contents.push(time);
         }
