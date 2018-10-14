@@ -163,6 +163,8 @@ module.exports={
 	download:download,
 	help:help,
 	read_list:read_list,
+	allow_image:allow_image,
+	disallow_image:disallow_image,
 	json_sort:json_sort,
 	to_Array:to_Array
 }
@@ -179,13 +181,8 @@ async function fileid2url(fileid){
                 console.log("error",error);
                 reject();
             }else{
-                data=((body)=>{
-                    data=JSON.parse(body);
-                    download_url=data.file.url_private_download;
-    //                return data.file.url_private_download;
-                })(body);
-//                console.log(data);
-//                console.log(download_url);
+                data=JSON.parse(body);
+                download_url=data.file.url_private_download;
                 resolve(download_url);
             } 
         });
@@ -193,13 +190,19 @@ async function fileid2url(fileid){
     });
 }
 
-async function main(fileid){
-    download_url=await fileid2url(fileid);
+async function allow_image(event){
+    const fileid=event.item.file;
+    download_url=await fileid2url();
     await console.log("download_url",download_url);
+//    download();
+}
+
+function disallow_image(event){
+
 }
 
 if(require.main ===module){
     const fileid="FD7T60M1R";
-    main(fileid);
+//    allow_image(event);
 }
 
