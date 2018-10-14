@@ -25,6 +25,7 @@ var list;
 var photos=[];
 var tag;
 var event_text;
+var news;
 
 function create_json(){
     var events_data;
@@ -53,6 +54,14 @@ function create_json(){
         }];
         fs.writeFileSync('./public/events.json',JSON.stringify(events));		
     }
+     try {
+        news_data = fs.readFileSync("./public/news.json");
+        news = JSON.parse(news_data);
+    }catch(e){
+        news = events;
+        fs.writeFileSync('./public/news.json',JSON.stringify(news));		
+    }
+
 }
 
 function backup(name,data){
@@ -87,9 +96,8 @@ function slack(data,channel){
 
 function convert(data){
 	  var Data = data.split(':');
-	  Data[1] = ("0"+Data[1]/60).slice(-2);
-	  if(Data[1].indexOf(".") !== -1) Data[1] = Data[1].slice(1);
-	  Data = Data.join('.');
+	  Data[1] = (Data[1]/60).toFixed(2).slice(-3);
+      Data = Data.join('');
 	  return Data;
 }
 const screen = (async(channel,file,shop_id)=>{
@@ -150,6 +158,7 @@ rtm.on("hello",(event)=>{
 
 rtm.on("message",(event)=>{
     var channel = event.channel;
+    console.log("event",event);
     if(event.text){event.text = event.text.replace('　',' ');}
     var ts = parseInt(event.ts);
 	var dt = new Date();
@@ -273,31 +282,35 @@ rtm.on("message",(event)=>{
             var content = event.text.split(' ')[6];
             var from = event.text.split(' ')[7];
             var time = '2018/10/'+date+'/'+start_time+':00';
-			var display_time = convert(start_time);
-			var duration = (convert(end_time)-display_time).toFixed(2);
+			var display_time = start_time.replace(':','.');
+			var duration = convert(end_time)-convert(start_time);
             events[events.length] = {"id":events.length,"date":date,"time":time,"display_time":display_time,"duration":duration,"start_time":start_time,"end_time":end_time,"place":place,"name":name,"content":content,"from":from,"tstamp":ts};
             if(events[0].id == "id") events.shift();
-	    events = utils.json_sort(events);
+    	    events = utils.json_sort(events);
             slack("イベントが登録されました.",channel);			
         }catch(e){
             console.log(e);
 			slack("想定外のエラーが発生しました",channel);
         }
     }else if(event.text.split(' ')[0]==='.news'){
-		var from = event.text.split(' ')[1];
+        var from = event.text.split(' ')[1];
 		var content = event.text.split(' ')[2];
 		var start_time = form_time.slice(11,16);
 		var date = form_time.slice(8,9);
-		events[events.length] = {"id":events.length,"date":date,"time":form_time,"display_time":convert(start_time),"duration":"-1","start_time":start_time,"end_time":"-1","place":"-1","name":"-1","content":content,"from":from,"tstamp":ts};
-        events = utils.json_sort(events);
+        console.log(news);
+		news[news.length] = {"id":news.length,"date":date,"time":form_time,"display_time":convert(start_time),"duration":"-1","start_time":start_time,"end_time":"-1","place":"-1","name":"-1","content":content,"from":from,"tstamp":ts};
+        news = utils.json_sort(news);
         slack("ニュースが登録されました.",channel);	
     }else if(event.text.split(' ')[0]==='.show_event'){
         var events_text = JSON.stringify(events,null,'\t')
         slack(events_text,channel);
+    }else if(event.text.split(' ')[0]==='.show_news'){
+        var newss_text = JSON.stringify(news,null,'\t')
+        slack(newss_text,channel);
     }else if(event.text.split(',')[0]==='.r'){
-	var event_text = event.text.split(',');
-	event_text.shift();
-	for(let item of event_text) slack(item,channel);
+    	var event_text = event.text.split(',');
+    	event_text.shift();
+    	for(let item of event_text) slack(item,channel);
     }else if(event.text.split(' ')[0]==='.tag'){
         var tags = event.text.split(' ');
         console.log("tags",tags);
@@ -339,6 +352,11 @@ rtm.on("message",(event)=>{
     backup("shop",shop);
     backup("tag",tag);
     backup("events",events);
+    backup("news",news);
+});
+
+rtm.on("reaction_added",(reaction)=>{
+    console.log("event(reaction)",reaction);
 });
 
 if(require.main ===module){

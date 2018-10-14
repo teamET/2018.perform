@@ -34,7 +34,7 @@ function id_exist(shopid){
 
 function json_sort(arr){
 	arr.sort(function(a,b) {
- 		return (a.time > b.time ? 1 : 1);
+ 		return (a.time > b.time ? 1 : -1);
 	});
 	for(i = 0 ; i < arr.length ; i++ ){
 　  	arr[i].id = i;
@@ -104,7 +104,7 @@ function slack_upload(channel,image){
 };
 
 function download(dir,title,url){
-	var dir='./public/'+dir;
+	var dir='./private/raw/'+dir;
 	var fname=dir+'/'+title;
 	mkdirp(dir,(err)=>{slack_log(err);});
 	request({
