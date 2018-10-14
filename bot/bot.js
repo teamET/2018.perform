@@ -76,8 +76,6 @@ function backup(name,data){
 function save_shop_image(event,shop_id){
     utils.log(event.files[0].url_private_download);
     console.log(event.files[0].url_private_download);
-//    var count = shop[shop_id].image.length;
-//    var title = count+"."+event.files[0].title.split('.')[1];
     var title = event.files[0].url_private_download.split('/').pop();
     console.log("title",title);
     file=utils.download(shop_id,title,event.files[0].url_private_download);
@@ -85,6 +83,7 @@ function save_shop_image(event,shop_id){
     console.log(shop_id);
     console.log(shop[shop_id]);
     shop[shop_id].image.push(title);
+    slack("公開の許可をお願いします。\nshop_id : "+shop_id+" , image_name : "+title,"GCS4TEWGZ");
 }
 
 function slack(data,channel){
@@ -184,11 +183,19 @@ rtm.on("message",(event)=>{
     var shopd=get_mogiid(event);
 	if(event.channel=="GCS4TEWGZ"){
 //		admin(event);
+        if(event.text.split(' ')[0]=="add"){
+            resize(event.text.split(' ')[1],event.text.split(' ')[2]);
+            slack("画像を公開します","GCS4TEWGZ");
+        }else if(event.text.split(' ')[0]=="del"){
+            fs.unlinkSync("./public/"+event.text.split(' ')[1]+"/"+event.text.split(' ')[2]);
+            slack("画像を削除しました","GCS4TEWGZ");
+        }
 		return;
 	}else if(event.channel=="CD0KZSRQ9"){
 		if(event.files){
 			photos.push(utils.download("photo_club",event.files[0].title,event.files[0].url_private_download));
-			slack(JSON.stringify(photos),event.channel);
+            slack("公開の許可をお願いします。\nshop_id : photo_club , image_name : "+event.files[0].title,"GCS4TEWGZ");
+            slack(JSON.stringify(photos),event.channel);
 		}
 		return;
 	}else if(shopd){
@@ -201,6 +208,10 @@ rtm.on("message",(event)=>{
         return;
     }
     slack_id = event.user;
+    if(event.attachments){
+        var title = (event.attachments[0].files[0].url_private_download).split('/').pop();
+        resize(shop_id,title);
+    }
     if(event.text.split(" ")[0]===".help"){
         slack("\`\`\`"+shop_name+"\`\`\`",event.channel);
         utils.help(event);
@@ -382,23 +393,6 @@ rtm.on("message",(event)=>{
     backup("events",events);
     backup("news",news);
     tmpl.make("shop");
-});
-
-rtm.on("reaction_added",(event)=>{
-    console.log("allow",event);
-    if(event.item.type==="file"){
-        utils.allow_image(event);
-        console.log(utils.fileid2url(event.item.file));
-    }else{
-        console.log("no");
-    }
-});
-
-rtm.on("reaction_removed",(event)=>{
-    console.log("disallow",event);
-    if(event.item.type==="file"){
-        utils.disallow_image(event);
-    }
 });
 
 if(require.main ===module);{
