@@ -146,7 +146,27 @@ function Build_LaboFlex_Bubble(laboid){
     tmp.body.contents[1].size = labo_data[laboid].titleSize;
     // 日付・実施時間
     for(var i=0;i<labo_data[laboid].datetime.length;i++){
-        var date = laboFlex_tmpdata.dateTmp;
+        var date = {
+            "type": "box",
+            "layout": "horizontal",
+            "margin": "xxl",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": "日付",
+                    "size": "sm",
+                    "color": "#555555",
+                    "flex": 0
+                },
+                {
+                    "type": "text",
+                    "text": "",
+                    "size": "sm",
+                    "color": "#111111",
+                    "align": "end"
+                }
+            ]
+        };
         date.contents[1].text = labo_data[laboid].datetime[i].date;
         tmp.body.contents[3].contents.push(date);
         /*
