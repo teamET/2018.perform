@@ -363,27 +363,20 @@ async function type_message(event) {
             msg2 = msg_text("エリアを選択してください");
             break;
         case "debug":
-            var msg = {
+            msg = {
                 "type": "flex",
                 "altText":  "debug",
                 "contents": {}
             };
             msg.contents = Build_LaboFlex_Bubble("labo9");
-            msg2 = msg_text(labo_data["labo9"].datetime.length);
-            msg3 = msg_text(labo_data["labo9"].datetime[0].times.length);
-            msg4 = msg_text(labo_data["labo9"].datetime[1].times.length);
             break;
         case "debug2":
-            var msg = {
+            msg = {
                 "type": "flex",
                 "altText":  "debug",
                 "contents": {}
             };
-            msg.contents = Build_LaboFlex_Bubble("labo10");
-            msg2 = msg_text(labo_data["labo10"].datetime.length);
-            msg3 = msg_text(labo_data["labo10"].datetime[0].times.length);
-
-            
+            msg.contents = Build_LaboFlex_Bubble("labo10");            
             break;
         case "7棟の情報を表示":
             msg = msg_text("工事中");
