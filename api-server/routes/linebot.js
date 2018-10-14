@@ -360,8 +360,8 @@ async function type_message(event) {
                         ["F",1,2,3]];
     // [棟][各階にあるのピンの数]]([][0] : 棟の数)
     // 8棟は1，3階だが、プログラム内では1,2階として処理する。
-    var mapBFdata  = [[2,1,2,5,0],
-                      [3,1,2,3,4],
+    var mapBFdata  = [[2,3,3,5,0],
+                      [3,2,3,3,4],
                       [5,1,2],
                       [8,1,1]];
     switch(event.message.text) {
@@ -475,9 +475,6 @@ async function type_message(event) {
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
                     case mapBFdata[i][0]+"棟"+j+"階の"+k+"番の模擬店情報を表示":
-                        if(mapBFdata[i][0] == 8 && j ==2){
-                            j = 3;
-                        }
                         // ** 模擬店情報送信部
                         if(boothID_data["Inside"+mapBFdata[i][0]+j+k].match(/labo/)){
                             // 研究室情報を送信する
@@ -486,7 +483,6 @@ async function type_message(event) {
                                 "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の研究室情報",
                                 "contents": {}
                             };
-                            console.log(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                             msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                         }else{
                             msg = {
@@ -498,6 +494,14 @@ async function type_message(event) {
                         }
                         msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
                         break;
+                    case 8+"棟"+3+"階の"+k+"番の模擬店情報を表示":
+                        // 研究室情報を送信する
+                        msg = {
+                            "type": "flex",
+                            "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の研究室情報",
+                            "contents": {}
+                        };
+                        msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                 }
             }
         }
