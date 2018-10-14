@@ -147,7 +147,7 @@ function Build_LaboFlex_Bubble(laboid){
         var date = laboFlex_tmpdata.dateTmp;
         date.contents[1].text = labo_data[laboid].datetime[i].date;
         tmp.body.contents[3].contents.push(date);
-        /*
+        
         var times = laboFlex_tmpdata.timesTmp;
         for(var j=0;j<labo_data[laboid].datetime[i].times.length;j++){
             var time = laboFlex_tmpdata.timeTmp;
@@ -156,7 +156,7 @@ function Build_LaboFlex_Bubble(laboid){
         }
         tmp.body.contents[3].contents.push(times);
         var separator = laboFlex_tmpdata.separator;
-        */
+        
         tmp.body.contents[3].contents.push(separator);
     }
     // 補足情報
@@ -368,6 +368,14 @@ async function type_message(event) {
                 "contents": {}
             };
             msg.contents = Build_LaboFlex_Bubble("labo9");
+            break;
+        case "debug2":
+            msg = {
+                "type": "flex",
+                "altText":  "debug",
+                "contents": {}
+            };
+            msg.contents = Build_LaboFlex_Bubble("labo10");
             break;
         case "7棟の情報を表示":
             msg = msg_text("工事中");
