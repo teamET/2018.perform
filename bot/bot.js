@@ -6,6 +6,7 @@ const jsdom=require("jsdom");
 const {RTMClient}=require("@slack/client");
 const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const utils= require("./utils.js");
+var im = require('imagemagick');
 require('date-utils');
 //load json
 const account= require("./private/id2mogiid.json");
@@ -94,6 +95,17 @@ function slack(data,channel){
         }
     },(error, response, body) => {
         if (error) console.log(error);
+    });
+}
+
+function resize(shop_id,file){
+    im.resize({
+        srcData: fs.readFileSync('./private/raw/'+shop_id+'/'+file, 'binary'),
+        width:   256
+    }, function(err, stdout, stderr){
+        if (err) throw err
+        fs.writeFileSync('./public/'+shop_id+'/'+file, stdout, 'binary');
+        console.log('image is resized.')
     });
 }
 
@@ -314,6 +326,12 @@ rtm.on("message",(event)=>{
     	var event_text = event.text.split(',');
     	event_text.shift();
     	for(let item of event_text) slack(item,channel);
+    }else if(event.text.split(' ')[0]==='.resize'){
+        try{
+            resize(shop_id,"1.jpg");
+        }catch(e){
+             console.log(e);
+        }
     }else if(event.text.split(' ')[0]==='.tag'){
         var tags = event.text.split(' ');
         console.log("tags",tags);
