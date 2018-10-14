@@ -388,7 +388,9 @@ rtm.on("reaction_added",(event)=>{
     console.log("allow",event);
     if(event.item.type==="file"){
         utils.allow_image(event);
-        fileid2url(event.item.file)
+        console.log(utils.fileid2url(event.item.file));
+    }else{
+        console.log("no");
     }
 });
 
