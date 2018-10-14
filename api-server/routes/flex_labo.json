@@ -71,6 +71,7 @@
     "dateTmp": {
         "type": "box",
         "layout": "horizontal",
+        "margin": "xxl",
         "contents": [
             {
                 "type": "text",

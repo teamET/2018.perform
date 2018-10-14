@@ -147,6 +147,7 @@ function Build_LaboFlex_Bubble(laboid){
         var date = laboFlex_tmpdata.dateTmp;
         date.contents[1].text = labo_data[laboid].datetime[i].date;
         tmp.body.contents[3].contents.push(date);
+        /*
         var times = laboFlex_tmpdata.timesTmp;
         for(var j=0;j<labo_data[laboid].datetime[i].times.length;j++){
             var time = laboFlex_tmpdata.timeTmp;
@@ -155,6 +156,7 @@ function Build_LaboFlex_Bubble(laboid){
         }
         tmp.body.contents[3].contents.push(times);
         var separator = laboFlex_tmpdata.separator;
+        */
         tmp.body.contents[3].contents.push(separator);
     }
     // 補足情報
@@ -372,33 +374,6 @@ async function type_message(event) {
             break;
         case "labo9":
             msg = msg_text(labo_data[laboid].floor);
-            /*
-        var tmp = laboFlex_tmpdata.tmp;
-        // 室内番号・詳細・タイトル
-        tmp.body.contents[0].contents[0].text = labo_data[laboid].floor;
-        if(labo_data[laboid] == "3208・3223") tmp.body.contents[0].contents[0].align = "center";
-        else tmp.body.contents[0].contents[0].align = "start";
-        tmp.body.contents[0].contents[1].text = labo_data[laboid].floorText;
-        tmp.body.contents[1].text = labo_data[laboid].title;
-        tmp.body.contents[1].size = labo_data[laboid].titleSize;
-        // 日付・実施時間
-        for(var i=0;i<labo_data[laboid].datetime.length;i++){
-            var date = laboFlex_tmpdata.dateTmp;
-            date.contents[1].text = labo_data[laboid].datetime[i].date;
-            tmp.body.contents[3].contents.push(date);
-            var times = laboFlex_tmpdata.timesTmp;
-            for(var j=0;j<labo_data[laboid].datetime[i].times.length;j++){
-                var time = laboFlex_tmpdata.timeTmp;
-                time.text = labo_data[laboid].datetime[i].times[j];
-                times.contents[1].contents.push(time);
-            }
-            tmp.body.contents[3].contents.push(times);
-            var separator = laboFlex_tmpdata.separator;
-            tmp.body.contents[3].contents.push(separator);
-        }
-        // 補足情報
-        tmp.body.contents[4].text = labo_data[laboid].supplementation;
-        */    
             break;
         default:
             msg = msg_text("個別の返信はできません(*:△:)");
