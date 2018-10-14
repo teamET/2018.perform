@@ -1,4 +1,5 @@
 const dotenv=require("dotenv").config();
+require('date-utils');
 const fs = require("fs");
 const puppeteer = require("puppeteer");
 const request = require("request");
@@ -8,6 +9,8 @@ const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const utils= require("./utils.js");
 var im = require('imagemagick');
 require('date-utils');
+const tmpl= require("./tmpl.js");
+
 //load json
 const account= require("./private/id2mogiid.json");
 const shop= require("./public/shop.json");
@@ -67,6 +70,7 @@ function create_json(){
 
 function backup(name,data){
     utils.log("name : ```"+data+"```");
+    utils.make_template(name,data);
     fs.writeFileSync("./public/"+name+".json",JSON.stringify(data));
 }
 
@@ -285,7 +289,7 @@ rtm.on("message",(event)=>{
                     'e.g.\n'+
                     '.event <date> <start_time> <end_time> <place> <name> <content> <from>\n'+
                     'ex.\n'+
-                    '.event 22 18:00 19:00 第一体育館 後夜祭 演出部門によるプロジェクションマッピング 演出部門',
+                   '.event 22 18:00 19:00 第一体育館 後夜祭 演出部門によるプロジェクションマッピング 演出部門',
                         channel);
                 return ;
             }
@@ -378,11 +382,23 @@ rtm.on("message",(event)=>{
     backup("tag",tag);
     backup("events",events);
     backup("news",news);
+    tmpl.make("shop");
 });
 
-rtm.on("reaction_added",(reaction)=>{
-    console.log("event(reaction)",reaction);
+rtm.on("reaction_added",(event)=>{
+    console.log("allow",event);
+    if(event.item.type==="file"){
+        utils.allow_image(event);
+        fileid2url(event.item.file)
+    }
 });
+
+rtm.on("reaction_removed"){
+    console.log("disallow",event);
+    if(event.item.type==="file"){
+        utils.disallow_image(event);
+    }
+}
 
 if(require.main ===module){
     if(SLACK_TOKEN === undefined){

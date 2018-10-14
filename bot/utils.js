@@ -1,10 +1,10 @@
-const ejs=require('ejs');
 const dotenv=require('dotenv').config();
 const fs=require('fs');
 const mkdirp = require("mkdirp");
 const path=require('path');
 const request = require("request");
 const logger=require('pino')();
+const url=require('url');
 const winston=require('winston');
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
 const BOT_USERNAME='mogi-shop';
@@ -29,7 +29,6 @@ function read_list(){
 function id_exist(shopid){
 	var shop_list=read_list();
 	console.log(shop_list);
-
 }
 
 function json_sort(arr){
@@ -55,14 +54,15 @@ function to_Array(shop){
 }
 
 function slack_log(message){
+	console.log(message);
 	winstonlogger.info(message);
 	slack_postMessage("GCSFWFUE8",message);
 }
 
 function slack_err(message){
+	console.log(message);
 	winstonlogger.error(message);
-	slack_postMessage("#errors",message);
-	slack_postMessage("#errors",message);
+	slack_postMessage("GCS4U0GKT",message);
 }
 
 function slack_responce(message,event){
@@ -102,6 +102,7 @@ function slack_upload(channel,image){
 		console.log(body);
 	});
 };
+
 
 function download(dir,title,url){
 	var dir='./private/raw/'+dir;
@@ -151,42 +152,6 @@ function slack_postMessage(channel,message){
 	});
 };
 
-function load_template(){
-	var file=path.join(__dirname,"./views/_booth.ejs");
-	var data="";
-	try{
-		data=fs.readFileSync(file,'utf-8');
-	}catch(e){
-		logger.error(e.message);
-		return "";
-	}
-	return data;
-}
-
-function save_html(name,html){
-	fs.writeFile(path.join(__dirname,'views/'+name+'.html'),html,(err)=>{
-		 if(err){     
-			 console.log("error occured"+err.message);
-			 throw err;
-		 }else{
-			logger.info('write file successed');
-		}
-	});
-}
-
-function make_template(filename,data){
-	logger.info('make_tempalte',data);
-	var template=load_template(`./views/${filename}.ejs`);
-	logger.info('make_tempalte',template);
-	var html=ejs.render(template,{data: data},(err,str)=>{
-		if(err){
-			logger.error('ejs error',err);
-		}
-		logger.info('ejs results',str);
-	});
-	save_html(filename,html);
-	return html
-}
 
 
 module.exports={
@@ -196,30 +161,48 @@ module.exports={
 	log:slack_log,
 	err:slack_err,
 	download:download,
-	make_template:make_template,
 	help:help,
 	read_list:read_list,
+	allow_image:allow_image,
+	disallow_image:disallow_image,
 	json_sort:json_sort,
 	to_Array:to_Array
 }
 
-/*
- * sample json data 
-	{
-		"shopname":{"goods":{"name":"price"},"image":["image"],"text":"text"},
-		"4j":{"goods":{"name":"price"},"image":["image"],"text":"text"}
-	}  
-*/
-/* make_template tests */
+async function fileid2url(fileid){
+    return new Promise((resolve,reject)=>{
+        request.post({url:'https://slack.com/api/files.info',
+            form: {
+                token: SLACK_TOKEN,
+                file: fileid,
+            }
+        },(error, response, body) => {
+            if (error){
+                console.log("error",error);
+                reject();
+            }else{
+                data=JSON.parse(body);
+                download_url=data.file.url_private_download;
+                resolve(download_url);
+            } 
+        });
 
+    });
+}
+
+async function allow_image(event){
+    const fileid=event.item.file;
+    download_url=await fileid2url();
+    await console.log("download_url",download_url);
+//    download();
+}
+
+function disallow_image(event){
+
+}
 
 if(require.main ===module){
-/*
-	var EVENT_DATA = JSON.parse(fs.readFileSync('./event.json', 'utf8'));
-	var SHOP_DATA = JSON.parse(fs.readFileSync('./shop.json', 'utf8'));
-	make_template('_timetable',EVENT_DATA);
-	make_template('_news',EVENT_DATA);
-    */
-//	make_template('_shoptable','{"shopname":"4J","goods":{"goods":{"name":"price"},"image":["image"],"text":"text"}}');
-//	slack_log("hello world");
+    const fileid="FD7T60M1R";
+//    allow_image(event);
 }
+
