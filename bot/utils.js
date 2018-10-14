@@ -1,8 +1,10 @@
 const dotenv=require('dotenv').config();
 const fs=require('fs');
 const mkdirp = require("mkdirp");
+const path=require('path');
 const request = require("request");
 const logger=require('pino')();
+const url=require('url');
 const winston=require('winston');
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
 const BOT_USERNAME='mogi-shop';
@@ -27,7 +29,6 @@ function read_list(){
 function id_exist(shopid){
 	var shop_list=read_list();
 	console.log(shop_list);
-
 }
 
 function json_sort(arr){
@@ -102,6 +103,7 @@ function slack_upload(channel,image){
 	});
 };
 
+
 function download(dir,title,url){
 	var dir='./private/raw/'+dir;
 	var fname=dir+'/'+title;
@@ -161,10 +163,46 @@ module.exports={
 	download:download,
 	help:help,
 	read_list:read_list,
+	allow_image:allow_image,
+	disallow_image:disallow_image,
 	json_sort:json_sort,
 	to_Array:to_Array
 }
 
-if(require.main ===module){
-//	slack_log("hello world");
+async function fileid2url(fileid){
+    return new Promise((resolve,reject)=>{
+        request.post({url:'https://slack.com/api/files.info',
+            form: {
+                token: SLACK_TOKEN,
+                file: fileid,
+            }
+        },(error, response, body) => {
+            if (error){
+                console.log("error",error);
+                reject();
+            }else{
+                data=JSON.parse(body);
+                download_url=data.file.url_private_download;
+                resolve(download_url);
+            } 
+        });
+
+    });
 }
+
+async function allow_image(event){
+    const fileid=event.item.file;
+    download_url=await fileid2url();
+    await console.log("download_url",download_url);
+//    download();
+}
+
+function disallow_image(event){
+
+}
+
+if(require.main ===module){
+    const fileid="FD7T60M1R";
+//    allow_image(event);
+}
+

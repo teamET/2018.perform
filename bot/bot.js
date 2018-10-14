@@ -362,9 +362,20 @@ rtm.on("message",(event)=>{
     tmpl.make("shop");
 });
 
-rtm.on("reaction_added",(reaction)=>{
-    console.log("event(reaction)",reaction);
+rtm.on("reaction_added",(event)=>{
+    console.log("allow",event);
+    if(event.item.type==="file"){
+        utils.allow_image(event);
+        fileid2url(event.item.file)
+    }
 });
+
+rtm.on("reaction_removed"){
+    console.log("disallow",event);
+    if(event.item.type==="file"){
+        utils.disallow_image(event);
+    }
+}
 
 if(require.main ===module){
     if(SLACK_TOKEN === undefined){
