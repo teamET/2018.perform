@@ -375,8 +375,13 @@ async function type_message(event) {
                 msg.contents.contents.push(Build_LaboFlex_Bubble("labo"+i));
             }
             break;
-        case "labo9":
-            msg = msg_text(labo_data[laboid].floor);
+        case "あ":
+            msg = {
+                "type": "flex",
+                "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の研究室情報",
+                "contents": {}
+            };
+            msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside811"]);
             break;
         default:
             msg = msg_text("個別の返信はできません(*:△:)");
@@ -426,6 +431,7 @@ async function type_message(event) {
                 switch(event.message.text){
                     case mapBFdata[i][0]+"棟"+j+"階の"+k+"番の模擬店情報を表示":
                         // ** 模擬店情報送信部
+                        console.log("Inside"+mapBFdata[i][0]+j+k);
                         console.log(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                         if(boothID_data["Inside"+mapBFdata[i][0]+j+k].match(/labo/)){
                             // 研究室情報を送信する
