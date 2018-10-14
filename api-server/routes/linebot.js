@@ -426,7 +426,7 @@ async function type_message(event) {
                 switch(event.message.text){
                     case mapBFdata[i][0]+"棟"+j+"階の"+k+"番の模擬店情報を表示":
                         // ** 模擬店情報送信部
-                        console.log("hehee");
+                        console.log(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                         if(boothID_data["Inside"+mapBFdata[i][0]+j+k].match(/labo/)){
                             // 研究室情報を送信する
                             msg = {
@@ -435,7 +435,7 @@ async function type_message(event) {
                                 "contents": {}
                             };
                             msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
-                            console.log(msg.contents);
+                            console.log(msg.contents.body.contents[0].contents[0].text);
                         }else{
                             msg = {
                                 "type": "flex",
