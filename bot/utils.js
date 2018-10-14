@@ -27,7 +27,6 @@ function read_list(){
 function id_exist(shopid){
 	var shop_list=read_list();
 	console.log(shop_list);
-
 }
 
 function json_sort(arr){
@@ -102,6 +101,7 @@ function slack_upload(channel,image){
 	});
 };
 
+
 function download(dir,title,url){
 	var dir='./private/raw/'+dir;
 	var fname=dir+'/'+title;
@@ -165,6 +165,36 @@ module.exports={
 	to_Array:to_Array
 }
 
+function fileid2url(fileid){
+    var url=undefined;
+    console.log(fileid);
+	await request.post('https://slack.com/api/files.info',{
+		form: {
+			token: SLACK_TOKEN,
+			file: fileid,
+		}
+	},async (error, response, body) => {
+        if (error){
+            console.log("error",error);
+        }else{
+            data=await JSON.parse(body);
+            url=await data.file.url_private_download;
+            await console.log("url_private_download",url);
+            return url;
+        } 
+	});
+};
+
+async function downloadById(fileid){
+    const dir="test";
+    const title="test_title";
+    const url=await fileid2url(fileid);
+    await console.log("downloadById url",url);
+    await download(dir,title,url);
+ }
+
 if(require.main ===module){
-//	slack_log("hello world");
+    const fileid="FD7T60M1R";
+    downloadById(fileid);
 }
+
