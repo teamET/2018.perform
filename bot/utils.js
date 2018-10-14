@@ -167,34 +167,36 @@ module.exports={
 	to_Array:to_Array
 }
 
-function downloadByFileid(fileid){
-    const dir="test";
-    const title="test_title";
-    console.log(fileid);
-	request.post({url:'https://slack.com/api/files.info',
+async function fileid2url(fileid){
+    var url="";
+	await request.post({url:'https://slack.com/api/files.info',
         form: {
             token: SLACK_TOKEN,
             file: fileid,
         }
-	},(error, response, body) => {
+	},async (error, response, body) => {
         if (error){
             console.log("error",error);
         }else{
-            JSON.parse(body,(function(key,val){
-                console.log(key,val);
-                if(key=="url_private_download"){
-                    console.log("url private",val);
-                    downnload_url=val;
-                }
-            }));
-            var parsed=url.parse(download_url)
-            download(dir,path.basename(parsed.pathname),url);
+            data=await ((body)=>{
+                return JSON.parse(body);
+//                return data.file.url_private_download;
+            })(body);
+            console.log(data);
+            download_url=await data.file.url_private_download;
+            console.log(download_url);
+            return download_url;
         } 
 	});
-};
+}
+
+async function main(fileid){
+    download_url=await fileid2url(fileid);
+    await console.log("download_url",download_url);
+}
 
 if(require.main ===module){
     const fileid="FD7T60M1R";
-    downloadByFileid(fileid);
+    main(fileid);
 }
 
