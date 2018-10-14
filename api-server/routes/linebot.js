@@ -169,14 +169,37 @@ function Build_LaboFlex_Bubble(laboid){
         };
         date.contents[1].text = labo_data[laboid].datetime[i].date;
         tmp.body.contents[3].contents.push(date);
-        /*
-        var times = laboFlex_tmpdata.timesTmp;
+        var times = {
+            "type": "box",
+            "layout": "horizontal",
+            "margin": "xxl",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": "実施時間",
+                    "size": "sm",
+                    "color": "#555555",
+                    "gravity": "center",
+                    "flex": 0
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": []
+                }
+            ]
+        };
         for(var j=0;j<labo_data[laboid].datetime[i].times.length;j++){
-            var time = laboFlex_tmpdata.timeTmp;
+            var time = {
+                "type": "text",
+                "text": "",
+                "size": "sm",
+                "color": "#111111",
+                "align": "end"
+            };
             time.text = labo_data[laboid].datetime[i].times[j];
             times.contents[1].contents.push(time);
         }
-        */
         //tmp.body.contents[3].contents.push(times);
         var separator = laboFlex_tmpdata.separator;
         tmp.body.contents[3].contents.push(separator);
