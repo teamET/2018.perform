@@ -39,6 +39,7 @@ var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
 var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
 var map_data  = JSON.parse(fs.readFileSync('./routes/mapdata.json','utf8'));
 var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
+var boothID_data   = JSON.parse(fs.readFileSync('./routes/boothID.json','utf8'));
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -122,6 +123,38 @@ function Build_flex(shopid) {
         g.contents[0].text = goodjson.name;
         g.contents[1].text = goodjson.price + "円";
         tmp.body.contents.push(g);
+    }
+    return tmp;
+}
+
+/**
+ *Numで指定する選択肢のボタンflexを作成する
+ * @param {int}   Num   // 選択肢の個数
+ * @param {str[]} text  // それぞれの選択肢で指定する文字列
+ * @return {obj} flex message (Button)
+ */
+function Build_flexButton(texts){
+    var tmp = {
+        "type": "bubble",
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "md",
+            "contents": [
+            ]
+        }
+    }
+    for(i=0;i<texts.length;i++){
+        var addtmp = {
+            "type": "button",
+            "style": "primary",
+            "action": {
+                "type":"message",
+                "label":texts[i],
+                "text":texts[i]
+             }
+        }
+        tmp.body.contents.push(addtmp);
     }
     return tmp;
 }
@@ -232,6 +265,9 @@ async function type_message(event) {
     // Dialogflowへの接続今のところしない
     var msg  = undefined;
     var msg2 = undefined;
+    var msg3 = undefined;
+    var msg4 = undefined;
+    var msg5 = undefined;
     var mapdata  = new Object(); // mapの場所データなど
     // [エリア][ピンの番号]([][0] : エリア名)
     var OutsideArea =  [["A",1,2,3,4,5],
@@ -240,6 +276,12 @@ async function type_message(event) {
                         ["D",1,2,3,4,5,6,7,8],
                         ["E",1,2,3,4,5,6],
                         ["F",1,2,3]];
+    // [棟][各階にあるのピンの数]]([][0] : 棟の数)
+    // 8棟は1，3階だが、プログラム内では1,2階として処理する。
+    var mapBFdata  = [[2,1,2,5,0],
+                      [3,1,2,3,4],
+                      [5,1,2],
+                      [8,1,1]];
     switch(event.message.text) {
         case "近くの模擬店を探す":
             var userplace = await DB_get("UserData", "PLACE", "USERID", event.source.userId);
@@ -262,8 +304,15 @@ async function type_message(event) {
             }
             break;
         case "マップを表示":
-            mapdata.location = "Top";
-            msg = msg_imagemap("map",mapdata);
+            //mapdata.location = "Top";
+            //msg = msg_imagemap("map",mapdata);
+            msg = {
+                "type": "flex",
+                "altText":  "TOP",
+                "contents": {}
+            };
+            var buttonTexts = ["[Top] 構外全体マップへ","[Top] 構内全体マップへ"];
+            msg.contents = Build_flexButton(buttonTexts);
             break;
         case "[Top] 構内全体マップへ":
             mapdata.location = "InsideTop";
@@ -281,11 +330,23 @@ async function type_message(event) {
             msg = msg_text("個別の返信はできません(*:△:)");
             break;
     }
+
+    /***** イメージマップタップ時の出力判定 *****/
+    // [1] 構外マップ
     for(var i=0;i<OutsideArea.length;i++){
         for(var j=1;j<OutsideArea[i].length;j++){
             switch(event.message.text){
-                 case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
-                 break;
+                case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
+                    /* ** 模擬店情報送信部
+                    msg = {
+                        "type": "flex",
+                        "altText": "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報",
+                        "contents": {}
+                    };
+                    msg.contents = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
+                    */
+                    msg = msg_text("debug message [エリアの模擬店情報]");
+                    break;
             }
         }
         switch(event.message.text){
@@ -296,6 +357,59 @@ async function type_message(event) {
                 break;
         }
     }
+    // [2] 構内マップ
+    for(var i=0;i<mapBFdata.length;i++){
+        for(var j=1;j<mapBFdata[i].length;j++){
+            // フロアの画像送信部
+            switch(event.message.text){
+                case mapBFdata[i][0] + "棟"+j+"階へ":
+                    mapdata.location = "I"+mapBFdata[i][0]+j;
+                    msg = msg_imagemap("map",mapdata);
+                    break;
+                case "8棟3階へ":
+                    mapdata.location = "I"+82;
+                    msg = msg_imagemap("map",mapdata);
+                    break;                    
+            }
+            for(var k=1;k<=mapBFdata[i][j];k++){
+                switch(event.message.text){
+                    case mapBFdata[i][0]+"棟"+j+"階の"+k+"番の模擬店情報を表示":
+                        // ** 模擬店情報送信部
+                        /*
+                        msg = {
+                            "type": "flex",
+                            "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報",
+                            "contents": {}
+                        };
+                        msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                        */
+                        msg = msg_text("debug message [~棟~階~番の模擬店情報へ]");
+                        break;
+                }
+            }
+        }
+        // 階数を選択するflexMessageの送信
+        switch(event.message.text){
+            case mapBFdata[i][0]+"棟へ":
+                msg = {
+                    "type": "flex",
+                    "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
+                    "contents": {}
+                }
+                var buttonTexts = [];
+                for(j=1;j<mapBFdata[i].length;j++){
+                    if(i==3 && j==2){
+                        buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
+                    }else{
+                        buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
+                    }
+                }
+                console.log(buttonTexts);
+                msg.contents = Build_flexButton(buttonTexts);
+                break;
+        }
+    }
+
     //画像を送信してきた時の処理
     if (event.message.type == "image") {
         image_download(event);
@@ -303,7 +417,7 @@ async function type_message(event) {
     }
     if (msg){
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-            event.replyToken,msg, msg2
+            event.replyToken,msg, msg2, msg3, msg4, msg5
         ));
         request.post(tmp);
     }
