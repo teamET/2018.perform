@@ -486,7 +486,7 @@ async function type_message(event) {
                                 "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の研究室情報",
                                 "contents": {}
                             };
-                            msg.contents = Build_LaboFlex_Bubble(boothID_data);
+                            msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                         }else{
                             msg = {
                                 "type": "flex",
