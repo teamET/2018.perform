@@ -258,7 +258,7 @@ rtm.on("message",(event)=>{
 			return ;
 		}
     }else if(event.text.split(' ')[0]==='.rewiew'){
-        screen('./public/'+shop_id+shop_id,shop_id);
+        screen('./private/view/'+shop_id,shop_id);
     }else if(event.text.split(' ')[0]==='.show'){
         slack("```"+
             "name : "+JSON.stringify(shop[shop_id]["shopname"])+"\n"+
