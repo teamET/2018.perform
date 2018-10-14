@@ -368,6 +368,9 @@ async function type_message(event) {
                 "contents": {}
             };
             msg.contents = Build_LaboFlex_Bubble("labo9");
+            msg2 = msg_text(labo_data["labo9"].datetime.length);
+            msg3 = msg_text(labo_data["labo9"].datetime[0].times.length);
+            msg4 = msg_text(labo_data["labo9"].datetime[1].times.length);
             break;
         case "debug2":
             msg = {
