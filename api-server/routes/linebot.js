@@ -134,75 +134,10 @@ function Build_flex(shopid) {
  * @return {obj} tmp 研究室のFlexデータ(ひとつだけ。bubbleを返す)
  */
 function Build_LaboFlex_Bubble(laboid){
-    var tmp = {
-        "type": "bubble",
-        "styles": {
-            "footer": {
-                "separator": true
-            }
-        },
-        "body": {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-                {
-                    "type": "box",
-                    "layout": "horizontal",
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": "",
-                            "weight": "bold",
-                            "color": "#1DB446",
-                            "gravity": "center",
-                            "align": "",
-                            "size": "lg"
-                        },
-                        {
-                            "type": "text",
-                            "text": "",
-                            "size": "xs",
-                            "gravity": "center",
-                            "align": "center",
-                            "color": "#a5a5a5",
-                            "wrap": true
-                        }
-                    ]
-                },
-                {
-                    "type": "text",
-                    "text": "",
-                    "weight": "bold",
-                    "size": "",
-                    "gravity": "center",
-                    "align": "center",
-                    "wrap": true,
-                    "margin": "xxl"
-                },
-                {
-                    "type": "separator",
-                    "margin": "xxl"
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "margin": "xxl",
-                    "spacing": "sm",
-                    "contents": []
-                },
-                {
-                    "type": "text",
-                    "text": "",
-                    "size": "xs",
-                    "color": "#aaaaaa",
-                    "align": "center",
-                    "flex": 0,
-                    "wrap": true,
-                    "margin": "xl"
-                }
-            ]
-        }
-    };
+    var tmpx = laboFlex_tmpdata.tmp;
+    var tmp = JSON.stringify(tmpx);
+    var tmp = JSON.parse(tmp);
+    tmp.body.contents[3].contents = []; // 初期化
     // 室内番号・詳細・タイトル
     tmp.body.contents[0].contents[0].text = labo_data[laboid].floor;
     if(labo_data[laboid] == "3208・3223") tmp.body.contents[0].contents[0].align = "center";
