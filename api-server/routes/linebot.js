@@ -363,7 +363,7 @@ async function type_message(event) {
             msg2 = msg_text("エリアを選択してください");
             break;
         case "debug":
-            msg = {
+            var msg = {
                 "type": "flex",
                 "altText":  "debug",
                 "contents": {}
@@ -374,7 +374,7 @@ async function type_message(event) {
             msg4 = msg_text(labo_data["labo9"].datetime[1].times.length);
             break;
         case "debug2":
-            msg = {
+            var msg = {
                 "type": "flex",
                 "altText":  "debug",
                 "contents": {}
