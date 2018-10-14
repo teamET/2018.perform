@@ -377,7 +377,7 @@ async function type_message(event) {
             };
             msg.contents = Build_LaboFlex_Bubble("labo10");
             msg2 = msg_text(labo_data["labo10"].datetime.length);
-            msg3 = msg_text(labo_data[laboid].datetime[i].times.length);
+            msg3 = msg_text(labo_data["labo10"].datetime[i].times.length);
 
             
             break;
