@@ -161,7 +161,7 @@ function Build_LaboFlex_Bubble(laboid){
     }
     // 補足情報
     tmp.body.contents[4].text = labo_data[laboid].supplementation;
-    console.log(tmp);
+    console.log(tmp.body.contents[3]);
     return tmp;
 }
 
