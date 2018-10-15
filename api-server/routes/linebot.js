@@ -47,7 +47,7 @@ function reloadfile() {
     });*/
     console.log("reload");
 }
-setInterval(reloadfile(), 30*1000);
+setInterval("reloadfile()", 30*1000);
 
 /* LINE MessagingAPI URL */
 //URL POST
