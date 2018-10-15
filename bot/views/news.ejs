@@ -1,0 +1,29 @@
+<h1>TOP NEWS</h1>
+<% function LoadNewsTime(diff) {
+    function to_string(d) {
+	return (d < 10) ? '0' + d.toString() : d.toString();
+    }
+    var date = new Date();
+    var loadTime = `${to_string(date.getDay())}/${date.getHours()}:${date.getMinutes()-diff}`
+    loadTime = "22/18:00";
+    return loadTime;
+}%>
+<% count = 0; %>
+<% loadTime = LoadNewsTime(10) %>
+<% for (i = 0; i < data.length && count < 4 ; i+=1 ) { %>
+<%if( loadTime >= data[i].time ){ %>
+  <% count += 1; %>
+    <div class="post icon">
+	<%if( LoadNewsTime(0) <= data[i].time ){ %>
+	    <img src="https://png.icons8.com/ios/50/ffffff/new-filled.png">
+	<% } %>
+	<a href="/event" class="title"><%= data[i].name %></a>
+	<div class="post-meta">
+	    <a href="/event" class="content">
+		<h6><%=data[i].content%></h6>
+	    </a>
+	    <p class="date"><span><%= data[i].date %></span>日 <span><%= data[i].start_time %></span></p>
+	</div>
+    </div>
+  <% } %>
+<% } %>

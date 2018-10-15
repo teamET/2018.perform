@@ -116,12 +116,23 @@ if sidebar
   padding: 10px;      /* 余白指定 */
 }
 
+.del {
+  color: #fc861e;
+  text-decoration : line-through ;
+}
+.del span {
+  color: #665852;
+}
+
 .slide-show {
   position: relative;
 }
 
 .slide-show p {
+  width: 100%;
+  line-height: 60px; 
   font-size: 36px;
+  background-color: rgba(0,0,0,.3);
   text-align: center;
   position: absolute;
   color: white;
@@ -195,10 +206,20 @@ td {
 .post:hover {
   background: rgba(0,0,0,0.5);  
 }
-.icon img{
+.icon img {
     max-width: 28px;
 }
 
+.badge img {
+  margin: 5px;
+  max-width: 32px;
+  opacity: 0.8;
+}
+
+.badge img:hover {
+  opacity: 1;
+  max-width: 35px;
+  }
 .news {
     float: left;
     background-color: #272822;
@@ -230,15 +251,17 @@ td {
   padding-bottom: 20px;
   }
 
+.gallery {
+  min-height: 200px;
+
+  }
+
 .about p {
   opacity: 1;
   line-height: 200%;
   }
 
-.gallery {
-  min-height: 200px;
-  
-  }
+
 
 html,
 body {
@@ -269,6 +292,7 @@ body {
 .link-table p:hover{
   color: #fd971f;
   }
+
 
 // .link {
 //   position: relative;
@@ -312,6 +336,7 @@ body {
 
 
 
+
 .line_bot .map {
     padding:3%;
     text-align:center;
@@ -322,6 +347,25 @@ body {
     border: solid 3px #00b900;/*線*/
     border-radius: 10px;/*角の丸み*/
 }
+
+.square_btn{
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFF;
+    margin: 0.3em 1em;
+    padding: 0.3em 1em;
+    background: #000000;
+    border-top: solid 3px #222222;
+    border-bottom: solid 3px #222222;
+    transition: .4s;
+}
+
+#event{
+  margin-top: 10px;
+  }
+
 @media screen and (min-width: 500px) {
   .header_title {
     display: none; 
@@ -411,9 +455,13 @@ body {
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1050px) {
   .shop {
   width: 49.5%;
+  }
+
+  .not-display-mobile {
+    display: none;  
   }
 }
 
