@@ -533,7 +533,10 @@ async function addUser(event, usertype) {
         .replace('{type}', event.postback.data)
         .replace('{time}', nowtime)
         .replace('{place}', "");
-    connection.query(query);
+    //line側のレスポンスが遅いため，ユーザが押しすぎやすい -> エラーを拾う必要がある
+    connection.query(query, function(err, rows) {
+        console.log("useradd ok");
+    });
     //richmenuの切り替え
     rich_change(richdata.normal, event.source.userId);
     var msg = {
