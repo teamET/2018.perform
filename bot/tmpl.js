@@ -69,6 +69,7 @@ function make_template(filename){
 	var template=load_template(filename);
     var html=render_ejs(template,data);
 	save_html(filename,html);
+    utils.log(filename,html,data);
 }
 
 function make_gallery(){
