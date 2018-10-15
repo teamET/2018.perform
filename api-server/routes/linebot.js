@@ -37,15 +37,16 @@ const flex_item = require("./flex_item.json");
 const richdata = require('./rich.json');
 const shop_area = require('./shop-area.json');
 const map_data  = require('./mapdata.json');
-var shop_data = JSON.parse(fs.readFileSync('./public/shop.json', 'utf8'));
+//var shop_data = JSON.parse(fs.readFileSync('./public/shop.json', 'utf8'));
+var shop_data = {};
 const boothID_data   = require('./boothID.json');
 
 setInterval(reloadfile(), 30*1000);
 
 function reloadfile() {
-    const tmpfile = fs.readFile('./public/shop.json', 'utf8', function(err, data) {
+    /*const tmpfile = fs.readFile('./public/shop.json', 'utf8', function(err, data) {
         shop_data = JSON.parse(tmpfile);
-    });
+    });*/
 }
 
 /* LINE MessagingAPI URL */
@@ -561,7 +562,7 @@ async function beacon_leave(event) {
 }
 
 function access() {
-    request.get("https://kunugida2018.tokyo-ct.ac.jp/api/web");
+    request.get("https://kunugida2018.tokyo-ct.ac.jp/api/web/counter");
 }
 
 
