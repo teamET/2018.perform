@@ -334,6 +334,20 @@ body {
   text-align:left;
 }
 
+
+
+
+.line_bot .map {
+    padding:3%;
+    text-align:center;
+    margin:3%;
+    font-weight: bold;
+    color:  #272822;/*文字色*/
+    background: #fff9ff;
+    border: solid 3px #00b900;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+
 .square_btn{
     position: relative;
     display: inline-block;
@@ -362,16 +376,83 @@ body {
     padding-left:50px;
     padding-bottom:5px;
   }
+  
+  .line_bot h2 span,.line_bot h4 span{
+      position: relative;
+      display: inline-block;
+      font-size : 200%;
+      padding: 0 0.8em;
+  }
+  .line_bot h4 {
+    padding-left:10%;
+  }
+  .line_bot h2 span::before,.line_bot h4 span::before{
+      position: absolute;
+      content: '';
+      top:0;
+      right:0.2em;
+      width: 0.2em;
+      height:100%;
+      border: solid 1px #fbf9e2;
+      border-left: none;
+  }
+  
+  .line_bot h2 span::after,.line_bot h4 span::after{
+      position: absolute;
+      content: '';
+      top:0;
+      left:0;
+      width: 0.2em;
+      height:100%;
+      border: solid 1px  #fbf9e2;
+      border-right: none;
+  }
   .line_bot .registration{
     display:flex;
+    justify-content: space-between;
   }
-  .line_bot .functionContainers{
-    display:flex;
+  .line_bot .regitxtContainer1{
+    width:50%;
+    text-align : center;
+  }
+  .line_bot .regitxtContainer2{
+    width:50%;
+    border-left: 1px solid #00b900;
+    text-align : center;
   }
   .line_bot .qr{
     width : 200px;
   }
-    
+  .line_bot .regitxt{
+    padding-top:5%;
+    font-size:140%;
+  }
+  .line_bot .functionContainers1{
+    display:flex;
+    justify-content: space-between;
+  }
+  .line_bot .functionContainers2,.line_bot .functionContainers3{
+    display:flex;
+    justify-content: space-between;
+  }
+  .line_bot .functionContainer1{
+    width : 50%;
+  }
+  .line_bot .functionContainer2{
+    width : 50%;
+    border-left: 1px solid #00b900;
+  }
+  .line_bot h3{
+    padding-top: 3%;
+    font-size : 120%;
+    padding-left:10%;
+    padding-bottom : 1%;
+  }
+  .line_bot .functxt{
+    padding-top: 8%;
+    padding-bottom:8%;
+    padding-left : 15%;
+  }
 }
 
 @media screen and (max-width: 1050px) {
@@ -450,11 +531,15 @@ body {
   .line_bot .qr{
     width: 50%;
   }
-  .line_bot h2 {
+  .line_bot h2 ,.line_bot h4{
     font-size: 180%;
     padding: .3em;
     border-bottom: 2px solid #00b900;
     text-align:center;
+  }
+  .line_bot .regitxt{
+    padding-top : 5%;
+    font-size:110%;
   }
   .line_bot h3 {
     text-align:left;
