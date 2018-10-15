@@ -1,20 +1,16 @@
 <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">  
-        <a href="<%- url_for() %>" id="logo"><%= config.title %></a><br class="header_title" >
-        <a href="<%- url_for() %>" id="logo"><%= config.title2 %></a>
-      </h1>
-      <% if (theme.subtitle){ %>
-        <h2 id="subtitle-wrap"> 
-          <a href="<%- url_for() %>" id="subtitle"><%= theme.subtitle %></a>
-        </h2>
-      <% } %>
-    </div>
+    <!-- <div id="header-title" class="inner">
+      <div class="box2">
+        <a href="<%- url_for() %>" id="logo"><%= config.title %></a>
+        <a href="<%- url_for() %>" id="subtitle"><%= theme.subtitle %></a>
+      </div>
+    </div> -->
     <div id="header-inner" class="inner">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
+        <a href="/"><img src="https://user-images.githubusercontent.com/38575274/46932183-75305980-d089-11e8-89a0-e79688fcdd2d.png"></a>
         <% for (var i in theme.menu){ %>
           <a class="main-nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
         <% } %>
