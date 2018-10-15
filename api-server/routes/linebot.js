@@ -35,10 +35,10 @@ const dbx = dropboxV2Api.authenticate({
 const flex_tmp = require("./flex_template.json");
 const flex_item = require("./flex_item.json");
 const richdata = require('./rich.json');
-const shop_area = require('./routes/shop-area.json');
-const map_data  = require('./routes/mapdata.json');
+const shop_area = require('./shop-area.json');
+const map_data  = require('./mapdata.json');
 var shop_data = JSON.parse(fs.readFileSync('./public/shop.json', 'utf8'));
-const boothID_data   = require('./routes/boothID.json');
+const boothID_data   = require('./boothID.json');
 
 setInterval(reloadfile(), 30*1000);
 
@@ -504,37 +504,41 @@ async function type_beacon(event) {
     var nowtime = now.format('YYYY-MM-DD HH:mm:ss');
     var db_time = moment(await tmp);
     var db_place = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
-    //前回の侵入から7分経っている -> 更新してメッセージを送信
-    if ((now.diff(db_time)/(1000*60)) >= 7 ) {
-        var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
+    var user_place = DB_get("UserData", "PLACE", "USERID", event.source.userId);
+    if (await db_place != await user_place) {
+        //前回の侵入から7分経っている -> 更新してメッセージを送信
+        if ((now.diff(db_time)/(1000*60)) >= 7 ) {
+            var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
+                .replace("{id}", event.source.userId)
+                .replace("{time}", nowtime);
+            connection.query(query);
+            //メッセージを整形
+            var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
+            var msg = {
+                "type": "text",
+                "text": "現在，" + db_place + "です"
+            };
+            var msg2 = {
+                "type": "text",
+                "text": "[おしらせ]\n" + await db_msg
+            };
+            var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+                event.replyToken, msg, msg2
+            ));
+            request.post(tmp);
+        }
+        //ユーザがいる場所を登録
+        var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
             .replace("{id}", event.source.userId)
-            .replace("{time}", nowtime);
+            .replace("{place}", db_place);
         connection.query(query);
-        //メッセージを整形
-        var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
-        var msg = {
-            "type": "text",
-            "text": "現在，" + await db_place + "です"
-        };
-        var msg2 = {
-            "type": "text",
-            "text": "[おしらせ]\n" + await db_msg
-        };
-        var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-            event.replyToken, msg, msg2
-        ));
-        request.post(tmp);
+        //体育館に侵入したならリッチメニューを切り替える
+        if (db_place == "taiikukan") {
+            rich_change(richdata.event, event.source.userId);
+        } else {
+            rich_change(richdata.normal, event.source.userId);
+        }
     }
-    //ユーザがいる場所を登録
-    var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
-        .replace("{id}", event.source.userId)
-        .replace("{place}", await db_place);
-    connection.query(query);
-    //体育館に侵入したならリッチメニューを切り替える
-    if (db_place == "taiikukan") {
-        rich_change(richdata.event, event.source.userId);
-    }
-
 }
 
 /**
@@ -590,7 +594,7 @@ router.post('/', function(req, res, next) {
                         case "Other":
                             addUser(event, "来場者");
                             break;
-                        case "体育館":
+                        case "taiikukan":
                             access();
                             break;
                     }
