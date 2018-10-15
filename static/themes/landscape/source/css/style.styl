@@ -327,10 +327,12 @@ body {
 
 
 .line_bot{
-  color: #ffffff;
+  background: #272822;
+  color : #fbf9e2;
   min-height: 200px;
-  text-align: center;
-  }
+  padding: 10px;
+  text-align:left;
+}
 
 .square_btn{
     position: relative;
@@ -353,7 +355,23 @@ body {
 @media screen and (min-width: 500px) {
   .header_title {
     display: none; 
-    }
+  }
+  .lineat{
+    width:250px;
+    padding-top:20px;
+    padding-left:50px;
+    padding-bottom:5px;
+  }
+  .line_bot .registration{
+    display:flex;
+  }
+  .line_bot .functionContainers{
+    display:flex;
+  }
+  .line_bot .qr{
+    width : 200px;
+  }
+    
 }
 
 @media screen and (max-width: 1050px) {
@@ -415,5 +433,40 @@ body {
 
   body {
     padding:0;
+  }
+
+  .lineat{
+    text-align:left;
+    padding-top:20px;
+    padding-left:8%;
+    padding-bottom:5px;
+  }
+  .line_bot .registration{
+    text-align:center;
+  }
+  .line_bot .regitxt{
+    padding:3%;
+  }
+  .line_bot .qr{
+    width: 50%;
+  }
+  .line_bot h2 {
+    font-size: 180%;
+    padding: .3em;
+    border-bottom: 2px solid #00b900;
+    text-align:center;
+  }
+  .line_bot h3 {
+    text-align:left;
+    font-size : 120%;
+    padding-left:3%;
+    padding-bottom : 1%;
+    border-bottom : 1px dotted #00b900;
+    border-left: 10px solid #00b900;
+  }
+  .line_bot .functxt{
+    padding-top : 10%;
+    padding-left:10%;
+    padding-bottom : 10%;
   }
 }

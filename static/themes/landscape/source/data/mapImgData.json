@@ -3,12 +3,12 @@
     "ToOutsideArrow":"map-tool-toOutside.png",
     "Generalview": "map.png",
     "AreaRects":[
-        {"x":1050,"y":300,"width":500,"height":250,"color":"DarkRed"},
-        {"x":1750,"y":270,"width":450,"height":250,"color":"DarkRed"},
-        {"x":1730,"y":580,"width":450,"height":250,"color":"DarkRed"},
-        {"x":1850,"y":900,"width":300,"height":400,"color":"DarkRed"},
-        {"x":2450,"y":1150,"width":350,"height":230,"color":"DarkRed"},
-        {"x":2250,"y":850,"width":230,"height":200,"color":"DarkRed"}
+        {"x":1050,"y":300,"width":500,"height":250,"color":"#FFB11B"},
+        {"x":1750,"y":270,"width":450,"height":250,"color":"#FFB11B"},
+        {"x":1730,"y":580,"width":450,"height":250,"color":"#FFB11B"},
+        {"x":1850,"y":900,"width":300,"height":400,"color":"#FFB11B"},
+        {"x":2450,"y":1150,"width":350,"height":230,"color":"#FFB11B"},
+        {"x":2250,"y":850,"width":230,"height":200,"color":"#FFB11B"}
     ],
     "ToDisplayPinImg":"map-tool-pin-on.png",
     "ToHidePinImg":"map-tool-pin-off.png",
@@ -110,6 +110,7 @@
             {"x":1050,"y":1100,"width":1450,"height":280,"color":"DarkRed"},
             {"x":1050,"y":550,"width":1450,"height":290,"color":"DarkRed"},
             {"x":1050,"y":30,"width":1450,"height":280,"color":"DarkRed"},
+            {"x":3010,"y":320,"width":560,"height":405,"color":"DarkRed"},            
             {"x":550,"y":1635,"width":510,"height":285,"color":"DarkRed"}
         ],
         "balloons":[
@@ -156,9 +157,12 @@
                 ],
                 "pins":[
                     [
+                        {"x":170,"y":450},
+                        {"x":170,"y":1100},
                         {"x":2200,"y":700}
                     ],
                     [
+                        {"x":1300,"y":700},
                         {"x":2660,"y":700},
                         {"x":3130,"y":700}
                     ],
@@ -221,14 +225,14 @@
                         {"x":3225,"y":800}
                     ],
                     [
-                        {"x":2470,"y":1200},
-                        {"x":2970,"y":1200}
+                        {"x":2472,"y":1200},
+                        {"x":2960,"y":1200}
                     ],
                     [
-                        {"x": 120,"y":800},
-                        {"x":1277,"y":1200},
+                        {"x": 110,"y":800},
+                        {"x":1267,"y":1200},
                         {"x":1605,"y":400},
-                        {"x":2340,"y":1200}
+                        {"x":2330,"y":1200}
                     ]
                 ],
                 "goTop":[
@@ -264,7 +268,7 @@
                 ],
                 "pins":[
                     [
-                        
+                        {"x":1020,"y":480}
                     ],
                     [
                         {"x":1650,"y":800}

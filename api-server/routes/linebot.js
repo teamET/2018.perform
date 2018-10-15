@@ -40,6 +40,8 @@ var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
 var map_data  = JSON.parse(fs.readFileSync('./routes/mapdata.json','utf8'));
 var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
 var boothID_data   = JSON.parse(fs.readFileSync('./routes/boothID.json','utf8'));
+var laboFlex_tmpdata = JSON.parse(fs.readFileSync('./routes/flex_labo.json'));
+var labo_data = JSON.parse(fs.readFileSync('./routes/labodata.json'));
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -124,6 +126,41 @@ function Build_flex(shopid) {
         g.contents[1].text = goodjson.price + "円";
         tmp.body.contents.push(g);
     }
+    return tmp;
+}
+/**
+ * 研究室のFlexデータを作成する
+ * @param {string} laboid 研究室ID
+ * @return {obj} tmp 研究室のFlexデータ(ひとつだけ。bubbleを返す)
+ */
+function Build_LaboFlex_Bubble(laboid){
+    // JSONの参照私を値渡しにする
+    var tmp = JSON.parse(JSON.stringify(laboFlex_tmpdata.tmp));
+    tmp.body.contents[3].contents = []; // 初期化
+    // 室内番号・詳細・タイトル
+    tmp.body.contents[0].contents[0].text = labo_data[laboid].floor;
+    if(labo_data[laboid] == "3208・3223") tmp.body.contents[0].contents[0].align = "center";
+    else tmp.body.contents[0].contents[0].align = "start";
+    tmp.body.contents[0].contents[1].text = labo_data[laboid].floorText;
+    tmp.body.contents[1].text = labo_data[laboid].title;
+    tmp.body.contents[1].size = labo_data[laboid].titleSize;
+    // 日付・実施時間
+    for(var i=0;i<labo_data[laboid].datetime.length;i++){
+        var date = JSON.parse(JSON.stringify(laboFlex_tmpdata.dateTmp));
+        date.contents[1].text = labo_data[laboid].datetime[i].date;
+        tmp.body.contents[3].contents.push(date);
+        var times = JSON.parse(JSON.stringify(laboFlex_tmpdata.timesTmp));
+        for(var j=0;j<labo_data[laboid].datetime[i].times.length;j++){
+            var time = JSON.parse(JSON.stringify(laboFlex_tmpdata.timeTmp));
+            time.text = labo_data[laboid].datetime[i].times[j];
+            times.contents[1].contents.push(time);
+        }
+        tmp.body.contents[3].contents.push(times);
+        var separator = laboFlex_tmpdata.separator;
+        tmp.body.contents[3].contents.push(separator);
+    }
+    // 補足情報
+    tmp.body.contents[4].text = labo_data[laboid].supplementation;
     return tmp;
 }
 
@@ -278,8 +315,8 @@ async function type_message(event) {
                         ["F",1,2,3]];
     // [棟][各階にあるのピンの数]]([][0] : 棟の数)
     // 8棟は1，3階だが、プログラム内では1,2階として処理する。
-    var mapBFdata  = [[2,1,2,5,0],
-                      [3,1,2,3,4],
+    var mapBFdata  = [[2,3,3,5,0],
+                      [3,2,3,3,4],
                       [5,1,2],
                       [8,1,1]];
     switch(event.message.text) {
@@ -324,7 +361,27 @@ async function type_message(event) {
             msg = msg_imagemap("map",mapdata);
             msg2 = msg_text("エリアを選択してください");
             break;
-        case "実装中":
+        case "7棟の情報を表示":
+            msg = {
+                "type": "flex",
+                "altText": "7棟の研究室情報",
+                "contents": {
+                    "type": "carousel",
+                    "contents": []
+                }
+            };
+            for (var i=17; i<= 23; i++) {
+                console.log("labo"+i);
+                msg.contents.contents.push(Build_LaboFlex_Bubble("labo"+i));
+            }
+            break;
+        case "8棟3階の1番の模擬店情報を表示":
+            msg = {
+                "type": "flex",
+                "altText": "8棟3階の1番の模擬店情報を表示",
+                "contents": {}
+            };
+            msg.contents = Build_LaboFlex_Bubble("labo25");
             break;
         default:
             msg = msg_text("個別の返信はできません(*:△:)");
@@ -337,15 +394,14 @@ async function type_message(event) {
         for(var j=1;j<OutsideArea[i].length;j++){
             switch(event.message.text){
                 case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
-                    /* ** 模擬店情報送信部
+                    // ** 模擬店情報送信部
                     msg = {
                         "type": "flex",
                         "altText": "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報",
                         "contents": {}
                     };
                     msg.contents = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
-                    */
-                    msg = msg_text("debug message [エリアの模擬店情報]");
+                    msg2 = msg_text("debug message [エリアの模擬店情報]");
                     break;
             }
         }
@@ -375,15 +431,27 @@ async function type_message(event) {
                 switch(event.message.text){
                     case mapBFdata[i][0]+"棟"+j+"階の"+k+"番の模擬店情報を表示":
                         // ** 模擬店情報送信部
-                        /*
-                        msg = {
-                            "type": "flex",
-                            "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報",
-                            "contents": {}
-                        };
-                        msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
-                        */
-                        msg = msg_text("debug message [~棟~階~番の模擬店情報へ]");
+                        console.log("Inside"+mapBFdata[i][0]+j+k);
+                        console.log(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                        if(boothID_data["Inside"+mapBFdata[i][0]+j+k].match(/labo/)){
+                            // 研究室情報を送信する
+                            msg = {
+                                "type": "flex",
+                                "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の研究室情報",
+                                "contents": {}
+                            };
+                            msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            console.log(msg.contents.body.contents[0].contents[0].text);
+                        }else{
+                            msg = {
+                                "type": "flex",
+                                "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報",
+                                "contents": {}
+                            };
+                            msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
+                        }
+                        
                         break;
                 }
             }
