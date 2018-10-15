@@ -37,16 +37,14 @@ const flex_item = require("./flex_item.json");
 const richdata = require('./rich.json');
 const shop_area = require('./shop-area.json');
 const map_data  = require('./mapdata.json');
-//var shop_data = JSON.parse(fs.readFileSync('./public/shop.json', 'utf8'));
-var shop_data = {};
+var shop_data = JSON.parse(fs.readFileSync('../bot/public/shop.json', 'utf8'));
 const boothID_data   = require('./boothID.json');
 
 setInterval(function() {
-    /*const tmpfile = fs.readFile('./public/shop.json', 'utf8', function(err, data) {
-        shop_data = JSON.parse(tmpfile);
-    });*/
-    console.log("reload");
-  }, 1000);
+    const tmpfile = fs.readFile('../bot/public/shop.json', 'utf8', function(err, data) {
+        shop_data = JSON.parse(data);
+    });
+}, 30*1000);
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -197,10 +195,10 @@ async function rich_change(after, userId) {
         .replace("{richMenuId}", after);
     var tmp = await Build_responce(rich_url2);
     request.delete(await Build_responce(rich_url), function(error, responce, body) {
-        console.log("rich -> delete");
+        //console.log("rich -> delete");
         request.post(tmp, function(error, responce, body) {
-            console.log("rich -> set");
-            console.log(body);
+            //console.log("rich -> set");
+            //console.log(body);
         });
     });
 }
@@ -428,7 +426,7 @@ async function type_message(event) {
     //画像を送信してきた時の処理
     if (event.message.type == "image") {
         image_download(event);
-        msg = msg_text("画像を送信してくれてありがとう(o・∇・o)");
+        msg = msg_text("画像を送信してくれてありがとう(o・∇・o)\nこの画像は文化祭HPやお疲れ様ムービーで使用させていただくかもしれません。");
     }
     if (msg){
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
@@ -452,6 +450,7 @@ async function type_follow(event) {
         "type": "text",
         "text": "東京高専文化祭BOTを友達登録してくれてありがとう！"
     };
+    //以下にbeacon設定用のflexmessageを添付する
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
         event.replyToken, msg
     ));
@@ -503,9 +502,10 @@ async function type_beacon(event) {
     var now = moment();
     var nowtime = now.format('YYYY-MM-DD HH:mm:ss');
     var db_time = moment(await tmp);
-    var db_place = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
-    var user_place = DB_get("UserData", "PLACE", "USERID", event.source.userId);
-    if (await db_place != await user_place) {
+    var tmp = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
+    var user_place = await DB_get("UserData", "PLACE", "USERID", event.source.userId);
+    var db_place = await tmp;
+    if (db_place != user_place) {
         //前回の侵入から7分経っている -> 更新してメッセージを送信
         if ((now.diff(db_time)/(1000*60)) >= 7 ) {
             var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
