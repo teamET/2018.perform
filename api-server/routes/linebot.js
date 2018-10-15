@@ -41,13 +41,13 @@ const map_data  = require('./mapdata.json');
 var shop_data = {};
 const boothID_data   = require('./boothID.json');
 
-setInterval(reloadfile(), 30*1000);
-
 function reloadfile() {
     /*const tmpfile = fs.readFile('./public/shop.json', 'utf8', function(err, data) {
         shop_data = JSON.parse(tmpfile);
     });*/
+    console.log("reload");
 }
+setInterval(reloadfile(), 30*1000);
 
 /* LINE MessagingAPI URL */
 //URL POST
