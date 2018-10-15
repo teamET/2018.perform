@@ -35,11 +35,19 @@ const dbx = dropboxV2Api.authenticate({
 const flex_tmp = require("./flex_template.json");
 const flex_item = require("./flex_item.json");
 const flex_image = require("./shop-map.json");
-var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
-var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
-var map_data  = JSON.parse(fs.readFileSync('./routes/mapdata.json','utf8'));
-var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
-var boothID_data   = JSON.parse(fs.readFileSync('./routes/boothID.json','utf8'));
+const richdata = require('./rich.json');
+const shop_area = require('./routes/shop-area.json');
+const map_data  = require('./routes/mapdata.json');
+var shop_data = JSON.parse(fs.readFileSync('./public/shop.json', 'utf8'));
+const boothID_data   = require('./routes/boothID.json');
+
+setInterval(reloadfile(), 30*1000);
+
+function reloadfile() {
+    const tmpfile = fs.readFile('./public/shop.json', 'utf8', function(err, data) {
+        shop_data = JSON.parse(tmpfile);
+    });
+}
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -113,13 +121,12 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
  */
 function Build_flex(shopid) {
     var data = shop_data[shopid];
-    var tmp = flex_tmp;
+    var tmp = JSON.parse(JSON.stringify(flex_tmp));
     tmp.header.contents[0].text = data.shopname;
     tmp.hero.url = data.image[0];
-    tmp.footer.contents[2].url = flex_image[shopid];
     for (var i=0; i<data.goods.length; i++) {
         var goodjson = data.goods[i];
-        var g = flex_item;
+        var g = JSON.parse(JSON.stringify(flex_item));
         g.contents[0].text = goodjson.name;
         g.contents[1].text = goodjson.price + "円";
         tmp.body.contents.push(g);
@@ -550,6 +557,10 @@ async function beacon_leave(event) {
     }
 }
 
+function access() {
+    request.get("https://kunugida2018.tokyo-ct.ac.jp/api/web");
+}
+
 
 /* MAIN */
 router.post('/', function(req, res, next) {
@@ -573,8 +584,17 @@ router.post('/', function(req, res, next) {
                     type_follow(event);
                     break;
                 case "postback":
-                    if (event.postback.data == "Student") { addUser(event, "学生"); }
-                    else if (event.postback.data == "Other") { addUser(event, "来場者"); }
+                    switch (event.postback.data) {
+                        case "Student":
+                            addUser(event, "学生");
+                            break;
+                        case "Other":
+                            addUser(event, "来場者");
+                            break;
+                        case "体育館":
+                            access();
+                            break;
+                    }
                     break;
                 case "beacon":
                     if (event.beacon.type == "enter") { type_beacon(event); }
@@ -610,33 +630,36 @@ function pushOnlyDB(query) {
  * @param {string} message 送信する文面
  */
 router.post('/pushmessage/send', async function(req, res, next) {
-    var responce = "";
     const body = req.body; // Request body string
-    let msg = msg_text(body.message);
-    var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
-    let rows = await pushOnlyDB(query);
-    let users = [];
-    for (let i=0; i<rows.length; i++) {
-        users.push(rows[i]["USERID"]);
-        if (i%150 == 149) {
+    if (body.key == channelSecret) {
+        let msg = msg_text(body.message);
+        var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
+        let rows = await pushOnlyDB(query);
+        let users = [];
+        for (let i=0; i<rows.length; i++) {
+            users.push(rows[i]["USERID"]);
+            if (i%150 == 149) {
+                let tmp = {
+                    "to": users,
+                    "messages": [msg]
+                }
+                request.post(await Build_responce(urlp_push, tmp))
+                users.length = 0;
+            }
+        }
+        if (users.length != 0) {
             let tmp = {
                 "to": users,
                 "messages": [msg]
             }
-            request.post(await Build_responce(urlp_push, tmp))
+            request.post(await Build_responce(urlp_push, tmp));
             users.length = 0;
         }
+        res.status = 200;
+        res.send("ok");
     }
-    if (users.length != 0) {
-        let tmp = {
-            "to": users,
-            "messages": [msg]
-        }
-        request.post(await Build_responce(urlp_push, tmp));
-        users.length = 0;
-    }
-    res.status = 200;
-    res.send(responce);
+    res.status = 1145141919810;
+    res.send("草ァ！");
 });
 
 module.exports = router;

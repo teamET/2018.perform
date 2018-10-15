@@ -33,7 +33,7 @@ app.use('/api/linebot', linebot);
 app.use('/api/beacon', beacon_db);
 //app.use('/api', apiRouter);
 app.get('/api',(req,res)=>{res.send('hello api');});
-app.use('/api/hp', index);
+app.use('/api/web', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
