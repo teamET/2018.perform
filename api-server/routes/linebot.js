@@ -34,7 +34,6 @@ const dbx = dropboxV2Api.authenticate({
 /* json fileの読み込み */
 const flex_tmp = require("./flex_template.json");
 const flex_item = require("./flex_item.json");
-const flex_image = require("./shop-map.json");
 const richdata = require('./rich.json');
 const shop_area = require('./routes/shop-area.json');
 const map_data  = require('./routes/mapdata.json');
