@@ -116,12 +116,23 @@ if sidebar
   padding: 10px;      /* 余白指定 */
 }
 
+.del {
+  color: #fc861e;
+  text-decoration : line-through ;
+}
+.del span {
+  color: #665852;
+}
+
 .slide-show {
   position: relative;
 }
 
 .slide-show p {
+  width: 100%;
+  line-height: 60px; 
   font-size: 36px;
+  background-color: rgba(0,0,0,.3);
   text-align: center;
   position: absolute;
   color: white;
@@ -195,10 +206,20 @@ td {
 .post:hover {
   background: rgba(0,0,0,0.5);  
 }
-.icon img{
+.icon img {
     max-width: 28px;
 }
 
+.badge img {
+  margin: 5px;
+  max-width: 32px;
+  opacity: 0.8;
+}
+
+.badge img:hover {
+  opacity: 1;
+  max-width: 35px;
+  }
 .news {
     float: left;
     background-color: #272822;
@@ -230,15 +251,17 @@ td {
   padding-bottom: 20px;
   }
 
+.gallery {
+  min-height: 200px;
+
+  }
+
 .about p {
   opacity: 1;
   line-height: 200%;
   }
 
-.gallery {
-  min-height: 200px;
-  
-  }
+
 
 html,
 body {
@@ -269,6 +292,7 @@ body {
 .link-table p:hover{
   color: #fd971f;
   }
+
 
 // .link {
 //   position: relative;
@@ -303,20 +327,141 @@ body {
 
 
 .line_bot{
-  color: #ffffff;
+  background: #272822;
+  color : #fbf9e2;
   min-height: 200px;
-  text-align: center;
+  padding: 10px;
+  text-align:left;
+}
+
+
+
+
+.line_bot .map {
+    padding:3%;
+    text-align:center;
+    margin:3%;
+    font-weight: bold;
+    color:  #272822;/*文字色*/
+    background: #fff9ff;
+    border: solid 3px #00b900;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+
+.square_btn{
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFF;
+    margin: 0.3em 1em;
+    padding: 0.3em 1em;
+    background: #000000;
+    border-top: solid 3px #222222;
+    border-bottom: solid 3px #222222;
+    transition: .4s;
+}
+
+#event{
+  margin-top: 10px;
   }
 
 @media screen and (min-width: 500px) {
   .header_title {
     display: none; 
-    }
+  }
+  .lineat{
+    width:250px;
+    padding-top:20px;
+    padding-left:50px;
+    padding-bottom:5px;
+  }
+  
+  .line_bot h2 span,.line_bot h4 span{
+      position: relative;
+      display: inline-block;
+      font-size : 200%;
+      padding: 0 0.8em;
+  }
+  .line_bot h4 {
+    padding-left:10%;
+  }
+  .line_bot h2 span::before,.line_bot h4 span::before{
+      position: absolute;
+      content: '';
+      top:0;
+      right:0.2em;
+      width: 0.2em;
+      height:100%;
+      border: solid 1px #fbf9e2;
+      border-left: none;
+  }
+  
+  .line_bot h2 span::after,.line_bot h4 span::after{
+      position: absolute;
+      content: '';
+      top:0;
+      left:0;
+      width: 0.2em;
+      height:100%;
+      border: solid 1px  #fbf9e2;
+      border-right: none;
+  }
+  .line_bot .registration{
+    display:flex;
+    justify-content: space-between;
+  }
+  .line_bot .regitxtContainer1{
+    width:50%;
+    text-align : center;
+  }
+  .line_bot .regitxtContainer2{
+    width:50%;
+    border-left: 1px solid #00b900;
+    text-align : center;
+  }
+  .line_bot .qr{
+    width : 200px;
+  }
+  .line_bot .regitxt{
+    padding-top:5%;
+    font-size:140%;
+  }
+  .line_bot .functionContainers1{
+    display:flex;
+    justify-content: space-between;
+  }
+  .line_bot .functionContainers2,.line_bot .functionContainers3{
+    display:flex;
+    justify-content: space-between;
+  }
+  .line_bot .functionContainer1{
+    width : 50%;
+  }
+  .line_bot .functionContainer2{
+    width : 50%;
+    border-left: 1px solid #00b900;
+  }
+  .line_bot h3{
+    padding-top: 3%;
+    font-size : 120%;
+    padding-left:10%;
+    padding-bottom : 1%;
+  }
+  .line_bot .functxt{
+    padding-top: 8%;
+    padding-bottom:8%;
+    padding-left : 15%;
+  }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1050px) {
   .shop {
   width: 49.5%;
+  }
+
+  .not-display-mobile {
+    display: none;  
   }
 }
 
@@ -369,5 +514,44 @@ body {
 
   body {
     padding:0;
+  }
+
+  .lineat{
+    text-align:left;
+    padding-top:20px;
+    padding-left:8%;
+    padding-bottom:5px;
+  }
+  .line_bot .registration{
+    text-align:center;
+  }
+  .line_bot .regitxt{
+    padding:3%;
+  }
+  .line_bot .qr{
+    width: 50%;
+  }
+  .line_bot h2 ,.line_bot h4{
+    font-size: 180%;
+    padding: .3em;
+    border-bottom: 2px solid #00b900;
+    text-align:center;
+  }
+  .line_bot .regitxt{
+    padding-top : 5%;
+    font-size:110%;
+  }
+  .line_bot h3 {
+    text-align:left;
+    font-size : 120%;
+    padding-left:3%;
+    padding-bottom : 1%;
+    border-bottom : 1px dotted #00b900;
+    border-left: 10px solid #00b900;
+  }
+  .line_bot .functxt{
+    padding-top : 10%;
+    padding-left:10%;
+    padding-bottom : 10%;
   }
 }

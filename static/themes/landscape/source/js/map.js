@@ -20,10 +20,11 @@ d_-- : デバッグ用
 window.addEventListener("load",WidthCheck);
  /**
  * windowの横幅を見て、スマホ～タブレットサイズの場合別リンクに飛ばす。
+ * 1050px以上の場合、読み込み
  */
 function WidthCheck(){
   console.log(window.innerWidth);
-  if(window.innerWidth < 1100) GoLINELink();
+  if(window.innerWidth < 1050) GoLINELink();
   else Load();
 }
 /**
@@ -39,7 +40,11 @@ function GoLINELink(){
 var currentMapID = "OutsideTop";
 var reloadCount  = 0;
 var p_location;
-// 読み込み・再読み込み（リロード時にも入る）
+/**
+ * PCで閲覧時（画面サイズが1050px)以下の時に読み込まれる
+ * また、windowサイズ変更時に入る
+ * manifestに入ったJSONを全て読み込むとinitに入る
+ */
 function Load(){
   // reload時の処理 ----------------------------------------
   p_location = "reload";
@@ -48,13 +53,19 @@ function Load(){
   var manifest = [
     {"src":"/data/mapImgData.json","id":"mapImgs"},
     {"src":"/data/boothsample.json","id":"booth"},
-    {"src":"/data/boothID.json","id":"boothID"}
+    {"src":"/data/boothID.json","id":"boothID"},
+    {"src":"/data/labo.json","id":"labo"}
   ];
   queue.loadManifest(manifest,true);
   queue.addEventListener("complete",init);
 }
 
 // 指定したパラメータを取得 key : name
+/**
+ * パラメータ[name]に対応する値を取得する
+ * @param {string} name 
+ * @return {string} p_obj[name]
+ */
 function getParam(name) {
     var p_obj = new Object;
     //console.log(reloadCount);
@@ -70,11 +81,15 @@ function getParam(name) {
     }
     return p_obj[name];
 }
-// JSONデータが読み込まれたら入る
+/**
+ * JSONが読み込まれたら入る。これからはこの関数内で全て処理される。
+ * @param {obj} event 
+ */
 function init(event){
   var j_mapImgsData   = event.target.getResult("mapImgs");　// mapImgData.json
   var j_boothData     = event.target.getResult("booth");
   var j_boothID       = event.target.getResult("boothID");
+  var j_laboData      = event.target.getResult("labo");
   // URLパラメータの取得 ----------------------------------------------------------------------------------------------
   //console.log(getParam("booth"));
   // 一覧ページから入る処理
@@ -85,12 +100,11 @@ function init(event){
   var canvasElement   = document.getElementById("myCanvas");
   var dh_pindata      = document.getElementById("pin");
   var h_boothdata     = document.getElementById("boothdata");
-  // CanvasSizeの大きさ画面サイズに設定する（初期化）
+  // CanvasElementの大きさ画面サイズに設定する（初期化）
   var Sizing = function(){
     canvasElement.height = canvasElement.offsetHeight;
     canvasElement.width  = canvasElement.offsetWidth;
   }
-  // CanvasSizeの大きさ画面サイズに設定する（初期化）
   Sizing();
   // - stageの定義
   var stage = new createjs.StageGL(canvasElement);
@@ -105,8 +119,11 @@ function init(event){
   if(createjs.Touch.isSupported() == true){
     createjs.Touch.enable(stage);
   }
-  // -- 画像の読み込み >> 画像のサイズを返す------------------------
-  // return 配列 [0] : width [1] : height
+  /**
+   * Bitmapを読み込み、サイズを取得する
+   * @param {createjs.BitmapClass} bitmap
+   * @return {array} size[0]:width size[1]:height 
+   */
   function getImageSize(bitmap){
     return new Promise(function(resolve,reject){
       bitmap.image.onload = function(){
@@ -116,13 +133,18 @@ function init(event){
     });
   }
 
-  // -- canvasのサイズを変更する ---------------------------------
+  /**
+   * canvasのサイズを変更する
+   * @param {int} width 
+   * @param {int} height 
+   */
   function ChangeCanvasSize(width,height){
     canvasElement.style.width = width;
     canvasElement.style.height = height;
   }
-
-  // -- main main(async) : このあとの処理は全てここ　------------------------------------------------------------------
+  /**
+   * 初期設定以降はこの関数に入る
+   */
   async function main(){
     
     // :: canvas の大きさの調整----------------------------------------------------------------------------------------
@@ -157,7 +179,7 @@ function init(event){
       g_rects[i].graphics.drawRoundRect(0,0,j_rect.width * gm_general.scaleX,j_rect.height * gm_general.scaleY, 20* gm_general.scaleX);
       g_rects[i].x        = j_rect.x * gm_general.scaleX + z_General.x ; // 位置座標セット
       g_rects[i].y        = j_rect.y * gm_general.scaleY + z_General.y ; // 位置座標セット
-      g_rects[i].alpha    = 0.15;                       // 透明度
+      g_rects[i].alpha    = 0.22;                       // 透明度
       // ---- 1.2.2 エリア用の四角に対する枠線用オブジェクトの配置 --------------------------------
       var g_rectStroke = new createjs.Shape();
       g_rectStroke.graphics.beginStroke(j_rect.color);
@@ -167,7 +189,7 @@ function init(event){
       g_rectStroke.y      = g_rects[i].y;
       // ---- 1.2.3 エリア用の四角に乗せるテキストオブジェクトの配置-------------------------------
       var textSize        = 100 * gm_general.scaleX;
-      var g_text          = new createjs.Text(g_areaTexts[i], textSize +"px selif",j_rect.color);
+      var g_text          = new createjs.Text(g_areaTexts[i], textSize +"px selif","#F75C2F");
       g_text.x            = (j_rect.x + parseInt(j_rect.width /2) ) * gm_general.scaleX + z_General.x;
       g_text.y            = (j_rect.y + parseInt(j_rect.height/2) ) * gm_general.scaleY + z_General.y;
       g_text.textAlign    = "center";
@@ -362,7 +384,12 @@ function init(event){
       c_balloonsRects.push(c_balloonRects);
       balloonContainers.push(BalloonContainer);
     }
-
+    // --- 3.5 7棟がクリックされたときに表示される図形の設置 ---------------------------------------
+    var c_sevenStar = new createjs.Shape();
+    c_sevenStar.graphics.beginFill("#fd971f");
+    c_sevenStar.graphics.drawPolyStar(3610* gm_general.scaleX,530* gm_general.scaleY,100* gm_general.scaleY,5,0.6,-90);
+    c_sevenStar.alpha = 0;
+    InsideTopContainer.addChild(c_sevenStar);
     // --- 4. 棟と階のMAPの配置 ---------------------------------------------------------------------------------------
     var BuildingFloorContainers = []; // 棟・階のデータが格納されたコンテナが格納される[棟][階]
     var bfm_sizes_tmp           = []; // await時間短縮用 [棟][階]
@@ -548,7 +575,7 @@ function init(event){
 
     // :: イベントの検知 ----------------------------------------------------------------------------------------------
     var e_balloons        = []; //吹き出しが出ていれば 1 出ていなければ0
-    var e_buildNum        = [2,3,5,8]; // 棟の実際の番号（イベント時に結びつける）
+    var e_buildNum        = [2,3,5,7,8]; // 棟の実際の番号（イベント時に結びつける）
     var e_balloonBuildNum = [2,3,8]; // 吹き出しが存在する棟の番号
     for(var i=0;i<j_mapImgsData.Campus.balloons.length;i++)e_balloons.push(0);
     EventListener();　// Eventを感知して処理する関数
@@ -558,7 +585,9 @@ function init(event){
     else InitMap();
 
 
-    // 最初の読み時の処理 （一回目の読み込み時のみ適用）
+    /**
+     * 最初の読み込み時の処理（一回目の読み込み時のみ適用
+     */
     function InitMap(){
       var location = new Object();
       location["target"] = new Object();
@@ -594,7 +623,9 @@ function init(event){
       }
     }
 
-    // 再読み込みしたときに正しく表示する関数
+    /**
+     * 再読み込みしたときに正しく表示する関数
+     */
     function ReloadMapInit(){
       for(var i=0;i<g_areaTexts.length;i++){
         switch(currentMapID){
@@ -621,8 +652,10 @@ function init(event){
           return;
       }
     }
-    
-    // -- イベントを感知して処理する関数 ------------------------------------------------------------------------------
+
+    /**
+     * イベントを感知して処理する関数 
+     */
     function EventListener(){
       // 1. 構内への矢印に対する処理
       toCampusArrow.addEventListener("click",GeneraltoCampusTop);
@@ -712,27 +745,39 @@ function init(event){
     }//ここまでEventListener
 
     // :: イベントに対する処理　関数群 --------------------------------------------------------------------------------
-    // 全体画面から各エリアへ飛ぶ -------------------------------------------------------
+    /**
+     * 全体画面から各エリアへ飛ぶ
+     * @param {obj} event 
+     */
     function GeneraltoArea(event){
       var i = event.target.eventParam;
       currentMapID = "Area" + g_areaTexts[i];
       MapChange(OutsideContainer,areaContainers[i]);
     }
-    // 構外の各エリアから全体へ ---------------------------------------------------------
+    /**
+     * 構外の各エリアから全体へ 
+     * @param {obj} event 
+     */
     function AreatoGeneral(event){
       var i = event.target.eventParam;
       currentMapID = "OutsideTop";
       MapChange(areaContainers[i],OutsideContainer);
       InitPinColor();
+      ClearInfo();
     }
-    // 全体から構内topへ ---------------------------------------------------------------
+    /**
+     * 全体から構内topへ
+     */
     function GeneraltoCampusTop(event){
       //MapChange(OutsideContainer,InsideTopContainer);
       currentMapID = "InsideTop";
       MapChangeAnimation_Slide(OutsideContainer,InsideTopContainer,"right");
     }
-    // 構内Topから全体へ ----------------------------------------------------------------
+    /**
+     * 構内Topから全体へ
+     */
     function CampusToptoGeneral(event){
+      c_sevenStar.alpha = 0;
       // 吹き出しが出ていたらそれを消す
       for(var k=0;k<c_balloons.length;k++){
         if(e_balloons[k] == 1){
@@ -744,7 +789,10 @@ function init(event){
       currentMapID = "OutsideTop";
       MapChangeAnimation_Slide(InsideTopContainer,OutsideContainer,"left");      
     }
-    // 構内Topから吹き出しを出力 --------------------------------------------------------
+    /**
+     * 構内Topから吹き出しを出力
+     * @param {obj} event 
+     */
     function SetBalloon(event){
       var i = event.target.eventParam;
       // 吹き出しに対応していなければその棟の1階にジャンプ
@@ -762,9 +810,26 @@ function init(event){
       if(check==false){
         // 吹き出しに対応していないオブジェクト（5棟など）
         currentMapID = "BF" + e_buildNum[i] + "1";
-        MapChange(InsideTopContainer,BuildingFloorContainers[i][0]);
+        if(e_buildNum[i] == 7){
+          // ** 7棟の処理
+          // 今開いている吹き出しを検索して閉じる
+          for(var k=0;k<c_balloons.length;k++){
+            if(e_balloons[k] == 1){
+              InsideTopContainer.removeChild(balloonContainers[k]);
+              e_balloons[k] = 0;
+            }
+          }
+          var nextAlpha;
+          if(c_sevenStar.alpha == 0)nextAlpha = 1;
+          else                      nextAlpha = 0;
+          createjs.Tween.get(c_sevenStar).to({alpha:nextAlpha},500);
+        }else{
+          MapChange(InsideTopContainer,BuildingFloorContainers[i][0]);
+          createjs.Tween.get(c_sevenStar).to({alpha:0},500);
+        }
         return;
       }
+      createjs.Tween.get(c_sevenStar).to({alpha:0},500);
       // すでに出ている吹き出しをクリックしたとき
       if(e_balloons[e_balloonTarget] == 1){
         InsideTopContainer.removeChild(balloonContainers[e_balloonTarget]);
@@ -781,7 +846,10 @@ function init(event){
       InsideTopContainer.addChild(balloonContainers[e_balloonTarget]);
       e_balloons[e_balloonTarget] = 1;
     }
-    // 吹き出しから各棟の階へ -----------------------------------------------------------
+    /**
+     * 吹き出しから各棟の階へ
+     * @param {obj} event 
+     */
     function BalloontoCampus(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
@@ -801,16 +869,22 @@ function init(event){
       MapChange(InsideTopContainer,BuildingFloorContainers[buildingIndex[i]][j]);
       //MapChangeAnimation_Fade(InsideTopContainer,BuildingFloorContainers[buildingIndex[i]][j])
     }
-    // フロアから構内のトップへ ---------------------------------------------------------
+    /**
+     * フロアから構内TOPへ
+     */
     function FloortoCampusTop(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
       //MapChange(BuildingFloorContainers[i][j],InsideTopContainer);
       currentMapID = "InsideTop";
-      MapChangeAnimation_Slide(BuildingFloorContainers[i][j],InsideTopContainer,"left");     
+      MapChangeAnimation_Slide(BuildingFloorContainers[i][j],InsideTopContainer,"left");
       InitPinColor(); 
+      ClearInfo();
     }
-    // 上の階へ -------------------------------------------------------------------------
+    /**
+     * 上の階へ
+     * @param {obj} event 
+     */
     function FloortoUpperFloor(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
@@ -819,8 +893,12 @@ function init(event){
       currentMapID = "BF" + e_buildNum[i]+(parseInt(j)+2);
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j+1],"top");
       InitPinColor();
+      ClearInfo();
     }
-    // 下の階へ -------------------------------------------------------------------------
+    /**
+     * 下の階へ
+     * @param {obj} event
+     */
     function FloortoLowerFloor(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
@@ -829,8 +907,12 @@ function init(event){
       //MapChange(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j-1]);
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j-1],"bottom");
       InitPinColor();
+      ClearInfo();
     }
-    // ピンを表示 -----------------------------------------------------------------------
+    /**
+     * ピンを表示（すべて）
+     * @param {obj} event 
+     */
     function DisplayPins(event){
       var TimeLine = new createjs.Timeline();
       var changetime = 400;
@@ -880,7 +962,10 @@ function init(event){
         }
       }
     }
-    // ピンを非表示 ---------------------------------------------------------------------
+    /**
+     * 全てのピンを非表示
+     * @param {obj} event 
+     */
     function HidePins(event){
       var TimeLine = new createjs.Timeline();
       var changetime = 400;
@@ -932,9 +1017,10 @@ function init(event){
       TimeLine.gotoAndPlay("start");
     }
 
-    // ピンの色の初期化 -----------------------------------------------------------------
+    /**
+     * 全てのピンの色を青色に変化させる（初期化）
+     */
     function InitPinColor(){
-      // 全てのピンを青色に変化させる
       var TimeLine = new createjs.Timeline();
       var changetime = 0;
       for(var i=0;i<a_pinContainers.length;i++){
@@ -956,7 +1042,11 @@ function init(event){
       }
       TimeLine.gotoAndPlay("start");
     }
-    // ピンの色を変える(構外）-----------------------------------------------------------
+    /**
+     * 構外のしてしたピンの色を変える（赤くする）
+     * @param {int} area 
+     * @param {int} pinNum 
+     */
     function OutsideChangePinColor(area,pinNum){
       var TimeLine = new createjs.Timeline();
       var changetime = 400;
@@ -972,7 +1062,12 @@ function init(event){
       );
       TimeLine.gotoAndPlay("start");
     }
-    // ピンの色を変える（構内）----------------------------------------------------------
+    /**
+     * 構内の指定したピンの色を変える（赤くする）
+     * @param {int} building 
+     * @param {int} floor 
+     * @param {int} pinNum 
+     */
     function InsideChangePinColor(building,floor,pinNum){
       var TimeLine = new createjs.Timeline();
       var changetime = 400;
@@ -989,12 +1084,25 @@ function init(event){
       TimeLine.gotoAndPlay("start");
     }
 
-    // BoothData(html)をbooth.jsonから取得する ------------------------------------------
-    function GetBoothData(boothID){
+    /**
+     * BoothData(html)をbooth.jsonから取得する
+     * @param {string} boothID 
+     */
+    function GetLocationData(boothID){
+      if(boothID.match(/labo/)){
+        return j_laboData[boothID];
+      }
+      if(boothID == "consert"){
+        console.log("consert");
+        return "consert";
+      }
       return j_boothData[boothID];
     }
 
-    // DOMに情報を書き込む（構外）-------------------------------------------------------
+    /**
+     * DOMに情報を書き込む（構外模擬店情報）
+     * @param {obj} event 
+     */
     function OutsideWriteInfo(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
@@ -1002,29 +1110,50 @@ function init(event){
       OutsideChangePinColor(i,j);
       dh_pindata.textContent = "エリア"+g_areaTexts[i]+"の"+(parseInt(j)+1)+"番目";
       var boothID = j_boothID["Outside" + g_areaTexts[i] + (parseInt(j)+1)];
-      h_boothdata.innerHTML  = GetBoothData(boothID);
+      h_boothdata.innerHTML  = GetLocationData(boothID);
     }
     // DOMに情報を書き込む（構内）-------------------------------------------------------
+    /**
+     * DOMに情報を書き込む（構内模擬店情報）
+     * @param {obj} event
+     */
     function InsideWriteInfo(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
       var k = event.target.eventParam3;
       InitPinColor();
       InsideChangePinColor(i,j,k);
+      if(i==3)i=4;
       dh_pindata.textContent = e_buildNum[i]+"棟"+(parseInt(j)+1)+"階の"+(parseInt(k)+1)+"番目のピン";
       var boothID = j_boothID["Inside" + e_buildNum[i] + (parseInt(j)+1) + (parseInt(k)+1)];
-      h_boothdata.innerHTML  = GetBoothData(boothID);
+      h_boothdata.innerHTML  = GetLocationData(boothID);
     }
 
+    /**
+     * DOM情報を全て消去する 
+     */
+    function ClearInfo(){
+      dh_pindata = "";
+      h_boothdata.innerHTML = "";
+    }
     // ここまでイベントに対する処理の関数群 ---------------------------------------------------------------------------
 
+
     // ページ切り替えについての関数群 ---------------------------------------------------------------------------------
-    // 現在のページから次のページに切り替わる -------------------------------------------
+    /**
+     * 現在のページから、次のページに切り替える（アニメーションなし）
+     * @param {createjs.Container} CurrentContainer 
+     * @param {createjs.Container} NextContainer 
+     */
     function MapChange(CurrentContainer,NextContainer){
       DisplayContainer.removeChild(CurrentContainer);
       DisplayContainer.addChild(NextContainer);
     }
-    // 現在のページから次のページに切り替わる （フェードアニメーション）-----------------
+    /**
+     * 現在のぺ―ジから次のページに切り替わる （フェードアニメーション）
+     * @param {createjs.Container} CurrentContainer 
+     * @param {createjs.Container} NextContainer 
+     */
     function MapChangeAnimation_Fade(CurrentContainer,NextContainer){
       var TimeLine   = new createjs.Timeline(); // タイムライン
       var changetime = 600; // アニメーションにかかる時間（ms)
@@ -1049,7 +1178,12 @@ function init(event){
       )
       TimeLine.gotoAndPlay("start");
     }
-    // 現在のページから次のページに切り替わる （スライドアニメーション）-----------------
+    /**
+     * 現在のページから次のページに切り替わる （スライドアニメーション）-
+     * @param {createjs.Container} CurrentContainer 
+     * @param {createjs.Container} NextContainer 
+     * @param {createjs.Container} direction 
+     */
     function MapChangeAnimation_Slide(CurrentContainer,NextContainer,direction){
       /*
       direction : top    : 上の階に行くときに使う。
