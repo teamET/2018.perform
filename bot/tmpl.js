@@ -25,7 +25,7 @@ function load_data(filename){
 }
 
 function load_template(filename){
-	var file=path.join(__dirname,"./private/views/"+filename+".ejs");
+	var file=path.join(__dirname,"./views/"+filename+".ejs");
 	var data="";
 	try{
 		tmpl=fs.readFileSync(file,'utf-8');
