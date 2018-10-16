@@ -8,6 +8,7 @@
           "type": "text",
           "text": "",
           "weight": "bold",
+          "color": "#1DB446",
           "size": "lg",
           "wrap": true
           }
