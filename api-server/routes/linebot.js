@@ -34,14 +34,19 @@ const dbx = dropboxV2Api.authenticate({
 /* json fileの読み込み */
 const flex_tmp = require("./flex_template.json");
 const flex_item = require("./flex_item.json");
-const flex_image = require("./shop-map.json");
-var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
-var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
-var map_data  = JSON.parse(fs.readFileSync('./routes/mapdata.json','utf8'));
-var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
-var boothID_data   = JSON.parse(fs.readFileSync('./routes/boothID.json','utf8'));
+const richdata = require('./rich.json');
+const shop_area = require('./shop-area.json');
+const map_data  = require('./mapdata.json');
+const boothID_data   = require('./boothID.json');
 var laboFlex_tmpdata = JSON.parse(fs.readFileSync('./routes/flex_labo.json'));
 var labo_data = JSON.parse(fs.readFileSync('./routes/labodata.json'));
+var shop_data = JSON.parse(fs.readFileSync('../bot/public/shop.json', 'utf8'));
+
+setInterval(function() {
+    const tmpfile = fs.readFile('../bot/public/shop.json', 'utf8', function(err, data) {
+        shop_data = JSON.parse(data);
+    });
+}, 30*1000);
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -115,19 +120,19 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
  */
 function Build_flex(shopid) {
     var data = shop_data[shopid];
-    var tmp = flex_tmp;
+    var tmp = JSON.parse(JSON.stringify(flex_tmp));
     tmp.header.contents[0].text = data.shopname;
     tmp.hero.url = data.image[0];
-    tmp.footer.contents[2].url = flex_image[shopid];
     for (var i=0; i<data.goods.length; i++) {
         var goodjson = data.goods[i];
-        var g = flex_item;
+        var g = JSON.parse(JSON.stringify(flex_item));
         g.contents[0].text = goodjson.name;
         g.contents[1].text = goodjson.price + "円";
         tmp.body.contents.push(g);
     }
     return tmp;
 }
+
 /**
  * 研究室のFlexデータを作成する
  * @param {string} laboid 研究室ID
@@ -226,9 +231,13 @@ async function rich_change(after, userId) {
     var rich_url = urld_rich_delete.replace("{userId}", userId);
     var rich_url2 = urlp_rich_set.replace("{userId}", userId)
         .replace("{richMenuId}", after);
-    var tmp = await Build_responce(rich_url2)
+    var tmp = await Build_responce(rich_url2);
     request.delete(await Build_responce(rich_url), function(error, responce, body) {
-        request.post(tmp);
+        //console.log("rich -> delete");
+        request.post(tmp, function(error, responce, body) {
+            //console.log("rich -> set");
+            //console.log(body);
+        });
     });
 }
 
@@ -505,6 +514,7 @@ async function type_follow(event) {
         "type": "text",
         "text": "東京高専文化祭BOTを友達登録してくれてありがとう！"
     };
+    //以下にbeacon設定用のflexmessageを添付する
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
         event.replyToken, msg
     ));
@@ -523,7 +533,10 @@ async function addUser(event, usertype) {
         .replace('{type}', event.postback.data)
         .replace('{time}', nowtime)
         .replace('{place}', "");
-    connection.query(query);
+    //line側のレスポンスが遅いため，ユーザが押しすぎやすい -> エラーを拾う必要がある
+    connection.query(query, function(err, rows) {
+        console.log("useradd ok");
+    });
     //richmenuの切り替え
     rich_change(richdata.normal, event.source.userId);
     var msg = {
@@ -556,38 +569,43 @@ async function type_beacon(event) {
     var now = moment();
     var nowtime = now.format('YYYY-MM-DD HH:mm:ss');
     var db_time = moment(await tmp);
-    var db_place = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
-    //前回の侵入から7分経っている -> 更新してメッセージを送信
-    if ((now.diff(db_time)/(1000*60)) >= 7 ) {
-        var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
+    var tmp = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
+    var user_place = await DB_get("UserData", "PLACE", "USERID", event.source.userId);
+    var db_place = await tmp;
+    if (db_place != user_place) {
+        //前回の侵入から7分経っている -> 更新してメッセージを送信
+        if ((now.diff(db_time)/(1000*60)) >= 7 ) {
+            var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
+                .replace("{id}", event.source.userId)
+                .replace("{time}", nowtime);
+            connection.query(query);
+            //メッセージを整形
+            var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
+            var msg = {
+                "type": "text",
+                "text": "現在，" + db_place + "です"
+            };
+            var msg2 = {
+                "type": "text",
+                "text": "[おしらせ]\n" + await db_msg
+            };
+            var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+                event.replyToken, msg, msg2
+            ));
+            request.post(tmp);
+        }
+        //ユーザがいる場所を登録
+        var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
             .replace("{id}", event.source.userId)
-            .replace("{time}", nowtime);
+            .replace("{place}", db_place);
         connection.query(query);
-        //メッセージを整形
-        var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
-        var msg = {
-            "type": "text",
-            "text": "現在，" + await db_place + "です"
-        };
-        var msg2 = {
-            "type": "text",
-            "text": "[おしらせ]\n" + await db_msg
-        };
-        var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-            event.replyToken, msg, msg2
-        ));
-        request.post(tmp);
+        //体育館に侵入したならリッチメニューを切り替える
+        if (db_place == "taiikukan") {
+            rich_change(richdata.event, event.source.userId);
+        } else {
+            rich_change(richdata.normal, event.source.userId);
+        }
     }
-    //ユーザがいる場所を登録
-    var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
-        .replace("{id}", event.source.userId)
-        .replace("{place}", await db_place);
-    connection.query(query);
-    //体育館に侵入したならリッチメニューを切り替える
-    if (db_place == "taiikukan") {
-        rich_change(richdata.event, event.source.userId);
-    }
-
 }
 
 /**
@@ -607,6 +625,10 @@ async function beacon_leave(event) {
             rich_change(richdata.normal, event.source.userId);
         }
     }
+}
+
+function access() {
+    request.get("https://kunugida2018.tokyo-ct.ac.jp/api/web/counter");
 }
 
 
@@ -632,8 +654,17 @@ router.post('/', function(req, res, next) {
                     type_follow(event);
                     break;
                 case "postback":
-                    if (event.postback.data == "Student") { addUser(event, "学生"); }
-                    else if (event.postback.data == "Other") { addUser(event, "来場者"); }
+                    switch (event.postback.data) {
+                        case "Student":
+                            addUser(event, "学生");
+                            break;
+                        case "Other":
+                            addUser(event, "来場者");
+                            break;
+                        case "taiikukan":
+                            access();
+                            break;
+                    }
                     break;
                 case "beacon":
                     if (event.beacon.type == "enter") { type_beacon(event); }
@@ -669,33 +700,36 @@ function pushOnlyDB(query) {
  * @param {string} message 送信する文面
  */
 router.post('/pushmessage/send', async function(req, res, next) {
-    var responce = "";
     const body = req.body; // Request body string
-    let msg = msg_text(body.message);
-    var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
-    let rows = await pushOnlyDB(query);
-    let users = [];
-    for (let i=0; i<rows.length; i++) {
-        users.push(rows[i]["USERID"]);
-        if (i%150 == 149) {
+    if (body.key == channelSecret) {
+        let msg = msg_text(body.message);
+        var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
+        let rows = await pushOnlyDB(query);
+        let users = [];
+        for (let i=0; i<rows.length; i++) {
+            users.push(rows[i]["USERID"]);
+            if (i%150 == 149) {
+                let tmp = {
+                    "to": users,
+                    "messages": [msg]
+                }
+                request.post(await Build_responce(urlp_push, tmp))
+                users.length = 0;
+            }
+        }
+        if (users.length != 0) {
             let tmp = {
                 "to": users,
                 "messages": [msg]
             }
-            request.post(await Build_responce(urlp_push, tmp))
+            request.post(await Build_responce(urlp_push, tmp));
             users.length = 0;
         }
+        res.status = 200;
+        res.send("ok");
     }
-    if (users.length != 0) {
-        let tmp = {
-            "to": users,
-            "messages": [msg]
-        }
-        request.post(await Build_responce(urlp_push, tmp));
-        users.length = 0;
-    }
-    res.status = 200;
-    res.send(responce);
+    res.status = 1145141919810;
+    res.send("草ァ！");
 });
 
 module.exports = router;
