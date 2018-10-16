@@ -1,8 +1,4 @@
 window.addEventListener("load",mapInfo);
-
-var h_mapinfo = document.getElementById("mapinfo");
-var h_thisinfo = document.getElementById("thisinfo");
-
 /**
  * スマホ・タブレットサイズのデバイスがmapから来た時の対処
  */
@@ -10,10 +6,13 @@ function mapInfo(){
   var h_mapinfo = document.getElementById("mapinfo");
   var h_thisinfo = document.getElementById("thisinfo"); 
   if(getParam("map") == "true"){
-    var htmltext = "スマートフォン・タブレットではこちらのホームページマップを表示することができません<br>LINE＠では、スマートフォン向けの詳細マップの表示を含め、以下の機能を実装しています。<br>是非登録をよろしくお願いします。<br>";
+    var htmltext = '<div class="map">MAPページをスマートフォン・タブレットから<br>ご覧いただくことはできません。<br>LINE＠の詳細マップ機能をご利用ください。</div>';
     WriteInfo(h_mapinfo,htmltext);
     WriteInfo(h_thisinfo,"");
   }
+  // 友達登録ボタン画像
+  // var friend = document.getElementById("friend");
+  // friend.addEventListener('onclick', line);
 }
 
 /**
@@ -44,4 +43,13 @@ function getParam(name) {
  */
 function WriteInfo(id,htmltext){
   id.innerHTML = htmltext;
+}
+
+/**
+ * LINEの招待URLに飛ぶ
+ */
+function line(){
+  window.location.assign("https://line.me/R/ti/p/%40wey0128f");
+  window.msg.textContent = "Moving...";
+  setInterval(()=>window.msg.textContent+=".", 10);
 }

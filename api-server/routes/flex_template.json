@@ -8,6 +8,7 @@
           "type": "text",
           "text": "",
           "weight": "bold",
+          "color": "#1DB446",
           "size": "lg",
           "wrap": true
           }
@@ -34,29 +35,6 @@
           {
           "type": "separator",
           "margin": "sm"
-          }
-      ]
-  },
-  "footer": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-          {
-              "type": "separator"
-          },
-          {
-              "type": "text",
-              "text": "地図",
-              "weight": "bold",
-              "margin": "md"
-          },
-          {
-              "type": "image",
-              "size": "full",
-              "margin": "md",
-              "aspectRatio": "16:9",
-              "aspectMode": "cover",
-              "url": ""
           }
       ]
   }
