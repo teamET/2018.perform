@@ -40,13 +40,18 @@ const map_data  = require('./mapdata.json');
 const boothID_data   = require('./boothID.json');
 var laboFlex_tmpdata = JSON.parse(fs.readFileSync('./routes/flex_labo.json'));
 var labo_data = JSON.parse(fs.readFileSync('./routes/labodata.json'));
-var shop_data = JSON.parse(fs.readFileSync('../bot/public/shop.json', 'utf8'));
+
+let shop_option = {url: "https://kunugida2018.tokyo-ct.ac.jp/data/shop.json", encoding: "utf8"};
+let shop_url = "https://kunugida2018.tokyo-ct.ac.jp/data/{shopid}/{name}";
+request.get(shop_option, function(error, res, body) {
+    shop_data = JSON.parse(body);
+});
 
 setInterval(function() {
-    const tmpfile = fs.readFile('../bot/public/shop.json', 'utf8', function(err, data) {
-        shop_data = JSON.parse(data);
+    request.get(shop_option, function(error, res, body) {
+        shop_data = JSON.parse(body);
     });
-}, 30*1000);
+}, 30*60*1000);
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -122,7 +127,10 @@ function Build_flex(shopid) {
     var data = shop_data[shopid];
     var tmp = JSON.parse(JSON.stringify(flex_tmp));
     tmp.header.contents[0].text = data.shopname;
-    tmp.hero.url = data.image[0];
+    tmp.hero.url = "https://pbs.twimg.com/media/DpmNwqVUUAA2xlG.jpg";
+    if (data.image.length != 0) {
+        tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[0]);
+    }
     for (var i=0; i<data.goods.length; i++) {
         var goodjson = data.goods[i];
         var g = JSON.parse(JSON.stringify(flex_item));
@@ -410,7 +418,7 @@ async function type_message(event) {
                         "contents": {}
                     };
                     msg.contents = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
-                    msg2 = msg_text("debug message [エリアの模擬店情報]");
+                    //msg2 = msg_text("debug message [エリアの模擬店情報]");
                     break;
             }
         }
@@ -458,7 +466,7 @@ async function type_message(event) {
                                 "contents": {}
                             };
                             msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
-                            msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
+                            //msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
                         }
                         
                         break;

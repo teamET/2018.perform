@@ -32,7 +32,7 @@ function WidthCheck(){
  */
 function GoLINELink(){
   console.log("end");
-  window.location.assign("https://kunugida2018.tokyo-ct.ac.jp/lineat/?map=true");
+  window.location.assign("/lineat/?map=true");
   window.msg.textContent = "Moving...";
   setInterval(()=>window.msg.textContent+=".", 10);
 }
@@ -363,8 +363,12 @@ function init(event){
       // ---- 3.4.1 吹き出し画像の設置 ------------------------------------------------------------
       var c_balloon        = new createjs.Bitmap("/img/" + j_balloon.img); // 吹き出し画像 // *p
       var c_balloonRects   = [];                                             // i番目吹き出しに載せられる四角たちが格納されている。
-      c_balloon.scaleX     = gm_general.scaleX * 0.26; // *z スケール調整
-      c_balloon.scaleY     = gm_general.scaleY *0.26; // *z
+      c_balloon.scaleX     = gm_general.scaleX * 1.05; // *z スケール調整
+      c_balloon.scaleY     = gm_general.scaleY *1.05; // *z
+      if(i==2){
+        c_balloon.scaleX     = gm_general.scaleX * 0.85; // *z スケール調整
+        c_balloon.scaleY     = gm_general.scaleY *0.85; // *z
+      }
       c_balloon.x          = j_balloon.x * gm_general.scaleX + cm_img.x;
       c_balloon.y          = j_balloon.y * gm_general.scaleY + cm_img.y;
       BalloonContainer.addChild(c_balloon);
