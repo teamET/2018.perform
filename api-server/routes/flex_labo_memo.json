@@ -1,0 +1,158 @@
+{
+    "type": "bubble",
+    "styles": {
+      "footer": {
+        "separator": true
+      }
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "text",
+              "text": "3208",
+              "weight": "bold",
+              "color": "#1DB446",
+              "gravity": "center",
+              "align": "center",
+              "size": "lg"
+            },
+            {
+              "type": "text",
+              "text": "3棟2階\n多目的室",
+              "size": "xs",
+              "gravity": "center",
+              "align": "center",
+              "color": "#a5a5a5",
+              "wrap": true
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": "４Dプロジェクト演習",
+          "weight": "bold",
+          "size": "xl",
+          "gravity": "center",
+          "align": "center",
+          "wrap": true,
+          "margin": "xxl"
+        },
+        {
+          "type": "separator",
+          "margin": "xxl"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "margin": "xxl",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "日付",
+                  "size": "sm",
+                  "color": "#555555",
+                  "flex": 0
+                },
+                {
+                  "type": "text",
+                  "text": "10/20",
+                  "size": "sm",
+                  "color": "#111111",
+                  "align": "end"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "実施時間",
+                  "size": "sm",
+                  "color": "#555555",
+                  "flex": 0
+                },
+                {
+                  "type": "text",
+                  "text": "10:00 ~",
+                  "size": "sm",
+                  "color": "#111111",
+                  "align": "end"
+                }
+              ]
+            },
+            {
+              "type": "separator",
+              "margin": "xxl"
+            },
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "margin": "xxl",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "日付",
+                  "size": "sm",
+                  "color": "#555555"
+                },
+                {
+                  "type": "text",
+                  "text": "10/21",
+                  "size": "sm",
+                  "color": "#111111",
+                  "align": "end"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "実施時間",
+                  "size": "sm",
+                  "color": "#555555"
+                },
+                {
+                  "type": "text",
+                  "text": "16:00 ~",
+                  "size": "sm",
+                  "color": "#111111",
+                  "align": "end"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "separator",
+          "margin": "xxl"
+        },
+        {
+              "type": "text",
+              "text": "液体窒素を使った低温の世界や色の変化が\n織りなす不思議な世界をご覧いただきます。",
+              "size": "xs",
+              "color": "#aaaaaa",
+              "align":"center",
+              "flex": 0,
+              "wrap":true,
+              "margin":"xl"
+        }
+  
+      ]
+    }
+  }

@@ -86,5 +86,6 @@ module.exports={
 
 if(require.main===module){
     make_template("shop");
+    make_template("news");
     make_gallery();
 }
