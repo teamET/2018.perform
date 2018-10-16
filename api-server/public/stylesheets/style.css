@@ -6,3 +6,14 @@ body {
 a {
   color: #00B7FF;
 }
+
+.inline {
+  float: left;
+  display: inline-block;
+}
+
+.text {
+  float: right;
+  font: 50px "SourceHanSansJP-Bold";
+  line-height: 180px
+}
