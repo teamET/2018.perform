@@ -127,7 +127,7 @@ function Build_flex(shopid) {
     var data = shop_data[shopid];
     var tmp = JSON.parse(JSON.stringify(flex_tmp));
     tmp.header.contents[0].text = data.shopname;
-    tmp.hero.url = "https://aaaaa.co.jp";
+    tmp.hero.url = "https://pbs.twimg.com/media/DpmNwqVUUAA2xlG.jpg";
     if (data.image.length != 0) {
         tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[0]);
     }
