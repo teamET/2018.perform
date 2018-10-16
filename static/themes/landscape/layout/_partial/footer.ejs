@@ -2,10 +2,15 @@
   <% if (theme.sidebar === 'bottom'){ %>
     <%- partial('_partial/sidebar') %>
   <% } %>
+  <% for (var i in theme.footerLink){ %>
+    <p><a class="footer-link" href="<%- url_for(theme.footerLink[i]) %>"><%= i %></a></p>
+  <% } %>
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %><br>
       <%= __('powered_by') %> <a href="http://hexo.io/" target="_blank">Hexo</a>
+      
     </div>
+    
   </div>
 </footer>

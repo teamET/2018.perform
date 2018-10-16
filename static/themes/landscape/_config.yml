@@ -5,10 +5,10 @@ menu:
   Booth: /mogi-shop
   Event: /event
   Gallery: /gallery
+  Map: /map
   Access: /access
-  Link: /link
   LINE@: /lineat
-  #Map: /map
+  
 
 # Content
 excerpt_link: Read More
@@ -41,3 +41,9 @@ twitter:
 google_plus:
 fb_admins:
 fb_app_id:
+
+#footer
+footerLink:
+  東京高専公式HP: "https://www.tokyo-ct.ac.jp/"
+  東京高専後援会: "https://tokyo-ct-s.jp/"
+  東京高専Twitter: "https://twitter.com/"
