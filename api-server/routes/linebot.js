@@ -41,7 +41,7 @@ const boothID_data   = require('./boothID.json');
 var laboFlex_tmpdata = JSON.parse(fs.readFileSync('./routes/flex_labo.json'));
 var labo_data = JSON.parse(fs.readFileSync('./routes/labodata.json'));
 
-let shop_option = {url: "https://kunugida2018.tokyo-ct.ac.jp/data/public/shop.json", encoding: "utf8"};
+let shop_option = {url: "https://kunugida2018.tokyo-ct.ac.jp/data/shop.json", encoding: "utf8"};
 let shop_url = "https://kunugida2018.tokyo-ct.ac.jp/data/{shopid}/{name}";
 request.get(shop_option, function(error, res, body) {
     shop_data = JSON.parse(body);
