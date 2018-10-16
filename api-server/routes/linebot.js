@@ -418,7 +418,7 @@ async function type_message(event) {
                         "contents": {}
                     };
                     msg.contents = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
-                    msg2 = msg_text("debug message [エリアの模擬店情報]");
+                    //msg2 = msg_text("debug message [エリアの模擬店情報]");
                     break;
             }
         }
@@ -466,7 +466,7 @@ async function type_message(event) {
                                 "contents": {}
                             };
                             msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
-                            msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
+                            //msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
                         }
                         
                         break;
