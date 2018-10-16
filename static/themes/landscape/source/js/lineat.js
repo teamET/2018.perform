@@ -8,7 +8,6 @@ function mapInfo(){
   if(getParam("map") == "true"){
     var htmltext = '<div class="map">MAPページをスマートフォン・タブレットから<br>ご覧いただくことはできません。<br>LINE＠の詳細マップ機能をご利用ください。</div>';
     WriteInfo(h_mapinfo,htmltext);
-    WriteInfo(h_thisinfo,"");
   }
   // 友達登録ボタン画像
   // var friend = document.getElementById("friend");
