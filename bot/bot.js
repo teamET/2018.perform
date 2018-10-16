@@ -1,5 +1,4 @@
 const dotenv=require("dotenv").config();
-require('date-utils');
 const fs = require("fs");
 const puppeteer = require("puppeteer");
 const request = require("request");
@@ -344,6 +343,8 @@ rtm.on("message",(event)=>{
     	var event_text = event.text.split(',');
     	event_text.shift();
     	for(let item of event_text) slack(item,channel);
+    }else if(event.text.split(',')[0]==='.s'){
+        shop[shop_id].boothId = account[channel].boothid;
     }else if(event.text.split(' ')[0]==='.resize'){
         try{
             for(let i in shop[shop_id].image){
