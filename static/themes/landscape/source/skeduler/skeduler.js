@@ -303,8 +303,8 @@
     var count=0;
     const get_schedule=(date)=>{
         tasks = [];
-        if(count == 1 ){
-          jQuery.noConflict(true);
+        if(count == 2 ){
+          //jQuery.noConflict(true);
         }
       count+=1;
       for (var i = 0; i < data.length; i++) {
@@ -339,14 +339,10 @@
     
     jQuery('#sche20').on('click',()=>{
       tasks = get_schedule(20);
-      
-      console.log(20);
       set_tasks(tasks);
-  });
-  jQuery('#sche21').on('click',()=>{ 
+    });
+    jQuery('#sche21').on('click',()=>{ 
       tasks = get_schedule(21);
-      //jQuery.noConflict(true)
-      console.log(21);
       set_tasks(tasks);
   });
 })(jQuery);
