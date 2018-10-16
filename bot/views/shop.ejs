@@ -1,31 +1,39 @@
 <% for(let id in data){%>
     <% if( data[id].goods.length){ %>
-        <div class="shop">
-            <% if( data[id].image.length){ %>
-                <img src="https://kunugida2018.tokyo-ct.ac.jp/data/<%=id%>/<%=data[id].image[0] %>">
-            <% }else{ %>
-                <img src="https://user-images.githubusercontent.com/38575274/46793140-f7660880-cd7f-11e8-9e1c-773c09a992c5.png">
-            <% } %>
-            <table class="" id="search_shop_table">
-                <p>
-                    <%= data[id].shopname %>
-                    <a class="icon" href="/map/?booth=<%= id %>"> <img src="https://png.icons8.com/color/50/000000/marker.png">地図を表示 </a>
-                </p>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                <%  for( var i=0 ; i < data[id].goods.length ; i+=1) { %>
-                    <tr>
-                        <td> <%= data[id].goods[i].name %> </td>
-                        <% if(!data[id].goods[i].first_price){ %>
-                          <td><%= data[id].goods[i].price %>円</td>
-                        <% } else { %>
-                          <td><div class="del"><span><%= data[id].goods[i].first_price %>円</span></div><%= data[id].goods[i].price %>円</td>
-                        <% } %>
-                    </tr>
-                <% }; %>
-            </table>
-        </div>
+        <section class="shop-box" id="label<%= data[id].label[0]%>">
+            <div class="results">
+                <shop class="label<%= data[id].label.join(' label')%>">
+                    <div class="shop">
+                        <div class="shop-image">
+                            <% if( data[id].image.length ){ %>
+                                <img src="https://kunugida2018.tokyo-ct.ac.jp/data/<%=id%>/<%=data[id].image[0] %>">
+                            <% }else{ %>
+                                <img src="https://user-images.githubusercontent.com/38575274/46793140-f7660880-cd7f-11e8-9e1c-773c09a992c5.png">
+                            <% } %>
+                        </div>
+                        <table class="" id="search_shop_table">
+                            <p>
+                                <%= data[id].shopname %>
+                                <a class="icon" href="/map/?booth=<%= data[id].boothId %>">
+                            </p>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            <%  for( var i=0 ; i < data[id].goods.length ; i+=1) { %>
+                                <tr>
+                                    <td> <%= data[id].goods[i].name %> </td>
+                                    <% if(!data[id].goods[i].first_price){ %>
+                                    <td><%= data[id].goods[i].price %>円</td>
+                                    <% } else { %>
+                                    <td><div class="del"><span><%= data[id].goods[i].first_price %>円</span></div><%= data[id].goods[i].price %>円</td>
+                                    <% } %>
+                                </tr>
+                            <% }; %>
+                        </table>
+                    </div>
+                </shop>
+            </div>
+        </section>
     <% } %>
 <% } %>
