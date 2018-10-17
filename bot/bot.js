@@ -392,10 +392,10 @@ rtm.on("message",(event)=>{
     backup("tag",tag);
     backup("events",events);
     backup("news",news);
-    tmpl.make("shop","shop");
-    tmpl.make("news","news");
-    tmpl.make("shop","gallery");
-    make_shop_json("shop");
+    make_shop_json();
+    make_template("shop","shop");
+    make_template("news","news");
+    make_template("shop","gallery");
 
 });
 
