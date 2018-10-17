@@ -1,5 +1,4 @@
 const dotenv=require("dotenv").config();
-require('date-utils');
 const fs = require("fs");
 const puppeteer = require("puppeteer");
 const request = require("request");
@@ -118,9 +117,12 @@ function convert(data){
 	  return Data;
 }
 const screen = (async(channel,file,shop_id)=>{
+    console.log("start screen shot");
     const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
     const page = await browser.newPage();
-    await page.goto(DEV_SERVER,{waitUntil: "domcontentloaded"});
+    await page.goto(DEV_SERVER,{waitUntil: 'domcontentloaded'});
+//    await page.goto("https://kunugida2018.tokyo-ct.ac.jp/mogi-shop/",{waitUntil: "domcontentloaded"});
+    await page.waitFor(1000);
     await page.screenshot({path: file+".png", fullPage: true});
     browser.close();
     utils.log(file);
@@ -283,8 +285,9 @@ rtm.on("message",(event)=>{
 			slack("一致する画像がありません.",channel);
 			return ;
 		}
-    }else if(event.text.split(' ')[0]==='.rewiew'){
-        screen('./private/view/'+shop_id,shop_id);
+    }else if(event.text.split(' ')[0]==='.review'){
+        console.log("review start");
+        screen(channel,'./private/review/'+shop_id,shop_id);
     }else if(event.text.split(' ')[0]==='.show'){
         slack("```"+
             "name : "+JSON.stringify(shop[shop_id]["shopname"])+"\n"+
@@ -340,6 +343,8 @@ rtm.on("message",(event)=>{
     	var event_text = event.text.split(',');
     	event_text.shift();
     	for(let item of event_text) slack(item,channel);
+    }else if(event.text.split(',')[0]==='.s'){
+        shop[shop_id].boothId = account[channel].boothid;
     }else if(event.text.split(' ')[0]==='.resize'){
         try{
             for(let i in shop[shop_id].image){
@@ -385,7 +390,7 @@ rtm.on("message",(event)=>{
             console.log(e);
         }
     }
-    if(event.files !== undefined){
+    if((event.files !== undefined)&&(event.files[0].name!==(shop_id+'.png'))){
         save_shop_image(event,shop_id);
     }
     backup("shop",shop);
