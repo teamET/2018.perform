@@ -32,15 +32,14 @@ const dbx = dropboxV2Api.authenticate({
 });
 
 /* json fileの読み込み */
-const flex_tmp = require("./flex_template.json");
-const flex_item = require("./flex_item.json");
-const richdata = require('./rich.json');
-const shop_area = require('./shop-area.json');
-const map_data  = require('./mapdata.json');
-const boothID_data = require('./boothID.json');
-const flex_useradd = require("./useradd.json");
-var laboFlex_tmpdata = JSON.parse(fs.readFileSync('./routes/flex_labo.json'));
-var labo_data = JSON.parse(fs.readFileSync('./routes/labodata.json'));
+const flex_tmp = require("./jsonfiles/flex_template.json");
+const flex_item = require("./jsonfiles/flex_item.json");
+const richdata = require('./jsonfiles/rich.json');
+const shop_area = require('./jsonfiles/shop-area.json');
+const map_data  = require('./jsonfiles/mapdata.json');
+const boothID_data   = require('./jsonfiles/boothID.json');
+const laboFlex_tmpdata = require('./jsonfiles/flex_labo.json');
+const labo_data = require('./jsonfiles/labodata.json');
 
 let shop_option = {url: "https://kunugida2018.tokyo-ct.ac.jp/data/shop.json", encoding: "utf8"};
 let shop_url = "https://kunugida2018.tokyo-ct.ac.jp/data/{shopid}/{name}";
@@ -126,20 +125,24 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
  */
 function Build_flex(shopid) {
     var data = shop_data[shopid];
-    var tmp = JSON.parse(JSON.stringify(flex_tmp));
-    tmp.header.contents[0].text = data.shopname;
-    tmp.hero.url = "https://pbs.twimg.com/media/DpmNwqVUUAA2xlG.jpg";
-    if (data.image.length != 0) {
-        tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[0]);
+    if (data != undefined) {
+        var tmp = JSON.parse(JSON.stringify(flex_tmp));
+        tmp.header.contents[0].text = data.shopname;
+        tmp.hero.url = "https://pbs.twimg.com/media/DpmNwqVUUAA2xlG.jpg";
+        if (data.image.length != 0) {
+            tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[0]);
+        }
+        for (var i=0; i<data.goods.length; i++) {
+            var goodjson = data.goods[i];
+            var g = JSON.parse(JSON.stringify(flex_item));
+            g.contents[0].text = goodjson.name;
+            g.contents[1].text = goodjson.price + "円";
+            tmp.body.contents.push(g);
+        }
+        return tmp;
+    } else {
+        return null;
     }
-    for (var i=0; i<data.goods.length; i++) {
-        var goodjson = data.goods[i];
-        var g = JSON.parse(JSON.stringify(flex_item));
-        g.contents[0].text = goodjson.name;
-        g.contents[1].text = goodjson.price + "円";
-        tmp.body.contents.push(g);
-    }
-    return tmp;
 }
 
 /**
@@ -354,7 +357,13 @@ async function type_message(event) {
                 };
                 for (var i=0; i<shop_area[userplace].length; i++) {
                     var shopid = shop_area[userplace][i];
-                    msg.contents.contents.push(Build_flex(shopid));
+                    let tmp = Build_flex(shopid);
+                    if (tmp != null) {
+                        msg.contents.contents.push(tmp);
+                    }
+                }
+                if (msg.contents.contents.length == 0) {
+                    msg = msg_text("表示できる模擬店がありません");
                 }
             }
             break;
