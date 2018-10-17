@@ -105,7 +105,7 @@
             "action": {
               "type": "uri",
               "label": "設定へ移動する",
-              "uri": "https://linecorp.com"
+              "uri": "line://nv/settings"
             }
           }
         ]
