@@ -34,12 +34,24 @@ const dbx = dropboxV2Api.authenticate({
 /* json fileの読み込み */
 const flex_tmp = require("./flex_template.json");
 const flex_item = require("./flex_item.json");
-const flex_image = require("./shop-map.json");
-var richdata = JSON.parse(fs.readFileSync('./routes/rich.json', 'utf8'));
-var shop_area = JSON.parse(fs.readFileSync('./routes/shop-area.json', 'utf8'));
-var map_data  = JSON.parse(fs.readFileSync('./routes/mapdata.json','utf8'));
-var shop_data = JSON.parse(fs.readFileSync('../bot/data/shop.json', 'utf8'));
-var boothID_data   = JSON.parse(fs.readFileSync('./routes/boothID.json','utf8'));
+const richdata = require('./rich.json');
+const shop_area = require('./shop-area.json');
+const map_data  = require('./mapdata.json');
+const boothID_data   = require('./boothID.json');
+var laboFlex_tmpdata = JSON.parse(fs.readFileSync('./routes/flex_labo.json'));
+var labo_data = JSON.parse(fs.readFileSync('./routes/labodata.json'));
+
+let shop_option = {url: "https://kunugida2018.tokyo-ct.ac.jp/data/shop.json", encoding: "utf8"};
+let shop_url = "https://kunugida2018.tokyo-ct.ac.jp/data/{shopid}/{name}";
+request.get(shop_option, function(error, res, body) {
+    shop_data = JSON.parse(body);
+});
+
+setInterval(function() {
+    request.get(shop_option, function(error, res, body) {
+        shop_data = JSON.parse(body);
+    });
+}, 30*60*1000);
 
 /* LINE MessagingAPI URL */
 //URL POST
@@ -113,17 +125,55 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
  */
 function Build_flex(shopid) {
     var data = shop_data[shopid];
-    var tmp = flex_tmp;
+    var tmp = JSON.parse(JSON.stringify(flex_tmp));
     tmp.header.contents[0].text = data.shopname;
-    tmp.hero.url = data.image[0];
-    tmp.footer.contents[2].url = flex_image[shopid];
+    tmp.hero.url = "https://pbs.twimg.com/media/DpmNwqVUUAA2xlG.jpg";
+    if (data.image.length != 0) {
+        tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[0]);
+    }
     for (var i=0; i<data.goods.length; i++) {
         var goodjson = data.goods[i];
-        var g = flex_item;
+        var g = JSON.parse(JSON.stringify(flex_item));
         g.contents[0].text = goodjson.name;
         g.contents[1].text = goodjson.price + "円";
         tmp.body.contents.push(g);
     }
+    return tmp;
+}
+
+/**
+ * 研究室のFlexデータを作成する
+ * @param {string} laboid 研究室ID
+ * @return {obj} tmp 研究室のFlexデータ(ひとつだけ。bubbleを返す)
+ */
+function Build_LaboFlex_Bubble(laboid){
+    // JSONの参照私を値渡しにする
+    var tmp = JSON.parse(JSON.stringify(laboFlex_tmpdata.tmp));
+    tmp.body.contents[3].contents = []; // 初期化
+    // 室内番号・詳細・タイトル
+    tmp.body.contents[0].contents[0].text = labo_data[laboid].floor;
+    if(labo_data[laboid] == "3208・3223") tmp.body.contents[0].contents[0].align = "center";
+    else tmp.body.contents[0].contents[0].align = "start";
+    tmp.body.contents[0].contents[1].text = labo_data[laboid].floorText;
+    tmp.body.contents[1].text = labo_data[laboid].title;
+    tmp.body.contents[1].size = labo_data[laboid].titleSize;
+    // 日付・実施時間
+    for(var i=0;i<labo_data[laboid].datetime.length;i++){
+        var date = JSON.parse(JSON.stringify(laboFlex_tmpdata.dateTmp));
+        date.contents[1].text = labo_data[laboid].datetime[i].date;
+        tmp.body.contents[3].contents.push(date);
+        var times = JSON.parse(JSON.stringify(laboFlex_tmpdata.timesTmp));
+        for(var j=0;j<labo_data[laboid].datetime[i].times.length;j++){
+            var time = JSON.parse(JSON.stringify(laboFlex_tmpdata.timeTmp));
+            time.text = labo_data[laboid].datetime[i].times[j];
+            times.contents[1].contents.push(time);
+        }
+        tmp.body.contents[3].contents.push(times);
+        var separator = laboFlex_tmpdata.separator;
+        tmp.body.contents[3].contents.push(separator);
+    }
+    // 補足情報
+    tmp.body.contents[4].text = labo_data[laboid].supplementation;
     return tmp;
 }
 
@@ -189,9 +239,13 @@ async function rich_change(after, userId) {
     var rich_url = urld_rich_delete.replace("{userId}", userId);
     var rich_url2 = urlp_rich_set.replace("{userId}", userId)
         .replace("{richMenuId}", after);
-    var tmp = await Build_responce(rich_url2)
+    var tmp = await Build_responce(rich_url2);
     request.delete(await Build_responce(rich_url), function(error, responce, body) {
-        request.post(tmp);
+        //console.log("rich -> delete");
+        request.post(tmp, function(error, responce, body) {
+            //console.log("rich -> set");
+            //console.log(body);
+        });
     });
 }
 
@@ -278,8 +332,8 @@ async function type_message(event) {
                         ["F",1,2,3]];
     // [棟][各階にあるのピンの数]]([][0] : 棟の数)
     // 8棟は1，3階だが、プログラム内では1,2階として処理する。
-    var mapBFdata  = [[2,1,2,5,0],
-                      [3,1,2,3,4],
+    var mapBFdata  = [[2,3,3,5,0],
+                      [3,2,3,3,4],
                       [5,1,2],
                       [8,1,1]];
     switch(event.message.text) {
@@ -304,27 +358,48 @@ async function type_message(event) {
             }
             break;
         case "マップを表示":
-            //mapdata.location = "Top";
-            //msg = msg_imagemap("map",mapdata);
-            msg = {
+            msg = msg_text("[info] マップ画像はタッチできるよ！");
+            msg2 = msg_text("「○○へ」と書いたボタンやマップピンをタッチすると、エリアを移動したり、模擬店の情報が表示されます！");
+            msg3 = {
                 "type": "flex",
                 "altText":  "TOP",
                 "contents": {}
             };
-            var buttonTexts = ["[Top] 構外全体マップへ","[Top] 構内全体マップへ"];
-            msg.contents = Build_flexButton(buttonTexts);
+            var buttonTexts = ["[Top] 校外全体マップへ","[Top] 校内全体マップへ"];
+            msg3.contents = Build_flexButton(buttonTexts);
+            msg4 = msg_text("行きたいエリアを選択してください。");
             break;
-        case "[Top] 構内全体マップへ":
+        case "[Top] 校内全体マップへ":
             mapdata.location = "InsideTop";
             msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("棟を選択してください");            
+            msg2 = msg_text("棟を選択してください");
             break;
-        case "[Top] 構外全体マップへ":
+        case "[Top] 校外全体マップへ":
             mapdata.location = "OutsideTop";
             msg = msg_imagemap("map",mapdata);
             msg2 = msg_text("エリアを選択してください");
             break;
-        case "実装中":
+        case "7棟の情報を表示":
+            msg = {
+                "type": "flex",
+                "altText": "7棟の研究室情報",
+                "contents": {
+                    "type": "carousel",
+                    "contents": []
+                }
+            };
+            for (var i=17; i<= 23; i++) {
+                console.log("labo"+i);
+                msg.contents.contents.push(Build_LaboFlex_Bubble("labo"+i));
+            }
+            break;
+        case "8棟3階の1番の模擬店情報を表示":
+            msg = {
+                "type": "flex",
+                "altText": "8棟3階の1番の模擬店情報",
+                "contents": {}
+            };
+            msg.contents = Build_LaboFlex_Bubble("labo25");
             break;
         default:
             msg = msg_text("個別の返信はできません(*:△:)");
@@ -332,20 +407,19 @@ async function type_message(event) {
     }
 
     /***** イメージマップタップ時の出力判定 *****/
-    // [1] 構外マップ
+    // [1] 校外マップ
     for(var i=0;i<OutsideArea.length;i++){
         for(var j=1;j<OutsideArea[i].length;j++){
             switch(event.message.text){
                 case "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報を表示":
-                    /*
+                    // ** 模擬店情報送信部
                     msg = {
                         "type": "flex",
                         "altText": "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報",
                         "contents": {}
                     };
                     msg.contents = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
-                    */
-                    msg = msg_text("debug message [エリアの模擬店情報]");
+                    //msg2 = msg_text("debug message [エリアの模擬店情報]");
                     break;
             }
         }
@@ -357,31 +431,69 @@ async function type_message(event) {
                 break;
         }
     }
-    // [2] 構内マップ
+    // [2] 校内マップ
     for(var i=0;i<mapBFdata.length;i++){
         for(var j=1;j<mapBFdata[i].length;j++){
             // フロアの画像送信部
-            switch(event.message.texts){
+            switch(event.message.text){
                 case mapBFdata[i][0] + "棟"+j+"階へ":
-                    console.log("console");
-                    mapdata.location = "I"+mapdata[i][0]+j;
-                    msg = msg_imagemap("map",mapdata);
-                    msg2 = msg_text("ピンを選択すると模擬店の詳細を表示します");
+                    if(mapBFdata[i][0]==3){
+                        if(j==3 || j==4){
+                            // 3棟 3-4階 研究室情報を表示
+                            msg = ("研究室公開があります");
+                            msg2 = {
+                                "type": "flex",
+                                "altText":  mapBFdata[i][0]+"棟"+j+"階の研究室情報",
+                                "contents": {}
+                            };
+                            if(j==3)msg2.contents=Build_LaboFlex_Bubble("labo10");
+                            else msg2.contents = Build_LaboFlex_Bubble("labo11");
+                            mapdata.location = "I" + mapBFdata[i][0] + j;
+                            msg3 = msg_imagemap("map",mapdata);
+                        }
+                    }else{
+                        mapdata.location = "I"+mapBFdata[i][0]+j;
+                        msg = msg_imagemap("map",mapdata);
+                    }
                     break;
+                case "8棟3階へ":
+                    mapdata.location = "I"+82;
+                    msg = msg_imagemap("map",mapdata);
+                    break;          
             }
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
-                    case mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報を表示":
-                        // 模擬店情報送信部
-                        /*
-                        msg = {
-                            "type": "flex",
-                            "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報",
-                            "contents": {}
-                        };
-                        msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
-                        */
-                        msg = msg_text("debug message [~棟~階~番目の模擬店情報へ]");
+                    case mapBFdata[i][0]+"棟"+j+"階の"+k+"番の模擬店情報を表示":
+                        // ** 模擬店情報送信部
+                        console.log("Inside"+mapBFdata[i][0]+j+k);
+                        console.log(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                        if(boothID_data["Inside"+mapBFdata[i][0]+j+k].match(/labo/)){
+                            // 研究室情報を送信する
+                            msg = {
+                                "type": "flex",
+                                "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の研究室情報",
+                                "contents": {}
+                            };
+                            msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            console.log(msg.contents.body.contents[0].contents[0].text);
+                        
+                        }else if(boothID_data["Inside"+mapBFdata[i][0]+j+k]== "consert"){
+                            // 研究室情報を送信する
+                            msg = {
+                                "type": "flex",
+                                "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の情報",
+                                "contents": {}
+                            };
+                            msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                        }else{
+                            msg = {
+                                "type": "flex",
+                                "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報",
+                                "contents": {}
+                            };
+                            msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            //msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
+                        }
                         break;
                 }
             }
@@ -389,25 +501,42 @@ async function type_message(event) {
         // 階数を選択するflexMessageの送信
         switch(event.message.text){
             case mapBFdata[i][0]+"棟へ":
-                msg = {
-                    "type": "flex",
-                    "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
-                    "contents": {}
-                }
                 var buttonTexts = [];
-                for(j=1;j<mapBFdata[i].length;j++){
-                    if(i==3 && j==2){
-                        buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
-                    }else{
-                        buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
+                if(mapBFdata[i][0] == 8){
+                    //8棟4階のbubbleを表示
+                    msg = msg_text("8棟4階で個別相談会を行っています。");
+                    msg2 = {
+                        "type": "flex",
+                        "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
+                        "contents": {}
                     }
+                    for(j=1;j<mapBFdata[i].length;j++){
+                        if(i==3 && j==2){
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
+                        }else{
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
+                        }
+                    }
+                    msg2.contents = Build_flexButton(buttonTexts);
+                }else{
+                    msg = {
+                        "type": "flex",
+                        "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
+                        "contents": {}
+                    }
+                    for(j=1;j<mapBFdata[i].length;j++){
+                        if(i==3 && j==2){
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
+                        }else{
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
+                        }
+                    }
+                    console.log(buttonTexts);
+                    msg.contents = Build_flexButton(buttonTexts);
                 }
-                console.log(buttonTexts);
-                msg.contents = Build_flexButton(buttonTexts);
                 break;
         }
     }
-
     //画像を送信してきた時の処理
     if (event.message.type == "image") {
         image_download(event);
@@ -435,6 +564,7 @@ async function type_follow(event) {
         "type": "text",
         "text": "東京高専文化祭BOTを友達登録してくれてありがとう！"
     };
+    //以下にbeacon設定用のflexmessageを添付する
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
         event.replyToken, msg
     ));
@@ -453,7 +583,10 @@ async function addUser(event, usertype) {
         .replace('{type}', event.postback.data)
         .replace('{time}', nowtime)
         .replace('{place}', "");
-    connection.query(query);
+    //line側のレスポンスが遅いため，ユーザが押しすぎやすい -> エラーを拾う必要がある
+    connection.query(query, function(err, rows) {
+        console.log("useradd ok");
+    });
     //richmenuの切り替え
     rich_change(richdata.normal, event.source.userId);
     var msg = {
@@ -486,38 +619,43 @@ async function type_beacon(event) {
     var now = moment();
     var nowtime = now.format('YYYY-MM-DD HH:mm:ss');
     var db_time = moment(await tmp);
-    var db_place = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
-    //前回の侵入から7分経っている -> 更新してメッセージを送信
-    if ((now.diff(db_time)/(1000*60)) >= 7 ) {
-        var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
+    var tmp = DB_get("BeaconData", "PLACE", "BEACONID", event.beacon.hwid);
+    var user_place = await DB_get("UserData", "PLACE", "USERID", event.source.userId);
+    var db_place = await tmp;
+    if (db_place != user_place) {
+        //前回の侵入から7分経っている -> 更新してメッセージを送信
+        if ((now.diff(db_time)/(1000*60)) >= 7 ) {
+            var query = 'UPDATE UserData SET BEACONTIME = "{time}" WHERE USERID = "{id}"'
+                .replace("{id}", event.source.userId)
+                .replace("{time}", nowtime);
+            connection.query(query);
+            //メッセージを整形
+            var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
+            var msg = {
+                "type": "text",
+                "text": "現在，" + db_place + "です"
+            };
+            var msg2 = {
+                "type": "text",
+                "text": "[おしらせ]\n" + await db_msg
+            };
+            var tmp = await Build_responce(urlp_reply, await Build_msg_text(
+                event.replyToken, msg, msg2
+            ));
+            request.post(tmp);
+        }
+        //ユーザがいる場所を登録
+        var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
             .replace("{id}", event.source.userId)
-            .replace("{time}", nowtime);
+            .replace("{place}", db_place);
         connection.query(query);
-        //メッセージを整形
-        var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
-        var msg = {
-            "type": "text",
-            "text": "現在，" + await db_place + "です"
-        };
-        var msg2 = {
-            "type": "text",
-            "text": "[おしらせ]\n" + await db_msg
-        };
-        var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-            event.replyToken, msg, msg2
-        ));
-        request.post(tmp);
+        //体育館に侵入したならリッチメニューを切り替える
+        if (db_place == "taiikukan") {
+            rich_change(richdata.event, event.source.userId);
+        } else {
+            rich_change(richdata.normal, event.source.userId);
+        }
     }
-    //ユーザがいる場所を登録
-    var query = 'UPDATE UserData SET PLACE = "{place}" WHERE USERID = "{id}"'
-        .replace("{id}", event.source.userId)
-        .replace("{place}", await db_place);
-    connection.query(query);
-    //体育館に侵入したならリッチメニューを切り替える
-    if (db_place == "taiikukan") {
-        rich_change(richdata.event, event.source.userId);
-    }
-
 }
 
 /**
@@ -537,6 +675,10 @@ async function beacon_leave(event) {
             rich_change(richdata.normal, event.source.userId);
         }
     }
+}
+
+function access() {
+    request.get("https://kunugida2018.tokyo-ct.ac.jp/api/web/counter");
 }
 
 
@@ -562,8 +704,17 @@ router.post('/', function(req, res, next) {
                     type_follow(event);
                     break;
                 case "postback":
-                    if (event.postback.data == "Student") { addUser(event, "学生"); }
-                    else if (event.postback.data == "Other") { addUser(event, "来場者"); }
+                    switch (event.postback.data) {
+                        case "Student":
+                            addUser(event, "学生");
+                            break;
+                        case "Other":
+                            addUser(event, "来場者");
+                            break;
+                        case "taiikukan":
+                            access();
+                            break;
+                    }
                     break;
                 case "beacon":
                     if (event.beacon.type == "enter") { type_beacon(event); }
@@ -599,33 +750,36 @@ function pushOnlyDB(query) {
  * @param {string} message 送信する文面
  */
 router.post('/pushmessage/send', async function(req, res, next) {
-    var responce = "";
     const body = req.body; // Request body string
-    let msg = msg_text(body.message);
-    var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
-    let rows = await pushOnlyDB(query);
-    let users = [];
-    for (let i=0; i<rows.length; i++) {
-        users.push(rows[i]["USERID"]);
-        if (i%150 == 149) {
+    if (body.key == channelSecret) {
+        let msg = msg_text(body.message);
+        var query = 'SELECT USERID FROM UserData WHERE ' + body.param;
+        let rows = await pushOnlyDB(query);
+        let users = [];
+        for (let i=0; i<rows.length; i++) {
+            users.push(rows[i]["USERID"]);
+            if (i%150 == 149) {
+                let tmp = {
+                    "to": users,
+                    "messages": [msg]
+                }
+                request.post(await Build_responce(urlp_push, tmp))
+                users.length = 0;
+            }
+        }
+        if (users.length != 0) {
             let tmp = {
                 "to": users,
                 "messages": [msg]
             }
-            request.post(await Build_responce(urlp_push, tmp))
+            request.post(await Build_responce(urlp_push, tmp));
             users.length = 0;
         }
+        res.status = 200;
+        res.send("ok");
     }
-    if (users.length != 0) {
-        let tmp = {
-            "to": users,
-            "messages": [msg]
-        }
-        request.post(await Build_responce(urlp_push, tmp));
-        users.length = 0;
-    }
-    res.status = 200;
-    res.send(responce);
+    res.status = 1145141919810;
+    res.send("草ァ！");
 });
 
 module.exports = router;

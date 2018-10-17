@@ -1,0 +1,123 @@
+{
+    "tmp": {
+        "type": "bubble",
+        "styles": {
+            "footer": {
+                "separator": true
+            }
+        },
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "",
+                            "weight": "bold",
+                            "color": "#1DB446",
+                            "gravity": "center",
+                            "align": "",
+                            "size": "lg"
+                        },
+                        {
+                            "type": "text",
+                            "text": "",
+                            "size": "xs",
+                            "gravity": "center",
+                            "align": "center",
+                            "color": "#a5a5a5",
+                            "wrap": true
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "text": "",
+                    "weight": "bold",
+                    "size": "",
+                    "gravity": "center",
+                    "align": "center",
+                    "wrap": true,
+                    "margin": "xxl"
+                },
+                {
+                    "type": "separator",
+                    "margin": "xxl"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "xxl",
+                    "spacing": "sm",
+                    "contents": []
+                },
+                {
+                    "type": "text",
+                    "text": "",
+                    "size": "xs",
+                    "color": "#aaaaaa",
+                    "align": "center",
+                    "flex": 0,
+                    "wrap": true,
+                    "margin": "xl"
+                }
+            ]
+        }
+    },
+    "dateTmp": {
+        "type": "box",
+        "layout": "horizontal",
+        "margin": "xxl",
+        "contents": [
+            {
+                "type": "text",
+                "text": "日付",
+                "size": "sm",
+                "color": "#555555",
+                "flex": 0
+            },
+            {
+                "type": "text",
+                "text": "",
+                "size": "sm",
+                "color": "#111111",
+                "align": "end"
+            }
+        ]
+    },
+    "timesTmp": {
+        "type": "box",
+        "layout": "horizontal",
+        "margin": "xxl",
+        "contents": [
+            {
+                "type": "text",
+                "text": "実施時間",
+                "size": "sm",
+                "color": "#555555",
+                "gravity": "center",
+                "flex": 0
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "contents": []
+            }
+        ]
+    },
+    "timeTmp":{
+        "type": "text",
+        "text": "",
+        "size": "sm",
+        "color": "#111111",
+        "align": "end"
+    },
+    "separator": {
+        "type": "separator",
+        "margin": "xxl"
+    }
+}

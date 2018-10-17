@@ -7,7 +7,7 @@
     position: absolute
     left: 0
     right: 0
-    height: 40px
+    //height: 40px
   &:before
     top: 0
     background: linear-gradient(rgba(0, 0, 0, 0.2), transparent)
@@ -21,8 +21,8 @@
 
 #header-inner
   background: rgba(0, 0, 0, 0)
-  position: relative
-  overflow: hidden
+  // position: relative
+  // overflow: hidden
 
 #banner
   position: absolute
@@ -30,28 +30,26 @@
   left: 0
   width: 100%
   height: 100%
-  background: url(banner-url) center #000
-  background-size: cover
   z-index: -1
 
 #header-title
   text-align: center
   height: logo-size
-  position: absolute
+  //position: absolute
   top: 50%
   left: 0
   margin-top: logo-size * -0.5
 
 $logo-text
   text-decoration: none
-  color: #fff
-  font-weight: 300
+  color: #fbf9e2
+  font-weight: 600
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3)
 
 #logo
   @extend $logo-text
   font-size: logo-size
-  line-height: logo-size
+  line-height: logo-size+subtitle-size
   letter-spacing: 2px
 
 #subtitle
@@ -60,8 +58,6 @@ $logo-text
   line-height: subtitle-size
   letter-spacing: 1px
 
-#subtitle-wrap
-  margin-top: subtitle-size
 
 #main-nav
   float: left
@@ -75,10 +71,11 @@ $nav-link
   text-shadow: 0 1px rgba(0, 0, 0, 0.2)
   transition: opacity 0.2s
   display: block
-  padding: 20px 15px
+  padding: 10px 15px
   &:hover
     opacity: 1
     color: #e99130
+
 
 .nav-icon
   @extend $nav-link
@@ -87,12 +84,12 @@ $nav-link
   font-size: font-size
   width: font-size
   height: font-size
-  padding: 20px 15px
   position: relative
   cursor: pointer
 
 .main-nav-link
   @extend $nav-link
+  padding: 20px 15px
   font-weight: 400
   letter-spacing: 1px
   @media mq-mobile
@@ -104,6 +101,18 @@ $nav-link
     content: "\f0c9"
   @media mq-mobile
     display: block
+
+#main-nav img
+  @extend $nav-link
+  padding: 9px 0;
+  margin-left: 15px; 
+  width: 50px;
+  opacity: 0.8;
+  @media mq-mobile
+    display: none
+
+#main-nav img:hover
+  opacity: 1;
 
 #sub-nav
   float: right
@@ -132,6 +141,50 @@ $nav-link
   @media mq-mobile
     width: 100%
     right: -100%
+
+
+p.title {
+  font-size: 225%;
+  text-align:center
+}
+p.subtitle {
+  font-size: 75%;
+  text-align:center
+}
+
+.box2{
+    display: inline-block;
+    position: relative;
+    padding: 0 1.5em 0.75em 1.5em;
+    font-weight: bold;
+    border-top: solid 3px #e99130;
+    border-bottom: solid 3px #e99130;
+}
+.box2:before, .box2:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 3px;
+    padding-bottom: 10px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: #e99130;
+}
+.box2:before {left: 10px;}
+.box2:after {right: 10px;}
+.box2 a {
+    text-align: center
+    height: logo-size
+    // position: absolute
+    top: 50%
+    // left: 0
+    // margin-top: logo-size * -0.5
+    width: 200px;
+    margin: 0; 
+    padding-top: 5px;
+    color: #fbf9e2;
+    font-family: 'Oswald', sans-serif;
+}
 
 .search-form
   position: absolute

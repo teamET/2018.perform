@@ -1,12 +1,3 @@
-
-<h1>gallery ejs</h1>
-<div class="flex-images">
-    <div class="item" data-w="200" data-h="150"><img src="/data/public/photo_club/P8060390.JPG"></div>
-    <div class="item" data-w="250" data-h="150"><img src="/data/public/photo_club/IMGP0006.JPG"></div>
-</div>
-<link rel="stylesheet" type="text/css" href="/css/jquery.flex-images.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="/js/jquery.flex-images.min.js"></script>
-<script type="text/javascript">
-    $('.flex-images').flexImages({rowHeight: 140});
-</script>
+<div id="gallery"></div>
+<!--%- js('js/masonry.pkgd.min.js') %-->
+<script> $(function(){ $('#gallery').load('/data/views/gallery.html'); }); </script>

@@ -1,6 +1,6 @@
 {
     "Top": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/Top/map-InOutChoice",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/Top/map-InOutChoice",
         "altText": "表示したいマップを選択してください",
         "baseSize": {
             "height": 585,
@@ -9,7 +9,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 0,
                     "y" : 0,
@@ -19,7 +19,7 @@
             },
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 520,
                     "y" : 0,
@@ -30,8 +30,8 @@
         ]
     },
     "OutsideTop": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/Top/map-OutsideTop",
-        "altText": "[Top] 構外全体マップ",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/Top/map-OutsideTop",
+        "altText": "[Top] 校外全体マップ",
         "baseSize": {
             "height": 469,
             "width": 1040
@@ -39,7 +39,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 731,
                     "y": 55,
@@ -110,8 +110,78 @@
         ]
     },
     "AreaA": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-A",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-A",
         "altText": "エリアA",
+        "baseSize": {
+            "height": 608,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 校外全体マップへ",
+                "area": {
+                    "x": 720,
+                    "y": 32,
+                    "width": 269,
+                    "height": 69
+                }
+            },
+            {
+                "type": "message",
+                "text": "エリアAの1番の模擬店情報を表示",
+                "area": {
+                    "x": 140,
+                    "y": 70,
+                    "width": 90,
+                    "height": 172
+                }
+            },
+            {
+                "type": "message",
+                "text": "エリアAの2番の模擬店情報を表示",
+                "area": {
+                    "x": 242,
+                    "y": 70,
+                    "width": 78,
+                    "height": 173
+                }
+            },
+            {
+                "type": "message",
+                "text": "エリアAの3番の模擬店情報を表示",
+                "area": {
+                    "x": 483,
+                    "y": 70,
+                    "width": 85,
+                    "height": 184
+                }
+            },
+            {
+                "type": "message",
+                "text": "エリアAの4番の模擬店情報を表示",
+                "area": {
+                    "x": 586,
+                    "y": 70,
+                    "width": 82,
+                    "height": 170
+                }
+            },
+            {
+                "type": "message",
+                "text": "エリアAの5番の模擬店情報を表示",
+                "area": {
+                    "x": 853,
+                    "y": 200,
+                    "width": 96,
+                    "height": 138
+                }
+            }
+        ]
+    },
+    "AreaB": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-B",
+        "altText": "エリアB",
         "baseSize": {
             "height": 598,
             "width": 1040
@@ -119,77 +189,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
-                "area": {
-                    "x": 730,
-                    "y": 32,
-                    "width": 268,
-                    "height": 61
-                }
-            },
-            {
-                "type": "message",
-                "text": "エリアAの1番の模擬店情報を表示",
-                "area": {
-                    "x": 160,
-                    "y": 81,
-                    "width": 61,
-                    "height": 161
-                }
-            },
-            {
-                "type": "message",
-                "text": "エリアAの2番の模擬店情報を表示",
-                "area": {
-                    "x": 255,
-                    "y": 80,
-                    "width": 70,
-                    "height": 163
-                }
-            },
-            {
-                "type": "message",
-                "text": "エリアAの3番の模擬店情報を表示",
-                "area": {
-                    "x": 503,
-                    "y": 80,
-                    "width": 69,
-                    "height": 174
-                }
-            },
-            {
-                "type": "message",
-                "text": "エリアAの4番の模擬店情報を表示",
-                "area": {
-                    "x": 596,
-                    "y": 82,
-                    "width": 72,
-                    "height": 107
-                }
-            },
-            {
-                "type": "message",
-                "text": "エリアAの5番の模擬店情報を表示",
-                "area": {
-                    "x": 872,
-                    "y": 200,
-                    "width": 77,
-                    "height": 117
-                }
-            }
-        ]
-    },
-    "AreaB": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-B",
-        "altText": "エリアB",
-        "baseSize": {
-            "height": 600,
-            "width": 1040
-        },
-        "actions": [
-            {
-                "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 744,
                     "y": 511,
@@ -199,57 +199,57 @@
             },
             {
                 "type": "message",
-                "text": "エリアBの1番の模擬店を表示",
+                "text": "エリアBの1番の模擬店情報を表示",
                 "area": {
-                    "x": 293,
-                    "y": 23,
-                    "width": 78,
-                    "height": 140
+                    "x": 224,
+                    "y": 11,
+                    "width": 107,
+                    "height": 148
                 }
             },
             {
                 "type": "message",
-                "text": "エリアBの2番の模擬店を表示",
+                "text": "エリアBの2番の模擬店情報を表示",
                 "area": {
-                    "x": 359,
-                    "y": 24,
-                    "width": 79,
-                    "height": 135
+                    "x": 350,
+                    "y": 13,
+                    "width": 82,
+                    "height": 148
                 }
             },
             {
                 "type": "message",
-                "text": "エリアBの3番の模擬店を表示",
+                "text": "エリアBの3番の模擬店情報を表示",
                 "area": {
                     "x": 475,
-                    "y": 24,
+                    "y": 13,
                     "width": 82,
-                    "height": 137
+                    "height": 148
                 }
             },
             {
                 "type": "message",
-                "text": "エリアBの4番の模擬店を表示",
+                "text": "エリアBの4番の模擬店情報を表示",
                 "area": {
                     "x": 594,
-                    "y": 24,
+                    "y": 13,
                     "width": 79,
-                    "height": 140
+                    "height": 151
                 }
             }
         ]
     },
     "AreaC": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-C",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-C",
         "altText": "エリアC",
         "baseSize": {
-            "height": 692,
+            "height": 694,
             "width": 1040
         },
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 720,
                     "y": 32,
@@ -259,37 +259,37 @@
             },
             {
                 "type": "message",
-                "text": "エリアCの1番の模擬店を表示",
+                "text": "エリアCの1番の模擬店情報を表示",
                 "area": {
-                    "x": 528,
+                    "x": 520,
                     "y": 478,
-                    "width": 94,
+                    "width": 102,
                     "height": 78
                 }
             },
             {
                 "type": "message",
-                "text": "エリアCの2番の模擬店を表示",
+                "text": "エリアCの2番の模擬店情報を表示",
                 "area": {
-                    "x": 532,
+                    "x": 510,
                     "y": 568,
-                    "width": 73,
+                    "width": 116,
                     "height": 78
                 }
             }
         ]
     },
     "AreaD": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-D",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-D",
         "altText": "エリアD",
         "baseSize": {
-            "height": 654,
+            "height": 657,
             "width": 1040
         },
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 719,
                     "y": 33,
@@ -299,7 +299,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアDの1番の模擬店を表示",
+                "text": "エリアDの1番の模擬店情報を表示",
                 "area": {
                     "x": 524,
                     "y": 140,
@@ -309,7 +309,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアDの2番の模擬店を表示",
+                "text": "エリアDの2番の模擬店情報を表示",
                 "area": {
                     "x": 526,
                     "y": 237,
@@ -319,17 +319,18 @@
             },
             {
                 "type": "message",
-                "text": "エリアDの3番の模擬店を表示",
+                "text": "エリアDの3番の模擬店情報を表示",
                 "area": {
-                    "x": 529,
-                    "y": 425,
+                    "x": 526,
+                    "y": 415,
                     "width": 105,
-                    "height": 86
+                    "height": 100
                 }
             },
+
             {
                 "type": "message",
-                "text": "エリアDの4番の模擬店を表示",
+                "text": "エリアDの4番の模擬店情報を表示",
                 "area": {
                     "x": 526,
                     "y": 426,
@@ -339,7 +340,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアDの5番の模擬店を表示",
+                "text": "エリアDの5番の模擬店情報を表示",
                 "area": {
                     "x": 828,
                     "y": 181,
@@ -349,7 +350,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアDの6番の模擬店を表示",
+                "text": "エリアDの6番の模擬店情報を表示",
                 "area": {
                     "x": 836,
                     "y": 272,
@@ -359,7 +360,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアDの7番の模擬店を表示",
+                "text": "エリアDの7番の模擬店情報を表示",
                 "area": {
                     "x": 824,
                     "y": 359,
@@ -369,7 +370,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアDの8番の模擬店を表示",
+                "text": "エリアDの8番の模擬店情報を表示",
                 "area": {
                     "x": 824,
                     "y": 449,
@@ -380,7 +381,7 @@
         ]
     },
     "AreaE": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-E",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-E",
         "altText": "エリアE",
         "baseSize": {
             "height": 654,
@@ -389,7 +390,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 719,
                     "y": 30,
@@ -399,7 +400,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアEの1番の模擬店を表示",
+                "text": "エリアEの1番の模擬店情報を表示",
                 "area": {
                     "x": 203,
                     "y": 115,
@@ -409,7 +410,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアEの2番の模擬店を表示",
+                "text": "エリアEの2番の模擬店情報を表示",
                 "area": {
                     "x": 314,
                     "y": 114,
@@ -419,7 +420,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアEの3番の模擬店を表示",
+                "text": "エリアEの3番の模擬店情報を表示",
                 "area": {
                     "x": 538,
                     "y": 113,
@@ -429,7 +430,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアEの4番の模擬店を表示",
+                "text": "エリアEの4番の模擬店情報を表示",
                 "area": {
                     "x": 651,
                     "y": 111,
@@ -439,7 +440,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアEの5番の模擬店を表示",
+                "text": "エリアEの5番の模擬店情報を表示",
                 "area": {
                     "x": 763,
                     "y": 115,
@@ -449,7 +450,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアEの4番の模擬店を表示",
+                "text": "エリアEの6番の模擬店情報を表示",
                 "area": {
                     "x": 876,
                     "y": 115,
@@ -460,7 +461,7 @@
         ]
     },
     "AreaF": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/outside/map-mogi-F",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-F",
         "altText": "エリアF",
         "baseSize": {
             "height": 655,
@@ -469,7 +470,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 719,
                     "y": 33,
@@ -479,7 +480,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアFの1番の模擬店を表示",
+                "text": "エリアFの1番の模擬店情報を表示",
                 "area": {
                     "x": 220,
                     "y": 322,
@@ -489,7 +490,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアFの2番の模擬店を表示",
+                "text": "エリアFの2番の模擬店情報を表示",
                 "area": {
                     "x": 374,
                     "y": 322,
@@ -499,7 +500,7 @@
             },
             {
                 "type": "message",
-                "text": "エリアFの3番の模擬店を表示",
+                "text": "エリアFの3番の模擬店情報を表示",
                 "area": {
                     "x": 520,
                     "y": 320,
@@ -510,21 +511,21 @@
         ]
     },
     "InsideTop": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/Top/map-InsideTop",
-        "altText": "[Top] 構内全体マップ",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/Top/map-InsideTop",
+        "altText": "[Top] 校内全体マップ",
         "baseSize": {
-            "height": 565,
+            "height": 564,
             "width": 1040
         },
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 38,
-                    "y": 54,
-                    "width": 200,
-                    "height": 50
+                    "y": 21,
+                    "width": 210,
+                    "height": 52
                 }
             },
             {
@@ -532,7 +533,7 @@
                 "text": "2棟へ",
                 "area": {
                     "x": 304,
-                    "y" : 318,
+                    "y" : 316,
                     "width" : 410,
                     "height": 81
                 }
@@ -559,6 +560,16 @@
             },
             {
                 "type": "message",
+                "text": "7棟の情報を表示",
+                "area": {
+                    "x": 870,
+                    "y" : 92,
+                    "width" : 160,
+                    "height":  118
+                }
+            },
+            {
+                "type": "message",
                 "text": "8棟へ",
                 "area": {
                     "x": 160,
@@ -570,7 +581,7 @@
         ]
     },
     "I21": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-1",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-2-1",
         "altText": "2棟1階",
         "baseSize": {
             "height": 566,
@@ -579,28 +590,57 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
-                    "x": 50,
-                    "y": 26,
-                    "width": 216,
-                    "height": 52
+                    "x": 54,
+                    "y": 31,
+                    "width": 226,
+                    "height": 56
                 }
             },
             {
                 "type": "message",
-                "text": "2棟1階の1番の模擬店を表示",
+                "text": "2棟1階の1番の模擬店情報を表示",
+                "area": {
+                    "x": 27,
+                    "y": 93,
+                    "width": 97,
+                    "height": 152
+                }
+            },{
+                "type": "message",
+                "text": "2棟1階の2番の模擬店情報を表示",
+                "area": {
+                    "x": 17,
+                    "y": 273,
+                    "width": 118,
+                    "height": 167
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟1階の3番の模擬店情報を表示",
                 "area": {
                     "x": 623,
                     "y": 179,
                     "width": 94,
                     "height": 183
                 }
+            },
+            {
+                "type": "message",
+                "text": "2棟2階へ",
+                "area": {
+                    "x": 632,
+                    "y": 43,
+                    "width":173,
+                    "height": 51
+                }
             }
         ]
     },
     "I22": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-2",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-2-2",
         "altText": "2棟2階",
         "baseSize": {
             "height": 566,
@@ -609,17 +649,27 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
-                    "x": 25,
+                    "x": 15,
                     "y": 13,
-                    "width": 215,
+                    "width": 225,
                     "height": 55
                 }
             },
             {
                 "type": "message",
-                "text": "2棟2階の1番の模擬店を表示",
+                "text": "2棟2階の1番の模擬店情報を表示",
+                "area": {
+                    "x": 359,
+                    "y": 180,
+                    "width": 96,
+                    "height": 173
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟2階の2番の模擬店情報を表示",
                 "area": {
                     "x": 757,
                     "y": 179,
@@ -629,18 +679,38 @@
             },
             {
                 "type": "message",
-                "text": "2棟2階の2番の模擬店を表示",
+                "text": "2棟2階の3番の模擬店情報を表示",
                 "area": {
                     "x": 891,
                     "y": 185,
                     "width": 98,
                     "height": 183
                 }
+            },
+            {
+                "type": "message",
+                "text": "2棟3階へ",
+                "area": {
+                    "x": 630,
+                    "y": 42,
+                    "width":177,
+                    "height": 54
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟1階へ",
+                "area": {
+                    "x": 633,
+                    "y": 407,
+                    "width":174,
+                    "height": 56
+                }
             }
         ]
     },
     "I23": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-3",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-2-3",
         "altText": "2棟3階",
         "baseSize": {
             "height": 566,
@@ -649,7 +719,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 52,
                     "y": 27,
@@ -659,7 +729,7 @@
             },
             {
                 "type": "message",
-                "text": "2棟3階の1番の模擬店を表示",
+                "text": "2棟3階の1番の模擬店情報を表示",
                 "area": {
                     "x": 364,
                     "y": 180,
@@ -669,7 +739,7 @@
             },
             {
                 "type": "message",
-                "text": "2棟3階の2番の模擬店を表示",
+                "text": "2棟3階の2番の模擬店情報を表示",
                 "area": {
                     "x": 487,
                     "y": 180,
@@ -679,7 +749,7 @@
             },
             {
                 "type": "message",
-                "text": "2棟3階の3番の模擬店を表示",
+                "text": "2棟3階の3番の模擬店情報を表示",
                 "area": {
                     "x": 625,
                     "y": 180,
@@ -689,7 +759,7 @@
             },
             {
                 "type": "message",
-                "text": "2棟3階の4番の模擬店を表示",
+                "text": "2棟3階の4番の模擬店情報を表示",
                 "area": {
                     "x": 757,
                     "y": 180,
@@ -699,18 +769,38 @@
             },
             {
                 "type": "message",
-                "text": "2棟3階の5番の模擬店を表示",
+                "text": "2棟3階の5番の模擬店情報を表示",
                 "area": {
                     "x": 891,
                     "y": 180,
                     "width": 99,
                     "height": 189
                 }
+            },
+            {
+                "type": "message",
+                "text": "2棟4階へ",
+                "area": {
+                    "x": 631,
+                    "y": 43,
+                    "width":174,
+                    "height": 55
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟2階へ",
+                "area": {
+                    "x": 634,
+                    "y": 408,
+                    "width":173,
+                    "height": 56
+                }
             }
         ]
     },
     "I24": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg5/inside/map-inside2-4",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-2-4",
         "altText": "2棟4階",
         "baseSize": {
             "height": 566,
@@ -719,12 +809,432 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 52,
                     "y": 24,
                     "width": 215,
                     "height": 56
+                }
+            },
+            {
+                "type": "message",
+                "text": "2棟3階へ",
+                "area": {
+                    "x": 634,
+                    "y": 408,
+                    "width":177,
+                    "height": 51
+                }
+            }
+        ]
+    },
+    "I31": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-3-1",
+        "altText": "3棟1階",
+        "baseSize": {
+            "height": 566,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 校内全体マップへ",
+                "area": {
+                    "x": 54,
+                    "y": 34,
+                    "width": 235,
+                    "height": 56
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟1階の1番の模擬店情報を表示",
+                "area": {
+                    "x": 819,
+                    "y": 293,
+                    "width": 112,
+                    "height": 125
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟1階の2番の模擬店情報を表示",
+                "area": {
+                    "x": 931,
+                    "y": 126,
+                    "width": 76,
+                    "height": 355
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟2階へ",
+                "area": {
+                    "x": 633,
+                    "y": 31,
+                    "width":175,
+                    "height": 53
+                }
+            }
+        ]
+    },
+    "I32": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-3-2",
+        "altText": "3棟2階",
+        "baseSize": {
+            "height": 586,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 校内全体マップへ",
+                "area": {
+                    "x": 52,
+                    "y": 38,
+                    "width": 225,
+                    "height": 56
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟2階の1番の模擬店情報を表示",
+                "area": {
+                    "x": 373,
+                    "y": 91,
+                    "width": 87,
+                    "height": 137
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟2階の2番の模擬店情報を表示",
+                "area": {
+                    "x": 373,
+                    "y": 274,
+                    "width": 81,
+                    "height": 147
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟2階の3番の模擬店情報を表示",
+                "area": {
+                    "x": 921,
+                    "y": 189,
+                    "width": 90,
+                    "height": 164
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟3階へ",
+                "area": {
+                    "x": 628,
+                    "y": 38,
+                    "width":173,
+                    "height": 54
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟1階へ",
+                "area": {
+                    "x": 632,
+                    "y": 509,
+                    "width":172,
+                    "height": 53
+                }
+            }
+        ]
+    },
+    "I33": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-3-3",
+        "altText": "3棟3階",
+        "baseSize": {
+            "height": 589,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 校内全体マップへ",
+                "area": {
+                    "x": 54,
+                    "y": 44,
+                    "width": 226,
+                    "height": 55
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟3階の1番の模擬店情報を表示",
+                "area": {
+                    "x": 628,
+                    "y": 275,
+                    "width": 95,
+                    "height": 119
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟3階の2番の模擬店情報を表示",
+                "area": {
+                    "x": 835,
+                    "y": 276,
+                    "width": 105,
+                    "height": 131
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟4階へ",
+                "area": {
+                    "x": 628,
+                    "y": 38,
+                    "width":176,
+                    "height": 54
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟2階へ",
+                "area": {
+                    "x": 634,
+                    "y": 511,
+                    "width":172,
+                    "height": 53
+                }
+            }
+        ]
+    },
+    "I34": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-3-4",
+        "altText": "3棟4階",
+        "baseSize": {
+            "height": 587,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 校内全体マップへ",
+                "area": {
+                    "x": 52,
+                    "y": 39,
+                    "width": 227,
+                    "height": 57
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟4階の1番の模擬店情報を表示",
+                "area": {
+                    "x": 21,
+                    "y": 202,
+                    "width": 97,
+                    "height": 159
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟4階の2番の模擬店情報を表示",
+                "area": {
+                    "x": 352,
+                    "y": 276,
+                    "width": 99,
+                    "height": 136
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟4階の3番の模擬店情報を表示",
+                "area": {
+                    "x": 451,
+                    "y": 65,
+                    "width": 99,
+                    "height": 136
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟4階の4番の模擬店情報を表示",
+                "area": {
+                    "x": 636,
+                    "y": 265,
+                    "width": 131,
+                    "height": 199
+                }
+            },
+            {
+                "type": "message",
+                "text": "3棟3階へ",
+                "area": {
+                    "x": 633,
+                    "y": 508,
+                    "width":173,
+                    "height": 57
+                }
+            }
+        ]
+    },
+    "I51": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-5-1",
+        "altText": "5棟1階",
+        "baseSize": {
+            "height": 626,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 校内全体マップへ",
+                "area": {
+                    "x": 11,
+                    "y": 23,
+                    "width": 241,
+                    "height": 58
+                }
+            },
+            {
+                "type": "message",
+                "text": "5棟1階の1番の模擬店情報を表示",
+                "area": {
+                    "x": 359,
+                    "y": 103,
+                    "width": 119,
+                    "height": 153
+                }
+            },
+            {
+                "type": "message",
+                "text": "5棟2階へ",
+                "area": {
+                    "x": 549,
+                    "y": 47,
+                    "width":184,
+                    "height": 58
+                }
+            }
+        ]
+    },
+    "I52": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-5-2",
+        "altText": "5棟2階",
+        "baseSize": {
+            "height": 664,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 校内全体マップへ",
+                "area": {
+                    "x": 29,
+                    "y": 29,
+                    "width": 255,
+                    "height": 66
+                }
+            },
+            {
+                "type": "message",
+                "text": "5棟2階の1番の模擬店情報を表示",
+                "area": {
+                    "x": 596,
+                    "y": 256,
+                    "width": 167,
+                    "height": 154
+                }
+            },
+            {
+                "type": "message",
+                "text": "5棟1階へ",
+                "area": {
+                    "x": 641,
+                    "y": 493,
+                    "width":197,
+                    "height": 65
+                }
+            }
+        ]
+    },
+    "I81": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-8-1",
+        "altText": "8棟1階",
+        "baseSize": {
+            "height": 691,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 校内全体マップへ",
+                "area": {
+                    "x": 10,
+                    "y": 20,
+                    "width": 264,
+                    "height": 68
+                }
+            },
+            {
+                "type": "message",
+                "text": "8棟1階の1番の模擬店情報を表示",
+                "area": {
+                    "x": 363,
+                    "y": 397,
+                    "width": 347,
+                    "height": 193
+                }
+            },
+            {
+                "type": "message",
+                "text": "8棟3階へ",
+                "area": {
+                    "x": 518,
+                    "y": 31,
+                    "width":231,
+                    "height": 65
+                }
+            }
+        ]
+    },
+    "I82": {
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-8-3",
+        "altText": "8棟3階",
+        "baseSize": {
+            "height": 665,
+            "width": 1040
+        },
+        "actions": [
+            {
+                "type": "message",
+                "text": "[Top] 校内全体マップへ",
+                "area": {
+                    "x": 3,
+                    "y": 31,
+                    "width": 258,
+                    "height": 66
+                }
+            },
+            {
+                "type": "message",
+                "text": "8棟3階の1番の模擬店情報を表示",
+                "area": {
+                    "x": 288,
+                    "y": 381,
+                    "width": 202,
+                    "height": 186
+                }
+            },
+            {
+                "type": "message",
+                "text": "8棟1階へ",
+                "area": {
+                    "x": 626,
+                    "y": 521,
+                    "width":226,
+                    "height": 59
                 }
             }
         ]

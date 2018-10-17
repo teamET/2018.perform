@@ -1,0 +1,39 @@
+<style>
+    #masonryGrid .grid {
+        margin: 0 auto;
+    }
+    #masonryGrid .grid .grid-item {
+        margin: 0.5rem;
+    }
+</style>
+
+<h1 class="text-center">Gallery</h1>
+<div id="masonryGrid">
+    <div class="grid">
+        <%for(let id in data) {%>
+            <% for(i=0;i<data[id].image.length;i++){ %>
+                <div class="grid-item">
+                    <a href="#" class="grid__item grid__sizer">
+                        <img src="https://kunugida2018.tokyo-ct.ac.jp/data/<%=id%>/<%=data[id].image[i]%>">
+                    </a>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+</div>
+
+<script src='https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js'></script>
+<script src='https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js'></script-->
+<script>
+    var $grid = $('.grid').masonry({
+        // options...
+        itemSelector: '.grid-item',
+        isFitWidth: true,
+        columnWidth: 1
+    });
+    $grid.imagesLoaded().progress( function() {
+        $grid.masonry('layout');
+    });
+</script>
+
+
