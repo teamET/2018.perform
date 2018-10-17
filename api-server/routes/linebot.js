@@ -350,22 +350,23 @@ async function type_message(event) {
             }
             break;
         case "マップを表示":
-            //mapdata.location = "Top";
-            //msg = msg_imagemap("map",mapdata);
-            msg = {
+            msg = msg_text("[info] マップ画像はタッチできるよ！");
+            msg2 = msg_text("「○○へ」と書いたボタンやマップピンをタッチすると、エリアを移動したり、模擬店の情報が表示されます！");
+            msg3 = {
                 "type": "flex",
                 "altText":  "TOP",
                 "contents": {}
             };
-            var buttonTexts = ["[Top] 構外全体マップへ","[Top] 構内全体マップへ"];
-            msg.contents = Build_flexButton(buttonTexts);
+            var buttonTexts = ["[Top] 校外全体マップへ","[Top] 校内全体マップへ"];
+            msg3.contents = Build_flexButton(buttonTexts);
+            msg4 = msg_text("行きたいエリアを選択してください。");
             break;
-        case "[Top] 構内全体マップへ":
+        case "[Top] 校内全体マップへ":
             mapdata.location = "InsideTop";
             msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("棟を選択してください");            
+            msg2 = msg_text("棟を選択してください");
             break;
-        case "[Top] 構外全体マップへ":
+        case "[Top] 校外全体マップへ":
             mapdata.location = "OutsideTop";
             msg = msg_imagemap("map",mapdata);
             msg2 = msg_text("エリアを選択してください");
@@ -387,7 +388,7 @@ async function type_message(event) {
         case "8棟3階の1番の模擬店情報を表示":
             msg = {
                 "type": "flex",
-                "altText": "8棟3階の1番の模擬店情報を表示",
+                "altText": "8棟3階の1番の模擬店情報",
                 "contents": {}
             };
             msg.contents = Build_LaboFlex_Bubble("labo25");
@@ -398,7 +399,7 @@ async function type_message(event) {
     }
 
     /***** イメージマップタップ時の出力判定 *****/
-    // [1] 構外マップ
+    // [1] 校外マップ
     for(var i=0;i<OutsideArea.length;i++){
         for(var j=1;j<OutsideArea[i].length;j++){
             switch(event.message.text){
@@ -422,19 +423,35 @@ async function type_message(event) {
                 break;
         }
     }
-    // [2] 構内マップ
+    // [2] 校内マップ
     for(var i=0;i<mapBFdata.length;i++){
         for(var j=1;j<mapBFdata[i].length;j++){
             // フロアの画像送信部
             switch(event.message.text){
                 case mapBFdata[i][0] + "棟"+j+"階へ":
-                    mapdata.location = "I"+mapBFdata[i][0]+j;
-                    msg = msg_imagemap("map",mapdata);
+                    if(mapBFdata[i][0]==3){
+                        if(j==3 || j==4){
+                            // 3棟 3-4階 研究室情報を表示
+                            msg = ("研究室公開があります");
+                            msg2 = {
+                                "type": "flex",
+                                "altText":  mapBFdata[i][0]+"棟"+j+"階の研究室情報",
+                                "contents": {}
+                            };
+                            if(j==3)msg2.contents=Build_LaboFlex_Bubble("labo10");
+                            else msg2.contents = Build_LaboFlex_Bubble("labo11");
+                            mapdata.location = "I" + mapBFdata[i][0] + j;
+                            msg3 = msg_imagemap("map",mapdata);
+                        }
+                    }else{
+                        mapdata.location = "I"+mapBFdata[i][0]+j;
+                        msg = msg_imagemap("map",mapdata);
+                    }
                     break;
                 case "8棟3階へ":
                     mapdata.location = "I"+82;
                     msg = msg_imagemap("map",mapdata);
-                    break;                    
+                    break;          
             }
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
@@ -451,6 +468,15 @@ async function type_message(event) {
                             };
                             msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                             console.log(msg.contents.body.contents[0].contents[0].text);
+                        
+                        }else if(boothID_data["Inside"+mapBFdata[i][0]+j+k]== "consert"){
+                            // 研究室情報を送信する
+                            msg = {
+                                "type": "flex",
+                                "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の情報",
+                                "contents": {}
+                            };
+                            msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                         }else{
                             msg = {
                                 "type": "flex",
@@ -460,7 +486,6 @@ async function type_message(event) {
                             msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                             msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
                         }
-                        
                         break;
                 }
             }
@@ -468,25 +493,42 @@ async function type_message(event) {
         // 階数を選択するflexMessageの送信
         switch(event.message.text){
             case mapBFdata[i][0]+"棟へ":
-                msg = {
-                    "type": "flex",
-                    "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
-                    "contents": {}
-                }
                 var buttonTexts = [];
-                for(j=1;j<mapBFdata[i].length;j++){
-                    if(i==3 && j==2){
-                        buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
-                    }else{
-                        buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
+                if(mapBFdata[i][0] == 8){
+                    //8棟4階のbubbleを表示
+                    msg = msg_text("8棟4階で個別相談会を行っています。");
+                    msg2 = {
+                        "type": "flex",
+                        "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
+                        "contents": {}
                     }
+                    for(j=1;j<mapBFdata[i].length;j++){
+                        if(i==3 && j==2){
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
+                        }else{
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
+                        }
+                    }
+                    msg2.contents = Build_flexButton(buttonTexts);
+                }else{
+                    msg = {
+                        "type": "flex",
+                        "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
+                        "contents": {}
+                    }
+                    for(j=1;j<mapBFdata[i].length;j++){
+                        if(i==3 && j==2){
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
+                        }else{
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
+                        }
+                    }
+                    console.log(buttonTexts);
+                    msg.contents = Build_flexButton(buttonTexts);
                 }
-                console.log(buttonTexts);
-                msg.contents = Build_flexButton(buttonTexts);
                 break;
         }
     }
-
     //画像を送信してきた時の処理
     if (event.message.type == "image") {
         image_download(event);
