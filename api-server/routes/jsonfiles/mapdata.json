@@ -1,6 +1,6 @@
 {
     "Top": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/Top/map-InOutChoice",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/Top/map-InOutChoice",
         "altText": "表示したいマップを選択してください",
         "baseSize": {
             "height": 585,
@@ -9,7 +9,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 0,
                     "y" : 0,
@@ -19,7 +19,7 @@
             },
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 520,
                     "y" : 0,
@@ -30,8 +30,8 @@
         ]
     },
     "OutsideTop": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/Top/map-OutsideTop",
-        "altText": "[Top] 構外全体マップ",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/Top/map-OutsideTop",
+        "altText": "[Top] 校外全体マップ",
         "baseSize": {
             "height": 469,
             "width": 1040
@@ -39,7 +39,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 731,
                     "y": 55,
@@ -110,7 +110,7 @@
         ]
     },
     "AreaA": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/outside/map-mogi-A",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-A",
         "altText": "エリアA",
         "baseSize": {
             "height": 608,
@@ -119,7 +119,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 720,
                     "y": 32,
@@ -180,7 +180,7 @@
         ]
     },
     "AreaB": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/outside/map-mogi-B",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-B",
         "altText": "エリアB",
         "baseSize": {
             "height": 598,
@@ -189,7 +189,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 744,
                     "y": 511,
@@ -240,7 +240,7 @@
         ]
     },
     "AreaC": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/outside/map-mogi-C",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-C",
         "altText": "エリアC",
         "baseSize": {
             "height": 694,
@@ -249,7 +249,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 720,
                     "y": 32,
@@ -280,7 +280,7 @@
         ]
     },
     "AreaD": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/outside/map-mogi-D",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-D",
         "altText": "エリアD",
         "baseSize": {
             "height": 657,
@@ -289,7 +289,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 719,
                     "y": 33,
@@ -321,12 +321,13 @@
                 "type": "message",
                 "text": "エリアDの3番の模擬店情報を表示",
                 "area": {
-                    "x": 529,
-                    "y": 425,
+                    "x": 526,
+                    "y": 415,
                     "width": 105,
-                    "height": 86
+                    "height": 100
                 }
             },
+
             {
                 "type": "message",
                 "text": "エリアDの4番の模擬店情報を表示",
@@ -380,7 +381,7 @@
         ]
     },
     "AreaE": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/outside/map-mogi-E",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-E",
         "altText": "エリアE",
         "baseSize": {
             "height": 654,
@@ -389,7 +390,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 719,
                     "y": 30,
@@ -460,7 +461,7 @@
         ]
     },
     "AreaF": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/outside/map-mogi-F",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/outside/map-mogi-F",
         "altText": "エリアF",
         "baseSize": {
             "height": 655,
@@ -469,7 +470,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 719,
                     "y": 33,
@@ -510,8 +511,8 @@
         ]
     },
     "InsideTop": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/Top/map-InsideTop",
-        "altText": "[Top] 構内全体マップ",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/Top/map-InsideTop",
+        "altText": "[Top] 校内全体マップ",
         "baseSize": {
             "height": 564,
             "width": 1040
@@ -519,7 +520,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構外全体マップへ",
+                "text": "[Top] 校外全体マップへ",
                 "area": {
                     "x": 38,
                     "y": 21,
@@ -580,7 +581,7 @@
         ]
     },
     "I21": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-2-1",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-2-1",
         "altText": "2棟1階",
         "baseSize": {
             "height": 566,
@@ -589,7 +590,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 54,
                     "y": 31,
@@ -639,7 +640,7 @@
         ]
     },
     "I22": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-2-2",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-2-2",
         "altText": "2棟2階",
         "baseSize": {
             "height": 566,
@@ -648,7 +649,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 15,
                     "y": 13,
@@ -709,7 +710,7 @@
         ]
     },
     "I23": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-2-3",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-2-3",
         "altText": "2棟3階",
         "baseSize": {
             "height": 566,
@@ -718,7 +719,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 52,
                     "y": 27,
@@ -799,7 +800,7 @@
         ]
     },
     "I24": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-2-4",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-2-4",
         "altText": "2棟4階",
         "baseSize": {
             "height": 566,
@@ -808,7 +809,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 52,
                     "y": 24,
@@ -829,7 +830,7 @@
         ]
     },
     "I31": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-3-1",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-3-1",
         "altText": "3棟1階",
         "baseSize": {
             "height": 566,
@@ -838,7 +839,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 54,
                     "y": 34,
@@ -879,7 +880,7 @@
         ]
     },
     "I32": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-3-2",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-3-2",
         "altText": "3棟2階",
         "baseSize": {
             "height": 586,
@@ -888,7 +889,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 52,
                     "y": 38,
@@ -949,7 +950,7 @@
         ]
     },
     "I33": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-3-3",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-3-3",
         "altText": "3棟3階",
         "baseSize": {
             "height": 589,
@@ -958,7 +959,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 54,
                     "y": 44,
@@ -1009,7 +1010,7 @@
         ]
     },
     "I34": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-3-4",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-3-4",
         "altText": "3棟4階",
         "baseSize": {
             "height": 587,
@@ -1018,7 +1019,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 52,
                     "y": 39,
@@ -1079,7 +1080,7 @@
         ]
     },
     "I51": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-5-1",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-5-1",
         "altText": "5棟1階",
         "baseSize": {
             "height": 626,
@@ -1088,7 +1089,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 11,
                     "y": 23,
@@ -1119,7 +1120,7 @@
         ]
     },
     "I52": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-5-2",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-5-2",
         "altText": "5棟2階",
         "baseSize": {
             "height": 664,
@@ -1128,7 +1129,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 29,
                     "y": 29,
@@ -1159,7 +1160,7 @@
         ]
     },
     "I81": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-8-1",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-8-1",
         "altText": "8棟1階",
         "baseSize": {
             "height": 691,
@@ -1168,7 +1169,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 10,
                     "y": 20,
@@ -1199,7 +1200,7 @@
         ]
     },
     "I82": {
-        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg9/inside/map-inside-8-3",
+        "baseUrl": "https://18feslinebotmapimg.web.fc2.com/linebot_mapImg10/inside/map-inside-8-3",
         "altText": "8棟3階",
         "baseSize": {
             "height": 665,
@@ -1208,7 +1209,7 @@
         "actions": [
             {
                 "type": "message",
-                "text": "[Top] 構内全体マップへ",
+                "text": "[Top] 校内全体マップへ",
                 "area": {
                     "x": 3,
                     "y": 31,

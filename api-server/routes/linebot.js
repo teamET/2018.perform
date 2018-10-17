@@ -32,14 +32,14 @@ const dbx = dropboxV2Api.authenticate({
 });
 
 /* json fileの読み込み */
-const flex_tmp = require("./flex_template.json");
-const flex_item = require("./flex_item.json");
-const richdata = require('./rich.json');
-const shop_area = require('./shop-area.json');
-const map_data  = require('./mapdata.json');
-const boothID_data   = require('./boothID.json');
-var laboFlex_tmpdata = JSON.parse(fs.readFileSync('./routes/flex_labo.json'));
-var labo_data = JSON.parse(fs.readFileSync('./routes/labodata.json'));
+const flex_tmp = require("./jsonfiles/flex_template.json");
+const flex_item = require("./jsonfiles/flex_item.json");
+const richdata = require('./jsonfiles/rich.json');
+const shop_area = require('./jsonfiles/shop-area.json');
+const map_data  = require('./jsonfiles/mapdata.json');
+const boothID_data   = require('./jsonfiles/boothID.json');
+const laboFlex_tmpdata = require('./jsonfiles/flex_labo.json');
+const labo_data = require('./jsonfiles/labodata.json');
 
 let shop_option = {url: "https://kunugida2018.tokyo-ct.ac.jp/data/shop.json", encoding: "utf8"};
 let shop_url = "https://kunugida2018.tokyo-ct.ac.jp/data/{shopid}/{name}";
@@ -125,20 +125,24 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
  */
 function Build_flex(shopid) {
     var data = shop_data[shopid];
-    var tmp = JSON.parse(JSON.stringify(flex_tmp));
-    tmp.header.contents[0].text = data.shopname;
-    tmp.hero.url = "https://pbs.twimg.com/media/DpmNwqVUUAA2xlG.jpg";
-    if (data.image.length != 0) {
-        tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[0]);
+    if (data != undefined) {
+        var tmp = JSON.parse(JSON.stringify(flex_tmp));
+        tmp.header.contents[0].text = data.shopname;
+        tmp.hero.url = "https://pbs.twimg.com/media/DpmNwqVUUAA2xlG.jpg";
+        if (data.image.length != 0) {
+            tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[0]);
+        }
+        for (var i=0; i<data.goods.length; i++) {
+            var goodjson = data.goods[i];
+            var g = JSON.parse(JSON.stringify(flex_item));
+            g.contents[0].text = goodjson.name;
+            g.contents[1].text = goodjson.price + "円";
+            tmp.body.contents.push(g);
+        }
+        return tmp;
+    } else {
+        return null;
     }
-    for (var i=0; i<data.goods.length; i++) {
-        var goodjson = data.goods[i];
-        var g = JSON.parse(JSON.stringify(flex_item));
-        g.contents[0].text = goodjson.name;
-        g.contents[1].text = goodjson.price + "円";
-        tmp.body.contents.push(g);
-    }
-    return tmp;
 }
 
 /**
@@ -353,27 +357,34 @@ async function type_message(event) {
                 };
                 for (var i=0; i<shop_area[userplace].length; i++) {
                     var shopid = shop_area[userplace][i];
-                    msg.contents.contents.push(Build_flex(shopid));
+                    let tmp = Build_flex(shopid);
+                    if (tmp != null) {
+                        msg.contents.contents.push(tmp);
+                    }
+                }
+                if (msg.contents.contents.length == 0) {
+                    msg = msg_text("表示できる模擬店がありません");
                 }
             }
             break;
         case "マップを表示":
-            //mapdata.location = "Top";
-            //msg = msg_imagemap("map",mapdata);
-            msg = {
+            msg = msg_text("[info] マップ画像はタッチできるよ！");
+            msg2 = msg_text("「○○へ」と書いたボタンやマップピンをタッチすると、エリアを移動したり、模擬店の情報が表示されます！");
+            msg3 = {
                 "type": "flex",
                 "altText":  "TOP",
                 "contents": {}
             };
-            var buttonTexts = ["[Top] 構外全体マップへ","[Top] 構内全体マップへ"];
-            msg.contents = Build_flexButton(buttonTexts);
+            var buttonTexts = ["[Top] 校外全体マップへ","[Top] 校内全体マップへ"];
+            msg3.contents = Build_flexButton(buttonTexts);
+            msg4 = msg_text("行きたいエリアを選択してください。");
             break;
-        case "[Top] 構内全体マップへ":
+        case "[Top] 校内全体マップへ":
             mapdata.location = "InsideTop";
             msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("棟を選択してください");            
+            msg2 = msg_text("棟を選択してください");
             break;
-        case "[Top] 構外全体マップへ":
+        case "[Top] 校外全体マップへ":
             mapdata.location = "OutsideTop";
             msg = msg_imagemap("map",mapdata);
             msg2 = msg_text("エリアを選択してください");
@@ -395,7 +406,7 @@ async function type_message(event) {
         case "8棟3階の1番の模擬店情報を表示":
             msg = {
                 "type": "flex",
-                "altText": "8棟3階の1番の模擬店情報を表示",
+                "altText": "8棟3階の1番の模擬店情報",
                 "contents": {}
             };
             msg.contents = Build_LaboFlex_Bubble("labo25");
@@ -406,7 +417,7 @@ async function type_message(event) {
     }
 
     /***** イメージマップタップ時の出力判定 *****/
-    // [1] 構外マップ
+    // [1] 校外マップ
     for(var i=0;i<OutsideArea.length;i++){
         for(var j=1;j<OutsideArea[i].length;j++){
             switch(event.message.text){
@@ -430,19 +441,35 @@ async function type_message(event) {
                 break;
         }
     }
-    // [2] 構内マップ
+    // [2] 校内マップ
     for(var i=0;i<mapBFdata.length;i++){
         for(var j=1;j<mapBFdata[i].length;j++){
             // フロアの画像送信部
             switch(event.message.text){
                 case mapBFdata[i][0] + "棟"+j+"階へ":
-                    mapdata.location = "I"+mapBFdata[i][0]+j;
-                    msg = msg_imagemap("map",mapdata);
+                    if(mapBFdata[i][0]==3){
+                        if(j==3 || j==4){
+                            // 3棟 3-4階 研究室情報を表示
+                            msg = ("研究室公開があります");
+                            msg2 = {
+                                "type": "flex",
+                                "altText":  mapBFdata[i][0]+"棟"+j+"階の研究室情報",
+                                "contents": {}
+                            };
+                            if(j==3)msg2.contents=Build_LaboFlex_Bubble("labo10");
+                            else msg2.contents = Build_LaboFlex_Bubble("labo11");
+                            mapdata.location = "I" + mapBFdata[i][0] + j;
+                            msg3 = msg_imagemap("map",mapdata);
+                        }
+                    }else{
+                        mapdata.location = "I"+mapBFdata[i][0]+j;
+                        msg = msg_imagemap("map",mapdata);
+                    }
                     break;
                 case "8棟3階へ":
                     mapdata.location = "I"+82;
                     msg = msg_imagemap("map",mapdata);
-                    break;                    
+                    break;          
             }
             for(var k=1;k<=mapBFdata[i][j];k++){
                 switch(event.message.text){
@@ -459,6 +486,15 @@ async function type_message(event) {
                             };
                             msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                             console.log(msg.contents.body.contents[0].contents[0].text);
+                        
+                        }else if(boothID_data["Inside"+mapBFdata[i][0]+j+k]== "consert"){
+                            // 研究室情報を送信する
+                            msg = {
+                                "type": "flex",
+                                "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の情報",
+                                "contents": {}
+                            };
+                            msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                         }else{
                             msg = {
                                 "type": "flex",
@@ -468,7 +504,6 @@ async function type_message(event) {
                             msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                             //msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
                         }
-                        
                         break;
                 }
             }
@@ -476,25 +511,42 @@ async function type_message(event) {
         // 階数を選択するflexMessageの送信
         switch(event.message.text){
             case mapBFdata[i][0]+"棟へ":
-                msg = {
-                    "type": "flex",
-                    "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
-                    "contents": {}
-                }
                 var buttonTexts = [];
-                for(j=1;j<mapBFdata[i].length;j++){
-                    if(i==3 && j==2){
-                        buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
-                    }else{
-                        buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
+                if(mapBFdata[i][0] == 8){
+                    //8棟4階のbubbleを表示
+                    msg = msg_text("8棟4階で個別相談会を行っています。");
+                    msg2 = {
+                        "type": "flex",
+                        "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
+                        "contents": {}
                     }
+                    for(j=1;j<mapBFdata[i].length;j++){
+                        if(i==3 && j==2){
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
+                        }else{
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
+                        }
+                    }
+                    msg2.contents = Build_flexButton(buttonTexts);
+                }else{
+                    msg = {
+                        "type": "flex",
+                        "altText":  mapBFdata[i][0]+"棟の階を選択してください。",
+                        "contents": {}
+                    }
+                    for(j=1;j<mapBFdata[i].length;j++){
+                        if(i==3 && j==2){
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+3+"階へ"); //8棟3階の処理
+                        }else{
+                            buttonTexts.push(mapBFdata[i][0]+"棟"+j+"階へ");
+                        }
+                    }
+                    console.log(buttonTexts);
+                    msg.contents = Build_flexButton(buttonTexts);
                 }
-                console.log(buttonTexts);
-                msg.contents = Build_flexButton(buttonTexts);
                 break;
         }
     }
-
     //画像を送信してきた時の処理
     if (event.message.type == "image") {
         image_download(event);
@@ -551,8 +603,13 @@ async function addUser(event, usertype) {
         "type": "text",
         "text": usertype + "と認証しました"
     };
+    var msg2 = {
+        "type": "flex",
+        "altText": "This is a flex message.",
+        "contents": flex_useradd
+    };
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, msg
+        event.replyToken, msg, msg2
     ));
     request.post(tmp);
 }

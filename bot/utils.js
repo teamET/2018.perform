@@ -196,7 +196,6 @@ async function allow_image(event){
     const fileid=event.item.file;
     download_url=await fileid2url();
     await console.log("download_url",download_url);
-//    download();
 }
 
 function disallow_image(event){
@@ -205,6 +204,5 @@ function disallow_image(event){
 
 if(require.main ===module){
     const fileid="FD7T60M1R";
-//    allow_image(event);
 }
 

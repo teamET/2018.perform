@@ -399,5 +399,20 @@
 			}
 		],
 		"supplementation": " "
-	}
+	},
+	"concert": {
+		"floor": "5201",
+		"floorText": "5棟2階",
+		"title": "クラシカルコンサート",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"11:00 ~ "
+				]
+			}
+		],
+		"supplementation": " "
+	},
 }
