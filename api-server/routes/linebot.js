@@ -37,7 +37,8 @@ const flex_item = require("./flex_item.json");
 const richdata = require('./rich.json');
 const shop_area = require('./shop-area.json');
 const map_data  = require('./mapdata.json');
-const boothID_data   = require('./boothID.json');
+const boothID_data = require('./boothID.json');
+const flex_useradd = require("./useradd.json");
 var laboFlex_tmpdata = JSON.parse(fs.readFileSync('./routes/flex_labo.json'));
 var labo_data = JSON.parse(fs.readFileSync('./routes/labodata.json'));
 
@@ -593,8 +594,13 @@ async function addUser(event, usertype) {
         "type": "text",
         "text": usertype + "と認証しました"
     };
+    var msg2 = {
+        "type": "flex",
+        "altText": "This is a flex message.",
+        "contents": flex_useradd
+    };
     var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-        event.replyToken, msg
+        event.replyToken, msg, msg2
     ));
     request.post(tmp);
 }
