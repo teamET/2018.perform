@@ -32,14 +32,14 @@ const dbx = dropboxV2Api.authenticate({
 });
 
 /* json fileの読み込み */
-const flex_tmp = require("./flex_template.json");
-const flex_item = require("./flex_item.json");
-const richdata = require('./rich.json');
-const shop_area = require('./shop-area.json');
-const map_data  = require('./mapdata.json');
-const boothID_data   = require('./boothID.json');
-var laboFlex_tmpdata = JSON.parse(fs.readFileSync('./routes/flex_labo.json'));
-var labo_data = JSON.parse(fs.readFileSync('./routes/labodata.json'));
+const flex_tmp = require("./jsonfiles/flex_template.json");
+const flex_item = require("./jsonfiles/flex_item.json");
+const richdata = require('./jsonfiles/rich.json');
+const shop_area = require('./jsonfiles/shop-area.json');
+const map_data  = require('./jsonfiles/mapdata.json');
+const boothID_data   = require('./jsonfiles/boothID.json');
+const laboFlex_tmpdata = require('./jsonfiles/flex_labo.json');
+const labo_data = require('./jsonfiles/labodata.json');
 
 let shop_option = {url: "https://kunugida2018.tokyo-ct.ac.jp/data/shop.json", encoding: "utf8"};
 let shop_url = "https://kunugida2018.tokyo-ct.ac.jp/data/{shopid}/{name}";
