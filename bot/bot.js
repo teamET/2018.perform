@@ -393,6 +393,9 @@ rtm.on("message",(event)=>{
     backup("events",events);
     backup("news",news);
     tmpl.make("shop");
+    tmpl.make("news");
+    tmpl.make_gallery();
+
 });
 
 if(require.main ===module);{
