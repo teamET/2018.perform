@@ -125,20 +125,24 @@ function Build_msg_text(Token, message1, message2, message3, message4, message5)
  */
 function Build_flex(shopid) {
     var data = shop_data[shopid];
-    var tmp = JSON.parse(JSON.stringify(flex_tmp));
-    tmp.header.contents[0].text = data.shopname;
-    tmp.hero.url = "https://pbs.twimg.com/media/DpmNwqVUUAA2xlG.jpg";
-    if (data.image.length != 0) {
-        tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[0]);
+    if (data != undefined) {
+        var tmp = JSON.parse(JSON.stringify(flex_tmp));
+        tmp.header.contents[0].text = data.shopname;
+        tmp.hero.url = "https://pbs.twimg.com/media/DpmNwqVUUAA2xlG.jpg";
+        if (data.image.length != 0) {
+            tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[0]);
+        }
+        for (var i=0; i<data.goods.length; i++) {
+            var goodjson = data.goods[i];
+            var g = JSON.parse(JSON.stringify(flex_item));
+            g.contents[0].text = goodjson.name;
+            g.contents[1].text = goodjson.price + "円";
+            tmp.body.contents.push(g);
+        }
+        return tmp;
+    } else {
+        return null;
     }
-    for (var i=0; i<data.goods.length; i++) {
-        var goodjson = data.goods[i];
-        var g = JSON.parse(JSON.stringify(flex_item));
-        g.contents[0].text = goodjson.name;
-        g.contents[1].text = goodjson.price + "円";
-        tmp.body.contents.push(g);
-    }
-    return tmp;
 }
 
 /**
@@ -353,7 +357,13 @@ async function type_message(event) {
                 };
                 for (var i=0; i<shop_area[userplace].length; i++) {
                     var shopid = shop_area[userplace][i];
-                    msg.contents.contents.push(Build_flex(shopid));
+                    let tmp = Build_flex(shopid);
+                    if (tmp != null) {
+                        msg.contents.contents.push(tmp);
+                    }
+                }
+                if (msg.contents.contents.length == 0) {
+                    msg = msg_text("表示できる模擬店がありません");
                 }
             }
             break;
