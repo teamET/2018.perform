@@ -1,4 +1,4 @@
-<div class="slide-show">
+<!--div class="slide-show">
     <p class="txt">くぬぎだ祭<br>10月20,21日開催</p>
     <p class="txt">EVENTS</p>
     <p class="txt">BOOTH</p>
@@ -8,29 +8,55 @@
 
     <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
     <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+    -->
+<section id="index">
+<div class="slideshow">
+    <div class="slideshow-slides">
+        <a href="#" class="scroll slide"><img class="mySlides" src="https://raw.githubusercontent.com/teamET/2018.perform/develop/static/themes/landscape/source/img/banner_gear_silver.png"></a>
+        <a class="slide"><img class="mySlides" src="https://raw.githubusercontent.com/teamET/2018.perform/develop/static/themes/landscape/source/img/icon_event.png"></a>
+        <a class="slide"><img class="mySlides" src="https://raw.githubusercontent.com/teamET/2018.perform/develop/static/themes/landscape/source/img/icon_booth.png"></a>
+        <a class="txt">くぬぎだ祭<br>10月20,21日開催<span></span></a>
+        <a href="/event" class="txt">EVENTS</a>
+        <a href="/mogi-shop" class="txt">BOOTH</a>
+    </div>
+    <div class="slideshow-nav">
+        <a href="#" class="prev">Prev</a>
+        <a href="#" class="next">Next</a>
+    </div>
+    <div class="slideshow-indicator"></div>
 </div>
-
 <script>
+    var navBox = $("#header");
+    navBox.hide();
+    var TargetPos = 0;
+    $(window).scroll( function() {
+        var ScrollPos = $(window).scrollTop();
+        if( ScrollPos > TargetPos ) {
+            navBox.fadeIn();
+        } else {
+            navBox.fadeOut();
+        }
+    })
+    
+    // var slideIndex = 1;
+    // showDivs(slideIndex);
 
-    var slideIndex = 1;
-    showDivs(slideIndex);
-
-    function plusDivs(n) {
-        showDivs(slideIndex += n);
-    }
-    function showDivs(n) {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    var y = document.getElementsByClassName("txt");
-    if (n > x.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = x.length}
-    for (i = 0; i < x.length ; i++) {
-        x[i].style.display = "none";
-        y[i].style.display = "none";
-    }
-    x[slideIndex-1].style.display = "block";
-    y[slideIndex-1].style.display = "block"; 
-    }
+    // function plusDivs(n) {
+    //     showDivs(slideIndex += n);
+    // }
+    // function showDivs(n) {
+    // var i;
+    // var x = document.getElementsByClassName("mySlides");
+    // var y = document.getElementsByClassName("txt");
+    // if (n > x.length) {slideIndex = 1}    
+    // if (n < 1) {slideIndex = x.length}
+    // for (i = 0; i < x.length ; i++) {
+    //     x[i].style.display = "none";
+    //     y[i].style.display = "none";
+    // }
+    // x[slideIndex-1].style.display = "block";
+    // y[slideIndex-1].style.display = "block"; 
+    // }
     //get loadtime
     function getNow() {
         function to_string(d) {
@@ -111,3 +137,9 @@
         </p>
     </div> -->
 </div>
+<style>
+    main {
+        margin-top: 0; 
+    }
+</style>
+</section>
