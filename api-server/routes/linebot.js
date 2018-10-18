@@ -500,8 +500,7 @@ async function type_message(event) {
                             };
                             msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                             console.log(msg.contents.body.contents[0].contents[0].text);
-                        
-                        }else if(boothID_data["Inside"+mapBFdata[i][0]+j+k]== "consert"){
+                        }else if(boothID_data["Inside"+mapBFdata[i][0]+j+k]== "concert"){
                             // 研究室情報を送信する
                             msg = {
                                 "type": "flex",
