@@ -89,18 +89,23 @@ if sidebar is left
 if sidebar
   @import "_partial/sidebar"
 
-.shop {
-  background-color: #272822;
-  color: #fbf9e2;
-  box-sizing: inherit;
-  width: 32%;
-  padding: 10px 10px 30px 10px;
+
+.shop-box {
   display: inline-block;
 }
 
-.shop img {
-  box-sizing: inherit;
-  width: 100%;
+.shop {
+  background-color: #272822;
+  color: #fbf9e2;
+  width: 400px;
+  margin: 5px 5px 30px 5px;
+  text-align: center;
+}
+
+.shop-image img{
+  max-width: 100%;
+  height: 250px;
+  object-fit: contain;
 }
 
 .shop table {
@@ -114,6 +119,92 @@ if sidebar
 .shop td {
   border: solid 0.5px #272822;  /* 枠線指定 */
   padding: 10px;      /* 余白指定 */
+}
+
+.shops {
+  text-align: center;  
+}
+
+.filter-block {
+  text-align: center;  
+}
+
+.categories-box{
+  display: inline-block;
+  background-color: rgba(0,0,0,.3); 
+}
+
+.categories-box h1{
+  font-size: 17px;
+  color: #fbf9e2;
+  text-align: center;
+}
+
+.categories{
+  display: inline-block;
+  width: 14em; 
+}
+
+.sub-categories{
+  width: 12em; 
+  font-size: 13px;
+}
+
+
+
+.checkbox input{
+  display: none; 
+}
+
+.checkbox02-input:checked + .checkbox02-parts {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.checkbox02-parts {
+    display: inline-block;
+    padding-left: 15px;
+    position: relative;
+    opacity: 0.8; 
+    width:100%;
+}
+
+.sub-categories .checkbox {
+    margin: 2px;
+    padding: 2px 4px;
+    width: 9em;
+}
+
+.checkbox02-parts::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 9px;
+    left: 0px;
+    background: #fc861e;
+    transition: width .2s;
+    transform: rotate(140deg);
+}
+.checkbox02-input:checked + .checkbox02-parts::after {
+    width: 2px;
+    height: 13px;
+}
+
+.checkbox02-parts::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0px;
+    background: #fc861e;
+    top: 4px;
+    left: 6px;
+    transition: width .2s .2s;
+    transform: rotate(230deg);
+}
+.checkbox02-input:checked + .checkbox02-parts::before {
+    width: 2px;
+    height: 5px;
 }
 
 .del {
@@ -494,9 +585,7 @@ body {
 }
 
 @media screen and (max-width: 1050px) {
-  .shop {
-  width: 49.5%;
-  }
+ 
 
   .not-display-mobile {
     display: none;  
@@ -504,13 +593,24 @@ body {
 }
 
 @media screen and (max-width: 500px) {
+  .shop-box {
+  display: block;
+  }
   .shop {
-  box-sizing: inherit;
+  margin: 10px 0;
   width: 100%;
-  padding: 10px;
-  display: inline-block;
+  text-align: center;
   }
 
+  .shop-image img{
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  }
+
+  .shop table {
+  width: 100%;
+}
   .post {
   width: 100%;
   }
