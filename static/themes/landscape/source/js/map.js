@@ -827,8 +827,6 @@ function init(event){
         // 吹き出しに対応していないオブジェクト（5棟など）
         currentMapID = "BF" + e_buildNum[i] + "1";
         if(e_buildNum[i] == 7){
-          
-
           // 今開いている吹き出しを検索して閉じる
           for(var k=0;k<c_balloons.length;k++){
             if(e_balloons[k] == 1){
@@ -840,15 +838,24 @@ function init(event){
           if(c_sevenStar.alpha == 0)nextAlpha = 1;
           else                      nextAlpha = 0;
           createjs.Tween.get(c_sevenStar).to({alpha:nextAlpha},500);
-          if(nextAlpha) WriteInfotxt("BF7");
-          else WriteInfotxt("InsideTop");
+          if(nextAlpha){
+            WriteInfotxt("BF7");
+            h_boothdata.innerHTML = GetLocationData("seven");
+          }else{
+            WriteInfotxt("InsideTop");
+            ClearBoothInfo();
+          }
         }else{
           MapChange(InsideTopContainer,BuildingFloorContainers[i][0]);
           createjs.Tween.get(c_sevenStar).to({alpha:0},500);
+          WriteInfotxt("InsideTop");
+          ClearBoothInfo();
         }
         return;
       }
       createjs.Tween.get(c_sevenStar).to({alpha:0},500);
+      WriteInfotxt("InsideTop");
+      ClearBoothInfo();
       // すでに出ている吹き出しをクリックしたとき
       if(e_balloons[e_balloonTarget] == 1){
         InsideTopContainer.removeChild(balloonContainers[e_balloonTarget]);
@@ -1148,8 +1155,10 @@ function init(event){
         return j_laboData[boothID];
       }
       if(boothID == "concert"){
-        console.log("concert");
-        return "concert";
+        return j_laboData[boothID];
+      }
+      if(boothID == "seven"){
+        return j_laboData["seven"];
       }
       return j_boothData[boothID];
     }
