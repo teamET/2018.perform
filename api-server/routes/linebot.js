@@ -40,6 +40,7 @@ const map_data  = require('./jsonfiles/mapdata.json');
 const boothID_data   = require('./jsonfiles/boothID.json');
 const laboFlex_tmpdata = require('./jsonfiles/flex_labo.json');
 const labo_data = require('./jsonfiles/labodata.json');
+const flex_useradd = require('./jsonfiles/useradd.json');
 
 let shop_option = {url: "https://kunugida2018.tokyo-ct.ac.jp/data/shop.json", encoding: "utf8"};
 let shop_url = "https://kunugida2018.tokyo-ct.ac.jp/data/{shopid}/{name}";
