@@ -4,7 +4,7 @@
     console.log("generate");
     var tasks = [];
     var places = ["第一体育館", "第二体育館", "購買前"]
-    $.getJSON("https://kunugida2018.tokyo-ct.ac.jp/data/events.json", function(data) {
+    $.getJSON("/data/events.json", function(data) {
         console.log(data);
         var date = new Date();
         function getNow() {
