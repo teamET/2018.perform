@@ -52,7 +52,9 @@ function Load(){
   var queue = new createjs.LoadQueue(true);
   var manifest = [
     {"src":"/data/mapImgData.json","id":"mapImgs"},
-    {"src":"/data/boothsample.json","id":"booth"},
+    {"src":"/data/boothsample.json","id":"boothsample"},
+    {"src":"/data/mapInfo.json","id":"mapinfo"},
+    {"src":"/data/booth.json","id":"booth"},
     {"src":"/data/boothID.json","id":"boothID"},
     {"src":"/data/labo.json","id":"labo"}
   ];
@@ -90,6 +92,7 @@ function init(event){
   var j_boothData     = event.target.getResult("booth");
   var j_boothID       = event.target.getResult("boothID");
   var j_laboData      = event.target.getResult("labo");
+  var j_infotxt       = event.target.getResult("mapinfo");
   // URLパラメータの取得 ----------------------------------------------------------------------------------------------
   //console.log(getParam("booth"));
   // 一覧ページから入る処理
@@ -98,8 +101,9 @@ function init(event){
   // - canvas stageの定義 --------------------------------------------------------------------------------------------
   var canvasContainer = document.getElementById("wrap");
   var canvasElement   = document.getElementById("myCanvas");
-  var dh_pindata      = document.getElementById("pin");
+  //var dh_pindata      = document.getElementById("pin");
   var h_boothdata     = document.getElementById("boothdata");
+  var h_infotxt       = document.getElementById("infotxt");
   // CanvasElementの大きさ画面サイズに設定する（初期化）
   var Sizing = function(){
     canvasElement.height = canvasElement.offsetHeight;
@@ -602,7 +606,7 @@ function init(event){
               DisplayContainer.addChild(areaContainers[i]);
               location.target.eventParam  = i;
               location.target.eventParam2 = j;
-              OutsideWriteInfo(location);
+              OutsideWriteBoothInfo(location);
               return;
           }
         }
@@ -616,7 +620,7 @@ function init(event){
                 location.target.eventParam  = i;
                 location.target.eventParam2 = j;
                 location.target.eventParam3 = k;
-                InsideWriteInfo(location);
+                InsideWriteBoothInfo(location);
                 return;
             }
           }
@@ -624,6 +628,8 @@ function init(event){
       }
       if(p_location == "OutsideTop"){
         DisplayContainer.addChild(OutsideContainer);
+        /** writeinfo */
+        WriteInfotxt(p_location);
       }
     }
 
@@ -650,9 +656,11 @@ function init(event){
       switch(currentMapID){
         case "OutsideTop":
           DisplayContainer.addChild(OutsideContainer);
+          WriteInfotxt(currentMapID);
           return;
         case "InsideTop":
           DisplayContainer.addChild(InsideTopContainer);
+          WriteInfotxt(currentMapID);
           return;
       }
     }
@@ -674,7 +682,7 @@ function init(event){
         a_toGenerals[i].eventParam = i;
         // 5. 構外MAPピンに対する処理
         for(var j=0;j<j_mapImgsData.OutsideAreas[i].pins.length;j++){
-          outSidePins_r[i][j].addEventListener("click",OutsideWriteInfo);
+          outSidePins_r[i][j].addEventListener("click",OutsideWriteBoothInfo);
           outSidePins_r[i][j].eventParam  = i;
           outSidePins_r[i][j].eventParam2 = j;
         }
@@ -711,7 +719,7 @@ function init(event){
       for(var i=0;i<bf_pins.length;i++){
         for(var j=0;j<bf_pins[i].length;j++){
           for(var k=0;k<bf_pins[i][j].length;k++){
-            bf_pins[i][j][k].addEventListener("click",InsideWriteInfo);
+            bf_pins[i][j][k].addEventListener("click",InsideWriteBoothInfo);
             bf_pins[i][j][k].eventParam  = i;
             bf_pins[i][j][k].eventParam2 = j;
             bf_pins[i][j][k].eventParam3 = k;
@@ -757,6 +765,7 @@ function init(event){
       var i = event.target.eventParam;
       currentMapID = "Area" + g_areaTexts[i];
       MapChange(OutsideContainer,areaContainers[i]);
+      WriteInfotxt(currentMapID);
     }
     /**
      * 構外の各エリアから全体へ 
@@ -767,7 +776,8 @@ function init(event){
       currentMapID = "OutsideTop";
       MapChange(areaContainers[i],OutsideContainer);
       InitPinColor();
-      ClearInfo();
+      ClearBoothInfo();
+      WriteInfotxt(currentMapID);
     }
     /**
      * 全体から構内topへ
@@ -776,6 +786,7 @@ function init(event){
       //MapChange(OutsideContainer,InsideTopContainer);
       currentMapID = "InsideTop";
       MapChangeAnimation_Slide(OutsideContainer,InsideTopContainer,"right");
+      WriteInfotxt(currentMapID);
     }
     /**
      * 構内Topから全体へ
@@ -791,7 +802,8 @@ function init(event){
       }
       //MapChange(InsideTopContainer,OutsideContainer);
       currentMapID = "OutsideTop";
-      MapChangeAnimation_Slide(InsideTopContainer,OutsideContainer,"left");      
+      MapChangeAnimation_Slide(InsideTopContainer,OutsideContainer,"left"); 
+      WriteInfotxt(currentMapID);
     }
     /**
      * 構内Topから吹き出しを出力
@@ -815,7 +827,6 @@ function init(event){
         // 吹き出しに対応していないオブジェクト（5棟など）
         currentMapID = "BF" + e_buildNum[i] + "1";
         if(e_buildNum[i] == 7){
-          // ** 7棟の処理
           // 今開いている吹き出しを検索して閉じる
           for(var k=0;k<c_balloons.length;k++){
             if(e_balloons[k] == 1){
@@ -827,13 +838,24 @@ function init(event){
           if(c_sevenStar.alpha == 0)nextAlpha = 1;
           else                      nextAlpha = 0;
           createjs.Tween.get(c_sevenStar).to({alpha:nextAlpha},500);
+          if(nextAlpha){
+            WriteInfotxt("BF7");
+            h_boothdata.innerHTML = GetLocationData("seven");
+          }else{
+            WriteInfotxt("InsideTop");
+            ClearBoothInfo();
+          }
         }else{
           MapChange(InsideTopContainer,BuildingFloorContainers[i][0]);
           createjs.Tween.get(c_sevenStar).to({alpha:0},500);
+          WriteInfotxt("InsideTop");
+          ClearBoothInfo();
         }
         return;
       }
       createjs.Tween.get(c_sevenStar).to({alpha:0},500);
+      WriteInfotxt("InsideTop");
+      ClearBoothInfo();
       // すでに出ている吹き出しをクリックしたとき
       if(e_balloons[e_balloonTarget] == 1){
         InsideTopContainer.removeChild(balloonContainers[e_balloonTarget]);
@@ -871,6 +893,7 @@ function init(event){
       }
       currentMapID = "BF"+ e_balloonBuildNum[i]+(parseInt(j)+1);
       MapChange(InsideTopContainer,BuildingFloorContainers[buildingIndex[i]][j]);
+      WriteInfotxt(currentMapID);
       //MapChangeAnimation_Fade(InsideTopContainer,BuildingFloorContainers[buildingIndex[i]][j])
     }
     /**
@@ -883,7 +906,8 @@ function init(event){
       currentMapID = "InsideTop";
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],InsideTopContainer,"left");
       InitPinColor(); 
-      ClearInfo();
+      ClearBoothInfo();
+      WriteInfotxt(currentMapID);
     }
     /**
      * 上の階へ
@@ -897,7 +921,8 @@ function init(event){
       currentMapID = "BF" + e_buildNum[i]+(parseInt(j)+2);
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j+1],"top");
       InitPinColor();
-      ClearInfo();
+      ClearBoothInfo();
+      WriteInfotxt(currentMapID);
     }
     /**
      * 下の階へ
@@ -911,7 +936,9 @@ function init(event){
       //MapChange(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j-1]);
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j-1],"bottom");
       InitPinColor();
-      ClearInfo();
+      ClearBoothInfo();
+      WriteInfotxt(currentMapID);
+
     }
     /**
      * ピンを表示（すべて）
@@ -1087,7 +1114,38 @@ function init(event){
       );
       TimeLine.gotoAndPlay("start");
     }
-
+    /**
+     * マップの説明文(html)を挿入する
+     * @param location 場所
+     */
+    function WriteInfotxt(location){
+      var id;
+      if(location == "OutsideTop" || location == "InsideTop" || location == "BF7")id = location;
+      else if(location.match(/Area/))id = "Area";
+      else if(location.match(/BF/)){
+        switch(location){
+          case "BF81":
+            id = "BF81"
+            break;
+          case "BF82":
+            id = "BF83";
+            break;
+          case "BF71":
+            id = "BF81"
+              break;
+          case "BF72":
+            id = "BF83"
+            break;
+          case "BF33":
+          case "BF34":
+            id = location;
+            break;
+          default:
+            id = "BF";
+        } 
+      }
+      h_infotxt.innerHTML = j_infotxt[id];
+    }
     /**
      * BoothData(html)をbooth.jsonから取得する
      * @param {string} boothID 
@@ -1096,9 +1154,11 @@ function init(event){
       if(boothID.match(/labo/)){
         return j_laboData[boothID];
       }
-      if(boothID == "consert"){
-        console.log("consert");
-        return "consert";
+      if(boothID == "concert"){
+        return j_laboData[boothID];
+      }
+      if(boothID == "seven"){
+        return j_laboData["seven"];
       }
       return j_boothData[boothID];
     }
@@ -1107,12 +1167,13 @@ function init(event){
      * DOMに情報を書き込む（構外模擬店情報）
      * @param {obj} event 
      */
-    function OutsideWriteInfo(event){
+    function OutsideWriteBoothInfo(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
       InitPinColor();
+      ClearInfo();
       OutsideChangePinColor(i,j);
-      dh_pindata.textContent = "エリア"+g_areaTexts[i]+"の"+(parseInt(j)+1)+"番目";
+      //dh_pindata.textContent = "エリア"+g_areaTexts[i]+"の"+(parseInt(j)+1)+"番目";
       var boothID = j_boothID["Outside" + g_areaTexts[i] + (parseInt(j)+1)];
       h_boothdata.innerHTML  = GetLocationData(boothID);
     }
@@ -1121,23 +1182,29 @@ function init(event){
      * DOMに情報を書き込む（構内模擬店情報）
      * @param {obj} event
      */
-    function InsideWriteInfo(event){
+    function InsideWriteBoothInfo(event){
       var i = event.target.eventParam;
       var j = event.target.eventParam2;
       var k = event.target.eventParam3;
       InitPinColor();
+      ClearInfo();
       InsideChangePinColor(i,j,k);
       if(i==3)i=4;
-      dh_pindata.textContent = e_buildNum[i]+"棟"+(parseInt(j)+1)+"階の"+(parseInt(k)+1)+"番目のピン";
+      //dh_pindata.textContent = e_buildNum[i]+"棟"+(parseInt(j)+1)+"階の"+(parseInt(k)+1)+"番目のピン";
       var boothID = j_boothID["Inside" + e_buildNum[i] + (parseInt(j)+1) + (parseInt(k)+1)];
       h_boothdata.innerHTML  = GetLocationData(boothID);
     }
-
     /**
-     * DOM情報を全て消去する 
+     * 説明文・利用方法等のDOM表示を全て消去する
      */
     function ClearInfo(){
-      dh_pindata = "";
+      h_infotxt.innerHTML = "";
+    }
+    /**
+     * 模擬店・研究室のDOM情報を全て消去する 
+     */
+    function ClearBoothInfo(){
+      //dh_pindata = "";
       h_boothdata.innerHTML = "";
     }
     // ここまでイベントに対する処理の関数群 ---------------------------------------------------------------------------
