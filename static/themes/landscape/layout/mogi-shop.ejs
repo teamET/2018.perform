@@ -5,8 +5,6 @@
         <button class="tablinks w3-btn w3-black" onclick="chview(event,'Lab')">Lab</button>
     </div>
     <div id="Booth" class="tabcontent">
-        <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="search_shop_input" onkeyup="search_shop()">
-        <div id="booth"></div>
         <script> $(function(){ $('#booth').load('/data/views/shop.html'); }); </script>
     </div>
     <div id="Lab" class="tabcontent">
@@ -129,6 +127,7 @@
             document.getElementById(view).style.display="block";
             event.currentTarget.className+=" active";
         }
+        chview(event,'Booth')
     </script>
     <style>
         <!--
