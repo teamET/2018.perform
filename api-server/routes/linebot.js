@@ -399,6 +399,7 @@ async function type_message(event) {
                     "contents": []
                 }
             };
+            msg.contents.contents.push(Build_LaboFlex_Bubble("stamp"));
             for (var i=17; i<= 23; i++) {
                 console.log("labo"+i);
                 msg.contents.contents.push(Build_LaboFlex_Bubble("labo"+i));
