@@ -461,6 +461,9 @@ async function type_message(event) {
                             else msg2.contents = Build_LaboFlex_Bubble("labo11");
                             mapdata.location = "I" + mapBFdata[i][0] + j;
                             msg3 = msg_imagemap("map",mapdata);
+                        }else{
+                            mapdata.location = "I"+mapBFdata[i][0]+j;
+                            msg = msg_imagemap("map",mapdata);   
                         }
                     }else{
                         mapdata.location = "I"+mapBFdata[i][0]+j;
