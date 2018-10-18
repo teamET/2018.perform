@@ -36,6 +36,11 @@ body
 .outer
   clearfix()
 
+main
+  margin-top: 10vh;
+
+#index
+  top: -10vh;    
 
 .inner
   column(columns)
@@ -66,6 +71,10 @@ body
   background: color-background
   .mobile-nav-on &
     left: mobile-nav-width
+
+
+#mogi-shop, #event
+  top: 10%
 
 if sidebar and sidebar isnt bottom
   #main
@@ -217,6 +226,8 @@ if sidebar
 
 .slide-show {
   position: relative;
+  overflow: hidden;
+  height: 100vh;
 }
 
 .slide-show p {
@@ -671,6 +682,16 @@ body {
     margin: 0;
   }
 
+  .slide-show {
+    position: relative;
+    heigt: auto;  
+  }
+  .slide-show img{
+    display: none;
+    position: absolute;
+    height: 100vh;
+    width: auto;
+  }
   .slide-show p {
     font-size: 18px;
   }
