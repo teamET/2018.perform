@@ -42,7 +42,7 @@ function save_html(name,html){
 		minifyJS:true,
 		removeComments:true,
 		collapseWhitespace:true,
-	})
+	});
 
 	fs.writeFile(path.join(__dirname,'/public/views/'+name+'.html'),html,(err)=>{
 		 if(err){     
@@ -64,28 +64,42 @@ function render_ejs(template,data){
     return html;
 }
 
-function make_template(filename){
-    var data=load_data(filename);
-	var template=load_template(filename);
+function make_template(input,output){
+    utils.log("input data:",input,"output template,html:",output);
+    var data=load_data(input);
+	var template=load_template(output);
     var html=render_ejs(template,data);
-	save_html(filename,html);
+	save_html(output,html);
 }
 
-function make_gallery(){
+function make_shop_json(){
+    utils.log("shop.json,map_shop.ejs,map_shop.html");
+    var shops={};
     var data=load_data("shop");
-	var template=load_template("gallery");
-    var html=render_ejs(template,data);
-	save_html("gallery",html);
+	var template=load_template("map_shop");
+    for (id in data){
+        shops[id]=render_ejs(template,data,{rmWhitespace:true});
+        console.log(id,shops[id]);
+    }
+	fs.writeFile(path.join(__dirname,'/public/map_shop.json'),JSON.stringify(shops),(err)=>{
+		 if(err){
+			 utils.err("error occured"+err.message);
+			 throw err;
+		 }else{
+			utils.log('write file successed');
+		}
+	});
 }
 
 module.exports={
 	make:make_template,
-	make_gallery:make_gallery
+    make_shop_json:make_shop_json
 }
 
 
 if(require.main===module){
-    make_template("shop");
-    make_template("news");
-    make_gallery();
+    make_shop_json();
+    make_template("shop","shop");
+    make_template("news","news");
+    make_template("shop","gallery");
 }

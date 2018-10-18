@@ -23,9 +23,19 @@ html,body {
 <canvas id = "myCanvas"> </canvas>
 <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
 <script src="/js/map.js" ></script>
-<div class="shop">
-	<h1 id = "info">info</h1> 
-	<p id = "pin">pinID</p>
-	<p id = "boothdata">shopdata</p>
-	<p id = "price">price</p>
+<div  class="mapdata" >
+	<h1>Information</h1> 
+	<p id = "infotxt">
+		ピンをクリックすると模擬店・研究室の詳細を表示します。<br>
+		<br>
+		マップ上のこの画像をクリックすると、校内全体マップに移動します。<br>
+		<img src="/img/map-tool-toInsideTop.png" width = "250"><br>
+		また、マップ上の下の画像をクリックすると、1階に移ります。<br>
+		<img src="/img/map-tool-toLower-8.png" width = "250">
+		<br>こちらの画像でピンの表示・非表示の切り替えができます<br>
+		<img class = "pin" src="/img/map-tool-pin-off.png" width = "80">	
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<img class = "pin" src="/img/map-tool-pin-on.png" width = "80">		
+	</p>
+	<p id = "boothdata"></p>
 </div>
