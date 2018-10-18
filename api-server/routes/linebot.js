@@ -429,7 +429,12 @@ async function type_message(event) {
                         "altText": "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報",
                         "contents": {}
                     };
-                    msg.contents = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
+                    let tmp = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
+                    if (tmp != null) {
+                        msg.contents = tmp;
+                    } else {
+                        msg = msg_text("表示できる情報がありません");
+                    }
                     //msg2 = msg_text("debug message [エリアの模擬店情報]");
                     break;
             }
@@ -505,7 +510,12 @@ async function type_message(event) {
                                 "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報",
                                 "contents": {}
                             };
-                            msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            let tmp = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            if (tmp != null) {
+                                msg.contents = tmp;
+                            } else {
+                                msg = msg_text("表示できる情報がありません");
+                            }
                             //msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
                         }
                         break;
