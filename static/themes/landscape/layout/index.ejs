@@ -9,29 +9,18 @@
     <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
     <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
 </div>
-
 <script>
-
-    var slideIndex = 1;
-    showDivs(slideIndex);
-
-    function plusDivs(n) {
-        showDivs(slideIndex += n);
-    }
-    function showDivs(n) {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    var y = document.getElementsByClassName("txt");
-    if (n > x.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = x.length}
-    for (i = 0; i < x.length ; i++) {
-        x[i].style.display = "none";
-        y[i].style.display = "none";
-    }
-    x[slideIndex-1].style.display = "block";
-    y[slideIndex-1].style.display = "block"; 
-    }
-    //get loadtime
+    var navBox = $("#header");
+    navBox.hide();
+    var TargetPos = 0;
+    $(window).scroll( function() {
+        var ScrollPos = $(window).scrollTop();
+        if( ScrollPos > TargetPos ) {
+            navBox.fadeIn();
+        } else {
+            navBox.fadeOut();
+        }
+    })
     function getNow() {
         function to_string(d) {
             return (d < 10) ? '0' + d.toString() : d.toString();
@@ -49,18 +38,6 @@
         }
         return i;
     }
-    
-    // //sort data
-    // data.sort(function (a, b) {
-    //     if (a.time > b.time) {
-    //         return -1;
-    //     }
-    //     if (a.time < b.time) {
-    //         return 1;
-    //     }
-    //     // names must be equal
-    //     return 0;
-    // });
 </script>
 <div id="news" class="news">
     <script> $(function(){ $('#news').load('/data/views/news.html'); }); </script>
@@ -111,3 +88,9 @@
         </p>
     </div> -->
 </div>
+<style>
+    main {
+        margin-top: 0; 
+    }
+</style>
+</section>

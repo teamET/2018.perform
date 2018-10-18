@@ -1,45 +1,9 @@
 <section id="mogi-shop">
     <header> </header>
-    <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="search_shop_input" onkeyup="search_shop()">
-    <div id="booth"> </div>
-    <%basicTags=[{"id":"0","tag":"模擬店"},{"id":"1","tag":"アトラクション"},{"id":"2","tag":"食べ物"},{"id":"3","tag":"飲み物"},{"id":"8","tag":"汁物"}]%>
-    <%tasteTags=[{"id":"4","tag":"温かいもの"},{"id":"5","tag":"冷たいもの"},{"id":"6","tag":"甘い系"},{"id":"7","tag":"しょっぱい系"}]%>
-    <%othorTags=[{"id":"9","tag":"ゲーム"},{"id":"10","tag":"展示"},{"id":"11","tag":"座れる場所"},{"id":12,"tag":"工作"},{"id":13,"tag":"キーホルダー"}]%>
-    <div class="filter-block">
-        <form class=categories-box>
-            <h1>絞り込み</h1>
-            <div class="tags categories w3-round ">
-                <ul>
-                <% basicTags.forEach((value) => {%>
-                    <li class="checkbox w3-round w3-white w3-padding w3-margin"><label><input class="checkbox02-input" type="checkbox" rel="label<%=value.id%>"/><span class="checkbox02-parts"><%=value.tag%></span></label></li>
-                <% }); %>
-                </ul>
-            </div>
-            <div class="tags categories sub-categories w3-round w3-padding w3-margin">
-                <h1>食べたいもの</h1><h1>で選ぶ</h1>
-                <% tasteTags.forEach((value) => {%>
-                    <div class="checkbox w3-round w3-white"><label><input class="checkbox02-input" type="checkbox" rel="label<%=value.id%>"/><span class="checkbox02-parts"><%=value.tag%></span></label></div>
-                <% }); %>
-            </div>
-            <div class="tags categories sub-categories w3-round w3-padding w3-margin">
-                <h1>その他</h1>
-                <% othorTags.forEach((value) => {%>
-                    <div class="checkbox w3-round w3-white"><label><input class="checkbox02-input" type="checkbox" rel="label<%=value.id%>"/><span class="checkbox02-parts"><%=value.tag%></span></label></div>
-                <% }); %>
-            </div>
-            
-        </form>
-    </div>
-    <div  class="shops">
-            <script> $(function(){ $('#booth').load('/data/views/shop.html'); }); </script>
-    </div>
-</section>
-
     <div clas="tab" align="center">
         <button class="tablinks w3-btn w3-black" onclick="chview(event,'Booth')">Booth</button>
         <button class="tablinks w3-btn w3-black" onclick="chview(event,'Lab')">Lab</button>
     </div>
-
     <div id="Booth" class="tabcontent">
         <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="search_shop_input" onkeyup="search_shop()">
         <div id="booth"></div>
@@ -56,7 +20,8 @@
                 <tr><td>2105分析・無機化学実験室</td><td><a href="https://kunugida2018.tokyo-ct.ac.jp/map/?booth=1">化学おもしろ実験</a></td><td>10:00～16:00</td></tr>
                 <tr><td>2108多目的実験室</td><td><a href="https://kunugida2018.tokyo-ct.ac.jp/map/?booth=2">ドライアイスを作ってみよう</a></td><td>10：00～16：00</td></tr>
                 <tr><td>2205 1年1組教室</td><td><a href="https://kunugida2018.tokyo-ct.ac.jp/map/?booth=3">びっくりケミストリー</a></td><td>9:30～16:00（開始時刻から終了時刻まで）</td></tr>
-                <tr><td>3101　物理実験室</td><td><a href="https://kunugida2018.tokyo-ct.ac.jp/map/?booth=4">光の万華鏡</a></td><td>10:00-11:00</td></tr><tr><td>3102　応用物理実験室</td><td><a href="https://kunugida2018.tokyo-ct.ac.jp/map/?booth=5">音と光で遊ぼう</a></td><td>11:00-12:00</td></tr>
+                <tr><td>3101　物理実験室</td><td><a href="https://kunugida2018.tokyo-ct.ac.jp/map/?booth=4">光の万華鏡</a></td><td>10:00-11:00</td></tr>
+                <tr><td>3102　応用物理実験室</td><td><a href="https://kunugida2018.tokyo-ct.ac.jp/map/?booth=5">音と光で遊ぼう</a></td><td>11:00-12:00</td></tr>
                 <tr><td>3208・3223 多目的室</td><td><a href="https://kunugida2018.tokyo-ct.ac.jp/map/?booth=6">高く舞い上がるスーパー竹トンボを作ろう</a></td><td>13:00-14:00</td></tr>
                 <tr><td>3201　第1創造工房</td><td><a href="https://kunugida2018.tokyo-ct.ac.jp/map/?booth=7">ミニ工場をつくろう！</a></td><td>14:00-15:00</td></tr>
                 <tr><td>3302　電子デバイス実験室（電気工学科）</td><td><a href="https://kunugida2018.tokyo-ct.ac.jp/map/?booth=8">楽しいハンダづけ工作</a></td><td>１２時?１４時３０分</td></tr>
@@ -84,17 +49,13 @@
     </div>
     <script>
         var _showCategories = function(item) {
-        for (var x = 0; x < item.length; ++x) {
-            $(item[x]).fadeIn();
-        }
+            for (var x = 0; x < item.length; ++x) {
+                $(item[x]).fadeIn();
+            }
         };
-
-
         var categories = [],
         resources = [],
         initial = "";
-
-
         categories[0] = "#label1";
         categories[1] = "#label2";
         categories[2] = "#label3";
@@ -105,12 +66,8 @@
         categories[7] = "#label8";
 
         $('div.tags').find('input[type="checkbox"]').click(function() {
-        
-        
         resources = [];
         initial = "";
-        
-        
         if ($('div.tags.categories input[type="checkbox"]:checked').length > 0) {
             $('.results shop').hide();
             
@@ -181,5 +138,6 @@
             .tab button:hover {background-color: #ddd;}
             .tab button.active {background-color: #ccc;}
             .tabcontent {display: none;padding: 6px 12px;border: 1px solid #ccc;border-top: none;  }
+            -->
     </style>
 </section>

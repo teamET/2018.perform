@@ -35,18 +35,25 @@ $.fn.extend({
     },
   });
 
-  $(function () {
 
+
+($(function () {
+    $('.scroll').on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: 500 }, 500, 'linear');
+      });
     /*
      * Slideshow
      */
-    $('.slide-show').each(function () {
+
+    $('.slideshow').each(function () {
 
     // 変数の準備
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         var $container = $(this),                                 // a
             $slideGroup = $container.find('.slideshow-slides'),   // b
+            $texts = $slideGroup.find('.txt'),
             $slides = $slideGroup.find('.slide'),                 // c
             $nav = $container.find('.slideshow-nav'),             // d
             $indicator = $container.find('.slideshow-indicator'), // e
@@ -62,7 +69,7 @@ $.fn.extend({
             currentIndex = 0,            // 現在のスライドのインデックス
             duration = 500,              // 次のスライドへのアニメーションの所要時間
             easing = 'easeInOutExpo',    // 次のスライドへのアニメーションのイージングの種類
-            interval = 3000,             // 自動で次のスライドに移るまでの時間
+            interval = 5000,             // 自動で次のスライドに移るまでの時間
             timer;                       // タイマーの入れ物
 
 
@@ -72,10 +79,12 @@ $.fn.extend({
         // 各スライドの位置を決定し、
         // 対応するインジケーターのアンカーを生成
         $slides.each(function (i) {
-            $(this).css({ left: 100 * i + '%' });
+            $(this).css({ left: 100 * i + 'vw' });
             indicatorHTML += '<a href="#">' + (i + 1) + '</a>';
         });
-
+        $texts.each(function (j) {
+            $(this).css({ left: 100 * j + 'vw' });
+        });
         // インジケーターにコンテンツを挿入
         $indicator.html(indicatorHTML);
 
@@ -86,7 +95,7 @@ $.fn.extend({
         // 任意のスライドを表示する関数
         function goToSlide (index) {
             // スライドグループをターゲットの位置に合わせて移動
-            $slideGroup.animate({ left: - 100 * index + '%' }, duration, easing);
+            $slideGroup.animate({ left: - 100 * index + 'vw' }, duration, easing);
             // 現在のスライドのインデックスを上書き
             currentIndex = index;
             // ナビゲーションとインジケーターの状態を更新
@@ -111,6 +120,9 @@ $.fn.extend({
             }
             // 現在のスライドのインジケーターを無効に
             $indicator.find('a').removeClass('active')
+                .eq(currentIndex).addClass('active');
+                
+            $indicator.find('p').removeClass('active')
                 .eq(currentIndex).addClass('active');
         }
 
@@ -170,4 +182,4 @@ $.fn.extend({
 
     });
 
-});
+}));
