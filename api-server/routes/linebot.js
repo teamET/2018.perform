@@ -16,6 +16,7 @@ const GOOGLE_PROJECT_ID = process.env.GOOGLE_PROJECT_ID;
 const GOOGLE_CLIENT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const GOOGLE_PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY;
 const dropbox = process.env.dropbox;
+const docomoKey = process.env.docomo;
 
 //dialogflow
 const session_client = new dialogflow.SessionsClient({
@@ -347,83 +348,6 @@ async function type_message(event) {
                       [3,2,3,3,4],
                       [5,1,2],
                       [8,1,1]];
-    switch(event.message.text) {
-        case "近くの模擬店を探す":
-            var userplace = await DB_get("UserData", "PLACE", "USERID", event.source.userId);
-            if (userplace == "" || userplace == "hazama" || userplace == "joho") {
-                msg = msg_text("近くに模擬店がないみたい...\n移動してからもう一度試してください");
-            } else {
-                //userplaceの場所に合う模擬店をjson or htmlから引っ張ってきてテンプレートメッセージにする
-                msg = {
-                    "type": "flex",
-                    "altText": "This is a flex message.",
-                    "contents": {
-                        "type": "carousel",
-                        "contents": []
-                    }
-                };
-                for (var i=0; i<shop_area[userplace].length; i++) {
-                    var shopid = shop_area[userplace][i];
-                    let tmp = Build_flex(shopid);
-                    if (tmp != null) {
-                        msg.contents.contents.push(tmp);
-                    }
-                }
-                if (msg.contents.contents.length == 0) {
-                    msg = msg_text("表示できる模擬店がありません");
-                }
-            }
-            break;
-        case "マップを表示":
-            msg = msg_text("[info] マップ画像はタッチできるよ！");
-            msg2 = msg_text("「○○へ」と書いたボタンやマップピンをタッチすると、エリアを移動したり、模擬店の情報が表示されます！");
-            msg3 = {
-                "type": "flex",
-                "altText":  "TOP",
-                "contents": {}
-            };
-            var buttonTexts = ["[Top] 校外全体マップへ","[Top] 校内全体マップへ"];
-            msg3.contents = Build_flexButton(buttonTexts);
-            msg4 = msg_text("行きたいエリアを選択してください。");
-            break;
-        case "[Top] 校内全体マップへ":
-            mapdata.location = "InsideTop";
-            msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("棟を選択してください");
-            break;
-        case "[Top] 校外全体マップへ":
-            mapdata.location = "OutsideTop";
-            msg = msg_imagemap("map",mapdata);
-            msg2 = msg_text("エリアを選択してください");
-            break;
-        case "7棟の情報を表示":
-            msg = {
-                "type": "flex",
-                "altText": "7棟の研究室情報",
-                "contents": {
-                    "type": "carousel",
-                    "contents": []
-                }
-            };
-            msg.contents.contents.push(Build_LaboFlex_Bubble("stamp"));
-            for (var i=17; i<= 23; i++) {
-                console.log("labo"+i);
-                msg.contents.contents.push(Build_LaboFlex_Bubble("labo"+i));
-            }
-            break;
-        case "8棟3階の1番の模擬店情報を表示":
-            msg = {
-                "type": "flex",
-                "altText": "8棟3階の1番の模擬店情報",
-                "contents": {}
-            };
-            msg.contents = Build_LaboFlex_Bubble("labo25");
-            break;
-        default:
-            msg = msg_text("個別の返信はできません(*:△:)");
-            break;
-    }
-
     /***** イメージマップタップ時の出力判定 *****/
     // [1] 校外マップ
     for(var i=0;i<OutsideArea.length;i++){
@@ -566,6 +490,94 @@ async function type_message(event) {
                 }
                 break;
         }
+    }
+    // [3] いつもの
+    switch(event.message.text) {
+        case "近くの模擬店を探す":
+            var userplace = await DB_get("UserData", "PLACE", "USERID", event.source.userId);
+            if (userplace == "" || userplace == "hazama" || userplace == "joho") {
+                msg = msg_text("近くに模擬店がないみたい...\n移動してからもう一度試してください");
+            } else {
+                //userplaceの場所に合う模擬店をjson or htmlから引っ張ってきてテンプレートメッセージにする
+                msg = {
+                    "type": "flex",
+                    "altText": "This is a flex message.",
+                    "contents": {
+                        "type": "carousel",
+                        "contents": []
+                    }
+                };
+                for (var i=0; i<shop_area[userplace].length; i++) {
+                    var shopid = shop_area[userplace][i];
+                    let tmp = Build_flex(shopid);
+                    if (tmp != null) {
+                        msg.contents.contents.push(tmp);
+                    }
+                }
+                if (msg.contents.contents.length == 0) {
+                    msg = msg_text("表示できる模擬店がありません");
+                }
+            }
+            break;
+        case "マップを表示":
+            msg = msg_text("[info] マップ画像はタッチできるよ！");
+            msg2 = msg_text("「○○へ」と書いたボタンやマップピンをタッチすると、エリアを移動したり、模擬店の情報が表示されます！");
+            msg3 = {
+                "type": "flex",
+                "altText":  "TOP",
+                "contents": {}
+            };
+            var buttonTexts = ["[Top] 校外全体マップへ","[Top] 校内全体マップへ"];
+            msg3.contents = Build_flexButton(buttonTexts);
+            msg4 = msg_text("行きたいエリアを選択してください。");
+            break;
+        case "[Top] 校内全体マップへ":
+            mapdata.location = "InsideTop";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("棟を選択してください");
+            break;
+        case "[Top] 校外全体マップへ":
+            mapdata.location = "OutsideTop";
+            msg = msg_imagemap("map",mapdata);
+            msg2 = msg_text("エリアを選択してください");
+            break;
+        case "7棟の情報を表示":
+            msg = {
+                "type": "flex",
+                "altText": "7棟の研究室情報",
+                "contents": {
+                    "type": "carousel",
+                    "contents": []
+                }
+            };
+            msg.contents.contents.push(Build_LaboFlex_Bubble("stamp"));
+            for (var i=17; i<= 23; i++) {
+                console.log("labo"+i);
+                msg.contents.contents.push(Build_LaboFlex_Bubble("labo"+i));
+            }
+            break;
+        case "8棟3階の1番の模擬店情報を表示":
+            msg = {
+                "type": "flex",
+                "altText": "8棟3階の1番の模擬店情報",
+                "contents": {}
+            };
+            msg.contents = Build_LaboFlex_Bubble("labo25");
+            break;
+        default:
+            if (msg == undefined) {
+                let appid = await DB_get("UserData", "APPID", "USERID", event.source.userId);
+                if (appid == undefined) {
+                    appid = await chatStart(event);
+                    let query = 'UPDATE UserData SET APPID = "{app}" WHERE USERID = "{id}"'
+                        .replace("{app}", appid)
+                        .replace("{id}", event.source.userId);
+                    connection.query(query);
+                }
+                msg = msg_text(await docomoChat(event, appid));
+            }
+            //msg = msg_text("個別の返信はできません(*:△:)");
+            break;
     }
     //画像を送信してきた時の処理
     if (event.message.type == "image") {
@@ -714,6 +726,52 @@ async function beacon_leave(event) {
 
 function access() {
     request.get("https://kunugida2018.tokyo-ct.ac.jp/api/web/counter");
+}
+
+/**
+ * docomo chat start
+ * @param  {obj} event
+ * @return {string} appId
+ */
+function chatStart(event) {
+    return new Promise(function(resolve, reject) {
+        let option = {
+            url: "https://api.apigw.smt.docomo.ne.jp/naturalChatting/v1/registration",
+            body: {
+                "APIKEY": docomoKey
+            },
+            json: {
+                "botId": "Chatting",
+                "appKind": "kufes18"
+            }
+        };
+        request.post(option, function(error, responce, body) {
+            if (error) {
+                reject(error);
+            }
+            resolve(body.appId);
+        });
+    });
+}
+
+function docomoChat(event, appid) {
+    return new Promise(function(resolve, reject) {
+        let option = {
+            url: "https://api.apigw.smt.docomo.ne.jp/naturalChatting/v1/dialogue",
+            body: {
+                "APIKEY": docomoKey
+            },
+            json: {
+                "language": "ja-JP",
+                "botId": "Chatting",
+                "appId": appid,
+                "voiceText": event.message.text
+            }
+        };
+        request.post(option, function(error, responce, body) {
+            resolve(body.systemText.expression);
+        });
+    });
 }
 
 
