@@ -16,7 +16,7 @@ var index = require('./routes/index');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(fluentLogger('td.test_db',{host: 'localhost', port: 24224, timeout: 3.0,responceHeaders:['X-userid']}));
+app.use(fluentLogger('td.test_db',{host: 'localhost', port: 24224, timeout: 3.0,responceHeaders:['X-userid'], enableReconnect: false}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

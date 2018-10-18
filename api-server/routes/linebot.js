@@ -131,15 +131,21 @@ function Build_flex(shopid) {
         tmp.header.contents[0].text = data.shopname;
         tmp.hero.url = "https://pbs.twimg.com/media/DpmNwqVUUAA2xlG.jpg";
         if (data.image.length != 0) {
-            tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[0]);
+            tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[data.image.length-1]);
         }
         for (var i=0; i<data.goods.length; i++) {
             var goodjson = data.goods[i];
             var g = JSON.parse(JSON.stringify(flex_item));
-            g.contents[0].text = goodjson.name;
-            g.contents[1].text = goodjson.price + "円";
-            tmp.body.contents.push(g);
+            if (goodjson.name != "" && goodjson != undefined) {
+                g.contents[0].text = goodjson.name;
+                g.contents[1].text = goodjson.price + "円";
+                tmp.body.contents.push(g);
+            }
         }
+        if (tmp.body.contents.length == 2) {
+            delete tmp["body"];
+        }
+        //console.log(JSON.stringify(tmp));
         return tmp;
     } else {
         return null;
@@ -399,6 +405,7 @@ async function type_message(event) {
                     "contents": []
                 }
             };
+            msg.contents.contents.push(Build_LaboFlex_Bubble("stamp"));
             for (var i=17; i<= 23; i++) {
                 console.log("labo"+i);
                 msg.contents.contents.push(Build_LaboFlex_Bubble("labo"+i));
@@ -429,7 +436,12 @@ async function type_message(event) {
                         "altText": "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報",
                         "contents": {}
                     };
-                    msg.contents = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
+                    let tmp = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
+                    if (tmp != null) {
+                        msg.contents = tmp;
+                    } else {
+                        msg = msg_text("表示できる情報がありません");
+                    }
                     //msg2 = msg_text("debug message [エリアの模擬店情報]");
                     break;
             }
@@ -490,8 +502,7 @@ async function type_message(event) {
                             };
                             msg.contents = Build_LaboFlex_Bubble(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
                             console.log(msg.contents.body.contents[0].contents[0].text);
-                        
-                        }else if(boothID_data["Inside"+mapBFdata[i][0]+j+k]== "consert"){
+                        }else if(boothID_data["Inside"+mapBFdata[i][0]+j+k]== "concert"){
                             // 研究室情報を送信する
                             msg = {
                                 "type": "flex",
@@ -505,7 +516,12 @@ async function type_message(event) {
                                 "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報",
                                 "contents": {}
                             };
-                            msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            let tmp = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            if (tmp != null) {
+                                msg.contents = tmp;
+                            } else {
+                                msg = msg_text("表示できる情報がありません");
+                            }
                             //msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
                         }
                         break;
