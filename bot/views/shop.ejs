@@ -1,3 +1,31 @@
+<%basicTags=[{"id":"0","tag":"模擬店"},{"id":"1","tag":"アトラクション"},{"id":"2","tag":"食べ物"},{"id":"3","tag":"飲み物"},{"id":"8","tag":"汁物"}]%>
+<%tasteTags=[{"id":"4","tag":"温かいもの"},{"id":"5","tag":"冷たいもの"},{"id":"6","tag":"甘い系"},{"id":"7","tag":"しょっぱい系"}]%>
+<%othorTags=[{"id":"9","tag":"ゲーム"},{"id":"10","tag":"展示"},{"id":"11","tag":"座れる場所"},{"id":12,"tag":"工作"},{"id":13,"tag":"キーホルダー"}]%>
+<div class="filter-block">
+    <form class=categories-box>
+        <h1>絞り込み</h1>
+        <div class="tags categories w3-round ">
+            <ul>
+                <% basicTags.forEach((value) => {%>
+                    <li class="checkbox w3-round w3-white w3-padding w3-margin"><label><input class="checkbox02-input" type="checkbox" rel="label<%=value.id%>"/><span class="checkbox02-parts"><%=value.tag%></span></label></li>
+                <% }); %>
+            </ul>
+        </div>
+        <div class="tags categories sub-categories w3-round w3-padding w3-margin">
+            <h1>食べたいもの</h1><h1>で選ぶ</h1>
+            <% tasteTags.forEach((value) => {%>
+                    <div class="checkbox w3-round w3-white"><label><input class="checkbox02-input" type="checkbox" rel="label<%=value.id%>"/><span class="checkbox02-parts"><%=value.tag%></span></label></div>
+                    <% }); %>
+        </div>
+        <div class="tags categories sub-categories w3-round w3-padding w3-margin">
+            <h1>その他</h1>
+            <% othorTags.forEach((value) => {%>
+                    <div class="checkbox w3-round w3-white"><label><input class="checkbox02-input" type="checkbox" rel="label<%=value.id%>"/><span class="checkbox02-parts"><%=value.tag%></span></label></div>
+                    <% }); %>
+        </div>
+    </form>
+</div>
+
 <% for(let id in data){%>
     <% if( data[id].goods.length){ %>
         <section class="shop-box" id="label<%= data[id].label[0]%>">

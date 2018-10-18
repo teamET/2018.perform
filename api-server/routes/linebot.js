@@ -429,7 +429,12 @@ async function type_message(event) {
                         "altText": "エリア"+OutsideArea[i][0]+"の"+OutsideArea[i][j]+"番の模擬店情報",
                         "contents": {}
                     };
-                    msg.contents = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
+                    let tmp = Build_flex(boothID_data["Outside"+OutsideArea[i][0]+OutsideArea[i][j]]);
+                    if (tmp != null) {
+                        msg.contents = tmp;
+                    } else {
+                        msg = msg_text("表示できる情報がありません");
+                    }
                     //msg2 = msg_text("debug message [エリアの模擬店情報]");
                     break;
             }
@@ -451,7 +456,7 @@ async function type_message(event) {
                     if(mapBFdata[i][0]==3){
                         if(j==3 || j==4){
                             // 3棟 3-4階 研究室情報を表示
-                            msg = ("研究室公開があります");
+                            msg = msg_text("研究室公開があります");
                             msg2 = {
                                 "type": "flex",
                                 "altText":  mapBFdata[i][0]+"棟"+j+"階の研究室情報",
@@ -461,6 +466,9 @@ async function type_message(event) {
                             else msg2.contents = Build_LaboFlex_Bubble("labo11");
                             mapdata.location = "I" + mapBFdata[i][0] + j;
                             msg3 = msg_imagemap("map",mapdata);
+                        }else{
+                            mapdata.location = "I"+mapBFdata[i][0]+j;
+                            msg = msg_imagemap("map",mapdata);   
                         }
                     }else{
                         mapdata.location = "I"+mapBFdata[i][0]+j;
@@ -502,7 +510,12 @@ async function type_message(event) {
                                 "altText":  mapBFdata[i][0]+"棟"+j+"階の"+k+"番目の模擬店情報",
                                 "contents": {}
                             };
-                            msg.contents = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            let tmp = Build_flex(boothID_data["Inside"+mapBFdata[i][0]+j+k]);
+                            if (tmp != null) {
+                                msg.contents = tmp;
+                            } else {
+                                msg = msg_text("表示できる情報がありません");
+                            }
                             //msg2 = msg_text("debug message [~棟~階~番の模擬店情報へ]");
                         }
                         break;
