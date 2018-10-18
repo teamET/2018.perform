@@ -136,9 +136,11 @@ function Build_flex(shopid) {
         for (var i=0; i<data.goods.length; i++) {
             var goodjson = data.goods[i];
             var g = JSON.parse(JSON.stringify(flex_item));
-            g.contents[0].text = goodjson.name;
-            g.contents[1].text = goodjson.price + "円";
-            tmp.body.contents.push(g);
+            if (goodjson.name != "" && goodjson.name != undefined) {
+                g.contents[0].text = goodjson.name;
+                g.contents[1].text = goodjson.price + "円";
+                tmp.body.contents.push(g);
+            }
         }
         if (tmp.body.contents.length == 2) {
             delete tmp["body"];
