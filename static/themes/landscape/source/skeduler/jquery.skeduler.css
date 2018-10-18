@@ -122,6 +122,69 @@
   display: block;
 }
 
+
+button {
+  color:#454545;
+  background:transparent;
+  border-width:2px;
+  border-style: solid;
+  position:relative;
+  margin:1em;
+  display:inline-block;
+  padding:0.5em 1em;
+  transition:all 0.3s ease-in-out;
+  text-align:center;
+  font-family:comfortaa;font-weight:bold
+}
+button:before, button:after {
+  content:'';
+  display:block;
+  position:absolute;
+  box-sizing:border-box;
+  border-style:solid;
+  width:1em;
+  height:1em;
+  transition:all 0.3s ease-in-out
+}
+button:before {
+  top:-6px;
+  left:-6px;
+  border-width:2px 0 0 2px;
+  z-index:5;}
+button:after {bottom:-6px;
+  right:-6px;
+  border-width:0 2px 2px 0;
+}
+button:hover:before, button:hover:after , .pink .selected:before, .pink .selected:after{
+  width:calc(100% + 12px);
+  height:calc(100% + 12px);
+}
+
+
+
+.pink button {
+  color:#fff;
+  border-color:#fff
+}
+.pink button:before, .pink button:after  {
+  border-color:#fff
+}
+.pink button:hover:before, .pink button:hover:after, .pink .selected:before, .pink .selected:after {
+  border-color:#fff;
+}
+.pink button:hover, .pink .selected {
+  color:#272822;
+  background-color:#fff;
+  border-color:#fff;
+}
+.pink .panel {
+  max-width:960px;
+  text-align:center;
+  position:relative;
+  margin:auto;
+}
+
+
 @media screen and (max-width: 500px) {
   .skeduler-headers > div {
     flex: 0 0 100px;
