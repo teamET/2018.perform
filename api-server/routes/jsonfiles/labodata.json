@@ -414,5 +414,20 @@
 			}
 		],
 		"supplementation": " "
+	},
+	"stamp": {
+		"floor": "7201",
+		"floorText": "7棟2階",
+		"title": "高専フレンズ",
+		"titleSize": "xl",
+		"datetime": [
+			{
+				"date": "両日",
+				"times": [
+					"終日"
+				]
+			}
+		],
+		"supplementation": "コスプレをしている高専生から\nスタンプをもらって\n景品と交換します。"
 	}
 }
