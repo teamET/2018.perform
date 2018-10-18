@@ -438,10 +438,10 @@ rtm.on("message",(event)=>{
     backup("events",events);
     backup("news",news);
 
-    make_shop_json();
-    make_template("shop","shop");
-    make_template("news","news");
-    make_template("shop","gallery");
+    tmpl.make_shop_json();
+    tmpl.make("shop","shop");
+    tmpl.make("news","news");
+    tmpl.make("shop","gallery");
 });
 
 if(require.main ===module);{
