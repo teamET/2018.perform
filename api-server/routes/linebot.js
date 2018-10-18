@@ -131,15 +131,20 @@ function Build_flex(shopid) {
         tmp.header.contents[0].text = data.shopname;
         tmp.hero.url = "https://pbs.twimg.com/media/DpmNwqVUUAA2xlG.jpg";
         if (data.image.length != 0) {
-            tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[0]);
+            tmp.hero.url = shop_url.replace("{shopid}", shopid).replace("{name}", data.image[data.image.length-1]);
         }
         for (var i=0; i<data.goods.length; i++) {
             var goodjson = data.goods[i];
             var g = JSON.parse(JSON.stringify(flex_item));
-            g.contents[0].text = goodjson.name;
+            if (goodjson.name == "") {
+                g.contents[0].text = " ";
+            } else {
+                g.contents[0].text = goodjson.name;
+            }
             g.contents[1].text = goodjson.price + "円";
             tmp.body.contents.push(g);
         }
+        //console.log(JSON.stringify(tmp));
         return tmp;
     } else {
         return null;
