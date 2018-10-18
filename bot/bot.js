@@ -303,6 +303,16 @@ rtm.on("message",(event)=>{
 	            return ;
         	}
     	}
+    }else if(event.text.split(' ')[0]==='.del_price'){
+		var cnt;
+		var Name = event.text.split(" ")[1];
+		for(cnt=0;cnt<shop[shop_id].goods.length;cnt++){
+	        if(shop[shop_id].goods[cnt]["name"] == Name){
+	            delete shop[shop_id].goods[cnt].first_price;
+	            slack("初期の値段を削除しました.",channel);
+	            return ;
+        	}
+    	}
     }else if(event.text.split(' ')[0]==='.show_tag'){
         tag_message(tag,channel);
     }else if(event.text.split(' ')[0]==='.del_tag'){
@@ -373,7 +383,7 @@ rtm.on("message",(event)=>{
 		var date = form_time.slice(8,9);
         console.log(news);
 		news[news.length] = {"id":news.length,"date":date,"time":form_time,"display_time":convert(start_time),"duration":"-1","start_time":start_time,"end_time":"-1","place":"-1","name":"-1","content":content,"from":from,"tstamp":ts};
-        news = utils.json_sort(news);
+        news = utils.news_sort(news);
         slack("ニュースが登録されました.",channel);	
     }else if(event.text.split(' ')[0]==='.show_event'){
         var events_text = JSON.stringify(events,null,'\t')
