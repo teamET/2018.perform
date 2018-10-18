@@ -327,15 +327,14 @@
                     "height": 100
                 }
             },
-
             {
                 "type": "message",
                 "text": "エリアDの4番の模擬店情報を表示",
                 "area": {
                     "x": 526,
-                    "y": 426,
-                    "width": 101,
-                    "height": 81
+                    "y": 520,
+                    "width": 108,
+                    "height": 83
                 }
             },
             {

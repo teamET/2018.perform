@@ -450,7 +450,7 @@ async function type_message(event) {
                     if(mapBFdata[i][0]==3){
                         if(j==3 || j==4){
                             // 3棟 3-4階 研究室情報を表示
-                            msg = ("研究室公開があります");
+                            msg = msg_text("研究室公開があります");
                             msg2 = {
                                 "type": "flex",
                                 "altText":  mapBFdata[i][0]+"棟"+j+"階の研究室情報",
