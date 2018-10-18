@@ -385,6 +385,9 @@ rtm.on("message",(event)=>{
 		news[news.length] = {"id":news.length,"date":date,"time":form_time,"display_time":convert(start_time),"duration":"-1","start_time":start_time,"end_time":"-1","place":"-1","name":"-1","content":content,"from":from,"tstamp":ts};
         news = utils.news_sort(news);
         slack("ニュースが登録されました.",channel);	
+    }else if(event.text.split(' ')[0]==='.news_sort'){
+        news = utils.news_sort(news);
+        slack("ニュースがソートされました.",channel);	
     }else if(event.text.split(' ')[0]==='.show_event'){
         var events_text = JSON.stringify(events,null,'\t')
         slack(events_text,channel);
