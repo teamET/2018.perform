@@ -1,7 +1,5 @@
 # Header
 menu:
-  #Home: /
-  #About: /about
   Booth/Lab: /mogi-shop
   Event: /event
   Gallery: /gallery
@@ -10,20 +8,9 @@ menu:
   LINE@: /lineat
   
 
-# Content
 excerpt_link: Read More
 fancybox: true
 
-# Sidebar
-# sidebar: right
-# widgets:
-# - category
-# - tag
-# - tagcloud
-# - archive
-# - recent_posts
-
-# display widgets at the bottom of index pages (pagination == 2)
 index_widgets:
 # - category
 # - tagcloud
@@ -36,7 +23,7 @@ show_count: false
 # Miscellaneous
 google_analytics: 'UA-121910998-7'
 gauges_analytics:
-favicon: /favicon.png
+favicon: /img/favicon.ico
 twitter:
 google_plus:
 fb_admins:
