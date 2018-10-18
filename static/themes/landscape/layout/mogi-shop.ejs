@@ -5,8 +5,6 @@
         <button class="tablinks w3-btn w3-black" onclick="chview(event,'Lab')">Lab</button>
     </div>
     <div id="Booth" class="tabcontent">
-        <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="search_shop_input" onkeyup="search_shop()">
-        <div id="booth"></div>
         <script> $(function(){ $('#booth').load('/data/views/shop.html'); }); </script>
     </div>
     <div id="Lab" class="tabcontent">
@@ -56,14 +54,20 @@
         var categories = [],
         resources = [],
         initial = "";
-        categories[0] = "#label1";
-        categories[1] = "#label2";
-        categories[2] = "#label3";
-        categories[3] = "#label4";
-        categories[4] = "#label5";
-        categories[5] = "#label6";
-        categories[6] = "#label7";
-        categories[7] = "#label8";
+        categories[0] = "#label0";
+        categories[1] = "#label1";
+        categories[2] = "#label2";
+        categories[3] = "#label3";
+        categories[4] = "#label4";
+        categories[5] = "#label5";
+        categories[6] = "#label6";
+        categories[7] = "#label7";
+        categories[8] = "#label8";
+        categories[9] = "#label9";
+        categories[10] = "#label10";
+        categories[11] = "#label11";
+        categories[12] = "#label12";
+        categories[13] = "#label13";
 
         $('div.tags').find('input[type="checkbox"]').click(function() {
         resources = [];
@@ -129,6 +133,7 @@
             document.getElementById(view).style.display="block";
             event.currentTarget.className+=" active";
         }
+        chview(event,'Booth')
     </script>
     <style>
         <!--
