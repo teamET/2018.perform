@@ -1,11 +1,9 @@
 (function generate() {
     // window.jQuery = window.jQuery;
     console.log(window.$,window.$("#skeduler-container"),window.$("#skeduler-container").skeduler);
-    console.log("generate");
     var tasks = [];
     var places = ["第一体育館", "第二体育館", "購買前", "野外ステージ", "専攻科棟"]
     $.getJSON("/data/events.json", function(data) {
-        console.log(data);
         var date = new Date();
         function getNow() {
             function to_string(d) {
@@ -13,7 +11,6 @@
             }
             var date = new Date();
             var now = `${to_string(date.getDay())}/${date.getHours()}:${date.getMinutes()}`
-            console.log(now);
             return now;
         }
         var count=0;
@@ -26,8 +23,6 @@
             for (var i = 0; i < data.length; i++) {
                 
                 var columun = places.indexOf(data[i].place);
-                console.log(data[i].place);
-                console.log(columun);
                 var task = {
                     startTime: Math.round(data[i].display_time*100)/100,
                     duration: Math.round(data[i].duration*100)/100,
@@ -52,7 +47,7 @@
                 headers: places,
                 tasks: tasks,
                 cardTemplate: '<div>${from}</div><div>${time}</div><div class="hide-content">${title}<br>${content}</div>',
-                onClick: function (e, t) { console.log(e, t); }
+                onClick: function (e, t) { console.log(); }
             });
         }
 
