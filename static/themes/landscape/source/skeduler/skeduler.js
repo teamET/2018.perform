@@ -1,7 +1,4 @@
 (function generate() {
-    // window.jQuery = window.jQuery;
-    console.log(window.$,window.$("#skeduler-container"),window.$("#skeduler-container").skeduler);
-    console.log("generate");
     var tasks = [];
     var places = ["第一体育館", "第二体育館", "購買前"]
     $.getJSON("/data/events.json", function(data) {
@@ -13,7 +10,6 @@
             }
             var date = new Date();
             var now = `${to_string(date.getDay())}/${date.getHours()}:${date.getMinutes()}`
-            console.log(now);
             return now;
         }
         var count=0;
@@ -42,7 +38,7 @@
             }
             return tasks;
         }
-        var tasks=get_schedule(21);
+        var tasks=get_schedule(20);
         set_tasks(tasks);
         function set_tasks(tasks) {
             jQuery("#skeduler-container").skeduler({
