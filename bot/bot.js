@@ -5,7 +5,6 @@ const puppeteer = require("puppeteer");
 const request = require("request");
 const jsdom=require("jsdom");
 const {RTMClient}=require("@slack/client");
-const rtm=new RTMClient(process.env.SLACK_TOKEN);
 const utils= require("./utils.js");
 var im = require('imagemagick');
 require('date-utils');
@@ -17,6 +16,7 @@ const shop= require("./public/shop.json");
 
 //load env
 const SLACK_TOKEN=process.env.SLACK_TOKEN;
+const rtm=new RTMClient(SLACK_TOKEN);
 const DEV_SERVER=process.env.DEV_SERVER;
 
 var slack_id;
@@ -30,9 +30,9 @@ var photos=[];
 var tag;
 var event_text;
 var news;
-
+var img_list;
 function create_json(){
-    var events_data;
+    var events_data,img_list_data;
 	try {
 		tag=JSON.parse(fs.readFileSync("./public/tag.json"));
 	}catch(e){
@@ -65,14 +65,22 @@ function create_json(){
         news = events;
         fs.writeFileSync('./public/news.json',JSON.stringify(news));		
     }
-
+    try {
+        img_list_data = fs.readFileSync("./private/img_list.json");
+        img_list = JSON.parse(img_list_data);
+    }catch(e){
+        console.log(e);
+    }
 }
 
 function backup(name,data){
     utils.log("name : ```"+data+"```");
     fs.writeFileSync("./public/"+name+".json",JSON.stringify(data));
 }
-
+function backup2(name,data){
+    utils.log("name : ```"+data+"```");
+    fs.writeFileSync("./private/"+name+".json",JSON.stringify(data));
+}
 function save_shop_image(event,shop_id){
     utils.log(event.files[0].url_private_download);
     console.log(event.files[0].url_private_download);
@@ -82,8 +90,9 @@ function save_shop_image(event,shop_id){
     console.log(shop);
     console.log(shop_id);
     console.log(shop[shop_id]);
-    shop[shop_id].image.push(title);
-    slack("公開の許可をお願いします。\nshop_id : "+shop_id+" , image_name : "+title,"GCS4TEWGZ");
+    img_list.push({"shop_id":shop_id,"img_name":title});
+//    shop[shop_id].image.push(title);
+    slack("公開の許可をお願いします。\n```shop_id : "+shop_id+" , image_name : "+title+"```","GCS4TEWGZ");
 }
 
 function slack(data,channel){
@@ -168,6 +177,15 @@ function admin(event){
 	}
 }
 
+function isExistFile(file) {
+  try {
+    fs.statSync(file);
+    return true
+  } catch(err) {
+    if(err.code === 'ENOENT') return false
+  }
+}
+
 rtm.on("hello",(event)=>{
     utils.log("hello slack");
     console.log("start slack process");
@@ -185,11 +203,36 @@ rtm.on("message",(event)=>{
 //		admin(event);
         if(event.text.split(' ')[0]=="add"){
             resize(event.text.split(' ')[1],event.text.split(' ')[2]);
+            shop[event.text.split(' ')[1]].image.push(event.text.split(' ')[2]);
+            img_list.push({"shop_id":event.text.split(' ')[1],"img_name":event.text.split(' ')[2]});
+            for(var i in img_list){
+                if(img_list[i].img_name == event.text.split(' ')[2]){
+                    img_list.splice(i,1);
+                    break;
+                }
+            }
             slack("画像を公開します","GCS4TEWGZ");
         }else if(event.text.split(' ')[0]=="del"){
             fs.unlinkSync("./public/"+event.text.split(' ')[1]+"/"+event.text.split(' ')[2]);
+    		var cnt = shop[shop_id].image.indexOf(event.text.split(' ')[2]);
+			shop[shop_id].image.splice(cnt,1);
             slack("画像を削除しました","GCS4TEWGZ");
+        }else if(event.text.split(' ')[0]=='show'){
+            if(img_list.length>0) slack("```"+JSON.stringify(img_list)+"```","GCS4TEWGZ"); 
+            else slack("現在、許可待ちの画像はありません","GCS4TEWGZ");
+        }else if(event.text.split(' ')[0]=='cancel'){
+            var length = img_list.length;
+            for(var i in img_list){
+                if(img_list[i].img_name == event.text.split(' ')[2]){
+                    img_list.splice(i,1);
+                    break;
+                }
+            }
+            if(i==length) slack("一致する画像がありません","GCS4TEWGZ");
+            else slack("キャンセルしました","GCS4TEWGZ");
         }
+        backup("shop",shop);
+        backup2("img_list",img_list);
 		return;
 	}else if(event.channel=="CD0KZSRQ9"){
 		if(event.files){
@@ -201,8 +244,9 @@ rtm.on("message",(event)=>{
 	}else if(shopd){
         shop_id=shopd[0];
         shop_name=shopd[1];
-        if(!shop[shop_id]) shop[shop_id]={"shopname":shop_name,"goods":[],"image":[],"label":[]};
+        if(!shop[shop_id]) shop[shop_id]={"shopname":shop_name,"goods":[],"image":[],"label":[],"boothId":channel};
         if(!shop[shop_id].shopname) shop[shop_id].shopname=shop_name;
+        if(!shop[shop_id].boothId) shop[shop_id].boothId = account[channel].boothid;
         console.log(shop_id,shop_name);
     }else{
         return;
@@ -278,6 +322,7 @@ rtm.on("message",(event)=>{
 		if(cnt>=0){
 			shop[shop_id].image.splice(cnt,1);
 			slack("画像を削除しました.",channel);
+            if(isExistFile("./public/"+shop_id+"/"+event.text.split(' ')[1])=='true') fs.unlinkSync("./public/"+shop_id+"/"+event.text.split(' ')[1]);
 			return ;
 		}else{
 			slack("一致する画像がありません.",channel);
@@ -336,7 +381,7 @@ rtm.on("message",(event)=>{
     }else if(event.text.split(' ')[0]==='.show_news'){
         var newss_text = JSON.stringify(news,null,'\t')
         slack(newss_text,channel);
-    }else if(event.text.split(',')[0]==='.r'){
+    }else if(event.text.split(',')[0]==='.read_event'){
     	var event_text = event.text.split(',');
     	event_text.shift();
     	for(let item of event_text) slack(item,channel);
@@ -392,10 +437,11 @@ rtm.on("message",(event)=>{
     backup("tag",tag);
     backup("events",events);
     backup("news",news);
-    tmpl.make("shop");
-    tmpl.make("news");
-    tmpl.make_gallery();
 
+    make_shop_json();
+    make_template("shop","shop");
+    make_template("news","news");
+    make_template("shop","gallery");
 });
 
 if(require.main ===module);{
