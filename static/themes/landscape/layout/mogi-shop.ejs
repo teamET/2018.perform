@@ -64,26 +64,19 @@
         categories[5] = "#label6";
         categories[6] = "#label7";
         categories[7] = "#label8";
-
         $('div.tags').find('input[type="checkbox"]').click(function() {
         resources = [];
         initial = "";
         if ($('div.tags.categories input[type="checkbox"]:checked').length > 0) {
             $('.results shop').hide();
-            
             $('.topics input[type="checkbox"]').removeAttr('disabled');
-            
-        
             $('div.tags').find('input:checked').each(function() {
             if (($.inArray($(this).attr('rel'), resources)) === -1) {
                 resources.push($(this).attr('rel'));
             }
-            
-            
             initial = resources.toString();
             initial = initial.replace(/,/g, '.');
-            });    
-            
+            });
             for (var i = 0; i < categories.length; ++i) {
             if ($(categories[i] + " .results > shop." + initial).length != 0) {
                 $(".results > shop." + initial).show('fast');
@@ -93,7 +86,6 @@
             }
             }
         } else {
-            
             $('.topics input[type="checkbox"]').attr('disabled', 'disabled');
             $('.results > shop').fadeIn('fast');
             _showCategories(categories);
@@ -129,6 +121,7 @@
             document.getElementById(view).style.display="block";
             event.currentTarget.className+=" active";
         }
+        chview(event,'Booth');
     </script>
     <style>
         <!--
