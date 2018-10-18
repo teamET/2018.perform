@@ -145,6 +145,7 @@ function Build_flex(shopid) {
         if (tmp.body.contents.length == 2) {
             delete tmp["body"];
         }
+        console.log(JSON.stringify(tmp));
         return tmp;
     } else {
         return null;
