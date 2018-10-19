@@ -5,7 +5,6 @@
     </div>
     <div id="Booth" class="tabcontent">
         <div id="booth"></div>
-        <script> $(function(){ $('#booth').load('/data/views/shop.html'); }); </script>   
     </div>
     <div id="Lab" class="tabcontent">
         <table class="w3-table-all w3-centered w3-hoverable">
@@ -47,6 +46,7 @@
         </table>
     </div>
     <script>
+        $(function(){ $('#booth').load('/data/views/shop.html'); });
         var _showCategories = function(item) {
             for (var x = 0; x < item.length; ++x) {
                 $(item[x]).fadeIn();
