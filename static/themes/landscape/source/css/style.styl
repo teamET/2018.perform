@@ -139,26 +139,7 @@ if sidebar
   text-align: center;  
 }
 
-.categories-box{
-  display: inline-block;
-  background-color: rgba(0,0,0,.3); 
-}
 
-.categories-box h1{
-  font-size: 17px;
-  color: #fbf9e2;
-  text-align: left;
-}
-
-.categories{
-  display: inline-block;
-  width: 14em; 
-}
-
-.sub-categories{
-  width: 17em; 
-  font-size: 13px;
-}
 
 
 
@@ -471,10 +452,35 @@ body {
   }
   
 /*Checkboxes styles*/
+.categories-box{
+  padding-top: 5px; 
+  display: inline-block;
+  background-color: rgba(0,0,0,.3); 
+}
+
+.categories-box h1{
+  font-size: 12px;
+  color: #fbf9e2;
+  text-align: left;
+}
+
+.categories{
+  margin-right: 30px;
+  padding: 5px;
+  display: inline-block;
+}
+
+
+.sub-categories{
+  margin-left: 2px;
+  margin-right: 0;
+  padding: 5px;
+}
+
+
 
 #Booth .boxes {
-  margin: auto;
-  padding: 10px;
+  padding: 5px;
   background: #484848;
 }
 
@@ -485,12 +491,16 @@ body {
   position: relative;
   padding-left: 35px;
   margin-bottom: 2px;
-  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  font: 17px/20px 'Open Sans', Arial, sans-serif;
   color: #ddd;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+}
+
+.sub-categories #Booth input[type="checkbox"] + label {
+  font-size: 12px;
 }
 
 #Booth input[type="checkbox"] + label:last-child { margin-bottom: 0; }
@@ -525,6 +535,7 @@ body {
   text-align: left;
   padding: 2px;
 }
+
 
 
 @media screen and (min-width: 500px) {
