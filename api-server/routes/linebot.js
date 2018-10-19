@@ -569,6 +569,9 @@ async function type_message(event) {
             };
             msg.contents = Build_LaboFlex_Bubble("labo25");
             break;
+        case "ゆるゆるして":
+            msg = msg_text("ゆるゆるしないで");
+            break;
         default:
             if (msg == undefined) {
                 let appid = await DB_get("UserData", "APPID", "USERID", event.source.userId);
