@@ -1161,15 +1161,15 @@ function init(event){
      */
     function GetLocationData(boothID){
       if(boothID.match(/labo/)){
-        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="")return "<div class = \"LocationNone\">表示できる情報がありません</div>";
+        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="\n")return "<div class = \"LocationNone\">表示できる情報がありません</div>";
         return j_laboData[boothID];
       }
       if(boothID == "concert"){
-        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="")return "<div class = \"LocationNone\">表示できる情報がありません</div>";
+        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="\n")return "<div class = \"LocationNone\">表示できる情報がありません</div>";
         return j_laboData[boothID];
       }
       if(boothID == "seven"){
-        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="")return "<div class = \"LocationNone\">表示できる情報がありません</div>";
+        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="\n")return "<div class = \"LocationNone\">表示できる情報がありません</div>";
         return j_laboData["seven"];
       }
       if(j_boothData[boothID]==undefined || j_boothData[boothID]=="\n")return "<div class = \"LocationNone\">表示できる情報がありません</div>";
