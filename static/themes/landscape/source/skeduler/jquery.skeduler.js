@@ -1,7 +1,6 @@
 (function () {
   $win = jQuery(window);
   var windowWidth = $win.width();
-  console.log(windowWidth);
   var defaultSettings = {
     // Data attributes
     headers: [],  // String[] - Array of column headers

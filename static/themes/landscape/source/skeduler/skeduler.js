@@ -1,6 +1,5 @@
 (function generate() {
     // window.jQuery = window.jQuery;
-    console.log(window.$,window.$("#skeduler-container"),window.$("#skeduler-container").skeduler);
     var tasks = [];
     var places = ["第一体育館", "第二体育館", "購買前", "野外ステージ", "専攻科棟"]
     $.getJSON("/data/events.json", function(data) {
