@@ -146,7 +146,7 @@ if sidebar
 .categories-box h1{
   font-size: 17px;
   color: #fbf9e2;
-  text-align: center;
+  text-align: left;
 }
 
 .categories{
@@ -155,66 +155,11 @@ if sidebar
 }
 
 .sub-categories{
-  width: 12em; 
+  width: 17em; 
   font-size: 13px;
 }
 
 
-
-.checkbox input{
-  display: none; 
-}
-
-.checkbox02-input:checked + .checkbox02-parts {
-    opacity: 1;
-    font-weight: bold;
-}
-
-.checkbox02-parts {
-    display: inline-block;
-    padding-left: 15px;
-    position: relative;
-    opacity: 0.8; 
-    width:100%;
-}
-
-.sub-categories .checkbox {
-    margin: 2px;
-    padding: 2px 4px;
-    width: 9em;
-}
-
-.checkbox02-parts::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: 9px;
-    left: 0px;
-    background: #fc861e;
-    transition: width .2s;
-    transform: rotate(140deg);
-}
-.checkbox02-input:checked + .checkbox02-parts::after {
-    width: 2px;
-    height: 13px;
-}
-
-.checkbox02-parts::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0px;
-    background: #fc861e;
-    top: 4px;
-    left: 6px;
-    transition: width .2s .2s;
-    transform: rotate(230deg);
-}
-.checkbox02-input:checked + .checkbox02-parts::before {
-    width: 2px;
-    height: 5px;
-}
 
 .del {
   color: #fc861e;
@@ -516,6 +461,63 @@ body {
 #event{
   margin-top: 10px;
   }
+  
+/*Checkboxes styles*/
+
+#Booth .boxes {
+  margin: auto;
+  padding: 10px;
+  background: #484848;
+}
+
+#Booth input[type="checkbox"] { display: none; }
+
+#Booth input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 2px;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  color: #ddd;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+#Booth input[type="checkbox"] + label:last-child { margin-bottom: 0; }
+
+#Booth input[type="checkbox"] + label:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #6cc0e5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .6;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+#Booth input[type="checkbox"]:checked + label:before {
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#Booth li{
+  text-align: left;
+  padding: 2px 0;
+}
+
 
 @media screen and (min-width: 500px) {
   .header_title {
@@ -772,3 +774,4 @@ body {
     padding-bottom : 10%;
   }
 }
+
