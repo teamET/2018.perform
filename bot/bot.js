@@ -237,6 +237,7 @@ rtm.on("message",(event)=>{
 	}else if(event.channel=="CD0KZSRQ9"){
 		if(event.files){
 			photos.push(utils.download("photo_club",event.files[0].title,event.files[0].url_private_download));
+            img_list.push({"shop_id":"photo_club","img_name":event.files[0].url_private_download.split('/').pop()});
             slack("公開の許可をお願いします。\nshop_id : photo_club , image_name : "+event.files[0].title,"GCS4TEWGZ");
             slack(JSON.stringify(photos),event.channel);
 		}
