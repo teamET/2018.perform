@@ -778,6 +778,7 @@ function init(event){
       InitPinColor();
       ClearBoothInfo();
       WriteInfotxt(currentMapID);
+      document.getElementById('buttontxt').innerHTML = "使い方を表示";
     }
     /**
      * 全体から構内topへ
@@ -841,21 +842,26 @@ function init(event){
           if(nextAlpha){
             WriteInfotxt("BF7");
             h_boothdata.innerHTML = GetLocationData("seven");
+            document.getElementById('buttontxt').innerHTML = "情報を表示";
+            document.getElementById('button').style.display='block'
           }else{
             WriteInfotxt("InsideTop");
             ClearBoothInfo();
+            document.getElementById('buttontxt').innerHTML = "使い方を表示";
           }
         }else{
           MapChange(InsideTopContainer,BuildingFloorContainers[i][0]);
           createjs.Tween.get(c_sevenStar).to({alpha:0},500);
           WriteInfotxt("InsideTop");
           ClearBoothInfo();
+          document.getElementById('buttontxt').innerHTML = "使い方を表示";
         }
         return;
       }
       createjs.Tween.get(c_sevenStar).to({alpha:0},500);
       WriteInfotxt("InsideTop");
       ClearBoothInfo();
+      document.getElementById('buttontxt').innerHTML = "使い方を表示";
       // すでに出ている吹き出しをクリックしたとき
       if(e_balloons[e_balloonTarget] == 1){
         InsideTopContainer.removeChild(balloonContainers[e_balloonTarget]);
@@ -908,6 +914,7 @@ function init(event){
       InitPinColor(); 
       ClearBoothInfo();
       WriteInfotxt(currentMapID);
+      document.getElementById('buttontxt').innerHTML = "使い方を表示";
     }
     /**
      * 上の階へ
@@ -922,6 +929,7 @@ function init(event){
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j+1],"top");
       InitPinColor();
       ClearBoothInfo();
+      document.getElementById('buttontxt').innerHTML = "使い方を表示";
       WriteInfotxt(currentMapID);
     }
     /**
@@ -937,6 +945,7 @@ function init(event){
       MapChangeAnimation_Slide(BuildingFloorContainers[i][j],BuildingFloorContainers[i][j-1],"bottom");
       InitPinColor();
       ClearBoothInfo();
+      document.getElementById('buttontxt').innerHTML = "使い方を表示";
       WriteInfotxt(currentMapID);
 
     }
@@ -1152,14 +1161,18 @@ function init(event){
      */
     function GetLocationData(boothID){
       if(boothID.match(/labo/)){
+        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="\n")return "<div class = \"LocationNone\">表示できる情報がありません</div>";
         return j_laboData[boothID];
       }
       if(boothID == "concert"){
+        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="\n")return "<div class = \"LocationNone\">表示できる情報がありません</div>";
         return j_laboData[boothID];
       }
       if(boothID == "seven"){
+        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="\n")return "<div class = \"LocationNone\">表示できる情報がありません</div>";
         return j_laboData["seven"];
       }
+      if(j_boothData[boothID]==undefined || j_boothData[boothID]=="\n")return "<div class = \"LocationNone\">表示できる情報がありません</div>";
       return j_boothData[boothID];
     }
 
@@ -1176,6 +1189,8 @@ function init(event){
       //dh_pindata.textContent = "エリア"+g_areaTexts[i]+"の"+(parseInt(j)+1)+"番目";
       var boothID = j_boothID["Outside" + g_areaTexts[i] + (parseInt(j)+1)];
       h_boothdata.innerHTML  = GetLocationData(boothID);
+      document.getElementById('buttontxt').innerHTML = "情報を表示";
+      document.getElementById('button').style.display='block'
     }
     // DOMに情報を書き込む（構内）-------------------------------------------------------
     /**
@@ -1192,7 +1207,9 @@ function init(event){
       if(i==3)i=4;
       //dh_pindata.textContent = e_buildNum[i]+"棟"+(parseInt(j)+1)+"階の"+(parseInt(k)+1)+"番目のピン";
       var boothID = j_boothID["Inside" + e_buildNum[i] + (parseInt(j)+1) + (parseInt(k)+1)];
-      h_boothdata.innerHTML  = GetLocationData(boothID);
+      h_boothdata.innerHTML = GetLocationData(boothID);
+      document.getElementById('buttontxt').innerHTML = "情報を表示";
+      document.getElementById('button').style.display='block'
     }
     /**
      * 説明文・利用方法等のDOM表示を全て消去する
