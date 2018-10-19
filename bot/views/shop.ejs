@@ -2,26 +2,36 @@
 <%tasteTags=[{"id":"4","tag":"温かいもの"},{"id":"5","tag":"冷たいもの"},{"id":"6","tag":"甘い系"},{"id":"7","tag":"しょっぱい系"}]%>
 <%othorTags=[{"id":"9","tag":"ゲーム"},{"id":"10","tag":"展示"},{"id":"11","tag":"座れる場所"},{"id":12,"tag":"工作"},{"id":13,"tag":"キーホルダー"}]%>
 <div class="filter-block">
-    <form class=categories-box>
+    <form class="categories-box" id="Booth">
         <h1>絞り込み</h1>
-        <div class="tags categories w3-round ">
+        <div class="tags categories">
             <ul>
-                <% basicTags.forEach((value) => {%>
-                    <li class="checkbox w3-round w3-white w3-padding w3-margin"><label><input class="checkbox02-input" type="checkbox" rel="label<%=value.id%>"/><span class="checkbox02-parts"><%=value.tag%></span></label></li>
+                <div  class="checkbox boxes" id="Booth">
+                <% basicTags.forEach((value,index) => {%>
+                    <li><input id="basic<%=index%>" type="checkbox" rel="label<%=value.id%>"/><label for="basic<%=index%>"><%=value.tag%></label></li>
                 <% }); %>
+                </div>
             </ul>
         </div>
         <div class="tags categories sub-categories w3-round w3-padding w3-margin">
-            <h1>食べたいもの</h1><h1>で選ぶ</h1>
-            <% tasteTags.forEach((value) => {%>
-                    <div class="checkbox w3-round w3-white"><label><input class="checkbox02-input" type="checkbox" rel="label<%=value.id%>"/><span class="checkbox02-parts"><%=value.tag%></span></label></div>
-                    <% }); %>
+            <h1>食べたいもので選ぶ</h1>
+            <div  class="checkbox boxes" id="Booth">
+                <ul>
+                <% tasteTags.forEach((value,index) => {%>
+                    <li><input id="taste<%=index%>" type="checkbox" rel="label<%=value.id%>"/><label for="taste<%=index%>"><%=value.tag%></label></li>
+                <% }); %>
+                </ul>
+            </div>    
         </div>
         <div class="tags categories sub-categories w3-round w3-padding w3-margin">
             <h1>その他</h1>
-            <% othorTags.forEach((value) => {%>
-                    <div class="checkbox w3-round w3-white"><label><input class="checkbox02-input" type="checkbox" rel="label<%=value.id%>"/><span class="checkbox02-parts"><%=value.tag%></span></label></div>
-                    <% }); %>
+            <div  class="checkbox boxes" id="Booth">
+                <ul>
+                <% othorTags.forEach((value,index) => {%>
+                    <li><input id="other<%=index%>" type="checkbox" rel="label<%=value.id%>"/><label for="other<%=index%>"><%=value.tag%></label></li>
+                <% }); %>
+                </ul>
+            </div>
         </div>
     </form>
 </div>
