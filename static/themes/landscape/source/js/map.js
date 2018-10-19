@@ -1152,14 +1152,18 @@ function init(event){
      */
     function GetLocationData(boothID){
       if(boothID.match(/labo/)){
+        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="")return "表示できる情報がありません";
         return j_laboData[boothID];
       }
       if(boothID == "concert"){
+        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="")return "表示できる情報がありません";
         return j_laboData[boothID];
       }
       if(boothID == "seven"){
+        if(j_laboData[boothID]==undefined || j_laboData[boothID]=="")return "表示できる情報がありません";
         return j_laboData["seven"];
       }
+      if(j_boothData[boothID]==undefined || j_boothData[boothID]=="\n")return "表示できる情報がありません";
       return j_boothData[boothID];
     }
 
@@ -1192,7 +1196,8 @@ function init(event){
       if(i==3)i=4;
       //dh_pindata.textContent = e_buildNum[i]+"棟"+(parseInt(j)+1)+"階の"+(parseInt(k)+1)+"番目のピン";
       var boothID = j_boothID["Inside" + e_buildNum[i] + (parseInt(j)+1) + (parseInt(k)+1)];
-      h_boothdata.innerHTML  = GetLocationData(boothID);
+      h_boothdata.innerHTML = GetLocationData(boothID);
+      
     }
     /**
      * 説明文・利用方法等のDOM表示を全て消去する
