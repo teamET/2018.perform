@@ -46,8 +46,13 @@
         </table>
     </div>
     <script>
-        $(function(){ $('#booth').load('/data/views/shop.html'); });
-        console.log($);
+        $(function(){
+            $('#booth')
+                .load('/data/views/shop.html')
+                .ready(()=>{
+                    console.log('ready',$);
+                });
+        });
         var _showCategories = function(item) {
             for (var x = 0; x < item.length; ++x) {
                 $(item[x]).fadeIn();
