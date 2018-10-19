@@ -567,7 +567,7 @@ async function type_message(event) {
         default:
             if (msg == undefined) {
                 let appid = await DB_get("UserData", "APPID", "USERID", event.source.userId);
-                if (appid == undefined) {
+                if (appid == undefined　|| appid == null || appid == "") {
                     appid = await chatStart(event);
                     let query = 'UPDATE UserData SET APPID = "{app}" WHERE USERID = "{id}"'
                         .replace("{app}", appid)
@@ -736,10 +736,7 @@ function access() {
 function chatStart(event) {
     return new Promise(function(resolve, reject) {
         let option = {
-            url: "https://api.apigw.smt.docomo.ne.jp/naturalChatting/v1/registration",
-            body: {
-                "APIKEY": docomoKey
-            },
+            url: "https://api.apigw.smt.docomo.ne.jp/naturalChatting/v1/registration?APIKEY=" + docomoKey,
             json: {
                 "botId": "Chatting",
                 "appKind": "kufes18"
@@ -757,10 +754,7 @@ function chatStart(event) {
 function docomoChat(event, appid) {
     return new Promise(function(resolve, reject) {
         let option = {
-            url: "https://api.apigw.smt.docomo.ne.jp/naturalChatting/v1/dialogue",
-            body: {
-                "APIKEY": docomoKey
-            },
+            url: "https://api.apigw.smt.docomo.ne.jp/naturalChatting/v1/dialogue?APIKEY=" + docomoKey,
             json: {
                 "language": "ja-JP",
                 "botId": "Chatting",
