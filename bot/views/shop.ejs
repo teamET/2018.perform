@@ -1,41 +1,3 @@
-<%basicTags=[{"id":"0","tag":"模擬店"},{"id":"1","tag":"アトラクション"},{"id":"2","tag":"食べ物"},{"id":"3","tag":"飲み物"},{"id":"8","tag":"汁物"}]%>
-<%tasteTags=[{"id":"4","tag":"温かいもの"},{"id":"5","tag":"冷たいもの"},{"id":"6","tag":"甘い系"},{"id":"7","tag":"しょっぱい系"}]%>
-<%othorTags=[{"id":"9","tag":"ゲーム"},{"id":"10","tag":"展示"},{"id":"11","tag":"座れる場所"},{"id":12,"tag":"工作"},{"id":13,"tag":"キーホルダー"}]%>
-<div class="filter-block">
-    <form class="categories-box" id="Booth">
-        <h1>絞り込み</h1>
-        <div class="tags categories">
-            <ul>
-                <div  class="checkbox boxes" id="Booth">
-                <% basicTags.forEach((value,index) => {%>
-                    <li><input id="basic<%=index%>" type="checkbox" rel="label<%=value.id%>"/><label for="basic<%=index%>"><%=value.tag%></label></li>
-                <% }); %>
-                </div>
-            </ul>
-        </div>
-        <div class="tags categories sub-categories w3-round w3-padding w3-margin">
-            <h1>食べたいもので選ぶ</h1>
-            <div  class="checkbox boxes" id="Booth">
-                <ul>
-                <% tasteTags.forEach((value,index) => {%>
-                    <li><input id="taste<%=index%>" type="checkbox" rel="label<%=value.id%>"/><label for="taste<%=index%>"><%=value.tag%></label></li>
-                <% }); %>
-                </ul>
-            </div>    
-        </div>
-        <div class="tags categories sub-categories w3-round w3-padding w3-margin">
-            <h1>その他</h1>
-            <div  class="checkbox boxes" id="Booth">
-                <ul>
-                <% othorTags.forEach((value,index) => {%>
-                    <li><input id="other<%=index%>" type="checkbox" rel="label<%=value.id%>"/><label for="other<%=index%>"><%=value.tag%></label></li>
-                <% }); %>
-                </ul>
-            </div>
-        </div>
-    </form>
-</div>
-
 <% for(let id in data){%>
     <% if( data[id].goods.length){ %>
         <section class="shop-box" id="label<%= data[id].label[0]%>">
@@ -46,7 +8,7 @@
                             <% if( data[id].image.length ){ %>
                                 <img src="https://kunugida2018.tokyo-ct.ac.jp/data/<%=id%>/<%=data[id].image[0] %>" alt="<%= data[id].shopname %>の宣伝画像">
                             <% }else{ %>
-                                <img src="https://user-images.githubusercontent.com/38575274/46793140-f7660880-cd7f-11e8-9e1c-773c09a992c5.png">
+                                <img src="/img/noimage.png">
                             <% } %>
                         </div>
                         <table class="" id="search_shop_table">

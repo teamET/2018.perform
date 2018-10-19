@@ -40,7 +40,15 @@ function json_sort(arr){
 	}
 	return arr;
 }
-
+function news_json_sort(arr){
+	arr.sort(function(a,b) {
+ 		return (a.time > b.time ? -1 : 1);
+	});
+	for(i = 0 ; i < arr.length ; i++ ){
+　  	arr[i].id = i;
+	}
+	return arr;
+}
 function to_Array(shop){
 	var Ashop = [];
 	var cnt=0;
@@ -167,6 +175,7 @@ module.exports={
 	disallow_image:disallow_image,
     fileid2url:fileid2url,
 	json_sort:json_sort,
+	news_sort:news_json_sort,
 	to_Array:to_Array
 }
 
