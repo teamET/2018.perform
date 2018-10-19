@@ -61,10 +61,10 @@
                             <%  for( var i=0 ; i < data[id].goods.length ; i+=1) { %>
                                 <tr>
                                     <td> <%= data[id].goods[i].name %> </td>
-                                    <% if(!data[id].goods[i].first_price){ %>
-                                        <td><%= data[id].goods[i].price %>円</td>
-                                    <% }else if(data[id].goods[i].price==0){ %>
+                                    <% if(data[id].goods[i].price == "Free" || data[id].goods[i].price == "free" ){ %>
                                         <td>Free</td>
+                                    <% }else if(!data[id].goods[i].first_price){ %>
+                                        <td><%= data[id].goods[i].price %>円</td>
                                     <% } else { %>
                                         <td><div class="del"><span><%= data[id].goods[i].first_price %>円</span></div><%= data[id].goods[i].price %>円</td>
                                     <% } %>
