@@ -49,7 +49,7 @@
 
 .skeduler-main-timeline div {
   width: 50px;
-  height: 27px;
+  height: 37px;
   text-align: left;
   padding-left: 10px;
   padding-top: 3px;
@@ -80,7 +80,7 @@
 
 .skeduler-main-body > div > div.skeduler-cell {
   width: 200px;
-  height: 30px;
+  height: 40px;
 }
 
 .skeduler-main-body > div > .skeduler-task-placeholder {
@@ -107,7 +107,7 @@
 .skeduler-main-body > div > .skeduler-task-placeholder > div:hover {
   box-shadow: 0 .25em .5em rgba(0,0,0,.5);
   background-color: #162f57;
-  min-height: 150px;
+  min-height: 200px;
   min-width: 192px;
   opacity: 0.9;
   z-index: 9999;
@@ -211,6 +211,6 @@ button:hover:before, button:hover:after , .pink .selected:before, .pink .selecte
   }
   .skeduler-main-body > div > .skeduler-task-placeholder > div:hover {
     width: 70px;
-    min-height: 110px;
+    min-height: 150px;
   }
 }

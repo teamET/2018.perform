@@ -1,7 +1,6 @@
 (function () {
   $win = jQuery(window);
   var windowWidth = $win.width();
-  console.log(windowWidth);
   var defaultSettings = {
     // Data attributes
     headers: [],  // String[] - Array of column headers
@@ -22,7 +21,7 @@
     taskPlaceholderCssClass: 'skeduler-task-placeholder',
     cellCssClass: 'skeduler-cell',
     oddCellCssClass: 'odd skeduler-cell',
-    lineHeight: 30,      // height of one half-hour line in grid
+    lineHeight: 40,      // height of one half-hour line in grid
     borderWidth: 1,      // width of board of grid cell
 
     debug: false

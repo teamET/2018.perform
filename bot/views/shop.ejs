@@ -44,7 +44,7 @@
                     <div class="shop">
                         <div class="shop-image">
                             <% if( data[id].image.length ){ %>
-                                <img src="https://kunugida2018.tokyo-ct.ac.jp/data/<%=id%>/<%=data[id].image[0] %>">
+                                <img src="https://kunugida2018.tokyo-ct.ac.jp/data/<%=id%>/<%=data[id].image[0] %>" alt="<%= data[id].shopname %>の宣伝画像">
                             <% }else{ %>
                                 <img src="https://user-images.githubusercontent.com/38575274/46793140-f7660880-cd7f-11e8-9e1c-773c09a992c5.png">
                             <% } %>
@@ -61,10 +61,10 @@
                             <%  for( var i=0 ; i < data[id].goods.length ; i+=1) { %>
                                 <tr>
                                     <td> <%= data[id].goods[i].name %> </td>
-                                    <% if(!data[id].goods[i].first_price){ %>
-                                        <td><%= data[id].goods[i].price %>円</td>
-                                    <% }else if(data[id].goods[i].price==0){ %>
+                                    <% if(data[id].goods[i].price == "Free" || data[id].goods[i].price == "free" ){ %>
                                         <td>Free</td>
+                                    <% }else if(!data[id].goods[i].first_price){ %>
+                                        <td><%= data[id].goods[i].price %>円</td>
                                     <% } else { %>
                                         <td><div class="del"><span><%= data[id].goods[i].first_price %>円</span></div><%= data[id].goods[i].price %>円</td>
                                     <% } %>
