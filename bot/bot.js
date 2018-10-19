@@ -237,6 +237,7 @@ rtm.on("message",(event)=>{
 	}else if(event.channel=="CD0KZSRQ9"){
 		if(event.files){
 			photos.push(utils.download("photo_club",event.files[0].title,event.files[0].url_private_download));
+            img_list.push({"shop_id":"photo_club","img_name":event.files[0].url_private_download.split('/').pop()});
             slack("公開の許可をお願いします。\nshop_id : photo_club , image_name : "+event.files[0].title,"GCS4TEWGZ");
             slack(JSON.stringify(photos),event.channel);
 		}
@@ -300,6 +301,16 @@ rtm.on("message",(event)=>{
 	        if(shop[shop_id].goods[cnt]["name"] == Name){
 	            shop[shop_id].goods.splice(cnt,1);
 	            slack("商品を削除しました.",channel);
+	            return ;
+        	}
+    	}
+    }else if(event.text.split(' ')[0]==='.del_price'){
+		var cnt;
+		var Name = event.text.split(" ")[1];
+		for(cnt=0;cnt<shop[shop_id].goods.length;cnt++){
+	        if(shop[shop_id].goods[cnt]["name"] == Name){
+	            delete shop[shop_id].goods[cnt].first_price;
+	            slack("初期の値段を削除しました.",channel);
 	            return ;
         	}
     	}
@@ -373,8 +384,11 @@ rtm.on("message",(event)=>{
 		var date = form_time.slice(8,9);
         console.log(news);
 		news[news.length] = {"id":news.length,"date":date,"time":form_time,"display_time":convert(start_time),"duration":"-1","start_time":start_time,"end_time":"-1","place":"-1","name":"-1","content":content,"from":from,"tstamp":ts};
-        news = utils.json_sort(news);
+        news = utils.news_sort(news);
         slack("ニュースが登録されました.",channel);	
+    }else if(event.text.split(' ')[0]==='.news_sort'){
+        news = utils.news_sort(news);
+        slack("ニュースがソートされました.",channel);	
     }else if(event.text.split(' ')[0]==='.show_event'){
         var events_text = JSON.stringify(events,null,'\t')
         slack(events_text,channel);
