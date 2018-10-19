@@ -4,13 +4,13 @@
 	return (d < 10) ? '0' + d.toString() : d.toString();
     }
     var date = new Date();
-	var loadTime = `2018/10/${to_string(date.getDay())}/${date.getHours()}:${date.getMinutes()-diff}:00`
+	var loadTime = `2018/10/${to_string(date.getDate())}/${date.getHours()}:${date.getMinutes()+diff}:00`
     return loadTime;
 }%>
 <% var count = 0; %>
 <% var Timeten = LoadNewsTime(10) %>
 <% var Time = LoadNewsTime(0) %>
-<% for ( var i = 0; i < data.length && count < 4 ; i+=1 ) { %>
+<% for ( var i = 0 ; i < data.length && count < 4 ; i+=1 ) { %>
 	<% if( data[i].time <= Timeten ){ %>
 		<% count += 1; %>
 		<div class="post icon">
@@ -21,7 +21,7 @@
 			<% } else { %>
 				<p class="info">開催中</p>
 			<% } %>
-			<%if( LoadNewsTime(0) <= data[i].time ){ %>
+			<%if( Time <= data[i].time ){ %>
 				<img src="https://png.icons8.com/ios/50/ffffff/new-filled.png">
 			<% } %>
 			<a href="/event" class="title"><%= data[i].from %></a>
@@ -29,7 +29,9 @@
 				<a href="/event" class="content">
 				<h6><%=data[i].content%></h6>
 				</a>
-				<p class="date"><span><%= data[i].date %></span>日 <span><%= data[i].start_time %></span></p>
+				<% if( data[i].end_time != "-1" ) { %>
+					<p class="date"><span><%= data[i].date %></span>日 <span><%= data[i].start_time %></span></p>
+				<% } %>
 			</div>
 		</div>
   	<% } %>
