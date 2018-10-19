@@ -14,13 +14,7 @@
 	<% if( data[i].time <= Timeten ){ %>
 		<% count += 1; %>
 		<div class="post icon">
-			<% if( data[i].end_time == "-1" ) { %>
-				<p class="info"></p>
-			<% } else if ( Time <= data[i].time ){ %>
-				<p class="info">もうすぐ始まります！</p>
-			<% } else { %>
-				<p class="info">開催中</p>
-			<% } %>
+            <p class="info"></p>
 			<%if( Time <= data[i].time ){ %>
 				<img src="https://png.icons8.com/ios/50/ffffff/new-filled.png">
 			<% } %>
