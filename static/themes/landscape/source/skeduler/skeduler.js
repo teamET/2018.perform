@@ -1,11 +1,9 @@
 (function generate() {
     // window.jQuery = window.jQuery;
     console.log(window.$,window.$("#skeduler-container"),window.$("#skeduler-container").skeduler);
-    console.log("generate");
     var tasks = [];
-    var places = ["第一体育館", "第二体育館", "購買前"]
+    var places = ["第一体育館", "第二体育館", "購買前", "野外ステージ", "専攻科棟"]
     $.getJSON("/data/events.json", function(data) {
-        console.log(data);
         var date = new Date();
         function getNow() {
             function to_string(d) {
@@ -13,7 +11,6 @@
             }
             var date = new Date();
             var now = `${to_string(date.getDay())}/${date.getHours()}:${date.getMinutes()}`
-            console.log(now);
             return now;
         }
         var count=0;
@@ -24,8 +21,8 @@
             }
             count+=1;
             for (var i = 0; i < data.length; i++) {
+                
                 var columun = places.indexOf(data[i].place);
-                console.log(columun);
                 var task = {
                     startTime: Math.round(data[i].display_time*100)/100,
                     duration: Math.round(data[i].duration*100)/100,
@@ -42,22 +39,27 @@
             }
             return tasks;
         }
-        var tasks=get_schedule(21);
+        var tasks=get_schedule(20);
+        $("#sche20").addClass('selected');
         set_tasks(tasks);
         function set_tasks(tasks) {
             jQuery("#skeduler-container").skeduler({
                 headers: places,
                 tasks: tasks,
                 cardTemplate: '<div>${from}</div><div>${time}</div><div class="hide-content">${title}<br>${content}</div>',
-                onClick: function (e, t) { console.log(e, t); }
+                onClick: function (e, t) { console.log(); }
             });
         }
 
         jQuery('#sche20').on('click',()=>{
+            $("#sche21").removeClass('selected');
+            $("#sche20").addClass('selected');
             tasks = get_schedule(20);
             set_tasks(tasks);
         });
-        jQuery('#sche21').on('click',()=>{ 
+        jQuery('#sche21').on('click',()=>{
+            $("#sche20").removeClass('selected');
+            $("#sche21").addClass('selected');
             tasks = get_schedule(21);
             set_tasks(tasks);
         });
