@@ -348,6 +348,11 @@ async function type_message(event) {
                       [3,2,3,3,4],
                       [5,1,2],
                       [8,1,1]];
+    //画像を送信してきた時の処理
+    if (event.message.type == "image") {
+        image_download(event);
+        msg = msg_text("画像を送信してくれてありがとう(o・∇・o)");
+    }
     /***** イメージマップタップ時の出力判定 *****/
     // [1] 校外マップ
     for(var i=0;i<OutsideArea.length;i++){
@@ -564,6 +569,9 @@ async function type_message(event) {
             };
             msg.contents = Build_LaboFlex_Bubble("labo25");
             break;
+        case "ゆるゆるして":
+            msg = msg_text("ゆるゆるしないで");
+            break;
         default:
             if (msg == undefined) {
                 let appid = await DB_get("UserData", "APPID", "USERID", event.source.userId);
@@ -578,11 +586,6 @@ async function type_message(event) {
             }
             //msg = msg_text("個別の返信はできません(*:△:)");
             break;
-    }
-    //画像を送信してきた時の処理
-    if (event.message.type == "image") {
-        image_download(event);
-        msg = msg_text("画像を送信してくれてありがとう(o・∇・o)");
     }
     if (msg){
         var tmp = await Build_responce(urlp_reply, await Build_msg_text(
