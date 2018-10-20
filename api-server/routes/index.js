@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/counter', function(req, res, next) {
   counter++;
+  res.send("Thank you!");
 });
 
 router.get('/movie', function(req, res, next) {
