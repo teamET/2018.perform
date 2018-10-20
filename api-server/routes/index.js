@@ -4,7 +4,7 @@ let fs = require("fs");
 let counter = 0;
 
 setInterval(function() {
-  let st = fs.readFileSync("./router/count.txt");
+  let st = fs.readFileSync("./routes/count.txt");
   let oldnum = +st;
   if (oldnum < counter) {
     fs.writeFile("./routes/count.txt", counter+"", function(err) {
