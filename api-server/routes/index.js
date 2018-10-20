@@ -16,4 +16,9 @@ router.get('/movie', function(req, res, next) {
   res.send(String(counter));
 });
 
+router.get('/reset', function(req, res, next) {
+  counter = 0;
+  res.send("reset ok");
+});
+
 module.exports = router;
