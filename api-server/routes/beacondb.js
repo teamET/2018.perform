@@ -32,8 +32,8 @@ router.post('/create', function(req, res, next) {
 
 router.post('/update', function(req, res, next) {
     //bodyの受け取り
-    if (req.key == channelSecret) {
-        var body = req.body;
+    var body = req.body;
+    if (body.key == channelSecret) {
         var query = UPDATE.replace("{msg}", body.message)
             .replace("{place}", body.place);
         if (body.place == "ALL") {
@@ -55,17 +55,22 @@ router.post('/update', function(req, res, next) {
 });
 
 router.post('/delete', function(req, res, next) {
-    var query = 'DELETE FROM BeaconData WHERE BEACONID = "{id}"'
-        .replace("{id}", req.body.beaconid);
-    connection.query(query, function(err, rows) {
-        if (err) {
-            res.status(403);
-            res.send(err);
-        } else {
-            res.status(200);
-            res.send(rows);
-        }
-    });
+    if (req.body.key == channelSecret) {
+        var query = 'DELETE FROM BeaconData WHERE BEACONID = "{id}"'
+            .replace("{id}", req.body.beaconid);
+        connection.query(query, function(err, rows) {
+            if (err) {
+                res.status(403);
+                res.send(err);
+            } else {
+                res.status(200);
+                res.send(rows);
+            }
+        });
+    } else {
+        res.status(114514);
+        res.send("w");
+    }
 });
 
 router.get('/get', function(req, res, next) {
