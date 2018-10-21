@@ -4,6 +4,8 @@ var request = require('request');
 var moment = require('moment');
 var connection = require('./mysqlConnection');
 
+const channelSecret = process.env.channelSecret;
+
 const INSERT = 'INSERT INTO BeaconData (BEACONID, MESSAGE, PLACE) VALUES ("{id}", "{msg}", "{place}")';
 const UPDATE = 'UPDATE BeaconData SET MESSAGE = "{msg}" WHERE PLACE = "{place}"';
 const U = 'UPDATE BeaconData SET MESSAGE = "{msg}" WHERE PLACE IS NOT NULL'
@@ -30,22 +32,26 @@ router.post('/create', function(req, res, next) {
 
 router.post('/update', function(req, res, next) {
     //bodyの受け取り
-    var body = req.body;
-    var query = UPDATE.replace("{msg}", body.message)
-        .replace("{place}", body.place);
-    if (body.place == "ALL") {
-        query = U.replace("{msg}", body.message);
-    }
-    connection.query(query, function(err, rows) {
-        console.log(rows);
-        if (err) {
-            res.status(403);
-            res.send(err);
-        } else {
-            res.status(200);
-            res.send(rows);
+    if (req.key == channelSecret) {
+        var body = req.body;
+        var query = UPDATE.replace("{msg}", body.message)
+            .replace("{place}", body.place);
+        if (body.place == "ALL") {
+            query = U.replace("{msg}", body.message);
         }
-    });
+        connection.query(query, function(err, rows) {
+            console.log(rows);
+            if (err) {
+                res.status(403);
+                res.send(err);
+            } else {
+                res.status(200);
+                res.send(rows);
+            }
+        });
+    }
+    res.status(114514);
+    res.send('nk');
 });
 
 router.post('/delete', function(req, res, next) {
