@@ -681,16 +681,18 @@ async function type_beacon(event) {
             connection.query(query);
             //メッセージを整形
             var db_msg = DB_get("BeaconData", "MESSAGE", "BEACONID", event.beacon.hwid);
+            /*
             var msg = {
                 "type": "text",
                 "text": "現在，" + db_place + "です"
             };
-            var msg2 = {
+            */
+            var msg = {
                 "type": "text",
                 "text": "[おしらせ]\n" + await db_msg
             };
             var tmp = await Build_responce(urlp_reply, await Build_msg_text(
-                event.replyToken, msg, msg2
+                event.replyToken, msg
             ));
             request.post(tmp);
         }
